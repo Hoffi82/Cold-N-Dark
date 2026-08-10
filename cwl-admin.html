@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CWL-Verwaltung – Cold N' Dark</title>
+<style>
+:root{--bg:#09070d;--panel:#171122;--gold:#ffc43d;--gold2:#ff9f1c;--text:#f7f4ff;--muted:#b9b2c9;--line:#ffffff1f}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#302044,#09070d 65%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+header{position:sticky;top:0;z-index:10;background:#08060def;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:14px}.logo{width:58px;height:58px;object-fit:cover;border-radius:16px;border:2px solid var(--gold)}
+.brand{flex:1}.brand strong{display:block;font-size:20px;letter-spacing:2px}.brand small{color:var(--gold);font-weight:800;letter-spacing:1px}
+nav{display:flex;gap:7px;flex-wrap:wrap}nav a{padding:8px 10px;border-radius:9px;color:var(--muted);font-weight:700;font-size:14px;text-decoration:none}
+nav a:hover{background:#ffc43d18;color:var(--gold)}
+main{max-width:1120px;margin:auto;padding:45px 18px 70px}.title{text-align:center;margin-bottom:30px}.badge{display:inline-block;border:1px solid #ffc43d66;border-radius:999px;padding:5px 12px;color:var(--gold);font-weight:800;font-size:12px}
+h1{font-size:clamp(38px,7vw,62px);line-height:1.05;margin:18px 0 10px}h1 span{color:var(--gold)}.title p{color:var(--muted);font-size:18px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}.tool{border:1px solid #ffffff22;background:#171122;color:var(--text);padding:11px 14px;border-radius:11px;font-weight:800;cursor:pointer}.tool.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#171122;border:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}.stat{padding:20px;border:1px solid var(--line);border-radius:18px;background:#171122}.stat b{display:block;font-size:30px;color:var(--gold)}.stat span{color:var(--muted)}
+.card{border:1px solid var(--line);border-radius:20px;background:#171122dd;overflow:hidden}.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:15px 16px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--gold);font-size:13px;text-transform:uppercase;letter-spacing:.5px}td{color:var(--text)}
+.badgeyes,.badgeno{display:inline-block;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:900}.badgeyes{background:#39d98a22;color:#65e6a5}.badgeno{background:#ff5d5d22;color:#ff8989}
+.empty{text-align:center;padding:50px;color:var(--muted)}.note{margin-top:18px;padding:15px;border-radius:12px;background:#ffc43d12;border:1px solid #ffc43d35;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var(--muted)}footer b{color:var(--gold)}
+@media(max-width:700px){nav{display:none}.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+<img class="logo" src="Wappen.png" alt="Cold N' Dark Wappen">
+<div class="brand"><strong>COLD N' DARK</strong><small>CWL-VERWALTUNG • NUR FÜR DIE PLANUNG</small></div>
+<nav><a href="index.html">Start</a><a href="cwl.html">CWL-Anmeldung</a><a href="mitglieder.html">Mitglieder</a></nav>
+</div></header>
+
+<main>
+<section class="title">
+<span class="badge">CLAN-LEVEL 26</span>
+<h1>🏆 CWL-<span>Verwaltung</span></h1>
+<p>Übersicht der auf diesem Gerät gespeicherten CWL-Anmeldungen.</p>
+</section>
+
+<div class="stats">
+<div class="stat"><b id="total">0</b><span>Anmeldungen</span></div>
+<div class="stat"><b id="yes">0</b><span>Teilnahme: Ja</span></div>
+<div class="stat"><b id="no">0</b><span>Teilnahme: Nein</span></div>
+</div>
+
+<div class="toolbar">
+<button class="tool gold" onclick="copyList()">📋 Liste kopieren</button>
+<button class="tool" onclick="downloadCSV()">⬇️ CSV exportieren</button>
+<button class="tool" onclick="clearList()">🗑️ Liste löschen</button>
+</div>
+
+<div class="card">
+<div class="table-wrap">
+<table>
+<thead><tr><th>#</th><th>Spieler</th><th>RH</th><th>Teilnahme</th><th>Verfügbarkeit</th><th>Tage</th><th>Bemerkung</th></tr></thead>
+<tbody id="rows"></tbody>
+</table>
+</div>
+<div id="empty" class="empty" style="display:none">Noch keine Anmeldungen vorhanden.</div>
+</div>
+
+<div class="note"><strong>Wichtig:</strong> Diese Verwaltungsseite liest momentan die Anmeldungen aus dem Browser-Speicher dieses Geräts. Für eine echte zentrale Clan-Liste, bei der Anmeldungen von allen Handys bei dir ankommen, müssen wir im nächsten Schritt noch einen externen Speicher/Formulardienst anschließen.</div>
+</main>
+
+<footer><b>COLD N' DARK</b> • CWL-Verwaltung</footer>
+
+<script>
+function getData(){return JSON.parse(localStorage.getItem('coldNDarkCWL')||'[]')}
+function render(){
+const data=getData(), rows=document.getElementById('rows'), empty=document.getElementById('empty');
+document.getElementById('total').textContent=data.length;
+document.getElementById('yes').textContent=data.filter(x=>(x.teilnahme||'').startsWith('✅')).length;
+document.getElementById('no').textContent=data.filter(x=>(x.teilnahme||'').startsWith('❌')).length;
+rows.innerHTML='';
+empty.style.display=data.length?'none':'block';
+data.forEach((x,i)=>{
+const yes=(x.teilnahme||'').startsWith('✅');
+const tr=document.createElement('tr');
+tr.innerHTML=`<td>${i+1}</td><td><strong>${esc(x.name)}</strong></td><td>${esc(x.rh)}</td><td><span class="${yes?'badgeyes':'badgeno'}">${yes?'✅ Ja':'❌ Nein'}</span></td><td>${esc(x.verfuegbar||'')}</td><td>${esc(x.tage||'—')}</td><td>${esc(x.notiz||'—')}</td>`;
+rows.appendChild(tr);
+});
+}
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function copyList(){
+const d=getData();let s='🏆 CWL-ANMELDUNGEN – COLD N\\' DARK\\n\\n';
+d.forEach((x,i)=>{s+=`${i+1}. ${x.name} – RH ${x.rh} – ${x.teilnahme||''} – ${x.verfuegbar||''}${x.tage?` – ${x.tage}`:''}\\n`});
+navigator.clipboard.writeText(s).then(()=>alert('Liste wurde kopiert.'));
+}
+function downloadCSV(){
+const d=getData();let csv='Spieler;Rathaus;Teilnahme;Verfügbarkeit;Tage;Bemerkung\\n';
+d.forEach(x=>csv+=[x.name,x.rh,x.teilnahme,x.verfuegbar,x.tage,x.notiz].map(v=>`"${String(v||'').replaceAll('"','""')}"`).join(';')+'\\n');
+const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='CWL-Anmeldungen.csv';a.click();
+}
+function clearList(){
+if(confirm('Wirklich alle gespeicherten Anmeldungen auf diesem Gerät löschen?')){localStorage.removeItem('coldNDarkCWL');render();}
+}
+render();
+</script>
+</body>
+</html>
