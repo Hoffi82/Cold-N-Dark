@@ -70,12 +70,31 @@ const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoqqoD5YBsed
 
 let data = [];
 
-async function getData() {
-  const response = await fetch(GOOGLE_SCRIPT_URL);
-  if (!response.ok) {
-    throw new Error("Google-Tabelle konnte nicht geladen werden.");
-  }
-  return await response.json();
+function getData() {
+  return new Promise((resolve, reject) => {
+    const callbackName = "cwlCallback_" + Date.now();
+
+    window[callbackName] = function(data) {
+      delete window[callbackName];
+      script.remove();
+      resolve(data);
+    };
+
+    const script = document.createElement("script");
+
+    script.src =
+      GOOGLE_SCRIPT_URL +
+      "?callback=" +
+      encodeURIComponent(callbackName);
+
+    script.onerror = function() {
+      delete window[callbackName];
+      script.remove();
+      reject(new Error("Google-Tabelle konnte nicht geladen werden."));
+    };
+
+    document.body.appendChild(script);
+  });
 }
 
 async function render() {
