@@ -10,6 +10,28 @@ nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}nav a{padding:8
 main{max-width:1120px;margin:auto;padding:45px 18px 70px}.hero{text-align:center;padding:25px 0 45px}.badge{display:inline-block;border:1px solid #ffc43d66;border-radius:999px;padding:5px 12px;color:var(--gold);font-weight:800;font-size:12px}
 h1{font-size:clamp(46px,8vw,82px);line-height:1;margin:20px 0}h1 span{color:var(--gold)}.hero p{max-width:720px;margin:auto;color:var(--muted);font-size:18px}
 .hero-logo{display:block;width:min(390px,85vw);margin:30px auto;border:3px solid var(--gold);border-radius:28px;background:#050408;box-shadow:0 20px 60px #0008}
+ .welcome-marquee{
+ width:100%;
+ overflow:hidden;
+ white-space:nowrap;
+ margin:18px 0 25px;
+ color:var(--gold);
+ font-size:20px;
+ font-weight:800;
+}
+
+.welcome-marquee{
+ animation:welcomeScroll 12s linear infinite;
+}
+
+@keyframes welcomeScroll{
+  0%{
+    transform:translateX(100%);
+  }
+  100%{
+    transform:translateX(-100%);
+  }
+}
 .buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:850px;margin:30px auto}.btn{display:block;text-align:center;padding:16px 18px;border:1px solid #ffc43d55;border-radius:16px;background:linear-gradient(135deg,#ffc43d,#ff9f1c);color:#171122;font-weight:900;box-shadow:0 10px 30px #0004}.btn:hover{transform:translateY(-2px)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0 45px}.stat{padding:20px;border:1px solid var(--line);border-radius:18px;background:#ffffff08;text-align:center}.stat b{display:block;color:var(--gold);font-size:30px}.stat span{color:var(--muted);font-weight:700}
 .title{text-align:center;margin-bottom:28px}.title h2{font-size:36px;margin:0}.title p{color:var(--muted)}
@@ -29,6 +51,9 @@ footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var
 <span class="badge">🏆 KRISTALL-LIGA I</span>
 <h1>COLD N' <span>DARK</span></h1>
 <p>Willkommen auf der offiziellen Homepage von <b>Cold N' Dark</b>. Hier findest du alles, was unseren Clan ausmacht.</p>
+<div class="welcome-marquee">
+🏆 Herzlich Willkommen auf der offiziellen Homepage von Cold N' Dark! 🖤💛
+</div>
 <img class="hero-logo" src="Wappen.png" alt="Cold N' Dark Wappen">
 <div class="buttons">
 <a class="btn" href="mitglieder.html">👥 46 Mitglieder ansehen</a>
