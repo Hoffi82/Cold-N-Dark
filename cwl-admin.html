@@ -66,35 +66,117 @@ footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var
 <footer><b>COLD N' DARK</b> • CWL-Verwaltung</footer>
 
 <script>
-function getData(){return JSON.parse(localStorage.getItem('coldNDarkCWL')||'[]')}
-function render(){
-const data=getData(), rows=document.getElementById('rows'), empty=document.getElementById('empty');
-document.getElementById('total').textContent=data.length;
-document.getElementById('yes').textContent=data.filter(x=>(x.teilnahme||'').startsWith('✅')).length;
-document.getElementById('no').textContent=data.filter(x=>(x.teilnahme||'').startsWith('❌')).length;
-rows.innerHTML='';
-empty.style.display=data.length?'none':'block';
-data.forEach((x,i)=>{
-const yes=(x.teilnahme||'').startsWith('✅');
-const tr=document.createElement('tr');
-tr.innerHTML=`<td>${i+1}</td><td><strong>${esc(x.name)}</strong></td><td>${esc(x.rh)}</td><td><span class="${yes?'badgeyes':'badgeno'}">${yes?'✅ Ja':'❌ Nein'}</span></td><td>${esc(x.verfuegbar||'')}</td><td>${esc(x.tage||'—')}</td><td>${esc(x.notiz||'—')}</td>`;
-rows.appendChild(tr);
-});
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoqqoD5YBsedBoYikd6YbcHwZSR7fiTX9lBLLgmZpGFKOlcYWpzSSjps64qDxx6argGg/exec";
+
+let data = [];
+
+async function getData() {
+  const response = await fetch(GOOGLE_SCRIPT_URL);
+  if (!response.ok) {
+    throw new Error("Google-Tabelle konnte nicht geladen werden.");
+  }
+  return await response.json();
 }
-function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-function copyList(){
-const d=getData();let s='🏆 CWL-ANMELDUNGEN – COLD N\\' DARK\\n\\n';
-d.forEach((x,i)=>{s+=`${i+1}. ${x.name} – RH ${x.rh} – ${x.teilnahme||''} – ${x.verfuegbar||''}${x.tage?` – ${x.tage}`:''}\\n`});
-navigator.clipboard.writeText(s).then(()=>alert('Liste wurde kopiert.'));
+
+async function render() {
+  try {
+    data = await getData();
+
+    document.getElementById('total').textContent = data.length;
+
+    document.getElementById('yes').textContent =
+      data.filter(x => (x.teilnahme || '').startsWith('✅')).length;
+
+    document.getElementById('no').textContent =
+      data.filter(x => (x.teilnahme || '').startsWith('❌')).length;
+
+    const rows = document.getElementById('rows');
+    const empty = document.getElementById('empty');
+
+    rows.innerHTML = '';
+
+    empty.style.display = data.length ? 'none' : 'block';
+
+    data.forEach((x, i) => {
+      const yes = (x.teilnahme || '').startsWith('✅');
+
+      const tr = document.createElement('tr');
+
+      tr.innerHTML = `
+        <td>${i + 1}</td>
+        <td><strong>${esc(x.spieler)}</strong></td>
+        <td>${esc(x.rh)}</td>
+        <td>
+          <span class="${yes ? 'badgeyes' : 'badgeno'}">
+            ${esc(x.teilnahme)}
+          </span>
+        </td>
+        <td>${esc(x.verfuegbarkeit)}</td>
+        <td>${esc(x.tage)}</td>
+        <td>${esc(x.bemerkung)}</td>
+      `;
+
+      rows.appendChild(tr);
+    });
+
+  } catch (error) {
+    console.error(error);
+    alert("Die CWL-Anmeldungen konnten nicht geladen werden.");
+  }
 }
-function downloadCSV(){
-const d=getData();let csv='Spieler;Rathaus;Teilnahme;Verfügbarkeit;Tage;Bemerkung\\n';
-d.forEach(x=>csv+=[x.name,x.rh,x.teilnahme,x.verfuegbar,x.tage,x.notiz].map(v=>`"${String(v||'').replaceAll('"','""')}"`).join(';')+'\\n');
-const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='CWL-Anmeldungen.csv';a.click();
+
+function esc(v) {
+  return String(v ?? '')
+    .replace(/[&<>"']/g, m => ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#039;'
+    }[m]));
 }
-function clearList(){
-if(confirm('Wirklich alle gespeicherten Anmeldungen auf diesem Gerät löschen?')){localStorage.removeItem('coldNDarkCWL');render();}
+
+function copyList() {
+  let s = "🏆 CWL-ANMELDUNGEN – COLD N' DARK\n\n";
+
+  data.forEach((x, i) => {
+    s += `${i + 1}. ${x.spieler || ''} – RH ${x.rh || ''} – ${x.teilnahme || ''} – ${x.verfuegbarkeit || ''} – ${x.tage || ''}\n`;
+  });
+
+  navigator.clipboard.writeText(s)
+    .then(() => alert('Liste wurde kopiert.'));
 }
+
+function downloadCSV() {
+  const csv =
+    "Spieler;Rathaus;Teilnahme;Verfügbarkeit;Tage;Bemerkung\n" +
+    data.map(x =>
+      [
+        x.spieler,
+        x.rh,
+        x.teilnahme,
+        x.verfuegbarkeit,
+        x.tage,
+        x.bemerkung
+      ].map(v => `"${String(v || '').replace(/"/g, '""')}"`).join(';')
+    ).join('\n');
+
+  const a = document.createElement('a');
+
+  a.href = URL.createObjectURL(
+    new Blob([csv], {
+      type: 'text/csv;charset=utf-8'
+    })
+  );
+
+  a.download = 'CWL-Anmeldungen.csv';
+  a.click();
+}
+
+function clearList() {
+  alert('Die CWL-Anmeldungen werden jetzt zentral in der Google-Tabelle gespeichert. Zum Löschen der zentralen Liste bauen wir später eine eigene Funktion ein.');
+}
+
 render();
 </script>
 </body>
