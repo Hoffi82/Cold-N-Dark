@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CWL-Anmeldung – Cold N' Dark</title>
+<style>
+:root{--bg:#09070d;--panel:#171122;--gold:#ffc43d;--gold2:#ff9f1c;--text:#f7f4ff;--muted:#b9b2c9;--line:#ffffff1f}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 50% 0,#302044,#09070d 65%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.6}
+header{position:sticky;top:0;z-index:10;background:#08060def;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:14px}
+.logo{width:58px;height:58px;object-fit:cover;border-radius:16px;border:2px solid var(--gold)}
+.brand{flex:1}.brand strong{display:block;font-size:20px;letter-spacing:2px}.brand small{color:var(--gold);font-weight:800;letter-spacing:1px}
+nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+nav a{padding:8px 10px;border-radius:9px;color:var(--muted);font-weight:700;font-size:14px;text-decoration:none}
+nav a:hover{background:#ffc43d18;color:var(--gold)}
+main{max-width:900px;margin:auto;padding:45px 18px 70px}
+.title{text-align:center;margin-bottom:30px}.title .badge{display:inline-block;border:1px solid #ffc43d66;border-radius:999px;padding:5px 12px;color:var(--gold);font-weight:800;font-size:12px}
+h1{font-size:clamp(38px,7vw,64px);line-height:1.05;margin:18px 0 10px}h1 span{color:var(--gold)}
+.title p{color:var(--muted);font-size:18px;max-width:680px;margin:auto}
+.card{padding:28px;border:1px solid var(--line);border-radius:22px;background:#171122dd;box-shadow:0 20px 60px #0005}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+label{font-weight:800}.required{color:var(--gold)}
+input,select,textarea{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #ffffff22;background:#09070d;color:var(--text);font:inherit;outline:none}
+input:focus,select:focus,textarea:focus{border-color:#ffc43d99;box-shadow:0 0 0 3px #ffc43d15}
+textarea{min-height:110px;resize:vertical}
+.check{display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid var(--line);border-radius:12px;background:#ffffff06}
+.check input{width:auto;margin-top:5px}
+.submit{width:100%;border:0;border-radius:14px;padding:16px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#171122;font-weight:900;font-size:17px;cursor:pointer;margin-top:6px}
+.submit:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.notice{margin-top:18px;padding:14px;border-radius:12px;background:#ffc43d12;border:1px solid #ffc43d35;color:var(--muted);font-size:14px}
+.success{display:none;text-align:center;padding:28px}.success h2{color:var(--gold)}
+.back{text-align:center;margin-top:25px}.back a{color:var(--gold);font-weight:800;text-decoration:none}
+footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var(--muted)}footer b{color:var(--gold)}
+@media(max-width:700px){nav{display:none}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+<img class="logo" src="Wappen.png" alt="Cold N' Dark Wappen">
+<div class="brand"><strong>COLD N' DARK</strong><small>CLASH OF CLANS • CWL-BEREICH</small></div>
+<nav><a href="index.html">Start</a><a href="mitglieder.html">Mitglieder</a><a href="regeln.html">Clanregeln</a><a href="krieg.html">Kriegsinfos</a></nav>
+</div></header>
+
+<main>
+<section class="title">
+<span class="badge">CLAN-LEVEL 26 • CWL</span>
+<h1>🏆 <span>CWL-Anmeldung</span></h1>
+<p>Du möchtest bei der nächsten Clan-Kriegsliga dabei sein? Fülle die Anmeldung aus.</p>
+</section>
+
+<div class="card" id="formCard">
+<form id="cwlForm">
+<div class="grid">
+<div class="field">
+<label for="name">Spielername <span class="required">*</span></label>
+<input id="name" name="name" required placeholder="z. B. King Olli">
+</div>
+<div class="field">
+<label for="rh">Rathaus-Level <span class="required">*</span></label>
+<select id="rh" name="rh" required>
+<option value="">Bitte auswählen</option>
+<option>18</option><option>17</option><option>16</option><option>15</option><option>14</option>
+<option>13</option><option>12</option><option>11</option><option>10</option><option>9</option><option>8 oder niedriger</option>
+</select>
+</div>
+<div class="field">
+<label for="teilnahme">CWL-Teilnahme <span class="required">*</span></label>
+<select id="teilnahme" name="teilnahme" required>
+<option value="">Bitte auswählen</option>
+<option>✅ Ja, ich möchte teilnehmen</option>
+<option>❌ Nein, ich kann nicht teilnehmen</option>
+</select>
+</div>
+<div class="field">
+<label for="verfuegbar">Verfügbarkeit</label>
+<select id="verfuegbar" name="verfuegbar">
+<option>Komplett verfügbar</option>
+<option>Teilweise verfügbar</option>
+<option>Nur an bestimmten Tagen</option>
+</select>
+</div>
+<div class="field full">
+<label for="tage">Falls teilweise: Welche Tage?</label>
+<input id="tage" name="tage" placeholder="z. B. Montag und Mittwoch">
+</div>
+<div class="field full">
+<label for="notiz">Bemerkung</label>
+<textarea id="notiz" name="notiz" placeholder="z. B. Schichtarbeit, Urlaub, Wunsch auf bestimmten Positionen ..."></textarea>
+</div>
+<div class="field full">
+<div class="check">
+<input id="ok" type="checkbox" required>
+<label for="ok">Ich bestätige, dass meine Angaben für die Planung der CWL verwendet werden dürfen. <span class="required">*</span></label>
+</div>
+</div>
+<div class="field full">
+<button class="submit" type="submit">🏆 CWL-Anmeldung absenden</button>
+</div>
+</div>
+</form>
+<div class="notice">
+<strong>Hinweis:</strong> Diese Version ist zunächst die fertige Anmeldeseite. Damit die Anmeldungen wirklich zentral bei dir gespeichert werden, verbinden wir sie im nächsten Schritt mit einem Formular-/Speicherdienst. So gehen die Anmeldungen nicht nur auf dem jeweiligen Handy verloren.
+</div>
+</div>
+
+<div class="success" id="success">
+<h2>✅ Anmeldung erfasst!</h2>
+<p>Die Eingaben wurden auf diesem Gerät zwischengespeichert.</p>
+<p>Die zentrale Speicherung bauen wir als nächsten Schritt ein.</p>
+</div>
+
+<div class="back"><a href="index.html">← Zurück zur Startseite</a></div>
+</main>
+
+<footer><b>COLD N' DARK</b> • CWL-Anmeldung • Clan-Level 26</footer>
+
+<script>
+document.getElementById('cwlForm').addEventListener('submit',function(e){
+e.preventDefault();
+const data=Object.fromEntries(new FormData(this).entries());
+data.created=new Date().toISOString();
+const old=JSON.parse(localStorage.getItem('coldNDarkCWL')||'[]');
+old.push(data);
+localStorage.setItem('coldNDarkCWL',JSON.stringify(old));
+document.getElementById('formCard').style.display='none';
+document.getElementById('success').style.display='block';
+window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>
