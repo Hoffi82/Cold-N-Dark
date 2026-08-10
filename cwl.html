@@ -118,16 +118,47 @@ footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var
 <footer><b>COLD N' DARK</b> • CWL-Anmeldung • Clan-Level 26</footer>
 
 <script>
-document.getElementById('cwlForm').addEventListener('submit',function(e){
-e.preventDefault();
-const data=Object.fromEntries(new FormData(this).entries());
-data.created=new Date().toISOString();
-const old=JSON.parse(localStorage.getItem('coldNDarkCWL')||'[]');
-old.push(data);
-localStorage.setItem('coldNDarkCWL',JSON.stringify(old));
-document.getElementById('formCard').style.display='none';
-document.getElementById('success').style.display='block';
-window.scrollTo({top:0,behavior:'smooth'});
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoqqoD5YBsedBoYikd6YbcHwZSR7fiTX9lBLLgmZpGFKOlcYWpzSSjps64qDxx6argGg/exec";
+
+document.getElementById('cwlForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const data = Object.fromEntries(new FormData(this).entries());
+
+  const anmeldung = {
+    spieler: data.name || "",
+    rathaus: data.rh || "",
+    teilnahme: data.teilnahme || "",
+    verfuegbarkeit: data.verfuegbarkeit || "",
+    tage: data.tage || "",
+    bemerkung: data.notiz || ""
+  };
+
+  // Zusätzlich lokal speichern
+  const old = JSON.parse(localStorage.getItem('coldNDarkCWL') || '[]');
+  anmeldung.created = new Date().toISOString();
+  old.push(anmeldung);
+  localStorage.setItem('coldNDarkCWL', JSON.stringify(old));
+
+  // An Google Tabelle senden
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: new URLSearchParams(anmeldung)
+    });
+
+    document.getElementById('formCard').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+
+  } catch (error) {
+    alert("Die Anmeldung konnte nicht übertragen werden. Bitte später erneut versuchen.");
+    console.error(error);
+  }
 });
 </script>
 </body>
