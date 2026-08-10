@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Cold N' Dark – CWL-Auswertung</title>
+
+<style>
+:root{
+  --bg:#09070d;
+  --panel:#171122;
+  --gold:#ffc43d;
+  --text:#f7f4ff;
+  --muted:#b9b2c9;
+  --line:#ffffff1f;
+  --green:#35d07f;
+  --red:#ff5b5b;
+  --yellow:#ffd45c;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 50% 0%,#302044,#09070d 62%);
+  color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  line-height:1.6;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:#09070dcc;
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav{
+  max-width:1120px;
+  margin:auto;
+  padding:12px 18px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  object-fit:contain;
+}
+
+.brand{
+  flex:1;
+}
+
+.brand strong{
+  font-size:18px;
+}
+
+.brand small{
+  display:block;
+  color:var(--muted);
+}
+
+nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+nav a{
+  padding:8px 12px;
+  border-radius:9px;
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+}
+
+nav a:hover,
+nav a.active{
+  background:#ffc43d18;
+  color:var(--gold);
+}
+
+main{
+  max-width:1120px;
+  margin:auto;
+  padding:45px 18px 70px;
+}
+
+.hero{
+  text-align:center;
+  padding:25px 0 35px;
+}
+
+.badge{
+  display:inline-block;
+  border:1px solid #ffc43d66;
+  border-radius:999px;
+  padding:5px 12px;
+  color:var(--gold);
+  font-weight:800;
+  font-size:13px;
+}
+
+h1{
+  font-size:48px;
+  margin:18px 0 5px;
+}
+
+h1 span{
+  color:var(--gold);
+}
+
+.hero p{
+  color:var(--muted);
+  margin:0;
+}
+
+.card{
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#171122cc;
+  margin-bottom:20px;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.title h2{
+  margin:0;
+  font-size:28px;
+}
+
+.title p{
+  color:var(--muted);
+  margin:5px 0 0;
+}
+
+/* Statistik */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin:20px 0;
+}
+
+.stat{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#ffffff08;
+  text-align:center;
+}
+
+.stat b{
+  display:block;
+  color:var(--gold);
+  font-size:30px;
+}
+
+.stat span{
+  color:var(--muted);
+}
+
+/* Bilanz */
+
+.record{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:20px;
+}
+
+.record div{
+  text-align:center;
+  padding:18px;
+  border-radius:15px;
+  border:1px solid var(--line);
+  background:#ffffff08;
+}
+
+.record b{
+  display:block;
+  font-size:30px;
+}
+
+.win b{
+  color:var(--green);
+}
+
+.draw b{
+  color:var(--yellow);
+}
+
+.loss b{
+  color:var(--red);
+}
+
+/* Kriege */
+
+.wars{
+  display:grid;
+  gap:12px;
+}
+
+.war{
+  display:grid;
+  grid-template-columns:70px 1fr auto;
+  align-items:center;
+  gap:18px;
+  padding:16px 18px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:#ffffff06;
+}
+
+.round{
+  color:var(--gold);
+  font-weight:900;
+  font-size:15px;
+}
+
+.opponent{
+  font-weight:800;
+  font-size:17px;
+}
+
+.details{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.result{
+  text-align:right;
+  min-width:110px;
+}
+
+.score{
+  font-size:22px;
+  font-weight:900;
+}
+
+.status{
+  font-size:12px;
+  font-weight:800;
+}
+
+.sieg .status{
+  color:var(--green);
+}
+
+.unentschieden .status{
+  color:var(--yellow);
+}
+
+.niederlage .status{
+  color:var(--red);
+}
+
+/* Zerstörung */
+
+.progress{
+  height:9px;
+  background:#ffffff12;
+  border-radius:999px;
+  overflow:hidden;
+  margin-top:8px;
+}
+
+.progress div{
+  height:100%;
+  background:var(--gold);
+  border-radius:999px;
+}
+
+.destroy-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.destroy-box{
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:#ffffff06;
+}
+
+.destroy-top{
+  display:flex;
+  justify-content:space-between;
+  font-weight:800;
+}
+
+.destroy-top span{
+  color:var(--gold);
+}
+
+/* Footer */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:28px;
+  text-align:center;
+  color:var(--muted);
+}
+
+footer b{
+  color:var(--gold);
+}
+
+/* Mobile */
+
+@media(max-width:800px){
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .destroy-grid{
+    grid-template-columns:1fr;
+  }
+
+  nav{
+    display:none;
+  }
+
+  h1{
+    font-size:36px;
+  }
+
+  .war{
+    grid-template-columns:55px 1fr;
+  }
+
+  .result{
+    grid-column:2;
+    text-align:left;
+  }
+}
+
+@media(max-width:500px){
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .record{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+
+    <img class="logo" src="Wappen.png" alt="Cold N' Dark Wappen">
+
+    <div class="brand">
+      <strong>COLD N' DARK</strong>
+      <small>CLASH OF CLANS • OFFIZIELLE CLAN-SEITE</small>
+    </div>
+
+    <nav>
+      <a href="index.html">Start</a>
+      <a href="mitglieder.html">Mitglieder</a>
+      <a href="regeln.html">Clanregeln</a>
+      <a href="krieg.html">Kriegsinfos</a>
+      <a href="cwl.html">CWL</a>
+      <a href="cwl-auswertung.html" class="active">CWL-Auswertung</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<main>
+
+<section class="hero">
+
+  <span class="badge">🏆 KRISTALL-LIGA I</span>
+
+  <h1>CWL-<span>Auswertung</span></h1>
+
+  <p>
+    Die komplette Auswertung unserer letzten CWL-Runde.
+  </p>
+
+</section>
+
+
+<!-- Gesamtstatistik -->
+
+<section class="card">
+
+  <div class="title">
+    <h2>📊 Gesamtstatistik</h2>
+    <p>Cold N' Dark – letzte CWL</p>
+  </div>
+
+  <div class="stats">
+
+    <div class="stat">
+      <b>7</b>
+      <span>Kriege</span>
+    </div>
+
+    <div class="stat">
+      <b>488</b>
+      <span>eigene Sterne</span>
+    </div>
+
+    <div class="stat">
+      <b>530</b>
+      <span>Gegnersterne</span>
+    </div>
+
+    <div class="stat">
+      <b>-42</b>
+      <span>Sterndifferenz</span>
+    </div>
+
+  </div>
+
+
+  <div class="record">
+
+    <div class="win">
+      <b>1</b>
+      <span>🏆 Sieg</span>
+    </div>
+
+    <div class="draw">
+      <b>1</b>
+      <span>🤝 Unentschieden</span>
+    </div>
+
+    <div class="loss">
+      <b>5</b>
+      <span>❌ Niederlagen</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- Zerstörung -->
+
+<section class="card">
+
+  <div class="title">
+    <h2>⚔️ Zerstörung</h2>
+    <p>Durchschnitt aller 7 CWL-Kriege</p>
+  </div>
+
+  <div class="destroy-grid">
+
+    <div class="destroy-box">
+
+      <div class="destroy-top">
+        <span>Cold N' Dark</span>
+        <span>88,62 %</span>
+      </div>
+
+      <div class="progress">
+        <div style="width:88.62%"></div>
+      </div>
+
+    </div>
+
+
+    <div class="destroy-box">
+
+      <div class="destroy-top">
+        <span>Gegner</span>
+        <span>90,24 %</span>
+      </div>
+
+      <div class="progress">
+        <div style="width:90.24%"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- Kriege -->
+
+<section class="card">
+
+  <div class="title">
+    <h2>⚔️ Die 7 CWL-Kriege</h2>
+    <p>Alle Begegnungen der abgeschlossenen Runde</p>
+  </div>
+
+
+  <div class="wars">
+
+
+    <div class="war sieg">
+
+      <div class="round">Runde 1</div>
+
+      <div>
+        <div class="opponent">CWL-Gegner</div>
+        <div class="details">
+          Zerstörung: 96,27 % : 81,37 %
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="score">79 : 66</div>
+        <div class="status">🏆 SIEG</div>
+      </div>
+
+    </div>
+
+
+    <div class="war niederlage">
+
+      <div class="round">Runde 2</div>
+
+      <div>
+        <div class="opponent">CWL-Gegner</div>
+        <div class="details">
+          Zerstörung: 76,90 % : 89,83 %
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="score">57 : 76</div>
+        <div class="status">❌ NIEDERLAGE</div>
+      </div>
+
+    </div>
+
+
+    <div class="war niederlage">
+
+      <div class="round">Runde 3</div>
+
+      <div>
+        <div class="opponent">THE DEAD</div>
+        <div class="details">
+          Zerstörung: 87,20 % : 90,67 %
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="score">66 : 75</div>
+        <div class="status">❌ NIEDERLAGE</div>
+      </div>
+
+    </div>
+
+
+    <div class="war niederlage">
+
+      <div class="round">Runde 4</div>
+
+      <div>
+        <div class="opponent">PYREX HOOLIGANS</div>
+        <div class="details">
+          Zerstörung: 92,30 % : 99,57 %
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="score">72 : 88</div>
+        <div class="status">❌ NIEDERLAGE</div>
+      </div>
+
+    </div>
+
+
+    <div class="war niederlage">
+
+      <div class="round">Runde 5</div>
+
+      <div>
+        <div class="opponent">WAR BD 1971</div>
+        <div class="details">
+          Zerstörung: 87,97 % : 88,40 %
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="score">72 : 75</div>
+        <div class="status">❌ NIEDERLAGE</div>
+      </div>
+
+    </div>
+
+
+    <div class="war niederlage">
+
+      <div class="round">Runde 6</div>
+
+      <div>
+        <div class="opponent">KHYBER LEGEND</div>
+        <div class="details">
+          Zerstörung: 90,00 % : 92,10 %
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="score">72 : 80</div>
+        <div class="status">❌ NIEDERLAGE</div>
+      </div>
+
+    </div>
+
+
+    <div class="war unentschieden">
+
+      <div class="round">Runde 7</div>
+
+      <div>
+        <div class="opponent">PINOY IN US</div>
+        <div class="details">
+          Zerstörung: 89,73 % : 89,73 %
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="score">70 : 70</div>
+        <div class="status">🤝 UNENTSCHIEDEN</div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- Fazit -->
+
+<section class="card">
+
+  <div class="title">
+    <h2>📝 CWL-Fazit</h2>
+  </div>
+
+  <p style="text-align:center;color:var(--muted);font-size:16px">
+
+    Die letzte CWL-Runde ist beendet.
+    <br><br>
+
+    Trotz einiger knapper Niederlagen konnte
+    <strong style="color:var(--gold)">
+      Cold N' Dark
+    </strong>
+    starke Leistungen zeigen.
+
+    <br><br>
+
+    Mit dem Abstieg aus der
+    <strong style="color:var(--gold)">
+      Meister-Liga III
+    </strong>
+    geht es nun in der
+    <strong style="color:var(--gold)">
+      Kristall-Liga I
+    </strong>
+    weiter.
+
+    <br><br>
+
+    <strong style="color:var(--text)">
+      Neue CWL – neues Ziel. 💪🔥
+    </strong>
+
+  </p>
+
+</section>
+
+</main>
+
+
+<footer>
+  <b>COLD N' DARK</b> • CWL-Auswertung
+</footer>
+
+</body>
+</html>
