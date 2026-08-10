@@ -40,6 +40,76 @@ h1{font-size:clamp(46px,8vw,82px);line-height:1;margin:20px 0}h1 span{color:var(
 .back{text-align:center;margin-top:30px}.back a{color:var(--gold);font-weight:800}
 footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var(--muted)}footer b{color:var(--gold)}
 @media(max-width:700px){nav{display:none}.buttons,.stats,.member-grid{grid-template-columns:1fr}.member{padding:11px}}
+ .war-stat-card{
+  margin:20px 0 30px;
+  padding:22px;
+  border:1px solid #ffc43d55;
+  border-radius:18px;
+  background:linear-gradient(135deg,#171122,#21172e);
+  box-shadow:0 0 25px #ffc43d22, inset 0 0 20px #ffffff08;
+  position:relative;
+  overflow:hidden;
+}
+
+.war-stat-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    #ffffff18,
+    transparent
+  );
+  transform:skewX(-20deg);
+  animation:warShine 5s infinite;
+}
+
+.war-stat-title{
+  position:relative;
+  text-align:center;
+  color:var(--gold);
+  font-size:22px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.war-stat-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.war-stat-grid div{
+  text-align:center;
+  padding:14px 10px;
+  border:1px solid #ffffff12;
+  border-radius:12px;
+  background:#ffffff06;
+}
+
+.war-stat-grid strong{
+  display:block;
+  color:var(--gold);
+  font-size:30px;
+  font-weight:900;
+}
+
+.war-stat-grid span{
+  display:block;
+  color:var(--muted);
+  font-size:13px;
+  margin-top:4px;
+}
+
+@keyframes warShine{
+  0%{left:-100%}
+  45%,100%{left:140%}
+}
 </style></head><body>
 <header><div class="nav">
 <img class="logo" src="Wappen.png" alt="Cold N' Dark Wappen">
@@ -63,6 +133,32 @@ footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var
 <a class="btn" href="cwl-admin.html">📋 CWL-Verwaltung</a>
 <a class="btn" href="cwl-auswertung.html">📊 CWL-Auswertung</a>
 <a class="btn" href="https://chat.whatsapp.com/HZI9VnYMXjC41FUOLDQnbm?s=cl&p=i&ilr=0&amv=1" target="_blank">🟢 WhatsApp</a>
+</section>
+ <!-- Kriegsbilanz -->
+<section class="war-stat-card">
+  <div class="war-stat-title">⚔️ KRIEGSBILANZ</div>
+
+  <div class="war-stat-grid">
+    <div>
+      <strong>494</strong>
+      <span>Siege</span>
+    </div>
+
+    <div>
+      <strong>287</strong>
+      <span>Niederlagen</span>
+    </div>
+
+    <div>
+      <strong>4</strong>
+      <span>Unentschieden</span>
+    </div>
+
+    <div>
+      <strong>785</strong>
+      <span>Kriege</span>
+    </div>
+  </div>
 </section>
 <div class="stats">
 <div class="stat"><b>46</b><span>Mitglieder</span></div>
