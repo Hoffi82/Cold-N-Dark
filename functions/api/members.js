@@ -1,6 +1,8 @@
 export async function onRequestGet(context) {
   const clanTag = '#C89CVRCP';
-  const token = context.env.CLASH_API_TOKEN;
+  const token = typeof context.env.CLASH_API_TOKEN === 'string'
+    ? context.env.CLASH_API_TOKEN.trim()
+    : '';
 
   if (!token) {
     return new Response(JSON.stringify({
