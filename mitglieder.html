@@ -32,7 +32,7 @@ async function loadMembers(){
   const box=document.getElementById('members');
   box.innerHTML=d.members.length?d.members.map((m,i)=>`<div class="member"><div class="rank">${esc(m.rank??i+1)}</div><div><strong>${esc(m.name)}</strong><small class="role">${esc(roleNames[m.role]||m.role||'Mitglied')}</small><small>🏆 ${esc(m.trophies)} · 🏗️ ${esc(m.builderTrophies)}</small></div></div>`).join(''):'<div class="empty">Keine Mitglieder gefunden.</div>';
   status.textContent='🟢 Live-Daten';
- }catch(e){document.getElementById('members').innerHTML='<div class="empty">⚠️ Mitgliederdaten konnten momentan nicht geladen werden.</div>';status.textContent='Fehler beim Laden';}
+ }catch(e){document.getElementById('members').innerHTML='<div class="empty">⚠️ '+esc(e.message)+'</div>';status.textContent='🔴 '+e.message;}
 }
 document.getElementById('refresh').addEventListener('click',loadMembers);loadMembers();
 </script></body></html>
