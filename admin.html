@@ -13,19 +13,19 @@
 <a class="card" href="cwl-admin.html"><div class="icon">🏆</div><h2>CWL-Verwaltung</h2><p>Anmeldungen, Teilnahme und Verfügbarkeit verwalten.</p></a>
 <a class="card" href="krieg.html"><div class="icon">⚔️</div><h2>Kriegsinfos</h2><p>Aktuellen Clan-Krieg und Kriegsdaten prüfen.</p></a>
 <a class="card" href="mitglieder.html"><div class="icon">👥</div><h2>Mitglieder</h2><p>Aktuelle Clan-Mitglieder ansehen.</p></a>
-<button class="card update-card" id="refreshMembers" type="button"><div class="icon">🔄</div><h2>Mitglieder aktualisieren</h2><p>ClashKing live abfragen und die aktuelle Mitgliederliste laden.</p><span class="update-result" id="updateResult"></span></button>
+<button class="card update-card" id="refreshMembers" type="button"><div class="icon">🔄</div><h2>Mitglieder aktualisieren</h2><p>Die offizielle Clash-of-Clans-API live abfragen und die aktuelle Mitgliederliste laden.</p><span class="update-result" id="updateResult"></span></button>
 </div>
-<div class="note"><strong>Hinweis:</strong> Der Zugang läuft über ein serverseitiges Cloudflare-Secret. Das Passwort wird nicht im GitHub-Code gespeichert.</div></div>
+<div class="note"><strong>Hinweis:</strong> Der Zugang läuft über serverseitige Cloudflare-Secrets. Weder das Admin-Passwort noch der Clash-of-Clans-API-Token werden im GitHub-Code gespeichert.</div></div>
 <script>
 async function refreshMembers(){
  const button=document.getElementById('refreshMembers');
  const result=document.getElementById('updateResult');
- button.disabled=true; result.textContent='⏳ ClashKing wird abgefragt …';
+ button.disabled=true; result.textContent='⏳ Clash-of-Clans-API wird abgefragt …';
  try{
   const response=await fetch('/api/members',{cache:'no-store'});
   const data=await response.json();
   if(!response.ok||!data.ok) throw new Error(data.error||'API-Fehler');
-  result.textContent=`🟢 ${data.memberCount} Mitglieder geladen · Clan-Level ${data.clanLevel??'–'}`;
+  result.textContent=`🟢 ${data.memberCount} Mitglieder geladen`;
   setTimeout(()=>location.href='mitglieder.html',900);
  }catch(error){
   result.textContent='🔴 Aktualisierung fehlgeschlagen';
