@@ -1,12 +1,6 @@
 {
   "$schema": "https://developers.cloudflare.com/workers/wrangler/config-schema.json",
-  "name": "cold-n-dark-war-api",
-  "main": "src/war-api.js",
-  "compatibility_date": "2026-08-18",
-  "observability": {
-    "enabled": true
-  },
-  "secrets": {
-    "required": ["CLASH_API_TOKEN"]
-  }
+  "name": "cold-n-dark",
+  "pages_build_output_dir": ".",
+  "compatibility_date": "2026-08-18"
 }
