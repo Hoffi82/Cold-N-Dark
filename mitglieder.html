@@ -12,12 +12,12 @@ main{max-width:1120px;margin:auto;padding:45px 18px 70px}.title{text-align:cente
 @media(max-width:700px){nav{display:none}.stats,.member-grid{grid-template-columns:1fr}.member{padding:11px}}
 </style></head><body>
 <header><div class="nav"><img class="logo" src="Wappen.png" alt="Cold N' Dark Wappen"><div class="brand"><strong>COLD N' DARK</strong><small>CLASH OF CLANS • OFFIZIELLE CLAN-SEITE</small></div><nav><a href="index.html">Start</a><a href="mitglieder.html">Mitglieder</a><a href="regeln.html">Clanregeln</a><a href="krieg.html">Kriegsinfos</a></nav></div></header>
-<main><section><div class="title"><h1>👥 Unsere <span>Mitglieder</span></h1><p>Die Mitglieder werden automatisch über ClashKing aktualisiert.</p></div>
+<main><section><div class="title"><h1>👥 Unsere <span>Mitglieder</span></h1><p>Die Mitglieder werden automatisch über die offizielle Clash-of-Clans-API aktualisiert.</p></div>
 <div class="actions"><button class="btn" id="refresh">🔄 Mitglieder aktualisieren</button><div class="status" id="status">Daten werden geladen …</div></div>
 <div class="stats"><div class="stat"><b id="count">–</b><span>Mitglieder</span></div><div class="stat"><b id="level">–</b><span>Clan-Level</span></div><div class="stat"><b id="updated">–</b><span>Letzte Aktualisierung</span></div></div>
 <div id="members" class="member-grid"><div class="empty">Mitgliederdaten werden geladen …</div></div>
 <div class="back"><a href="index.html">← Zurück zur Startseite</a></div></section></main>
-<footer><b>COLD N' DARK</b> • Clash of Clans • Offizielle Clan-Seite<br>Live-Mitglieder über ClashKing</footer>
+<footer><b>COLD N' DARK</b> • Clash of Clans • Offizielle Clan-Seite<br>Live-Mitglieder über die offizielle Clash-of-Clans-API</footer>
 <script>
 const roleNames={leader:'Anführer',coLeader:'Vize-Anführer',admin:'Ältester',member:'Mitglied'};
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -31,7 +31,7 @@ async function loadMembers(){
   document.getElementById('updated').textContent=new Date(d.fetchedAt).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
   const box=document.getElementById('members');
   box.innerHTML=d.members.length?d.members.map((m,i)=>`<div class="member"><div class="rank">${esc(m.rank??i+1)}</div><div><strong>${esc(m.name)}</strong><small class="role">${esc(roleNames[m.role]||m.role||'Mitglied')}</small><small>🏆 ${esc(m.trophies)} · 🏗️ ${esc(m.builderTrophies)}</small></div></div>`).join(''):'<div class="empty">Keine Mitglieder gefunden.</div>';
-  status.textContent='🟢 Live-Daten · Cache ca. 5 Minuten';
+  status.textContent='🟢 Live-Daten';
  }catch(e){document.getElementById('members').innerHTML='<div class="empty">⚠️ Mitgliederdaten konnten momentan nicht geladen werden.</div>';status.textContent='Fehler beim Laden';}
 }
 document.getElementById('refresh').addEventListener('click',loadMembers);loadMembers();
