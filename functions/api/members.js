@@ -23,9 +23,8 @@ export async function onRequestGet(context) {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-      cf: { cacheTtl: 60, cacheEverything: true }
+        'auth': token
+      }
     });
 
     if (!response.ok) {
@@ -33,9 +32,9 @@ export async function onRequestGet(context) {
       let detail = '';
       try {
         const errorBody = JSON.parse(text);
-        detail = errorBody?.message || errorBody?.reason || '';
+        detail = errorBody?.message || errorBody?.reason || errorBody?.statusText || '';
       } catch {
-        // Ignore non-JSON error responses.
+        detail = text.slice(0, 200);
       }
 
       return new Response(JSON.stringify({
@@ -93,10 +92,10 @@ export async function onRequestGet(context) {
         'Cache-Control': 'no-store, max-age=0'
       }
     });
-  } catch {
+  } catch (error) {
     return new Response(JSON.stringify({
       ok: false,
-      error: 'Die offizielle Clash-of-Clans-API konnte nicht erreicht werden.'
+      error: `Verbindung zum Clash-of-Clans-Proxy fehlgeschlagen${error?.message ? `: ${error.message}` : '.'}`
     }), {
       status: 502,
       headers: {
