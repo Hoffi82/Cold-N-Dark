@@ -1,0 +1,19 @@
+{
+  "name": "Cold N' Dark",
+  "short_name": "Cold N' Dark",
+  "description": "Offizielle Cold N' Dark Clan-App",
+  "start_url": "./app.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#09070d",
+  "theme_color": "#09070d",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "Wappen.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
