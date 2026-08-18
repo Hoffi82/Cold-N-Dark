@@ -1,11 +1,14 @@
 export async function onRequestGet() {
   const clanTag = '#C89CVRCP';
-  const url = `https://api.clashk.ing/clan/${encodeURIComponent(clanTag)}/basic`;
+  // ClashKing caches responses for a few minutes. We use a 5-minute bucket
+  // so the same URL is reused briefly, while avoiding an old edge response.
+  const cacheBucket = Math.floor(Date.now() / 300000);
+  const url = `https://api.clashk.ing/clan/${encodeURIComponent(clanTag)}/basic?refresh=${cacheBucket}`;
 
   try {
     const response = await fetch(url, {
       headers: { 'Accept': 'application/json' },
-      cf: { cacheTtl: 300, cacheEverything: true }
+      cf: { cacheTtl: 60, cacheEverything: true }
     });
 
     if (!response.ok) {
@@ -20,11 +23,26 @@ export async function onRequestGet() {
 
     const raw = await response.json();
     const clan = raw?.data ?? raw;
+
+    // ClashKing's clan/basic response contains the current member list as
+    // memberList. Keep a fallback for compatible response shapes.
     const members = Array.isArray(clan?.memberList)
       ? clan.memberList
       : Array.isArray(clan?.members)
         ? clan.members
-        : [];
+        : Array.isArray(raw?.memberList)
+          ? raw.memberList
+          : [];
+
+    if (!members.length) {
+      return new Response(JSON.stringify({
+        ok: false,
+        error: 'ClashKing hat keine aktuelle Mitgliederliste geliefert.'
+      }), {
+        status: 502,
+        headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+      });
+    }
 
     const payload = {
       ok: true,
@@ -49,7 +67,7 @@ export async function onRequestGet() {
     return new Response(JSON.stringify(payload), {
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
-        'Cache-Control': 'public, max-age=300'
+        'Cache-Control': 'no-store, max-age=0'
       }
     });
   } catch (error) {
