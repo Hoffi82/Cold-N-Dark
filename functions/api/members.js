@@ -1,65 +1,88 @@
-export async function onRequestGet() {
+export async function onRequestGet(context) {
   const clanTag = '#C89CVRCP';
-  // ClashKing caches responses for a few minutes. We use a 5-minute bucket
-  // so the same URL is reused briefly, while avoiding an old edge response.
-  const cacheBucket = Math.floor(Date.now() / 300000);
-  const url = `https://api.clashk.ing/clan/${encodeURIComponent(clanTag)}/basic?refresh=${cacheBucket}`;
+  const token = context.env.CLASH_API_TOKEN;
+
+  if (!token) {
+    return new Response(JSON.stringify({
+      ok: false,
+      error: 'CLASH_API_TOKEN ist in Cloudflare noch nicht eingerichtet.'
+    }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Cache-Control': 'no-store'
+      }
+    });
+  }
+
+  const encodedTag = encodeURIComponent(clanTag);
+  const url = `https://cocproxy.royaleapi.dev/v1/clans/${encodedTag}/members`;
 
   try {
     const response = await fetch(url, {
-      headers: { 'Accept': 'application/json' },
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
       cf: { cacheTtl: 60, cacheEverything: true }
     });
 
     if (!response.ok) {
+      const text = await response.text().catch(() => '');
+      let detail = '';
+      try {
+        const errorBody = JSON.parse(text);
+        detail = errorBody?.message || errorBody?.reason || '';
+      } catch {
+        // Ignore non-JSON error responses.
+      }
+
       return new Response(JSON.stringify({
         ok: false,
-        error: `ClashKing API antwortet mit HTTP ${response.status}`
+        error: `Clash of Clans API antwortet mit HTTP ${response.status}${detail ? `: ${detail}` : ''}`
       }), {
         status: 502,
-        headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Cache-Control': 'no-store'
+        }
       });
     }
 
     const raw = await response.json();
-    const clan = raw?.data ?? raw;
-
-    // ClashKing's clan/basic response contains the current member list as
-    // memberList. Keep a fallback for compatible response shapes.
-    const members = Array.isArray(clan?.memberList)
-      ? clan.memberList
-      : Array.isArray(clan?.members)
-        ? clan.members
-        : Array.isArray(raw?.memberList)
-          ? raw.memberList
-          : [];
+    const members = Array.isArray(raw?.items) ? raw.items : [];
 
     if (!members.length) {
       return new Response(JSON.stringify({
         ok: false,
-        error: 'ClashKing hat keine aktuelle Mitgliederliste geliefert.'
+        error: 'Die offizielle Clash-of-Clans-API hat keine Mitglieder geliefert.'
       }), {
         status: 502,
-        headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Cache-Control': 'no-store'
+        }
       });
     }
 
     const payload = {
       ok: true,
-      source: 'ClashKing',
+      source: 'Clash of Clans API',
       clanTag,
-      clanName: clan?.name ?? "Cold N' Dark",
-      clanLevel: clan?.clanLevel ?? null,
       memberCount: members.length,
       members: members.map((member, index) => ({
-        rank: member.clanRank ?? member.rank ?? index + 1,
+        rank: member.clanRank ?? index + 1,
         name: member.name ?? 'Unbekannt',
         tag: member.tag ?? '',
         role: member.role ?? 'member',
         trophies: member.trophies ?? 0,
-        builderTrophies: member.builderBaseTrophies ?? member.versusTrophies ?? 0,
+        builderTrophies: member.builderBaseTrophies?.versusTrophies ?? member.builderBaseTrophies ?? 0,
         donations: member.donations ?? 0,
-        donationsReceived: member.donationsReceived ?? 0
+        donationsReceived: member.donationsReceived ?? 0,
+        expLevel: member.expLevel ?? null,
+        league: member.league?.name ?? null,
+        townHallLevel: member.townHallLevel ?? null
       })),
       fetchedAt: new Date().toISOString()
     };
@@ -70,13 +93,16 @@ export async function onRequestGet() {
         'Cache-Control': 'no-store, max-age=0'
       }
     });
-  } catch (error) {
+  } catch {
     return new Response(JSON.stringify({
       ok: false,
-      error: 'ClashKing konnte nicht erreicht werden.'
+      error: 'Die offizielle Clash-of-Clans-API konnte nicht erreicht werden.'
     }), {
       status: 502,
-      headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Cache-Control': 'no-store'
+      }
     });
   }
 }
