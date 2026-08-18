@@ -23,6 +23,12 @@ export async function onRequestGet() {
     const clan = war?.clan ?? war?.ourClan ?? {};
     const opponent = war?.opponent ?? war?.enemyClan ?? {};
 
+    const hasWar = !!(
+      (war?.state && war.state !== 'unknown') ||
+      (war?.status && war.status !== 'unknown') ||
+      war?.clan || war?.ourClan || war?.opponent || war?.enemyClan
+    );
+
     const players = Array.isArray(clan?.members) ? clan.members.map(p => ({
       name: p.name ?? p.playerName ?? 'Unbekannt',
       attacks: p.attacksUsed ?? p.attacks ?? 0,
@@ -33,7 +39,8 @@ export async function onRequestGet() {
       ok: true,
       source: 'ClashKing',
       clanTag,
-      status: war?.state ?? war?.status ?? 'unknown',
+      hasWar,
+      status: hasWar ? (war?.state ?? war?.status ?? 'unknown') : 'notInWar',
       opponent: opponent?.name ?? war?.opponentName ?? '–',
       ourStars: clan?.stars ?? clan?.clanStars ?? 0,
       enemyStars: opponent?.stars ?? opponent?.clanStars ?? 0,
