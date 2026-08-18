@@ -17,11 +17,18 @@ export async function onRequestGet({ env }) {
   }
 
   try {
+    // Token von versehentlich mitkopierten Leerzeichen/Zeilenumbrüchen bereinigen.
+    const token = String(env.CLASH_API_TOKEN).replace(/\s+/g, '').trim();
+
+    if (!token) {
+      return json({ ok: false, error: 'CLASH_API_TOKEN ist leer.' }, 503);
+    }
+
     const encodedTag = encodeURIComponent(CLAN_TAG);
     const response = await fetch(`${COC_API_BASE}/clans/${encodedTag}`, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${env.CLASH_API_TOKEN}`,
+        Authorization: `Bearer ${token}`,
         Accept: 'application/json'
       }
     });
