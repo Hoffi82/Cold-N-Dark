@@ -12,10 +12,9 @@ function base64ToUint8Array(base64) {
   return Uint8Array.from([...rawData].map(char => char.charCodeAt(0)));
 }
 
-function updatePushUi(message, color) {
+function updatePushUi(message) {
   const status = document.getElementById('pushStatus');
   if (status) status.innerHTML = message;
-  if (color) document.documentElement.style.setProperty('--push-result', color);
 }
 
 window.CND_PUSH = {
@@ -34,7 +33,6 @@ window.CND_PUSH = {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(subscription)
     });
-
     let data = {};
     try { data = await response.json(); } catch (_) {}
     return { ok: response.ok && data.ok === true, status: response.status, ...data };
@@ -56,28 +54,20 @@ window.CND_PUSH = {
       });
     }
 
-    const result = {
-      enabled: true,
-      permission,
-      subscribed: !!subscription,
-      subscription,
-      test: null
-    };
-
+    const result = { enabled: true, permission, subscribed: !!subscription, subscription, test: null };
     updatePushUi('Status: <b style="color:var(--gold)">Push-Verbindung wird getestet …</b>');
 
     try {
       result.test = await this.test(subscription.toJSON());
-      if (result.test.ok) {
-        updatePushUi('Status: <b style="color:var(--green)">aktiviert ✓</b><br><small>🔔 Test-Push wurde gesendet.</small>');
-      } else if (result.test.status === 503) {
-        updatePushUi('Status: <b style="color:var(--gold)">Berechtigung erteilt ✓</b><br><small>Push ist auf dem Gerät registriert. Der Server-Test braucht noch die sichere VAPID-Konfiguration.</small>');
-      } else {
-        updatePushUi('Status: <b style="color:var(--gold)">Berechtigung erteilt ✓</b><br><small>Push ist registriert, der Test-Push konnte noch nicht gesendet werden.</small>');
-      }
+      const finalMessage = result.test.ok
+        ? 'Status: <b style="color:var(--green)">aktiviert ✓</b><br><small>🔔 Test-Push wurde gesendet.</small>'
+        : result.test.status === 503
+          ? 'Status: <b style="color:var(--gold)">Berechtigung erteilt ✓</b><br><small>Push ist auf dem Gerät registriert. Der Server-Test braucht noch die sichere VAPID-Konfiguration.</small>'
+          : 'Status: <b style="color:var(--gold)">Berechtigung erteilt ✓</b><br><small>Push ist registriert, der Test-Push konnte noch nicht gesendet werden.</small>';
+      setTimeout(() => updatePushUi(finalMessage), 0);
     } catch (error) {
       result.test = { ok: false, error: error?.message || 'Test-Push nicht erreichbar.' };
-      updatePushUi('Status: <b style="color:var(--gold)">Berechtigung erteilt ✓</b><br><small>Push ist registriert. Test-Server noch nicht erreichbar.</small>');
+      setTimeout(() => updatePushUi('Status: <b style="color:var(--gold)">Berechtigung erteilt ✓</b><br><small>Push ist registriert. Test-Server noch nicht erreichbar.</small>'), 0);
     }
 
     return result;
@@ -86,15 +76,8 @@ window.CND_PUSH = {
   async status() {
     const permission = await this.permission();
     if (permission === 'unsupported') return { supported: false, permission, subscribed: false };
-
     const registration = await navigator.serviceWorker.ready;
     const subscription = await registration.pushManager.getSubscription();
-
-    return {
-      supported: true,
-      permission,
-      subscribed: !!subscription,
-      subscription
-    };
+    return { supported: true, permission, subscribed: !!subscription, subscription };
   }
 };
