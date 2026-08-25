@@ -3,7 +3,7 @@
  * Der private VAPID-Key darf niemals hier gespeichert werden.
  */
 
-const CND_VAPID_PUBLIC_KEY = 'BIezbnPTN27Six53rq_08FVhKxLUx6fe_gJiP4204RKyCd9R5zAsCrmt0NSrk3XpDy2T6_29njYrt4oQhccWgqo';
+const CND_VAPID_PUBLIC_KEY = 'BHpVx5iUmx4PbCIMaEOMcyB0k1597YLp7bgGik1RndYd2sLrourcaH9rvrKttPusSyZp6zBWUcjF_x5Y-JtimAU';
 const CND_SW_PATH = './service-worker.js';
 const CND_PUSH_STORAGE = 'cnd_push_enabled_v2';
 
@@ -51,7 +51,6 @@ window.CND_PUSH = {
       throw new Error('Auf dem iPhone zuerst „Zum Home-Bildschirm hinzufügen“ und die App von dort öffnen.');
     }
 
-    // Die Berechtigungsabfrage erfolgt nur nach dem Klick auf „Aktivieren“.
     const permission = await Notification.requestPermission();
     if (permission !== 'granted') {
       saveLocalState(false);
@@ -71,7 +70,6 @@ window.CND_PUSH = {
 
     saveLocalState(true);
 
-    // Sofortiger Gerätetest: prüft, ob die Benachrichtigung auf diesem Gerät erscheint.
     let localTest = false;
     try {
       await registration.showNotification("Cold N' Dark", {
