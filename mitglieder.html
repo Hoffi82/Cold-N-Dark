@@ -6,33 +6,31 @@
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#302044,#09070d 62%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.6}
 header{position:sticky;top:0;z-index:10;background:#08060def;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav{max-width:1120px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:14px}.logo{width:58px;height:58px;object-fit:cover;border-radius:16px;border:2px solid var(--gold)}.brand{flex:1}.brand strong{display:block;font-size:20px;letter-spacing:2px}.brand small{color:var(--gold);font-weight:800;letter-spacing:1px}nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}nav a{padding:8px 10px;border-radius:9px;color:var(--muted);font-weight:700;font-size:14px}nav a:hover{background:#ffc43d18;color:var(--gold)}
-main{max-width:1120px;margin:auto;padding:45px 18px 70px}.title{text-align:center;margin-bottom:24px}.title h1{font-size:clamp(40px,7vw,70px);line-height:1;margin:12px 0}.title h1 span{color:var(--gold)}.title p{color:var(--muted);font-size:18px}
-.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:25px 0}.btn{border:1px solid #ffc43d66;border-radius:14px;padding:12px 18px;background:linear-gradient(135deg,#ffc43d,#ff9f1c);color:#171122;font-weight:900;cursor:pointer}.status{color:var(--muted);font-size:14px;align-self:center}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:25px 0 35px}.stat{padding:18px;border:1px solid var(--line);border-radius:18px;background:#ffffff08;text-align:center}.stat b{display:block;color:var(--gold);font-size:30px}.stat span{color:var(--muted);font-weight:700}
+main{max-width:1120px;margin:auto;padding:45px 18px 70px}.title{text-align:center;margin-bottom:24px}.title h1{font-size:clamp(40px,7vw,70px);line-height:1;margin:12px 0}.title h1 span{color:var(--gold)}.title p{color:var(--muted);font-size:18px}.status{text-align:center;color:var(--muted);font-size:14px;margin:18px 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:25px 0 35px}.stat{padding:18px;border:1px solid var(--line);border-radius:18px;background:#ffffff08;text-align:center}.stat b{display:block;color:var(--gold);font-size:30px}.stat span{color:var(--muted);font-weight:700}
 .member-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.member{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid var(--line);border-radius:15px;background:#171122cc}.rank{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:#ffc43d18;color:var(--gold);font-weight:900}.member strong{display:block}.member small{display:block;color:var(--muted)}.role{font-size:12px;color:var(--gold)!important;font-weight:800}.empty{padding:30px;text-align:center;border:1px dashed var(--line);border-radius:18px;color:var(--muted)}.back{text-align:center;margin-top:30px}.back a{color:var(--gold);font-weight:800}footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var(--muted)}footer b{color:var(--gold)}
 @media(max-width:700px){nav{display:none}.stats,.member-grid{grid-template-columns:1fr}.member{padding:11px}}
 </style></head><body>
 <header><div class="nav"><img class="logo" src="Wappen.png" alt="Cold N' Dark Wappen"><div class="brand"><strong>COLD N' DARK</strong><small>CLASH OF CLANS • OFFIZIELLE CLAN-SEITE</small></div><nav><a href="index.html">Start</a><a href="mitglieder.html">Mitglieder</a><a href="regeln.html">Clanregeln</a><a href="krieg.html">Kriegsinfos</a></nav></div></header>
-<main><section><div class="title"><h1>👥 Unsere <span>Mitglieder</span></h1><p>Die Mitglieder werden automatisch über die offizielle Clash-of-Clans-API aktualisiert.</p></div>
-<div class="actions"><button class="btn" id="refresh">🔄 Mitglieder aktualisieren</button><div class="status" id="status">Daten werden geladen …</div></div>
+<main><section><div class="title"><h1>👥 Unsere <span>Mitglieder</span></h1><p>Unsere aktuelle Clan-Mitgliederliste wird manuell gepflegt.</p></div>
+<div class="status" id="status">Mitgliederliste wird geladen …</div>
 <div class="stats"><div class="stat"><b id="count">–</b><span>Mitglieder</span></div><div class="stat"><b id="level">–</b><span>Clan-Level</span></div><div class="stat"><b id="updated">–</b><span>Letzte Aktualisierung</span></div></div>
-<div id="members" class="member-grid"><div class="empty">Mitgliederdaten werden geladen …</div></div>
+<div id="members" class="member-grid"><div class="empty">Mitgliederdaten werden vorbereitet …</div></div>
 <div class="back"><a href="index.html">← Zurück zur Startseite</a></div></section></main>
-<footer><b>COLD N' DARK</b> • Clash of Clans • Offizielle Clan-Seite<br>Live-Mitglieder über die offizielle Clash-of-Clans-API</footer>
+<footer><b>COLD N' DARK</b> • Clash of Clans • Offizielle Clan-Seite<br>Mitgliederliste wird aktuell manuell gepflegt.</footer>
+<script src="members-data.js"></script>
 <script>
 const roleNames={leader:'Anführer',coLeader:'Vize-Anführer',admin:'Ältester',member:'Mitglied'};
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-async function loadMembers(){
- const status=document.getElementById('status'); status.textContent='Aktualisiere …';
- try{
-  const r=await fetch('/api/members',{cache:'no-store'}); const d=await r.json();
-  if(!r.ok||!d.ok) throw new Error(d.error||'API-Fehler');
-  document.getElementById('count').textContent=d.memberCount??d.members.length;
-  document.getElementById('level').textContent=d.clanLevel??'–';
-  document.getElementById('updated').textContent=new Date(d.fetchedAt).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
-  const box=document.getElementById('members');
-  box.innerHTML=d.members.length?d.members.map((m,i)=>`<div class="member"><div class="rank">${esc(m.rank??i+1)}</div><div><strong>${esc(m.name)}</strong><small class="role">${esc(roleNames[m.role]||m.role||'Mitglied')}</small><small>🏆 ${esc(m.trophies)} · 🏗️ ${esc(m.builderTrophies)}</small></div></div>`).join(''):'<div class="empty">Keine Mitglieder gefunden.</div>';
-  status.textContent='🟢 Live-Daten';
- }catch(e){document.getElementById('members').innerHTML='<div class="empty">⚠️ '+esc(e.message)+'</div>';status.textContent='🔴 '+e.message;}
+function loadMembers(){
+ const members=Array.isArray(window.COLD_N_DARK_MEMBERS)?window.COLD_N_DARK_MEMBERS:[];
+ const clan=window.COLD_N_DARK_CLAN||{};
+ document.getElementById('count').textContent=members.length;
+ document.getElementById('level').textContent=clan.clanLevel??'–';
+ document.getElementById('updated').textContent=clan.updatedAt?new Date(clan.updatedAt).toLocaleDateString('de-DE'):'wird gepflegt';
+ const box=document.getElementById('members');
+ if(!members.length){box.innerHTML='<div class="empty">Die Mitgliederliste wird gerade aufgebaut. Die echten Clan-Mitglieder werden Schritt für Schritt eingetragen.</div>';document.getElementById('status').textContent='🟡 Mitgliederliste wird aufgebaut';return;}
+ box.innerHTML=members.map((m,i)=>`<div class="member"><div class="rank">${esc(m.rank??i+1)}</div><div><strong>${esc(m.name)}</strong><small class="role">${esc(roleNames[m.role]||m.role||'Mitglied')}</small><small>🏆 ${esc(m.trophies??0)}${m.townHallLevel?' · 🏰 TH'+esc(m.townHallLevel):''}</small></div></div>`).join('');
+ document.getElementById('status').textContent='🟢 '+members.length+' Mitglieder eingetragen';
 }
-document.getElementById('refresh').addEventListener('click',loadMembers);loadMembers();
+loadMembers();
 </script></body></html>
