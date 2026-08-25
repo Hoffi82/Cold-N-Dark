@@ -1,6 +1,6 @@
 import { sendPushNotification } from '@mmmike/web-push/send';
 
-const VAPID_PUBLIC_KEY = 'BIezbnPTN27Six53rq_08FVhKxLUx6fe_gJiP4204RKyCd9R5zAsCrmt0NSrk3XpDy2T6_29njYrt4oQhccWgqo';
+const VAPID_PUBLIC_KEY = 'BHpVx5iUmx4PbCIMaEOMcyB0k1597YLp7bgGik1RndYd2sLrourcaH9rvrKttPusSyZp6zBWUcjF_x5Y-JtimAU';
 
 export async function onRequestPost({ request, env }) {
   try {
