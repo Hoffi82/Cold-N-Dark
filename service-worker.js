@@ -1,4 +1,4 @@
-const CACHE = 'cold-n-dark-v4';
+const CACHE = 'cold-n-dark-v5';
 const CORE = [
   './app.html',
   './mehr-app.html',
