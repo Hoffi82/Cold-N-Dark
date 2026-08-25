@@ -6,11 +6,19 @@
   "scope": "./",
   "display": "standalone",
   "background_color": "#09070d",
-  "theme_color": "#09070d",
+  "theme_color": "#ffc43d",
   "lang": "de",
+  "orientation": "portrait",
+  "id": "cold-n-dark-app",
   "icons": [
     {
       "src": "Clan%20logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "Wappen.png",
       "sizes": "any",
       "type": "image/png",
       "purpose": "any maskable"
