@@ -22,6 +22,18 @@ window.CND_PUSH = {
     return Notification.permission;
   },
 
+  async test(subscription) {
+    const response = await fetch('./api/push-test', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(subscription)
+    });
+
+    let data = {};
+    try { data = await response.json(); } catch (_) {}
+    return { ok: response.ok && data.ok === true, status: response.status, ...data };
+  },
+
   async enable() {
     if (!this.isSupported()) throw new Error('Push wird von diesem Browser nicht unterstützt.');
 
@@ -38,12 +50,22 @@ window.CND_PUSH = {
       });
     }
 
-    return {
+    const result = {
       enabled: true,
       permission,
       subscribed: !!subscription,
-      subscription
+      subscription,
+      test: null
     };
+
+    // Sobald der Push-Server konfiguriert ist, wird direkt ein Test-Push ausgelöst.
+    try {
+      result.test = await this.test(subscription.toJSON());
+    } catch (error) {
+      result.test = { ok: false, error: error?.message || 'Test-Push nicht erreichbar.' };
+    }
+
+    return result;
   },
 
   async status() {
