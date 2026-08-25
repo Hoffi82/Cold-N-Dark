@@ -1,0 +1,8 @@
+{
+  "name": "cold-n-dark",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@mmmike/web-push": "latest"
+  }
+}
