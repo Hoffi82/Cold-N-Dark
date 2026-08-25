@@ -55,7 +55,7 @@ window.CND_PUSH = {
     const permission = await Notification.requestPermission();
     if (permission !== 'granted') {
       saveLocalState(false);
-      return { enabled: false, permission, subscribed: false };
+      return { enabled: false, permission, subscribed: false, localTest: false };
     }
 
     const registration = await getRegistration();
@@ -71,12 +71,26 @@ window.CND_PUSH = {
 
     saveLocalState(true);
 
+    // Sofortiger Gerätetest: prüft, ob die Benachrichtigung auf diesem Gerät erscheint.
+    let localTest = false;
+    try {
+      await registration.showNotification("Cold N' Dark", {
+        body: '🔔 Push-Test erfolgreich – Benachrichtigungen sind auf diesem Gerät aktiviert.',
+        icon: './Clan%20logo.png',
+        badge: './Clan%20logo.png',
+        tag: 'cold-n-dark-local-test',
+        data: { url: './app.html' }
+      });
+      localTest = true;
+    } catch (_) {}
+
     return {
       enabled: true,
       permission,
       subscribed: !!subscription,
       subscription,
-      endpoint: subscription.endpoint
+      endpoint: subscription.endpoint,
+      localTest
     };
   },
 
@@ -100,19 +114,5 @@ window.CND_PUSH = {
     } catch (_) {
       return { supported: true, permission, subscribed: false, saved: localState() };
     }
-  },
-
-  async localTest() {
-    if (!this.isSupported()) throw new Error('Push wird von diesem Browser nicht unterstützt.');
-    if (Notification.permission !== 'granted') throw new Error('Push-Berechtigung wurde noch nicht erteilt.');
-    const registration = await getRegistration();
-    await registration.showNotification("Cold N' Dark", {
-      body: '🔔 Test erfolgreich – Benachrichtigungen sind auf diesem Gerät aktiviert.',
-      icon: './Clan%20logo.png',
-      badge: './Clan%20logo.png',
-      tag: 'cold-n-dark-local-test',
-      data: { url: './app.html' }
-    });
-    return true;
   }
 };
