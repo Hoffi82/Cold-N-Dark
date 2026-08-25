@@ -32,7 +32,7 @@
         throw new Error('Kein Push-Abonnement gefunden. Bitte zuerst „Aktivieren“ drücken.');
       }
 
-      const response = await fetch('./api/push-test', {
+      const response = await fetch('https://jvgqvtnqncelbhuordzy.supabase.co/functions/v1/push-test', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(status.subscription.toJSON())
