@@ -1,9 +1,11 @@
-/* Cold N' Dark – echter Web-Push-Client
- * Die VAPID Public Key ist öffentlich und darf im Frontend stehen.
- * Der private VAPID-Key bleibt ausschließlich als Server-Secret.
+/* Cold N' Dark – Web-Push Client
+ * Die VAPID Public Key darf im Frontend stehen.
+ * Der private VAPID-Key darf niemals hier gespeichert werden.
  */
 
 const CND_VAPID_PUBLIC_KEY = 'BIezbnPTN27Six53rq_08FVhKxLUx6fe_gJiP4204RKyCd9R5zAsCrmt0NSrk3XpDy2T6_29njYrt4oQhccWgqo';
+const CND_SW_PATH = './service-worker.js';
+const CND_PUSH_STORAGE = 'cnd_push_enabled_v2';
 
 function base64ToUint8Array(base64) {
   const padding = '='.repeat((4 - (base64.length % 4)) % 4);
@@ -12,9 +14,22 @@ function base64ToUint8Array(base64) {
   return Uint8Array.from([...rawData].map(char => char.charCodeAt(0)));
 }
 
-function updatePushUi(message) {
-  const status = document.getElementById('pushStatus');
-  if (status) status.innerHTML = message;
+async function getRegistration() {
+  if (!('serviceWorker' in navigator)) throw new Error('Service Worker wird von diesem Browser nicht unterstützt.');
+  const existing = await navigator.serviceWorker.getRegistration();
+  if (existing) return existing;
+  return navigator.serviceWorker.register(CND_SW_PATH);
+}
+
+function saveLocalState(enabled) {
+  try {
+    if (enabled) localStorage.setItem(CND_PUSH_STORAGE, '1');
+    else localStorage.removeItem(CND_PUSH_STORAGE);
+  } catch (_) {}
+}
+
+function localState() {
+  try { return localStorage.getItem(CND_PUSH_STORAGE) === '1'; } catch (_) { return false; }
 }
 
 window.CND_PUSH = {
@@ -27,24 +42,24 @@ window.CND_PUSH = {
     return Notification.permission;
   },
 
-  async test(subscription) {
-    const response = await fetch('./api/push-test', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(subscription)
-    });
-    let data = {};
-    try { data = await response.json(); } catch (_) {}
-    return { ok: response.ok && data.ok === true, status: response.status, ...data };
-  },
-
   async enable() {
     if (!this.isSupported()) throw new Error('Push wird von diesem Browser nicht unterstützt.');
 
-    const permission = await Notification.requestPermission();
-    if (permission !== 'granted') return { enabled: false, permission, subscribed: false };
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    if (isIOS && !isStandalone) {
+      throw new Error('Auf dem iPhone zuerst „Zum Home-Bildschirm hinzufügen“ und die App von dort öffnen.');
+    }
 
-    const registration = await navigator.serviceWorker.ready;
+    // Die Berechtigungsabfrage erfolgt nur nach dem Klick auf „Aktivieren“.
+    const permission = await Notification.requestPermission();
+    if (permission !== 'granted') {
+      saveLocalState(false);
+      return { enabled: false, permission, subscribed: false };
+    }
+
+    const registration = await getRegistration();
+    await navigator.serviceWorker.ready;
     let subscription = await registration.pushManager.getSubscription();
 
     if (!subscription) {
@@ -54,30 +69,50 @@ window.CND_PUSH = {
       });
     }
 
-    const result = { enabled: true, permission, subscribed: !!subscription, subscription, test: null };
-    updatePushUi('Status: <b style="color:var(--gold)">Push-Verbindung wird getestet …</b>');
+    saveLocalState(true);
 
-    try {
-      result.test = await this.test(subscription.toJSON());
-      const finalMessage = result.test.ok
-        ? 'Status: <b style="color:var(--green)">aktiviert ✓</b><br><small>🔔 Test-Push wurde gesendet.</small>'
-        : result.test.status === 503
-          ? 'Status: <b style="color:var(--gold)">Berechtigung erteilt ✓</b><br><small>Push ist auf dem Gerät registriert. Der Server-Test braucht noch die sichere VAPID-Konfiguration.</small>'
-          : 'Status: <b style="color:var(--gold)">Berechtigung erteilt ✓</b><br><small>Push ist registriert, der Test-Push konnte noch nicht gesendet werden.</small>';
-      setTimeout(() => updatePushUi(finalMessage), 0);
-    } catch (error) {
-      result.test = { ok: false, error: error?.message || 'Test-Push nicht erreichbar.' };
-      setTimeout(() => updatePushUi('Status: <b style="color:var(--gold)">Berechtigung erteilt ✓</b><br><small>Push ist registriert. Test-Server noch nicht erreichbar.</small>'), 0);
-    }
-
-    return result;
+    return {
+      enabled: true,
+      permission,
+      subscribed: !!subscription,
+      subscription,
+      endpoint: subscription.endpoint
+    };
   },
 
   async status() {
     const permission = await this.permission();
-    if (permission === 'unsupported') return { supported: false, permission, subscribed: false };
-    const registration = await navigator.serviceWorker.ready;
-    const subscription = await registration.pushManager.getSubscription();
-    return { supported: true, permission, subscribed: !!subscription, subscription };
+    if (permission === 'unsupported') return { supported: false, permission, subscribed: false, saved: false };
+
+    try {
+      const registration = await getRegistration();
+      const subscription = await registration.pushManager.getSubscription();
+      const saved = localState();
+      if (subscription) saveLocalState(true);
+
+      return {
+        supported: true,
+        permission,
+        subscribed: !!subscription,
+        subscription,
+        saved: !!subscription || saved
+      };
+    } catch (_) {
+      return { supported: true, permission, subscribed: false, saved: localState() };
+    }
+  },
+
+  async localTest() {
+    if (!this.isSupported()) throw new Error('Push wird von diesem Browser nicht unterstützt.');
+    if (Notification.permission !== 'granted') throw new Error('Push-Berechtigung wurde noch nicht erteilt.');
+    const registration = await getRegistration();
+    await registration.showNotification("Cold N' Dark", {
+      body: '🔔 Test erfolgreich – Benachrichtigungen sind auf diesem Gerät aktiviert.',
+      icon: './Clan%20logo.png',
+      badge: './Clan%20logo.png',
+      tag: 'cold-n-dark-local-test',
+      data: { url: './app.html' }
+    });
+    return true;
   }
 };
