@@ -12,6 +12,12 @@ function base64ToUint8Array(base64) {
   return Uint8Array.from([...rawData].map(char => char.charCodeAt(0)));
 }
 
+function updatePushUi(message, color) {
+  const status = document.getElementById('pushStatus');
+  if (status) status.innerHTML = message;
+  if (color) document.documentElement.style.setProperty('--push-result', color);
+}
+
 window.CND_PUSH = {
   isSupported() {
     return 'Notification' in window && 'serviceWorker' in navigator && 'PushManager' in window;
@@ -58,11 +64,20 @@ window.CND_PUSH = {
       test: null
     };
 
-    // Sobald der Push-Server konfiguriert ist, wird direkt ein Test-Push ausgelöst.
+    updatePushUi('Status: <b style="color:var(--gold)">Push-Verbindung wird getestet …</b>');
+
     try {
       result.test = await this.test(subscription.toJSON());
+      if (result.test.ok) {
+        updatePushUi('Status: <b style="color:var(--green)">aktiviert ✓</b><br><small>🔔 Test-Push wurde gesendet.</small>');
+      } else if (result.test.status === 503) {
+        updatePushUi('Status: <b style="color:var(--gold)">Berechtigung erteilt ✓</b><br><small>Push ist auf dem Gerät registriert. Der Server-Test braucht noch die sichere VAPID-Konfiguration.</small>');
+      } else {
+        updatePushUi('Status: <b style="color:var(--gold)">Berechtigung erteilt ✓</b><br><small>Push ist registriert, der Test-Push konnte noch nicht gesendet werden.</small>');
+      }
     } catch (error) {
       result.test = { ok: false, error: error?.message || 'Test-Push nicht erreichbar.' };
+      updatePushUi('Status: <b style="color:var(--gold)">Berechtigung erteilt ✓</b><br><small>Push ist registriert. Test-Server noch nicht erreichbar.</small>');
     }
 
     return result;
