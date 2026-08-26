@@ -4,7 +4,7 @@
  */
 
 const CND_VAPID_PUBLIC_KEY = 'BGzFlDGmXbvCd-tMKYnYUZD9aPHxPLaYGl0jodSSZFfZf2Dgxe7b6vj-CzM1qBMWBMF2XH3kYt1nQTgg6poOGFY';
-const CND_VAPID_KEY_VERSION = 'v3';
+const CND_VAPID_KEY_VERSION = 'v4';
 const CND_SW_PATH = './service-worker.js';
 const CND_PUSH_STORAGE = 'cnd_push_enabled_v2';
 const CND_PUSH_KEY_STORAGE = 'cnd_push_vapid_key_version';
@@ -52,6 +52,10 @@ window.CND_PUSH = {
     return Notification.permission;
   },
 
+  needsRebind() {
+    return keyVersion() !== CND_VAPID_KEY_VERSION;
+  },
+
   async enable() {
     if (!this.isSupported()) throw new Error('Push wird von diesem Browser nicht unterstützt.');
 
@@ -71,8 +75,8 @@ window.CND_PUSH = {
     await navigator.serviceWorker.ready;
     let subscription = await registration.pushManager.getSubscription();
 
-    // Wenn sich der VAPID-Key geändert hat, muss die alte Subscription weg.
-    if (subscription && keyVersion() !== CND_VAPID_KEY_VERSION) {
+    // Bei einem neuen VAPID-Key alte Browser-Subscription löschen.
+    if (subscription && this.needsRebind()) {
       try { await subscription.unsubscribe(); } catch (_) {}
       subscription = null;
     }
@@ -99,35 +103,27 @@ window.CND_PUSH = {
       localTest = true;
     } catch (_) {}
 
-    return {
-      enabled: true,
-      permission,
-      subscribed: !!subscription,
-      subscription,
-      endpoint: subscription.endpoint,
-      localTest
-    };
+    return { enabled: true, permission, subscribed: !!subscription, subscription, endpoint: subscription.endpoint, localTest };
   },
 
   async status() {
     const permission = await this.permission();
-    if (permission === 'unsupported') return { supported: false, permission, subscribed: false, saved: false };
+    if (permission === 'unsupported') return { supported: false, permission, subscribed: false, saved: false, needsRebind: false };
 
     try {
       const registration = await getRegistration();
       const subscription = await registration.pushManager.getSubscription();
       const saved = localState();
-      if (subscription) saveLocalState(true);
-
       return {
         supported: true,
         permission,
         subscribed: !!subscription,
         subscription,
-        saved: !!subscription || saved
+        saved: !!subscription || saved,
+        needsRebind: this.needsRebind()
       };
     } catch (_) {
-      return { supported: true, permission, subscribed: false, saved: localState() };
+      return { supported: true, permission, subscribed: false, saved: localState(), needsRebind: this.needsRebind() };
     }
   }
 };
