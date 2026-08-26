@@ -8,7 +8,7 @@ const CND_VAPID_KEY_VERSION = 'v6';
 const CND_SW_PATH = './service-worker.js';
 const CND_PUSH_STORAGE = 'cnd_push_enabled_v2';
 const CND_PUSH_KEY_STORAGE = 'cnd_push_vapid_key_version';
-const CND_PUSH_SUBSCRIBE_URL = 'https://jvgqvtnqncelbhuordzy.supabase.co/functions/v1/push-subscribe';
+const CND_PUSH_SUBSCRIBE_URL = 'https://jvgqvtnqncelbhuordzy.supabase.co/functions/v1/register-push';
 
 function base64ToUint8Array(base64) {
   const padding = '='.repeat((4 - (base64.length % 4)) % 4);
