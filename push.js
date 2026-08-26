@@ -4,7 +4,7 @@
  */
 
 const CND_VAPID_PUBLIC_KEY = 'BGzFlDGmXbvCd-tMKYnYUZD9aPHxPLaYGl0jodSSZFfZf2Dgxe7b6vj-CzM1qBMWBMF2XH3kYt1nQTgg6poOGFY';
-const CND_VAPID_KEY_VERSION = 'v4';
+const CND_VAPID_KEY_VERSION = 'v5';
 const CND_SW_PATH = './service-worker.js';
 const CND_PUSH_STORAGE = 'cnd_push_enabled_v2';
 const CND_PUSH_KEY_STORAGE = 'cnd_push_vapid_key_version';
@@ -75,7 +75,6 @@ window.CND_PUSH = {
     await navigator.serviceWorker.ready;
     let subscription = await registration.pushManager.getSubscription();
 
-    // Bei einem neuen VAPID-Key alte Browser-Subscription löschen.
     if (subscription && this.needsRebind()) {
       try { await subscription.unsubscribe(); } catch (_) {}
       subscription = null;
@@ -115,8 +114,6 @@ window.CND_PUSH = {
       const subscription = await registration.pushManager.getSubscription();
       const rebind = this.needsRebind();
       const saved = localState();
-
-      // Alte Subscription nicht als aktiv melden. Der Button bleibt dadurch anklickbar.
       return {
         supported: true,
         permission,
