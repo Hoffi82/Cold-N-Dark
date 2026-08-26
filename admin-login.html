@@ -22,24 +22,25 @@
 <a class="back" href="index.html">← Zur Startseite</a>
 </div>
 <script>
-const SUPABASE_PUSH_URL='https://jvgqvtnqncelbhuordzy.supabase.co/functions/v1/send-push';
+const SUPABASE_ADMIN_LOGIN_URL='https://jvgqvtnqncelbhuordzy.supabase.co/functions/v1/admin-login';
 const form=document.getElementById('loginForm');
 const error=document.getElementById('error');
 const button=document.getElementById('loginButton');
 const next=new URLSearchParams(location.search).get('next')||'/admin.html';
 form.addEventListener('submit',async e=>{
- e.preventDefault(); error.textContent=''; button.disabled=true; button.textContent='Prüfe Passwort …';
+ e.preventDefault();
+ error.textContent='';
+ button.disabled=true;
  const password=document.getElementById('password').value;
  try{
-  const r=await fetch(SUPABASE_PUSH_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({adminPassword:password,title:'',message:'',url:''})});
-  const data=await r.json();
-  // send-push checks the admin password before validating the message.
-  // A 400 "Nachricht fehlt" therefore means the password was accepted.
-  const passwordAccepted = r.status===400 && data?.error==='Nachricht fehlt.';
-  if(r.status===401 || !passwordAccepted){error.textContent='Falsches Admin-Passwort.';button.disabled=false;button.textContent='Einloggen';return;}
+  const r=await fetch(SUPABASE_ADMIN_LOGIN_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password})});
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok||!data.ok){error.textContent=data.error||'Login fehlgeschlagen.';return;}
   sessionStorage.setItem('coldndark_admin_push_password',password);
   location.href=next.startsWith('/')?next:'/admin.html';
- }catch(err){error.textContent='Verbindung zu Supabase fehlgeschlagen.';button.disabled=false;button.textContent='Einloggen';}
+ }catch(err){
+  error.textContent='Verbindung zu Supabase fehlgeschlagen.';
+ }finally{button.disabled=false;}
 });
 </script>
 </body></html>
