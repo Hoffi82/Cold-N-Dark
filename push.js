@@ -4,8 +4,10 @@
  */
 
 const CND_VAPID_PUBLIC_KEY = 'BGzFlDGmXbvCd-tMKYnYUZD9aPHxPLaYGl0jodSSZFfZf2Dgxe7b6vj-CzM1qBMWBMF2XH3kYt1nQTgg6poOGFY';
+const CND_VAPID_KEY_VERSION = 'v3';
 const CND_SW_PATH = './service-worker.js';
 const CND_PUSH_STORAGE = 'cnd_push_enabled_v2';
+const CND_PUSH_KEY_STORAGE = 'cnd_push_vapid_key_version';
 
 function base64ToUint8Array(base64) {
   const padding = '='.repeat((4 - (base64.length % 4)) % 4);
@@ -30,6 +32,14 @@ function saveLocalState(enabled) {
 
 function localState() {
   try { return localStorage.getItem(CND_PUSH_STORAGE) === '1'; } catch (_) { return false; }
+}
+
+function keyVersion() {
+  try { return localStorage.getItem(CND_PUSH_KEY_STORAGE); } catch (_) { return null; }
+}
+
+function saveKeyVersion() {
+  try { localStorage.setItem(CND_PUSH_KEY_STORAGE, CND_VAPID_KEY_VERSION); } catch (_) {}
 }
 
 window.CND_PUSH = {
@@ -61,6 +71,12 @@ window.CND_PUSH = {
     await navigator.serviceWorker.ready;
     let subscription = await registration.pushManager.getSubscription();
 
+    // Wenn sich der VAPID-Key geändert hat, muss die alte Subscription weg.
+    if (subscription && keyVersion() !== CND_VAPID_KEY_VERSION) {
+      try { await subscription.unsubscribe(); } catch (_) {}
+      subscription = null;
+    }
+
     if (!subscription) {
       subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
@@ -69,6 +85,7 @@ window.CND_PUSH = {
     }
 
     saveLocalState(true);
+    saveKeyVersion();
 
     let localTest = false;
     try {
