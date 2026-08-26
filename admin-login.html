@@ -27,10 +27,12 @@ const error=document.getElementById('error');
 const next=new URLSearchParams(location.search).get('next')||'/admin.html';
 form.addEventListener('submit',async e=>{
  e.preventDefault(); error.textContent='';
+ const password=document.getElementById('password').value;
  try{
-  const r=await fetch('/api/admin-login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:document.getElementById('password').value})});
+  const r=await fetch('/api/admin-login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password})});
   const data=await r.json();
   if(!r.ok||!data.ok){error.textContent=data.error||'Login fehlgeschlagen.';return;}
+  sessionStorage.setItem('coldndark_admin_push_password',password);
   location.href=next.startsWith('/')?next:'/admin.html';
  }catch{error.textContent='Verbindung fehlgeschlagen.';}
 });
