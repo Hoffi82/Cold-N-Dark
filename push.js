@@ -42,6 +42,20 @@ function saveKeyVersion() {
   try { localStorage.setItem(CND_PUSH_KEY_STORAGE, CND_VAPID_KEY_VERSION); } catch (_) {}
 }
 
+async function registerSubscription(subscription) {
+  const response = await fetch('/api/register-push', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(subscription.toJSON())
+  });
+  let data = {};
+  try { data = await response.json(); } catch (_) {}
+  if (!response.ok || !data.ok) {
+    throw new Error(data.error || 'Push-Subscription konnte nicht gespeichert werden.');
+  }
+  return data;
+}
+
 window.CND_PUSH = {
   isSupported() {
     return 'Notification' in window && 'serviceWorker' in navigator && 'PushManager' in window;
@@ -86,6 +100,8 @@ window.CND_PUSH = {
         applicationServerKey: base64ToUint8Array(CND_VAPID_PUBLIC_KEY)
       });
     }
+
+    await registerSubscription(subscription);
 
     saveLocalState(true);
     saveKeyVersion();
