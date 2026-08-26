@@ -5,7 +5,7 @@
 <title>Admin Login – Cold N' Dark</title>
 <style>
 :root{--bg:#09070d;--panel:#171122;--gold:#ffc43d;--gold2:#ff9f1c;--text:#f7f4ff;--muted:#b9b2c9}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 0,#302044,#09070d 65%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}.box{width:min(430px,100%);padding:30px;border:1px solid #ffffff1f;border-radius:22px;background:#171122ee;box-shadow:0 20px 70px #0008;text-align:center}.logo{width:86px;height:86px;object-fit:cover;border-radius:22px;border:2px solid var(--gold)}h1{margin:20px 0 8px}p{color:var(--muted)}label{display:block;text-align:left;margin:24px 0 8px;font-weight:800}input{width:100%;padding:14px;border-radius:12px;border:1px solid #ffffff22;background:#09070d;color:var(--text);font-size:16px;outline:none}button{width:100%;margin-top:16px;padding:14px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#171122;font-weight:900;font-size:16px;cursor:pointer}#error{min-height:24px;color:#ff8989;margin-top:12px;font-weight:700}.back{display:block;margin-top:20px;color:var(--gold);text-decoration:none;font-weight:800}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 0,#302044,#09070d 65%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}.box{width:min(430px,100%);padding:30px;border:1px solid #ffffff1f;border-radius:22px;background:#171122ee;box-shadow:0 20px 70px #0008;text-align:center}.logo{width:86px;height:86px;object-fit:cover;border-radius:22px;border:2px solid var(--gold)}h1{margin:20px 0 8px}p{color:var(--muted)}label{display:block;text-align:left;margin:24px 0 8px;font-weight:800}input{width:100%;padding:14px;border-radius:12px;border:1px solid #ffffff22;background:#09070d;color:var(--text);font-size:16px;outline:none}button{width:100%;margin-top:16px;padding:14px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#171122;font-weight:900;font-size:16px;cursor:pointer}button:disabled{opacity:.65;cursor:wait}#error{min-height:24px;color:#ff8989;margin-top:12px;font-weight:700}.back{display:block;margin-top:20px;color:var(--gold);text-decoration:none;font-weight:800}
 </style>
 </head>
 <body>
@@ -16,25 +16,30 @@
 <form id="loginForm">
 <label for="password">Admin-Passwort</label>
 <input id="password" type="password" autocomplete="current-password" required autofocus>
-<button type="submit">Einloggen</button>
+<button id="loginButton" type="submit">Einloggen</button>
 <div id="error"></div>
 </form>
 <a class="back" href="index.html">← Zur Startseite</a>
 </div>
 <script>
+const SUPABASE_PUSH_URL='https://jvgqvtnqncelbhuordzy.supabase.co/functions/v1/send-push';
 const form=document.getElementById('loginForm');
 const error=document.getElementById('error');
+const button=document.getElementById('loginButton');
 const next=new URLSearchParams(location.search).get('next')||'/admin.html';
 form.addEventListener('submit',async e=>{
- e.preventDefault(); error.textContent='';
+ e.preventDefault(); error.textContent=''; button.disabled=true; button.textContent='Prüfe Passwort …';
  const password=document.getElementById('password').value;
  try{
-  const r=await fetch('/api/admin-login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password})});
+  const r=await fetch(SUPABASE_PUSH_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({adminPassword:password,title:'',message:'',url:''})});
   const data=await r.json();
-  if(!r.ok||!data.ok){error.textContent=data.error||'Login fehlgeschlagen.';return;}
+  // send-push checks the admin password before validating the message.
+  // A 400 "Nachricht fehlt" therefore means the password was accepted.
+  const passwordAccepted = r.status===400 && data?.error==='Nachricht fehlt.';
+  if(r.status===401 || !passwordAccepted){error.textContent='Falsches Admin-Passwort.';button.disabled=false;button.textContent='Einloggen';return;}
   sessionStorage.setItem('coldndark_admin_push_password',password);
   location.href=next.startsWith('/')?next:'/admin.html';
- }catch{error.textContent='Verbindung fehlgeschlagen.';}
+ }catch(err){error.textContent='Verbindung zu Supabase fehlgeschlagen.';button.disabled=false;button.textContent='Einloggen';}
 });
 </script>
 </body></html>
