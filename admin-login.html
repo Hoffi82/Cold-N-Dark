@@ -26,7 +26,8 @@ const SUPABASE_ADMIN_LOGIN_URL='https://jvgqvtnqncelbhuordzy.supabase.co/functio
 const form=document.getElementById('loginForm');
 const error=document.getElementById('error');
 const button=document.getElementById('loginButton');
-const next=new URLSearchParams(location.search).get('next')||'/admin.html';
+const requestedNext=new URLSearchParams(location.search).get('next');
+const next=requestedNext && !requestedNext.startsWith('/') && !requestedNext.includes('://') ? requestedNext : 'admin.html';
 form.addEventListener('submit',async e=>{
  e.preventDefault();
  error.textContent='';
@@ -37,7 +38,7 @@ form.addEventListener('submit',async e=>{
   const data=await r.json().catch(()=>({}));
   if(!r.ok||!data.ok){error.textContent=data.error||'Login fehlgeschlagen.';return;}
   sessionStorage.setItem('coldndark_admin_push_password',password);
-  location.href=next.startsWith('/')?next:'/admin.html';
+  location.href=next;
  }catch(err){
   error.textContent='Verbindung zu Supabase fehlgeschlagen.';
  }finally{button.disabled=false;}
