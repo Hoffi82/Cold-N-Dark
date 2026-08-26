@@ -8,6 +8,7 @@ const CND_VAPID_KEY_VERSION = 'v6';
 const CND_SW_PATH = './service-worker.js';
 const CND_PUSH_STORAGE = 'cnd_push_enabled_v2';
 const CND_PUSH_KEY_STORAGE = 'cnd_push_vapid_key_version';
+const CND_PUSH_SUBSCRIBE_URL = 'https://jvgqvtnqncelbhuordzy.supabase.co/functions/v1/push-subscribe';
 
 function base64ToUint8Array(base64) {
   const padding = '='.repeat((4 - (base64.length % 4)) % 4);
@@ -43,7 +44,7 @@ function saveKeyVersion() {
 }
 
 async function registerSubscription(subscription) {
-  const response = await fetch('/api/register-push', {
+  const response = await fetch(CND_PUSH_SUBSCRIBE_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(subscription.toJSON())
@@ -51,7 +52,7 @@ async function registerSubscription(subscription) {
   let data = {};
   try { data = await response.json(); } catch (_) {}
   if (!response.ok || !data.ok) {
-    throw new Error(data.error || 'Push-Subscription konnte nicht gespeichert werden.');
+    throw new Error(data.error || 'Push-Subscription konnte nicht in Supabase gespeichert werden.');
   }
   return data;
 }
@@ -109,7 +110,7 @@ window.CND_PUSH = {
     let localTest = false;
     try {
       await registration.showNotification("Cold N' Dark", {
-        body: '🔔 Push-Test erfolgreich – Benachrichtigungen sind auf diesem Gerät aktiviert.',
+        body: '🔔 Push-Test erfolgreich – Push-Benachrichtigungen sind auf diesem Gerät aktiviert.',
         icon: './Clan%20logo.png',
         badge: './Clan%20logo.png',
         tag: 'cold-n-dark-local-test',
