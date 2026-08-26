@@ -3,7 +3,7 @@
  * Der private VAPID-Key darf niemals hier gespeichert werden.
  */
 
-const CND_VAPID_PUBLIC_KEY = 'BMyANbgnRkNieIL1wuhPCvgxLA-3J7NeEl3KztuQOQ2Zupo-dj_ODXaCLH4hQCDOwJ5D0edda1StvcyI9RiGrSA';
+const CND_VAPID_PUBLIC_KEY = 'BGzFlDGmXbvCd-tMKYnYUZD9aPHxPLaYGl0jodSSZFfZf2Dgxe7b6vj-CzM1qBMWBMF2XH3kYt1nQTgg6poOGFY';
 const CND_SW_PATH = './service-worker.js';
 const CND_PUSH_STORAGE = 'cnd_push_enabled_v2';
 
