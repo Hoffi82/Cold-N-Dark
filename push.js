@@ -113,14 +113,17 @@ window.CND_PUSH = {
     try {
       const registration = await getRegistration();
       const subscription = await registration.pushManager.getSubscription();
+      const rebind = this.needsRebind();
       const saved = localState();
+
+      // Alte Subscription nicht als aktiv melden. Der Button bleibt dadurch anklickbar.
       return {
         supported: true,
         permission,
-        subscribed: !!subscription,
-        subscription,
-        saved: !!subscription || saved,
-        needsRebind: this.needsRebind()
+        subscribed: !!subscription && !rebind,
+        subscription: rebind ? null : subscription,
+        saved: rebind ? false : (!!subscription || saved),
+        needsRebind: rebind
       };
     } catch (_) {
       return { supported: true, permission, subscribed: false, saved: localState(), needsRebind: this.needsRebind() };
