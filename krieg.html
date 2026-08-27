@@ -1,37 +1,95 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cold N' Dark – Kriegsinfos</title><style>
-:root{--bg:#09070d;--panel:#171122;--gold:#ffc43d;--text:#f7f4ff;--muted:#b9b2c9;--line:#ffffff1f}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% 0,#302044,#09070d 62%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.6}
-header{position:sticky;top:0;z-index:10;background:#08060def;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{max-width:1120px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:14px}.logo{width:58px;height:58px;object-fit:cover;border-radius:16px;border:2px solid var(--gold)}
-.brand{flex:1}.brand strong{display:block;font-size:20px;letter-spacing:2px}.brand small{color:var(--gold);font-weight:800;letter-spacing:1px}
-nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}nav a{padding:8px 10px;border-radius:9px;color:var(--muted);font-weight:700;font-size:14px}nav a:hover{background:#ffc43d18;color:var(--gold)}
-main{max-width:1120px;margin:auto;padding:45px 18px 70px}.hero{text-align:center;padding:25px 0 45px}.badge{display:inline-block;border:1px solid #ffc43d66;border-radius:999px;padding:5px 12px;color:var(--gold);font-weight:800;font-size:12px}
-h1{font-size:clamp(46px,8vw,82px);line-height:1;margin:20px 0}h1 span{color:var(--gold)}.hero p{max-width:720px;margin:auto;color:var(--muted);font-size:18px}
-.hero-logo{display:block;width:min(390px,85vw);margin:30px auto;border:3px solid var(--gold);border-radius:28px;background:#050408;box-shadow:0 20px 60px #0008}
-.buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:850px;margin:30px auto}.btn{display:block;text-align:center;padding:16px 18px;border:1px solid #ffc43d55;border-radius:16px;background:linear-gradient(135deg,#ffc43d,#ff9f1c);color:#171122;font-weight:900;box-shadow:0 10px 30px #0004}.btn:hover{transform:translateY(-2px)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0 45px}.stat{padding:20px;border:1px solid var(--line);border-radius:18px;background:#ffffff08;text-align:center}.stat b{display:block;color:var(--gold);font-size:30px}.stat span{color:var(--muted);font-weight:700}
-.title{text-align:center;margin-bottom:28px}.title h2{font-size:36px;margin:0}.title p{color:var(--muted)}
-.member-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.member{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid var(--line);border-radius:15px;background:#171122cc}.member>b{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#ffc43d18;color:var(--gold)}.member strong{display:block}.member small{display:block;color:var(--muted)}
-.card{padding:24px;border:1px solid var(--line);border-radius:18px;background:#171122cc;max-width:900px;margin:auto}.card h3{color:var(--gold)}.card li{margin:8px 0}
-.back{text-align:center;margin-top:30px}.back a{color:var(--gold);font-weight:800}
-footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var(--muted)}footer b{color:var(--gold)}
-@media(max-width:700px){nav{display:none}.buttons,.stats,.member-grid{grid-template-columns:1fr}.member{padding:11px}}
-</style></head><body>
-<header><div class="nav">
-<img class="logo" src="Wappen.png" alt="Cold N' Dark Wappen">
-<div class="brand"><strong>COLD N' DARK</strong><small>CLASH OF CLANS • OFFIZIELLE CLAN-SEITE</small></div>
-<nav><a href="index.html">Start</a><a href="mitglieder.html">Mitglieder</a><a href="regeln.html">Clanregeln</a><a href="krieg.html">Kriegsinfos</a></nav>
-</div></header><main>
-<section><div class="title"><h2>⚔️ Kriegsinfos</h2><p>Der Bereich für unsere kommenden Kriege und CWL.</p></div>
-<div class="card">
-<h3>Cold N' Dark</h3>
-<p><b>Clan-Level:</b> 26<br><b>Mitglieder:</b> 46<br><b>Status:</b> Aktiver Kriegsclan</p>
-<h3>Hier kommt als Nächstes mehr</h3>
-<ul><li>Aktuelle Clankriege</li><li>CWL-Ergebnisse</li><li>Kriegsaufstellungen</li><li>Siege und Niederlagen</li></ul>
-</div>
-<div class="back"><a href="index.html">← Zurück zur Startseite</a></div></section>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#09070b">
+<title>Cold N' Dark – Kriege</title>
+<style>
+:root{--bg:#09070d;--panel:#171122;--panel2:#0d0a12;--gold:#ffc43d;--gold2:#ffe07a;--text:#f7f4ff;--muted:#b9b2c9;--line:#ffffff1f;--green:#31e36b;--red:#ef5555}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% 0,#302044,#09070d 62%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.5}
+header{position:sticky;top:0;z-index:20;background:#08060def;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:14px}.logo{width:58px;height:58px;object-fit:cover;border-radius:16px;border:2px solid var(--gold);box-shadow:0 5px 18px #0008}.brand{flex:1}.brand strong{display:block;font-size:20px;letter-spacing:2px}.brand small{color:var(--gold);font-weight:800;letter-spacing:1px}
+nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}nav a{padding:8px 10px;border-radius:9px;color:var(--muted);font-weight:700;font-size:14px;text-decoration:none}nav a:hover{background:#ffc43d18;color:var(--gold)}
+main{max-width:1120px;margin:auto;padding:35px 18px 75px}.hero{text-align:center;padding:18px 0 28px}.badge{display:inline-block;border:1px solid #ffc43d66;border-radius:999px;padding:6px 14px;color:var(--gold);font-weight:900;font-size:12px;letter-spacing:1px}.hero h1{font-size:clamp(42px,8vw,78px);line-height:1;margin:18px 0 10px}.hero h1 span{color:var(--gold)}.hero p{max-width:720px;margin:auto;color:var(--muted);font-size:18px}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:28px 0 12px;padding:14px 18px;border:2px solid var(--gold);border-radius:14px;background:linear-gradient(180deg,#351746,#170d20);box-shadow:0 6px 0 #624216,0 14px 28px #0007}.section-title h2{margin:0;font-size:clamp(22px,4vw,30px)}.section-title .tag{font-size:13px;font-weight:900;color:var(--gold2)}
+.war-card{border:1px solid #ffffff20;border-radius:18px;background:linear-gradient(145deg,#1b1225,#0d0a11);padding:20px;box-shadow:0 14px 35px #0008}.war-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:16px}.war-name{font-size:24px;font-weight:1000;color:var(--gold2)}.status{font-weight:1000}.status.active{color:var(--green)}.status.finished{color:var(--muted)}.status:before{content:"";display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:7px;background:currentColor;box-shadow:0 0 12px currentColor}
+.war-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:15px}.versus{display:grid;grid-template-columns:1fr 60px 1fr;align-items:center;gap:8px;padding:18px;border:1px solid var(--line);border-radius:15px;background:#07060a99}.clan{text-align:center}.clan img{width:82px;height:82px;object-fit:contain;filter:drop-shadow(0 5px 5px #000)}.shield{font-size:62px;line-height:82px;filter:drop-shadow(0 5px 5px #000)}.clan b{display:block;margin-top:6px;font-size:14px}.vs{text-align:center;color:var(--gold);font-size:28px;font-weight:1000}
+.metrics{display:grid;gap:8px}.metric{display:grid;grid-template-columns:1fr 55px 55px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#08080b;font-weight:900}.metric span{text-align:center;font-size:21px}.ours{color:var(--gold2)}.enemy{color:var(--red)}.endline{text-align:center;margin-top:10px;padding:10px;border:1px solid #ffc43d44;border-radius:11px;color:var(--gold2);font-weight:900}.muted{text-align:center;color:var(--muted);font-size:13px;margin:10px 0 0}
+.empty{padding:28px;text-align:center;border:1px dashed #ffffff2b;border-radius:16px;background:#ffffff06;color:var(--muted)}
+.history{display:grid;gap:10px}.history-row{display:grid;grid-template-columns:1.3fr .8fr .8fr .9fr;gap:10px;align-items:center;padding:15px 16px;border:1px solid var(--line);border-radius:14px;background:#171122cc}.history-row b{font-size:16px}.score{font-weight:1000;text-align:center}.result{font-weight:1000;text-align:right}.win{color:var(--green)}.loss{color:var(--red)}.draw{color:var(--gold2)}.history-head{display:grid;grid-template-columns:1.3fr .8fr .8fr .9fr;gap:10px;padding:0 16px 5px;color:#8f879b;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.7px}.date{color:var(--muted);font-size:12px}
+.back{text-align:center;margin-top:30px}.back a{color:var(--gold);font-weight:900;text-decoration:none}.back a:hover{text-decoration:underline}footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var(--muted);font-size:13px}footer b{color:var(--gold)}
+@media(max-width:720px){nav{display:none}.war-grid{grid-template-columns:1fr}.history-head{display:none}.history-row{grid-template-columns:1fr 1fr}.history-row .result{text-align:left}.hero p{font-size:16px}.section-title{align-items:flex-start;flex-direction:column}}
+@media(max-width:430px){main{padding:25px 11px 65px}.nav{padding:9px 11px}.logo{width:48px;height:48px}.brand strong{font-size:17px}.brand small{font-size:9px}.war-card{padding:13px}.versus{grid-template-columns:1fr 42px 1fr;padding:12px}.clan img{width:68px;height:68px}.shield{font-size:52px;line-height:68px}.metric{grid-template-columns:1fr 43px 43px;padding:10px}.history-row{padding:12px}.history-row .score{text-align:right}}
+</style>
+</head>
+<body>
+<header><div class="nav"><img class="logo" src="Wappen.png" alt="Cold N' Dark Wappen"><div class="brand"><strong>COLD N' DARK</strong><small>CLASH OF CLANS • OFFIZIELLE CLAN-SEITE</small></div><nav><a href="index.html">Start</a><a href="mitglieder.html">Mitglieder</a><a href="regeln.html">Clanregeln</a><a href="krieg.html">Kriege</a></nav></div></header>
+<main>
+<section class="hero"><div class="badge">⚔️ KRIEGSZENTRALE</div><h1>Unsere <span>Kriege</span></h1><p>Aktueller Krieg, letzter Krieg und die komplette Kriegshistorie – automatisch aus unserer Datenbank.</p></section>
+
+<section class="section-title"><h2>🟢 Aktueller Krieg</h2><div class="tag" id="currentTag">WIRD GELADEN …</div></section>
+<section id="currentWar"><div class="empty">⚔️ Kriegsdaten werden geladen …</div></section>
+
+<section class="section-title"><h2>🏁 Letzter Krieg</h2><div class="tag">LETZTES ERGEBNIS</div></section>
+<section id="lastWar"><div class="empty">🏁 Wird geladen …</div></section>
+
+<section class="section-title"><h2>📜 Kriegshistorie</h2><div class="tag" id="historyCount">0 KRIEGE</div></section>
+<section id="history"><div class="empty">📜 Kriegshistorie wird geladen …</div></section>
+
+<div class="back"><a href="index.html">← Zurück zur Startseite</a></div>
 </main>
-<footer><b>COLD N' DARK</b> • Clash of Clans • Offizielle Clan-Seite<br>Clan-Level 26 • 46 Mitglieder</footer>
-</body></html>
+<footer><b>COLD N' DARK</b> • Clash of Clans • Offizielle Clan-Seite<br>Clan-Level 26</footer>
+<script>
+const SUPABASE_URL='https://jvgqvtnqncelbhuordzy.supabase.co';
+const SUPABASE_KEY='sb_publishable_4PusmhJVMm0b3Bm-2Y-FPQ__tnZZzZO';
+const API=SUPABASE_URL+'/rest/v1/clan_wars';
+const headers={'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY};
+
+const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const num=v=>Number(v||0);
+const fmtDate=v=>{if(!v)return '';const d=new Date(v);if(Number.isNaN(d.getTime()))return '';return d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'})};
+const resultLabel=r=>r==='win'?'SIEG':r==='loss'?'NIEDERLAGE':r==='draw'?'UNENTSCHIEDEN':'OFFEN';
+const resultClass=r=>r==='win'?'win':r==='loss'?'loss':r==='draw'?'draw':'';
+
+function warCard(w,finished=false){
+  const status=String(w.status||'').toLowerCase();
+  const result=String(w.result||'pending').toLowerCase();
+  const title=finished?'Letzter Krieg':'AKTUELLER CK';
+  const statusText=finished?'BEENDET':(status==='active'?'ACTIVE':'VORBEREITUNG');
+  return `<div class="war-card"><div class="war-head"><div class="war-name">${esc(title)}${w.war_size?' • '+esc(w.war_size):''}</div><div class="status ${finished?'finished':'active'}">${statusText}</div></div><div class="war-grid"><div class="versus"><div class="clan"><img src="Wappen.png" alt="Cold N' Dark"><b>COLD N' DARK</b></div><div class="vs">VS</div><div class="clan"><div class="shield">🛡️</div><b>${esc(w.opponent||'GEGNERCLAN')}</b></div></div><div class="metrics"><div class="metric"><b>⭐ Sterne</b><span class="ours">${num(w.our_stars)}</span><span class="enemy">${num(w.enemy_stars)}</span></div><div class="metric"><b>⚔️ Angriffe</b><span class="ours">${num(w.our_attacks)}</span><span class="enemy">${num(w.enemy_attacks)}</span></div><div class="metric"><b>💥 Zerstörung</b><span class="ours">${num(w.our_destruction)}%</span><span class="enemy">${num(w.enemy_destruction)}%</span></div></div></div><div class="endline">${finished?'🏁 '+resultLabel(result):'⚔️ Krieg läuft'}</div><div class="muted">${fmtDate(w.created_at)?'Erstellt am '+fmtDate(w.created_at)+' • ':''}Live aus Supabase</div></div>`;
+}
+
+function historyRow(w){
+  const r=String(w.result||'pending').toLowerCase();
+  return `<div class="history-row"><div><b>${esc(w.opponent||'Unbekannter Gegner')}</b><div class="date">${esc(w.war_size||'')} ${fmtDate(w.created_at)?'• '+fmtDate(w.created_at):''}</div></div><div class="score">${num(w.our_stars)} : ${num(w.enemy_stars)}</div><div class="score">${num(w.our_attacks)} : ${num(w.enemy_attacks)}</div><div class="result ${resultClass(r)}">${resultLabel(r)}</div></div>`;
+}
+
+async function loadWars(){
+  try{
+    const res=await fetch(API+'?select=*&order=created_at.desc&limit=100',{headers});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const wars=await res.json();
+    const active=wars.find(w=>String(w.status||'').toLowerCase()==='active');
+    const finished=wars.filter(w=>String(w.status||'').toLowerCase()!=='active');
+    const latestFinished=finished[0]||null;
+
+    document.getElementById('currentTag').textContent=active?'LIVE':'KEIN AKTIVER KRIEG';
+    document.getElementById('currentWar').innerHTML=active?warCard(active,false):'<div class="empty">🏁 Aktuell läuft kein Krieg.</div>';
+    document.getElementById('lastWar').innerHTML=latestFinished?warCard(latestFinished,true):'<div class="empty">📜 Noch kein beendeter Krieg vorhanden.</div>';
+
+    document.getElementById('historyCount').textContent=wars.length+' KRIEG'+(wars.length===1?'':'E');
+    document.getElementById('history').innerHTML=wars.length?`<div class="history-head"><div>Gegner</div><div>Sterne</div><div>Angriffe</div><div>Ergebnis</div></div><div class="history">${wars.map(historyRow).join('')}</div>`:'<div class="empty">📜 Noch keine Kriege gespeichert.</div>';
+  }catch(err){
+    console.error('Kriege konnten nicht geladen werden:',err);
+    document.getElementById('currentTag').textContent='FEHLER';
+    document.getElementById('currentWar').innerHTML='<div class="empty">❌ Kriegsdaten konnten nicht geladen werden.</div>';
+    document.getElementById('lastWar').innerHTML='<div class="empty">❌ Datenquelle nicht erreichbar.</div>';
+    document.getElementById('history').innerHTML='<div class="empty">❌ Kriegshistorie konnte nicht geladen werden.</div>';
+  }
+}
+loadWars();
+setInterval(loadWars,30000);
+</script>
+</body>
+</html>
