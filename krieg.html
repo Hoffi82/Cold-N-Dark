@@ -28,87 +28,31 @@ main{max-width:1120px;margin:auto;padding:35px 18px 75px}.hero{text-align:center
 <header><div class="nav"><img class="logo" src="Wappen.png" alt="Cold N' Dark Wappen"><div class="brand"><strong>COLD N' DARK</strong><small>CLASH OF CLANS • OFFIZIELLE CLAN-SEITE</small></div><nav><a href="index.html">Start</a><a href="mitglieder.html">Mitglieder</a><a href="regeln.html">Clanregeln</a><a href="krieg.html">Kriege</a></nav></div></header>
 <main>
 <section class="hero"><div class="badge">⚔️ KRIEGSZENTRALE</div><h1>Unsere <span>Kriege</span></h1><p>Aktueller Krieg, letzter Krieg, komplette Kriegshistorie und persönliche Kriegsstatistiken – automatisch aus unserer Datenbank.</p></section>
-
-<section class="section-title"><h2>🟢 Aktueller Krieg</h2><div class="tag" id="currentTag">WIRD GELADEN …</div></section>
-<section id="currentWar"><div class="empty">⚔️ Kriegsdaten werden geladen …</div></section>
-
-<section class="section-title"><h2>🏁 Letzter Krieg</h2><div class="tag">LETZTES ERGEBNIS</div></section>
-<section id="lastWar"><div class="empty">🏁 Wird geladen …</div></section>
-
-<section class="section-title"><h2>👥 Kriegsteilnehmer</h2><div class="tag" id="participantCount">0 SPIELER</div></section>
-<section id="participants"><div class="empty">👥 Teilnehmer werden geladen …</div></section>
-
-<section class="section-title"><h2>🏆 Spielerstatistik</h2><div class="tag" id="statsCount">0 SPIELER</div></section>
-<section id="playerStats"><div class="empty">🏆 Statistik wird geladen …</div></section>
-
-<section class="section-title"><h2>📜 Kriegshistorie</h2><div class="tag" id="historyCount">0 KRIEGE</div></section>
-<section id="history"><div class="empty">📜 Kriegshistorie wird geladen …</div></section>
-
-<div class="back"><a href="index.html">← Zurück zur Startseite</a></div>
-</main>
+<section class="section-title"><h2>🟢 Aktueller Krieg</h2><div class="tag" id="currentTag">WIRD GELADEN …</div></section><section id="currentWar"><div class="empty">⚔️ Kriegsdaten werden geladen …</div></section>
+<section class="section-title"><h2>🏁 Letzter Krieg</h2><div class="tag">LETZTES ERGEBNIS</div></section><section id="lastWar"><div class="empty">🏁 Wird geladen …</div></section>
+<section class="section-title"><h2>👥 Kriegsteilnehmer</h2><div class="tag" id="participantCount">0 SPIELER</div></section><section id="participants"><div class="empty">👥 Teilnehmer werden geladen …</div></section>
+<section class="section-title"><h2>🏆 Spielerstatistik</h2><div class="tag" id="statsCount">0 SPIELER</div></section><section id="playerStats"><div class="empty">🏆 Statistik wird geladen …</div></section>
+<section class="section-title"><h2>📜 Kriegshistorie</h2><div class="tag" id="historyCount">0 KRIEGE</div></section><section id="history"><div class="empty">📜 Kriegshistorie wird geladen …</div></section>
+<div class="back"><a href="index.html">← Zurück zur Startseite</a></div></main>
 <footer><b>COLD N' DARK</b> • Clash of Clans • Offizielle Clan-Seite<br>Clan-Level 26</footer>
 <script>
 const SUPABASE_URL='https://jvgqvtnqncelbhuordzy.supabase.co';
 const SUPABASE_KEY='sb_publishable_4PusmhJVMm0b3Bm-2Y-FPQ__tnZZzZO';
 const API_WARS=SUPABASE_URL+'/rest/v1/clan_wars';
 const API_MEMBERS=SUPABASE_URL+'/rest/v1/clan_war_members';
+const API_CLAN_MEMBERS=SUPABASE_URL+'/rest/v1/clan_members';
 const headers={'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY};
 const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const num=v=>Number(v||0);
 const fmtDate=v=>{if(!v)return '';const d=new Date(v);if(Number.isNaN(d.getTime()))return '';return d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'})};
 const resultLabel=r=>r==='win'?'SIEG':r==='loss'?'NIEDERLAGE':r==='draw'?'UNENTSCHIEDEN':'OFFEN';
 const resultClass=r=>r==='win'?'win':r==='loss'?'loss':r==='draw'?'draw':'';
-
-function warCard(w,finished=false){
- const status=String(w.status||'').toLowerCase(); const result=String(w.result||'pending').toLowerCase();
- const title=finished?'Letzter Krieg':'AKTUELLER CK'; const statusText=finished?'BEENDET':(status==='active'?'ACTIVE':'VORBEREITUNG');
- return `<div class="war-card"><div class="war-head"><div class="war-name">${esc(title)}${w.war_size?' • '+esc(w.war_size):''}</div><div class="status ${finished?'finished':'active'}">${statusText}</div></div><div class="war-grid"><div class="versus"><div class="clan"><img src="Wappen.png" alt="Cold N' Dark"><b>COLD N' DARK</b></div><div class="vs">VS</div><div class="clan"><div class="shield">🛡️</div><b>${esc(w.opponent||'GEGNERCLAN')}</b></div></div><div class="metrics"><div class="metric"><b>⭐ Sterne</b><span class="ours">${num(w.our_stars)}</span><span class="enemy">${num(w.enemy_stars)}</span></div><div class="metric"><b>⚔️ Angriffe</b><span class="ours">${num(w.our_attacks)}</span><span class="enemy">${num(w.enemy_attacks)}</span></div><div class="metric"><b>💥 Zerstörung</b><span class="ours">${num(w.our_destruction)}%</span><span class="enemy">${num(w.enemy_destruction)}%</span></div></div></div><div class="endline">${finished?'🏁 '+resultLabel(result):'⚔️ Krieg läuft'}</div><div class="muted">${fmtDate(w.created_at)?'Erstellt am '+fmtDate(w.created_at)+' • ':''}Live aus Supabase</div></div>`;
-}
+function warCard(w,finished=false){const status=String(w.status||'').toLowerCase();const result=String(w.result||'pending').toLowerCase();const title=finished?'Letzter Krieg':'AKTUELLER CK';const statusText=finished?'BEENDET':(status==='active'?'ACTIVE':'VORBEREITUNG');return `<div class="war-card"><div class="war-head"><div class="war-name">${esc(title)}${w.war_size?' • '+esc(w.war_size):''}</div><div class="status ${finished?'finished':'active'}">${statusText}</div></div><div class="war-grid"><div class="versus"><div class="clan"><img src="Wappen.png" alt="Cold N' Dark"><b>COLD N' DARK</b></div><div class="vs">VS</div><div class="clan"><div class="shield">🛡️</div><b>${esc(w.opponent||'GEGNERCLAN')}</b></div></div><div class="metrics"><div class="metric"><b>⭐ Sterne</b><span class="ours">${num(w.our_stars)}</span><span class="enemy">${num(w.enemy_stars)}</span></div><div class="metric"><b>⚔️ Angriffe</b><span class="ours">${num(w.our_attacks)}</span><span class="enemy">${num(w.enemy_attacks)}</span></div><div class="metric"><b>💥 Zerstörung</b><span class="ours">${num(w.our_destruction)}%</span><span class="enemy">${num(w.enemy_destruction)}%</span></div></div></div><div class="endline">${finished?'🏁 '+resultLabel(result):'⚔️ Krieg läuft'}</div><div class="muted">${fmtDate(w.created_at)?'Erstellt am '+fmtDate(w.created_at)+' • ':''}Live aus Supabase</div></div>`}
 function historyRow(w){const r=String(w.result||'pending').toLowerCase();return `<div class="history-row"><div><b>${esc(w.opponent||'Unbekannter Gegner')}</b><div class="date">${esc(w.war_size||'')} ${fmtDate(w.created_at)?'• '+fmtDate(w.created_at):''}</div></div><div class="score">${num(w.our_stars)} : ${num(w.enemy_stars)}</div><div class="score">${num(w.our_attacks)} : ${num(w.enemy_attacks)}</div><div class="result ${resultClass(r)}">${resultLabel(r)}</div></div>`}
-
-function renderParticipants(rows,currentWar){
- const list=rows.filter(r=>String(r.war_id)===String(currentWar?.id));
- document.getElementById('participantCount').textContent=list.length+' SPIELER';
- if(!list.length){document.getElementById('participants').innerHTML='<div class="empty">👥 Noch keine Kriegsteilnehmer eingetragen.</div>';return;}
- list.sort((a,b)=>num(b.stars)-num(a.stars)||num(b.destruction)-num(a.destruction));
- document.getElementById('participants').innerHTML=`<div class="stats-card"><p class="stats-note">Teilnehmer des aktuell aktiven Krieges. Werte werden aus <b>clan_war_members</b> geladen.</p><div class="participant-grid">${list.map((r,i)=>`<div class="participant"><div class="num">${i+1}</div><div class="pname">${esc(r.member?.name||'Unbekannter Spieler')}</div><div class="pstats">⭐ ${num(r.stars)} • ⚔️ ${num(r.attacks)} • 💥 ${num(r.destruction)}%</div></div>`).join('')}</div></div>`;
-}
-
-function renderStats(rows){
- const map=new Map();
- rows.forEach(r=>{const id=r.member_id;if(!id)return;const name=r.member?.name||'Unbekannter Spieler';if(!map.has(id))map.set(id,{id,name,wars:0,stars:0,attacks:0,destruction:0});const x=map.get(id);x.wars++;x.stars+=num(r.stars);x.attacks+=num(r.attacks);x.destruction+=num(r.destruction);});
- const stats=[...map.values()].map(x=>({...x,starRate:x.attacks?x.stars/x.attacks:0,avgDestruction:x.wars?x.destruction/x.wars:0})).sort((a,b)=>b.stars-a.stars||b.wars-a.wars||b.starRate-a.starRate);
- document.getElementById('statsCount').textContent=stats.length+' SPIELER';
- if(!stats.length){document.getElementById('playerStats').innerHTML='<div class="empty">🏆 Noch keine Spielerstatistiken vorhanden.</div>';return;}
- document.getElementById('playerStats').innerHTML=`<div class="stats-card"><p class="stats-note">Gesamtwerte über alle eingetragenen Kriege. Die Rangliste aktualisiert sich automatisch, sobald weitere Kriegsteilnehmer und Ergebnisse gespeichert werden.</p><div class="stats-scroll"><table class="stats-table"><thead><tr><th># Spieler</th><th>Kriege</th><th>⭐ Sterne</th><th>⚔️ Angriffe</th><th>⭐/Angriff</th><th>💥 Ø Zerstörung</th></tr></thead><tbody>${stats.map((x,i)=>`<tr><td><span class="rank">${i+1}.</span> <span class="player">${esc(x.name)}</span></td><td class="small-stat">${x.wars}</td><td class="small-stat">${x.stars}</td><td>${x.attacks}</td><td>${x.starRate.toFixed(2)}</td><td>${x.avgDestruction.toFixed(1)}%</td></tr>`).join('')}</tbody></table></div></div>`;
-}
-
-async function loadWars(){
- try{
-  const [warRes,memberRes]=await Promise.all([
-   fetch(API_WARS+'?select=*&order=created_at.desc&limit=100',{headers}),
-   fetch(API_MEMBERS+'?select=member_id,war_id,attacks,stars,destruction,member:clan_members(name)&order=stars.desc',{headers})
-  ]);
-  if(!warRes.ok)throw new Error('Kriege HTTP '+warRes.status); if(!memberRes.ok)throw new Error('Spieler HTTP '+memberRes.status);
-  const wars=await warRes.json(); const members=await memberRes.json();
-  const active=wars.find(w=>String(w.status||'').toLowerCase()==='active');
-  const finished=wars.filter(w=>String(w.status||'').toLowerCase()!=='active'); const latestFinished=finished[0]||null;
-  document.getElementById('currentTag').textContent=active?'LIVE':'KEIN AKTIVER KRIEG';
-  document.getElementById('currentWar').innerHTML=active?warCard(active,false):'<div class="empty">🏁 Aktuell läuft kein Krieg.</div>';
-  document.getElementById('lastWar').innerHTML=latestFinished?warCard(latestFinished,true):'<div class="empty">📜 Noch kein beendeter Krieg vorhanden.</div>';
-  renderParticipants(members,active); renderStats(members);
-  document.getElementById('historyCount').textContent=wars.length+' KRIEG'+(wars.length===1?'':'E');
-  document.getElementById('history').innerHTML=wars.length?`<div class="history-head"><div>Gegner</div><div>Sterne</div><div>Angriffe</div><div>Ergebnis</div></div><div class="history">${wars.map(historyRow).join('')}</div>`:'<div class="empty">📜 Noch keine Kriege gespeichert.</div>';
- }catch(err){
-  console.error('Kriege konnten nicht geladen werden:',err); document.getElementById('currentTag').textContent='FEHLER';
-  document.getElementById('currentWar').innerHTML='<div class="empty">❌ Kriegsdaten konnten nicht geladen werden.</div>';
-  document.getElementById('lastWar').innerHTML='<div class="empty">❌ Datenquelle nicht erreichbar.</div>';
-  document.getElementById('participants').innerHTML='<div class="empty">❌ Spielerstatistik konnte nicht geladen werden.</div>';
-  document.getElementById('playerStats').innerHTML='<div class="empty">❌ Spielerstatistik konnte nicht geladen werden.</div>';
-  document.getElementById('history').innerHTML='<div class="empty">❌ Kriegshistorie konnte nicht geladen werden.</div>';
- }
-}
-loadWars(); setInterval(loadWars,30000);
+function renderParticipants(rows,currentWar,members){const list=rows.filter(r=>String(r.war_id)===String(currentWar?.id));document.getElementById('participantCount').textContent=list.length+' SPIELER';if(!list.length){document.getElementById('participants').innerHTML='<div class="empty">👥 Noch keine Kriegsteilnehmer eingetragen.</div>';return}list.sort((a,b)=>num(b.stars)-num(a.stars)||num(b.destruction)-num(a.destruction));document.getElementById('participants').innerHTML=`<div class="stats-card"><p class="stats-note">Teilnehmer des aktuell aktiven Krieges. Werte werden aus <b>clan_war_members</b> geladen.</p><div class="participant-grid">${list.map((r,i)=>{const m=members.find(x=>String(x.id)===String(r.member_id));return `<div class="participant"><div class="num">${i+1}</div><div class="pname">${esc(m?.name||'Unbekannter Spieler')}</div><div class="pstats">⭐ ${num(r.stars)} • ⚔️ ${num(r.attacks)} • 💥 ${num(r.destruction)}%</div></div>`}).join('')}</div></div>`}
+function renderStats(rows,members){const map={};rows.forEach(r=>{const id=String(r.member_id);if(!map[id])map[id]={id,attacks:0,stars:0,destruction:0,wars:0};map[id].attacks+=num(r.attacks);map[id].stars+=num(r.stars);map[id].destruction+=num(r.destruction);map[id].wars++});const list=Object.values(map).sort((a,b)=>b.stars-a.stars||b.destruction-a.destruction);document.getElementById('statsCount').textContent=list.length+' SPIELER';if(!list.length){document.getElementById('playerStats').innerHTML='<div class="empty">🏆 Noch keine Spielerstatistiken vorhanden.</div>';return}document.getElementById('playerStats').innerHTML=`<div class="stats-card"><p class="stats-note">Gesamtstatistik aus allen gespeicherten Kriegsteilnahmen.</p><div class="stats-scroll"><table class="stats-table"><thead><tr><th>#</th><th>Spieler</th><th>⭐ Sterne</th><th>⚔️ Angriffe</th><th>💥 Zerstörung</th><th>Kriege</th></tr></thead><tbody>${list.map((r,i)=>{const m=members.find(x=>String(x.id)===r.id);return `<tr><td class="rank">${i+1}</td><td class="player">${esc(m?.name||'Unbekannter Spieler')}</td><td class="small-stat">${r.stars}</td><td>${r.attacks}</td><td>${Math.round(r.destruction*10)/10}%</td><td>${r.wars}</td></tr>`}).join('')}</tbody></table></div></div>`}
+async function getJson(url){const res=await fetch(url,{headers});if(!res.ok)throw new Error(await res.text());return res.json()}
+async function loadWars(){try{const [wars,warMembers,members]=await Promise.all([getJson(API_WARS+'?select=*&order=created_at.desc'),getJson(API_MEMBERS+'?select=*&order=id.asc'),getJson(API_CLAN_MEMBERS+'?select=id,name')]);const active=wars.find(w=>String(w.status).toLowerCase()==='active');const finished=wars.filter(w=>String(w.status).toLowerCase()!=='active');document.getElementById('currentTag').textContent=active?'AKTIV':'KEIN AKTIVER KRIEG';document.getElementById('currentWar').innerHTML=active?warCard(active,false):'<div class="empty">🟢 Aktuell läuft kein Krieg.</div>';document.getElementById('lastWar').innerHTML=finished.length?warCard(finished[0],true):'<div class="empty">🏁 Noch kein beendeter Krieg vorhanden.</div>';document.getElementById('historyCount').textContent=finished.length+' KRIEGE';document.getElementById('history').innerHTML=finished.length?`<div class="history">${finished.map(historyRow).join('')}</div>`:'<div class="empty">📜 Noch keine Kriegshistorie vorhanden.</div>';renderParticipants(warMembers,active,members);renderStats(warMembers,members)}catch(err){console.error('Kriegsdaten:',err);document.getElementById('currentWar').innerHTML='<div class="empty">❌ Kriegsdaten konnten nicht geladen werden.</div>';document.getElementById('lastWar').innerHTML='<div class="empty">❌ Kriegsdaten konnten nicht geladen werden.</div>';document.getElementById('participants').innerHTML='<div class="empty">❌ Kriegsteilnehmer konnten nicht geladen werden.</div>';document.getElementById('playerStats').innerHTML='<div class="empty">❌ Spielerstatistik konnte nicht geladen werden.</div>';document.getElementById('history').innerHTML='<div class="empty">❌ Kriegshistorie konnte nicht geladen werden.</div>'}}
+loadWars();
 </script>
-</body>
-</html>
+</body></html>
