@@ -18,21 +18,28 @@ main{max-width:1120px;margin:auto;padding:35px 18px 75px}.hero{text-align:center
 .metrics{display:grid;gap:8px}.metric{display:grid;grid-template-columns:1fr 55px 55px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#08080b;font-weight:900}.metric span{text-align:center;font-size:21px}.ours{color:var(--gold2)}.enemy{color:var(--red)}.endline{text-align:center;margin-top:10px;padding:10px;border:1px solid #ffc43d44;border-radius:11px;color:var(--gold2);font-weight:900}.muted{text-align:center;color:var(--muted);font-size:13px;margin:10px 0 0}
 .empty{padding:28px;text-align:center;border:1px dashed #ffffff2b;border-radius:16px;background:#ffffff06;color:var(--muted)}
 .history{display:grid;gap:10px}.history-row{display:grid;grid-template-columns:1.3fr .8fr .8fr .9fr;gap:10px;align-items:center;padding:15px 16px;border:1px solid var(--line);border-radius:14px;background:#171122cc}.history-row b{font-size:16px}.score{font-weight:1000;text-align:center}.result{font-weight:1000;text-align:right}.win{color:var(--green)}.loss{color:var(--red)}.draw{color:var(--gold2)}.history-head{display:grid;grid-template-columns:1.3fr .8fr .8fr .9fr;gap:10px;padding:0 16px 5px;color:#8f879b;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.7px}.date{color:var(--muted);font-size:12px}
+.stats-card{border:1px solid #ffffff20;border-radius:18px;background:linear-gradient(145deg,#1b1225,#0d0a11);padding:18px;box-shadow:0 14px 35px #0008}.stats-note{color:var(--muted);font-size:13px;margin:0 0 14px}.stats-table{width:100%;border-collapse:collapse}.stats-table th,.stats-table td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:center}.stats-table th{color:#8f879b;font-size:11px;text-transform:uppercase;letter-spacing:.6px}.stats-table td:first-child,.stats-table th:first-child{text-align:left}.stats-table tr:last-child td{border-bottom:0}.rank{font-weight:1000;color:var(--gold)}.player{font-weight:900}.small-stat{color:var(--gold2);font-weight:900}.stats-scroll{overflow-x:auto}.participant-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.participant{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:9px;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:#08080b}.participant .num{color:var(--gold);font-weight:1000}.participant .pname{font-weight:900}.participant .pstats{color:var(--muted);font-size:12px;text-align:right}
 .back{text-align:center;margin-top:30px}.back a{color:var(--gold);font-weight:900;text-decoration:none}.back a:hover{text-decoration:underline}footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var(--muted);font-size:13px}footer b{color:var(--gold)}
-@media(max-width:720px){nav{display:none}.war-grid{grid-template-columns:1fr}.history-head{display:none}.history-row{grid-template-columns:1fr 1fr}.history-row .result{text-align:left}.hero p{font-size:16px}.section-title{align-items:flex-start;flex-direction:column}}
-@media(max-width:430px){main{padding:25px 11px 65px}.nav{padding:9px 11px}.logo{width:48px;height:48px}.brand strong{font-size:17px}.brand small{font-size:9px}.war-card{padding:13px}.versus{grid-template-columns:1fr 42px 1fr;padding:12px}.clan img{width:68px;height:68px}.shield{font-size:52px;line-height:68px}.metric{grid-template-columns:1fr 43px 43px;padding:10px}.history-row{padding:12px}.history-row .score{text-align:right}}
+@media(max-width:720px){nav{display:none}.war-grid{grid-template-columns:1fr}.history-head{display:none}.history-row{grid-template-columns:1fr 1fr}.history-row .result{text-align:left}.hero p{font-size:16px}.section-title{align-items:flex-start;flex-direction:column}.participant-grid{grid-template-columns:1fr}.stats-table th,.stats-table td{padding:10px 7px}}
+@media(max-width:430px){main{padding:25px 11px 65px}.nav{padding:9px 11px}.logo{width:48px;height:48px}.brand strong{font-size:17px}.brand small{font-size:9px}.war-card,.stats-card{padding:13px}.versus{grid-template-columns:1fr 42px 1fr;padding:12px}.clan img{width:68px;height:68px}.shield{font-size:52px;line-height:68px}.metric{grid-template-columns:1fr 43px 43px;padding:10px}.history-row{padding:12px}.history-row .score{text-align:right}.stats-table{min-width:650px}}
 </style>
 </head>
 <body>
 <header><div class="nav"><img class="logo" src="Wappen.png" alt="Cold N' Dark Wappen"><div class="brand"><strong>COLD N' DARK</strong><small>CLASH OF CLANS • OFFIZIELLE CLAN-SEITE</small></div><nav><a href="index.html">Start</a><a href="mitglieder.html">Mitglieder</a><a href="regeln.html">Clanregeln</a><a href="krieg.html">Kriege</a></nav></div></header>
 <main>
-<section class="hero"><div class="badge">⚔️ KRIEGSZENTRALE</div><h1>Unsere <span>Kriege</span></h1><p>Aktueller Krieg, letzter Krieg und die komplette Kriegshistorie – automatisch aus unserer Datenbank.</p></section>
+<section class="hero"><div class="badge">⚔️ KRIEGSZENTRALE</div><h1>Unsere <span>Kriege</span></h1><p>Aktueller Krieg, letzter Krieg, komplette Kriegshistorie und persönliche Kriegsstatistiken – automatisch aus unserer Datenbank.</p></section>
 
 <section class="section-title"><h2>🟢 Aktueller Krieg</h2><div class="tag" id="currentTag">WIRD GELADEN …</div></section>
 <section id="currentWar"><div class="empty">⚔️ Kriegsdaten werden geladen …</div></section>
 
 <section class="section-title"><h2>🏁 Letzter Krieg</h2><div class="tag">LETZTES ERGEBNIS</div></section>
 <section id="lastWar"><div class="empty">🏁 Wird geladen …</div></section>
+
+<section class="section-title"><h2>👥 Kriegsteilnehmer</h2><div class="tag" id="participantCount">0 SPIELER</div></section>
+<section id="participants"><div class="empty">👥 Teilnehmer werden geladen …</div></section>
+
+<section class="section-title"><h2>🏆 Spielerstatistik</h2><div class="tag" id="statsCount">0 SPIELER</div></section>
+<section id="playerStats"><div class="empty">🏆 Statistik wird geladen …</div></section>
 
 <section class="section-title"><h2>📜 Kriegshistorie</h2><div class="tag" id="historyCount">0 KRIEGE</div></section>
 <section id="history"><div class="empty">📜 Kriegshistorie wird geladen …</div></section>
@@ -43,9 +50,9 @@ main{max-width:1120px;margin:auto;padding:35px 18px 75px}.hero{text-align:center
 <script>
 const SUPABASE_URL='https://jvgqvtnqncelbhuordzy.supabase.co';
 const SUPABASE_KEY='sb_publishable_4PusmhJVMm0b3Bm-2Y-FPQ__tnZZzZO';
-const API=SUPABASE_URL+'/rest/v1/clan_wars';
+const API_WARS=SUPABASE_URL+'/rest/v1/clan_wars';
+const API_MEMBERS=SUPABASE_URL+'/rest/v1/clan_war_members';
 const headers={'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY};
-
 const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const num=v=>Number(v||0);
 const fmtDate=v=>{if(!v)return '';const d=new Date(v);if(Number.isNaN(d.getTime()))return '';return d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'})};
@@ -53,43 +60,55 @@ const resultLabel=r=>r==='win'?'SIEG':r==='loss'?'NIEDERLAGE':r==='draw'?'UNENTS
 const resultClass=r=>r==='win'?'win':r==='loss'?'loss':r==='draw'?'draw':'';
 
 function warCard(w,finished=false){
-  const status=String(w.status||'').toLowerCase();
-  const result=String(w.result||'pending').toLowerCase();
-  const title=finished?'Letzter Krieg':'AKTUELLER CK';
-  const statusText=finished?'BEENDET':(status==='active'?'ACTIVE':'VORBEREITUNG');
-  return `<div class="war-card"><div class="war-head"><div class="war-name">${esc(title)}${w.war_size?' • '+esc(w.war_size):''}</div><div class="status ${finished?'finished':'active'}">${statusText}</div></div><div class="war-grid"><div class="versus"><div class="clan"><img src="Wappen.png" alt="Cold N' Dark"><b>COLD N' DARK</b></div><div class="vs">VS</div><div class="clan"><div class="shield">🛡️</div><b>${esc(w.opponent||'GEGNERCLAN')}</b></div></div><div class="metrics"><div class="metric"><b>⭐ Sterne</b><span class="ours">${num(w.our_stars)}</span><span class="enemy">${num(w.enemy_stars)}</span></div><div class="metric"><b>⚔️ Angriffe</b><span class="ours">${num(w.our_attacks)}</span><span class="enemy">${num(w.enemy_attacks)}</span></div><div class="metric"><b>💥 Zerstörung</b><span class="ours">${num(w.our_destruction)}%</span><span class="enemy">${num(w.enemy_destruction)}%</span></div></div></div><div class="endline">${finished?'🏁 '+resultLabel(result):'⚔️ Krieg läuft'}</div><div class="muted">${fmtDate(w.created_at)?'Erstellt am '+fmtDate(w.created_at)+' • ':''}Live aus Supabase</div></div>`;
+ const status=String(w.status||'').toLowerCase(); const result=String(w.result||'pending').toLowerCase();
+ const title=finished?'Letzter Krieg':'AKTUELLER CK'; const statusText=finished?'BEENDET':(status==='active'?'ACTIVE':'VORBEREITUNG');
+ return `<div class="war-card"><div class="war-head"><div class="war-name">${esc(title)}${w.war_size?' • '+esc(w.war_size):''}</div><div class="status ${finished?'finished':'active'}">${statusText}</div></div><div class="war-grid"><div class="versus"><div class="clan"><img src="Wappen.png" alt="Cold N' Dark"><b>COLD N' DARK</b></div><div class="vs">VS</div><div class="clan"><div class="shield">🛡️</div><b>${esc(w.opponent||'GEGNERCLAN')}</b></div></div><div class="metrics"><div class="metric"><b>⭐ Sterne</b><span class="ours">${num(w.our_stars)}</span><span class="enemy">${num(w.enemy_stars)}</span></div><div class="metric"><b>⚔️ Angriffe</b><span class="ours">${num(w.our_attacks)}</span><span class="enemy">${num(w.enemy_attacks)}</span></div><div class="metric"><b>💥 Zerstörung</b><span class="ours">${num(w.our_destruction)}%</span><span class="enemy">${num(w.enemy_destruction)}%</span></div></div></div><div class="endline">${finished?'🏁 '+resultLabel(result):'⚔️ Krieg läuft'}</div><div class="muted">${fmtDate(w.created_at)?'Erstellt am '+fmtDate(w.created_at)+' • ':''}Live aus Supabase</div></div>`;
+}
+function historyRow(w){const r=String(w.result||'pending').toLowerCase();return `<div class="history-row"><div><b>${esc(w.opponent||'Unbekannter Gegner')}</b><div class="date">${esc(w.war_size||'')} ${fmtDate(w.created_at)?'• '+fmtDate(w.created_at):''}</div></div><div class="score">${num(w.our_stars)} : ${num(w.enemy_stars)}</div><div class="score">${num(w.our_attacks)} : ${num(w.enemy_attacks)}</div><div class="result ${resultClass(r)}">${resultLabel(r)}</div></div>`}
+
+function renderParticipants(rows,currentWar){
+ const list=rows.filter(r=>String(r.war_id)===String(currentWar?.id));
+ document.getElementById('participantCount').textContent=list.length+' SPIELER';
+ if(!list.length){document.getElementById('participants').innerHTML='<div class="empty">👥 Noch keine Kriegsteilnehmer eingetragen.</div>';return;}
+ list.sort((a,b)=>num(b.stars)-num(a.stars)||num(b.destruction)-num(a.destruction));
+ document.getElementById('participants').innerHTML=`<div class="stats-card"><p class="stats-note">Teilnehmer des aktuell aktiven Krieges. Werte werden aus <b>clan_war_members</b> geladen.</p><div class="participant-grid">${list.map((r,i)=>`<div class="participant"><div class="num">${i+1}</div><div class="pname">${esc(r.member?.name||'Unbekannter Spieler')}</div><div class="pstats">⭐ ${num(r.stars)} • ⚔️ ${num(r.attacks)} • 💥 ${num(r.destruction)}%</div></div>`).join('')}</div></div>`;
 }
 
-function historyRow(w){
-  const r=String(w.result||'pending').toLowerCase();
-  return `<div class="history-row"><div><b>${esc(w.opponent||'Unbekannter Gegner')}</b><div class="date">${esc(w.war_size||'')} ${fmtDate(w.created_at)?'• '+fmtDate(w.created_at):''}</div></div><div class="score">${num(w.our_stars)} : ${num(w.enemy_stars)}</div><div class="score">${num(w.our_attacks)} : ${num(w.enemy_attacks)}</div><div class="result ${resultClass(r)}">${resultLabel(r)}</div></div>`;
+function renderStats(rows){
+ const map=new Map();
+ rows.forEach(r=>{const id=r.member_id;if(!id)return;const name=r.member?.name||'Unbekannter Spieler';if(!map.has(id))map.set(id,{id,name,wars:0,stars:0,attacks:0,destruction:0});const x=map.get(id);x.wars++;x.stars+=num(r.stars);x.attacks+=num(r.attacks);x.destruction+=num(r.destruction);});
+ const stats=[...map.values()].map(x=>({...x,starRate:x.attacks?x.stars/x.attacks:0,avgDestruction:x.wars?x.destruction/x.wars:0})).sort((a,b)=>b.stars-a.stars||b.wars-a.wars||b.starRate-a.starRate);
+ document.getElementById('statsCount').textContent=stats.length+' SPIELER';
+ if(!stats.length){document.getElementById('playerStats').innerHTML='<div class="empty">🏆 Noch keine Spielerstatistiken vorhanden.</div>';return;}
+ document.getElementById('playerStats').innerHTML=`<div class="stats-card"><p class="stats-note">Gesamtwerte über alle eingetragenen Kriege. Die Rangliste aktualisiert sich automatisch, sobald weitere Kriegsteilnehmer und Ergebnisse gespeichert werden.</p><div class="stats-scroll"><table class="stats-table"><thead><tr><th># Spieler</th><th>Kriege</th><th>⭐ Sterne</th><th>⚔️ Angriffe</th><th>⭐/Angriff</th><th>💥 Ø Zerstörung</th></tr></thead><tbody>${stats.map((x,i)=>`<tr><td><span class="rank">${i+1}.</span> <span class="player">${esc(x.name)}</span></td><td class="small-stat">${x.wars}</td><td class="small-stat">${x.stars}</td><td>${x.attacks}</td><td>${x.starRate.toFixed(2)}</td><td>${x.avgDestruction.toFixed(1)}%</td></tr>`).join('')}</tbody></table></div></div>`;
 }
 
 async function loadWars(){
-  try{
-    const res=await fetch(API+'?select=*&order=created_at.desc&limit=100',{headers});
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    const wars=await res.json();
-    const active=wars.find(w=>String(w.status||'').toLowerCase()==='active');
-    const finished=wars.filter(w=>String(w.status||'').toLowerCase()!=='active');
-    const latestFinished=finished[0]||null;
-
-    document.getElementById('currentTag').textContent=active?'LIVE':'KEIN AKTIVER KRIEG';
-    document.getElementById('currentWar').innerHTML=active?warCard(active,false):'<div class="empty">🏁 Aktuell läuft kein Krieg.</div>';
-    document.getElementById('lastWar').innerHTML=latestFinished?warCard(latestFinished,true):'<div class="empty">📜 Noch kein beendeter Krieg vorhanden.</div>';
-
-    document.getElementById('historyCount').textContent=wars.length+' KRIEG'+(wars.length===1?'':'E');
-    document.getElementById('history').innerHTML=wars.length?`<div class="history-head"><div>Gegner</div><div>Sterne</div><div>Angriffe</div><div>Ergebnis</div></div><div class="history">${wars.map(historyRow).join('')}</div>`:'<div class="empty">📜 Noch keine Kriege gespeichert.</div>';
-  }catch(err){
-    console.error('Kriege konnten nicht geladen werden:',err);
-    document.getElementById('currentTag').textContent='FEHLER';
-    document.getElementById('currentWar').innerHTML='<div class="empty">❌ Kriegsdaten konnten nicht geladen werden.</div>';
-    document.getElementById('lastWar').innerHTML='<div class="empty">❌ Datenquelle nicht erreichbar.</div>';
-    document.getElementById('history').innerHTML='<div class="empty">❌ Kriegshistorie konnte nicht geladen werden.</div>';
-  }
+ try{
+  const [warRes,memberRes]=await Promise.all([
+   fetch(API_WARS+'?select=*&order=created_at.desc&limit=100',{headers}),
+   fetch(API_MEMBERS+'?select=member_id,war_id,attacks,stars,destruction,member:clan_members(name)&order=stars.desc',{headers})
+  ]);
+  if(!warRes.ok)throw new Error('Kriege HTTP '+warRes.status); if(!memberRes.ok)throw new Error('Spieler HTTP '+memberRes.status);
+  const wars=await warRes.json(); const members=await memberRes.json();
+  const active=wars.find(w=>String(w.status||'').toLowerCase()==='active');
+  const finished=wars.filter(w=>String(w.status||'').toLowerCase()!=='active'); const latestFinished=finished[0]||null;
+  document.getElementById('currentTag').textContent=active?'LIVE':'KEIN AKTIVER KRIEG';
+  document.getElementById('currentWar').innerHTML=active?warCard(active,false):'<div class="empty">🏁 Aktuell läuft kein Krieg.</div>';
+  document.getElementById('lastWar').innerHTML=latestFinished?warCard(latestFinished,true):'<div class="empty">📜 Noch kein beendeter Krieg vorhanden.</div>';
+  renderParticipants(members,active); renderStats(members);
+  document.getElementById('historyCount').textContent=wars.length+' KRIEG'+(wars.length===1?'':'E');
+  document.getElementById('history').innerHTML=wars.length?`<div class="history-head"><div>Gegner</div><div>Sterne</div><div>Angriffe</div><div>Ergebnis</div></div><div class="history">${wars.map(historyRow).join('')}</div>`:'<div class="empty">📜 Noch keine Kriege gespeichert.</div>';
+ }catch(err){
+  console.error('Kriege konnten nicht geladen werden:',err); document.getElementById('currentTag').textContent='FEHLER';
+  document.getElementById('currentWar').innerHTML='<div class="empty">❌ Kriegsdaten konnten nicht geladen werden.</div>';
+  document.getElementById('lastWar').innerHTML='<div class="empty">❌ Datenquelle nicht erreichbar.</div>';
+  document.getElementById('participants').innerHTML='<div class="empty">❌ Spielerstatistik konnte nicht geladen werden.</div>';
+  document.getElementById('playerStats').innerHTML='<div class="empty">❌ Spielerstatistik konnte nicht geladen werden.</div>';
+  document.getElementById('history').innerHTML='<div class="empty">❌ Kriegshistorie konnte nicht geladen werden.</div>';
+ }
 }
-loadWars();
-setInterval(loadWars,30000);
+loadWars(); setInterval(loadWars,30000);
 </script>
 </body>
 </html>
