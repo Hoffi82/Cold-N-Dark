@@ -89,4 +89,31 @@ window.COLD_N_DARK_CLAN = {
       msg.textContent = '❌ ' + (error.message || 'Registrierung fehlgeschlagen.');
     }
   }, true);
+
+  // Öffentliche Startseite: interne Bereiche erst nach Clasher-Login anzeigen.
+  const privateSelectors = [
+    '.clan-switch',
+    '.quick-grid',
+    '.section-head',
+    '.war-card',
+    '.bottom-nav'
+  ];
+
+  function setPrivateVisibility(isLoggedIn) {
+    privateSelectors.forEach(selector => {
+      document.querySelectorAll(selector).forEach(el => {
+        el.style.display = isLoggedIn ? '' : 'none';
+      });
+    });
+  }
+
+  setPrivateVisibility(false);
+
+  db.auth.getSession().then(({ data }) => {
+    setPrivateVisibility(!!data.session);
+  });
+
+  db.auth.onAuthStateChange((event, session) => {
+    setPrivateVisibility(!!session);
+  });
 })();
