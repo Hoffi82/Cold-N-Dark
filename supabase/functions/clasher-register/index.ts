@@ -7,7 +7,15 @@ const corsHeaders = {
 }
 
 const SUPABASE_URL = Deno.env.get('SUPABASE_URL') ?? ''
-const SUPABASE_SECRET_KEY = Deno.env.get('SUPABASE_SECRET_KEY') ?? Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+const secretKeysRaw = Deno.env.get('SUPABASE_SECRET_KEYS') ?? '{}'
+let SUPABASE_SECRET_KEY = ''
+
+try {
+  const secretKeys = JSON.parse(secretKeysRaw)
+  SUPABASE_SECRET_KEY = secretKeys.default ?? ''
+} catch {
+  SUPABASE_SECRET_KEY = ''
+}
 
 const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SECRET_KEY)
 
