@@ -1,0 +1,3 @@
+window.COLD_N_DARK_PLAYER_PHOTOS = {
+  'Coc Hoffi': 'data:image/webp;base64,UklGRqQqAABXRUJQVlA4IBgqAACwIABAAABwAQCdASoIAAgAAkA4JYwCdAD0gEAAUAAAAB4JYwAA==...'
+};
