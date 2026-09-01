@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cold N' Dark – Clasher Login</title>
+<style>
+:root{--bg:#08050f;--panel:#151020;--gold:#ffc43d;--text:#f8f5ff;--muted:#aaa1bb;--line:#ffffff18}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% -8%,#4b286d 0,#21142f 25%,#090611 63%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;display:grid;place-items:center;padding:20px}.box{width:min(460px,100%);border:1px solid #ffc43d35;border-radius:24px;background:#100c18f5;padding:28px;box-shadow:0 25px 80px #0009}.logo{display:block;width:105px;height:105px;object-fit:contain;margin:0 auto 15px}.title{text-align:center;font-size:32px;font-weight:1000;letter-spacing:2px}.title span{color:var(--gold)}.sub{text-align:center;color:var(--muted);margin:6px 0 24px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}.tab{border:1px solid var(--line);background:#ffffff05;color:var(--muted);padding:11px;border-radius:12px;font-weight:900;cursor:pointer}.tab.active{color:var(--gold);border-color:#ffc43d66;background:#ffc43d0d}.field{margin:12px 0}.field label{display:block;font-size:11px;color:var(--gold);font-weight:900;margin-bottom:6px}.field input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:#09070e;color:#fff;font:inherit;outline:none}.field input:focus{border-color:#ffc43d88}.btn{width:100%;border:0;border-radius:13px;padding:14px;background:linear-gradient(135deg,#ffc43d,#ff9a18);color:#211000;font-weight:1000;font-size:15px;cursor:pointer;margin-top:8px}.hint,.msg{text-align:center;color:var(--muted);font-size:12px;line-height:1.5;margin-top:15px}.msg{min-height:18px}.error{color:#ff7777}.ok{color:#63e68b}.back{display:block;text-align:center;margin-top:18px;color:var(--gold);text-decoration:none;font-weight:900;font-size:13px}
+</style>
+</head>
+<body>
+<main class="box">
+<img class="logo" src="Wappen.png" alt="Cold N' Dark Wappen">
+<div class="title">COLD N' <span>DARK</span></div>
+<div class="sub">🛡️ Clasher-Bereich</div>
+<div class="tabs"><button id="loginTab" class="tab active">Einloggen</button><button id="registerTab" class="tab">Erstregistrierung</button></div>
+<form id="form">
+<div class="field"><label>IN-GAME-NAME</label><input id="name" required autocomplete="username" placeholder="z. B. Coc Hoffi"></div>
+<div class="field"><label>PASSWORT</label><input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="Passwort"></div>
+<button class="btn" id="submit">Einloggen</button>
+</form>
+<div id="msg" class="msg"></div>
+<div id="hint" class="hint">Dein Name muss exakt in der zentralen Cold N' Dark Mitgliederliste stehen.</div>
+<a class="back" href="index.html">← Zur Startseite</a>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="members-data.js"></script>
+<script>
+const SUPABASE_URL='https://jvgqvtnqncelbhuordzy.supabase.co',SUPABASE_KEY='sb_publishable_4PusmhJVMm0b3Bm-2Y-FPQ__tnZZzZO';
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);let mode='login';
+const $=id=>document.getElementById(id),msg=$('msg');
+function findMember(name){return (window.COLD_N_DARK_MEMBERS||[]).find(m=>m.name.toLowerCase()===name.trim().toLowerCase())}
+function emailFor(name){return 'clasher+'+encodeURIComponent(name.trim().toLowerCase()).replace(/%/g,'')+'@coldndark.local'}
+function setMode(next){mode=next;$('loginTab').classList.toggle('active',mode==='login');$('registerTab').classList.toggle('active',mode==='register');$('submit').textContent=mode==='login'?'Einloggen':'Registrieren';$('password').autocomplete=mode==='login'?'current-password':'new-password';$('hint').textContent=mode==='login'?'Mit deinem exakten In-Game-Namen und Passwort anmelden.':'Nur bereits eingetragene Cold N\' Dark Mitglieder können sich erstmalig registrieren.';msg.textContent='';msg.className='msg'}
+$('loginTab').onclick=()=>setMode('login');$('registerTab').onclick=()=>setMode('register');
+$('form').onsubmit=async e=>{e.preventDefault();msg.className='msg';msg.textContent='';const name=$('name').value.trim(),password=$('password').value;if(!findMember(name)){msg.className='msg error';msg.textContent='❌ Dieser In-Game-Name ist nicht in der zentralen Mitgliederliste.';return}const email=emailFor(name);try{if(mode==='register'){const m=findMember(name);const {data,error}=await db.auth.signUp({email,password,options:{data:{display_name:m.name,member_role:'clasher'}}});if(error)throw error;if(data.session){location.href='clasher.html'}else{msg.className='msg ok';msg.textContent='✅ Registrierung angelegt. Falls eine Bestätigung verlangt wird, prüfe deine hinterlegte E-Mail-Adresse.'}}else{const {data,error}=await db.auth.signInWithPassword({email,password});if(error)throw error;location.href='clasher.html'}}catch(err){console.error(err);msg.className='msg error';msg.textContent='❌ '+(err.message||'Anmeldung fehlgeschlagen.')}};
+(async()=>{const {data}=await db.auth.getSession();if(data.session)location.href='clasher.html'})();
+</script>
+</body></html>
