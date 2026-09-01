@@ -41,7 +41,6 @@ window.TYBMC_CLAN = {
   updatedAt: '2026-08-31'
 };
 
-// Eigene Bereiche für TYBMC: Kriege und CWL (ohne Anmeldung).
 document.addEventListener('DOMContentLoaded', () => {
   const hero = document.querySelector('main .hero');
   if (!hero || document.getElementById('tybmcSections')) return;
@@ -60,3 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
   style.textContent = '@media(max-width:520px){#tybmcSections{grid-template-columns:1fr!important}}';
   document.head.appendChild(style);
 });
+
+// Sicherheits-Navigation wie bei der funktionierenden Cold-N-Dark-Mitgliederseite:
+// Jeder Klick auf eine TYBMC-Mitgliederkarte führt als echter Seitenaufruf zur Profilseite.
+document.addEventListener('click', (event) => {
+  const card = event.target.closest('.member[data-player]');
+  if (!card) return;
+  const name = card.getAttribute('data-player');
+  if (!name) return;
+  event.preventDefault();
+  event.stopPropagation();
+  window.location.href = 'tybmc-spielerprofil.html?name=' + encodeURIComponent(name);
+}, true);
