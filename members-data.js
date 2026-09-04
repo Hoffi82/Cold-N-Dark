@@ -30,13 +30,14 @@ window.COLD_N_DARK_MEMBERS = [
   { name: 'Hoffi8211', role: 'member', trophies: 0, townHallLevel: 16 },
   { name: 'King', role: 'admin', trophies: 0, townHallLevel: 16 },
   { name: 'WiQUBR', role: 'admin', trophies: 0, townHallLevel: 16 },
-  { name: 'Leon', role: 'admin', trophies: 0, townHallLevel: 15 }
+  { name: 'Leon', role: 'admin', trophies: 0, townHallLevel: 15 },
+  { name: 'Basti336', role: 'member', trophies: 0, townHallLevel: 14 }
 ];
 
 window.COLD_N_DARK_CLAN = {
   memberCount: window.COLD_N_DARK_MEMBERS.length,
   clanLevel: 26,
-  updatedAt: '2026-08-25'
+  updatedAt: '2026-09-04'
 };
 
 (function () {
@@ -90,15 +91,7 @@ window.COLD_N_DARK_CLAN = {
     }
   }, true);
 
-  // Öffentliche Startseite: interne Bereiche erst nach Clasher-Login anzeigen.
-  const privateSelectors = [
-    '.clan-switch',
-    '.quick-grid',
-    '.section-head',
-    '.war-card',
-    '.bottom-nav'
-  ];
-
+  const privateSelectors = ['.clan-switch','.quick-grid','.section-head','.war-card','.bottom-nav'];
   function setPrivateVisibility(isLoggedIn) {
     privateSelectors.forEach(selector => {
       document.querySelectorAll(selector).forEach(el => {
@@ -106,14 +99,7 @@ window.COLD_N_DARK_CLAN = {
       });
     });
   }
-
   setPrivateVisibility(false);
-
-  db.auth.getSession().then(({ data }) => {
-    setPrivateVisibility(!!data.session);
-  });
-
-  db.auth.onAuthStateChange((event, session) => {
-    setPrivateVisibility(!!session);
-  });
+  db.auth.getSession().then(({ data }) => { setPrivateVisibility(!!data.session); });
+  db.auth.onAuthStateChange((event, session) => { setPrivateVisibility(!!session); });
 })();
