@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090611">
+<title>CWL-Bilanz – Cold N' Dark</title>
+<style>
+:root{--gold:#ffc43d;--gold2:#ff9f1c;--bg:#090611;--panel:#171122;--muted:#aaa1bb;--text:#f8f5ff;--line:#ffffff18;--green:#31e36b;--red:#ff7373}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -8%,#4b286d,#090611 68%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}.wrap{max-width:1180px;margin:auto;padding:22px 16px 70px}.back{color:var(--gold);text-decoration:none;font-weight:900}.hero{text-align:center;padding:24px;margin:18px 0 20px;border:1px solid #ffc43d35;border-radius:24px;background:linear-gradient(145deg,#241531,#100c18)}h1{margin:8px 0;color:var(--gold);font-size:clamp(36px,7vw,58px)}.muted{color:var(--muted)}.tools{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}.field{display:flex;flex-direction:column;gap:6px;min-width:210px}.field label{font-weight:800;color:var(--gold)}select{width:100%;padding:12px;border-radius:11px;border:1px solid #ffffff22;background:#09070d;color:var(--text);font:inherit}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px}.stat{padding:18px;border:1px solid var(--line);border-radius:18px;background:#171122}.stat b{display:block;font-size:28px;color:var(--gold)}.stat span{color:var(--muted);font-size:13px}.card{border:1px solid var(--line);border-radius:18px;background:#171122dd;overflow:hidden;margin-top:18px}.card h2{margin:0;padding:18px 20px;color:var(--gold);font-size:21px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}.rank{font-weight:950;color:var(--gold)}.player{font-weight:900}.num{text-align:center}.progress{height:7px;border-radius:99px;background:#ffffff12;overflow:hidden;min-width:100px}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:99px}.rounds td,.rounds th{text-align:center}.rounds td:first-child,.rounds th:first-child{text-align:left}.ok{color:var(--green);font-weight:900}.warn{color:var(--red);font-weight:900}.status{text-align:center;min-height:24px;margin:12px 0;font-weight:800}.error{color:var(--red)}.note{margin-top:18px;padding:14px;border:1px solid #ffc43d35;border-radius:13px;background:#ffc43d0d;color:var(--muted);font-size:13px}footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var(--muted);margin-top:25px}footer b{color:var(--gold)}@media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}}@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.stats .stat:last-child{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<a class="back" href="cwl-angriffe.html">← Zur Angriffserfassung</a>
+<section class="hero">
+<div>🏆 CWL • ZWISCHENBILANZ</div>
+<h1>Cold N' Dark</h1>
+<p class="muted">Automatische Auswertung der bisher gespeicherten CWL-Angriffe.</p>
+</section>
+<div class="tools">
+<div class="field"><label for="round">Auswertung bis</label><select id="round"></select></div>
+</div>
+<div class="status" id="status">Lade Daten …</div>
+<section class="stats">
+<div class="stat"><b id="days">0</b><span>CWL-Tage erfasst</span></div>
+<div class="stat"><b id="attacks">0</b><span>Angriffe</span></div>
+<div class="stat"><b id="stars">0 ⭐</b><span>Gesamtsterne</span></div>
+<div class="stat"><b id="avgStars">0,00</b><span>Ø Sterne / Angriff</span></div>
+<div class="stat"><b id="avgDest">0,00 %</b><span>Ø Zerstörung / Angriff</span></div>
+</section>
+<section class="card">
+<h2>📊 Tagesbilanz</h2>
+<div class="table-wrap"><table class="rounds"><thead><tr><th>Tag</th><th>Angriffe</th><th>Sterne</th><th>Ø Sterne</th><th>Ø Zerstörung</th></tr></thead><tbody id="roundRows"></tbody></table></div>
+</section>
+<section class="card">
+<h2>🥇 Member-Rangliste</h2>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>Spieler</th><th>Angriffe</th><th>Sterne</th><th>Ø Sterne</th><th>Ø Zerstörung</th></tr></thead><tbody id="memberRows"></tbody></table></div>
+</section>
+<div class="note"><strong>Automatisch:</strong> Die Bilanz liest die zentral gespeicherten CWL-Angriffe aus. Sobald ein neuer CWL-Tag eingetragen und gespeichert wird, kann die Auswertung bis zu diesem Tag angezeigt werden.</div>
+</main>
+<footer><b>COLD N' DARK</b> • CWL-Bilanz</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const db=supabase.createClient('https://jvgqvtnqncelbhuordzy.supabase.co','sb_publishable_4PusmhJVMm0b3Bm-2Y-FPQ__tnZZzZO');
+const members=['Vanille Waffel','Coc Hoffi','The Next Level','Sebastian II','KampfKeks','Kalle','CoC-CR','duster','King Olli','Lucas','Duster 1.0','MosKito','Rocky','BlackDragon','Rhodos','Duster 2.0','SilverStar','KallChen','Tim','Duster 3.0','ORIGIN170','Kallee','Route66','Duster 4.0','TinkerBell','1Nicky43','Hoffi8211','King','WiQUBR','Leon','Basti336'];
+const roundEl=document.getElementById('round');
+for(let r=1;r<=7;r++)roundEl.insertAdjacentHTML('beforeend',`<option value="${r}">Bis Runde ${r}</option>`);
+let all=[];
+const n=v=>Number(v)||0;
+function fmt(v){return n(v).toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(list){const attacks=list.filter(x=>x.attack_used===true);return{attacks:attacks.length,stars:attacks.reduce((s,x)=>s+n(x.stars),0),avgStars:attacks.length?attacks.reduce((s,x)=>s+n(x.stars),0)/attacks.length:0,avgDest:attacks.filter(x=>x.destruction!=null).length?attacks.reduce((s,x)=>s+n(x.destruction),0)/attacks.filter(x=>x.destruction!=null).length:0};}
+function render(maxRound){
+ const list=all.filter(x=>n(x.round)<=maxRound);
+ const used=list.filter(x=>x.attack_used===true);
+ const rounds=[...new Set(list.map(x=>n(x.round)))].filter(Boolean).sort((a,b)=>a-b);
+ const total=calc(list);
+ document.getElementById('days').textContent=rounds.length;
+ document.getElementById('attacks').textContent=total.attacks;
+ document.getElementById('stars').textContent=total.stars+' ⭐';
+ document.getElementById('avgStars').textContent=fmt(total.avgStars);
+ document.getElementById('avgDest').textContent=fmt(total.avgDest)+' %';
+ document.getElementById('roundRows').innerHTML=rounds.map(r=>{const c=calc(list.filter(x=>n(x.round)===r));return `<tr><td><strong>Runde ${r}</strong></td><td>${c.attacks}</td><td>${c.stars} ⭐</td><td>${fmt(c.avgStars)}</td><td>${fmt(c.avgDest)} %</td></tr>`}).join('')||'<tr><td colspan="5" class="muted">Noch keine Daten.</td></tr>';
+ const rows=members.map(name=>{const c=calc(list.filter(x=>x.player_name===name));return{name,...c}}).filter(x=>x.attacks>0).sort((a,b)=>b.stars-a.stars||b.avgStars-a.avgStars||b.avgDest-a.avgDest||a.name.localeCompare(b.name,'de'));
+ document.getElementById('memberRows').innerHTML=rows.map((x,i)=>`<tr><td class="rank">${i+1}</td><td class="player">${esc(x.name)}</td><td>${x.attacks}</td><td>${x.stars} ⭐</td><td>${fmt(x.avgStars)}</td><td><strong>${fmt(x.avgDest)} %</strong></td></tr>`).join('')||'<tr><td colspan="6" class="muted">Noch keine Angriffe gespeichert.</td></tr>';
+}
+async function load(){try{const{data,error}=await db.from('cwl_attacks').select('round,player_name,attack_used,stars,destruction').eq('clan','cold_n_dark').order('round',{ascending:true});if(error)throw error;all=data||[];const max=Math.max(1,...all.map(x=>n(x.round)));roundEl.value=String(Math.min(max,7));render(n(roundEl.value));document.getElementById('status').textContent=all.length?'':'Noch keine Daten';}catch(e){document.getElementById('status').className='status error';document.getElementById('status').textContent='⚠️ Daten konnten nicht geladen werden.';console.error(e)}}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
+roundEl.addEventListener('change',()=>render(n(roundEl.value)));
+load();
+</script>
+</body>
+</html>
