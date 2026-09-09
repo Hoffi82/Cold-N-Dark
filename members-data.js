@@ -10,7 +10,6 @@ window.COLD_N_DARK_MEMBERS = [
   { name: 'CoC-CR', role: 'coLeader', trophies: 0, townHallLevel: 18 },
   { name: 'duster', role: 'admin', trophies: 0, townHallLevel: 18 },
   { name: 'King Olli', role: 'coLeader', trophies: 0, townHallLevel: 18 },
-  { name: 'Lucas', role: 'admin', trophies: 0, townHallLevel: 18 },
   { name: 'Duster 1.0', role: 'coLeader', trophies: 0, townHallLevel: 18 },
   { name: 'MosKito', role: 'member', trophies: 0, townHallLevel: 18 },
   { name: 'Rocky', role: 'member', trophies: 0, townHallLevel: 18 },
@@ -38,7 +37,7 @@ window.COLD_N_DARK_MEMBERS = [
 window.COLD_N_DARK_CLAN = {
   memberCount: window.COLD_N_DARK_MEMBERS.length,
   clanLevel: 26,
-  updatedAt: '2026-09-04'
+  updatedAt: '2026-09-09'
 };
 
 (function () {
