@@ -40,26 +40,12 @@ const current = hasWar ? {
 
 let previous = [];
 try {
-  const warlogRaw = await get(`/v2/clan/${encoded}/warlog`);
-  const warlogItems = Array.isArray(warlogRaw)
-    ? warlogRaw
-    : (warlogRaw?.items ?? warlogRaw?.data ?? []);
-  previous = warlogItems
-    .filter(w => {
-      const clanTag = w?.clan?.tag ?? w?.ourClan?.tag ?? w?.clanTag ?? '';
-      return clanTag === CLAN_TAG;
-    })
-    .slice(0, 15);
+  const warsRaw = await get(`/v2/clan/${encoded}/wars?limit=15`);
+  previous = Array.isArray(warsRaw)
+    ? warsRaw
+    : (warsRaw?.items ?? warsRaw?.data ?? []);
 } catch (error) {
-  console.warn(`Warlog konnte nicht geladen werden: ${error.message}`);
-  try {
-    const legacyRaw = await get(`/war/${encoded}/previous`);
-    previous = Array.isArray(legacyRaw)
-      ? legacyRaw
-      : (legacyRaw?.items ?? legacyRaw?.data ?? []);
-  } catch (legacyError) {
-    console.warn(`Auch Legacy-Warlog konnte nicht geladen werden: ${legacyError.message}`);
-  }
+  console.warn(`Kriegsverlauf konnte nicht geladen werden: ${error.message}`);
 }
 
 const payload = {
