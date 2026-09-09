@@ -1,9 +1,205 @@
 {
   "ok": true,
   "clanTag": "#C89CVRCP",
-  "source": "ClashKing",
-  "fetchedAt": "2026-09-09T19:57:25.332Z",
-  "current": null,
+  "source": "ClashKing/CoC-Proxy – CWL",
+  "fetchedAt": "2026-09-09T20:07:47.327Z",
+  "current": {
+    "state": "inWar",
+    "type": "cwl",
+    "attacksPerMember": 1,
+    "opponent": "Mace’s Minions",
+    "opponentTag": "#2LJ0CP2RP",
+    "ourStars": 84,
+    "enemyStars": 50,
+    "ourAttacks": 30,
+    "enemyAttacks": 24,
+    "warSize": 30,
+    "preparationStartTime": "20260907T205340.000Z",
+    "startTime": "20260908T205337.000Z",
+    "endTime": "20260909T205337.000Z",
+    "players": [
+      {
+        "name": "Tim",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Route66",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Vanille Waffel",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Coc Hoffi",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Kallee",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Rocky",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Tinkerbell",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Leon",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "basti336",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Origin170",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "King",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Hoffi8211",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "King Olli",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Duster 3.0",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "duster",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 69
+      },
+      {
+        "name": "1Nicky43",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Düster 4.0",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 70
+      },
+      {
+        "name": "Kampfkeks",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Sebastian ||",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "BlackDragon",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Rhodos",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Duster 2.0",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 75
+      },
+      {
+        "name": "SilverStar",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Duster 1.0",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 91
+      },
+      {
+        "name": "Kallchen",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "WiQuBr",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "The Next Level",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Kalle",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 80
+      },
+      {
+        "name": "CoC-CR",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 71
+      },
+      {
+        "name": "Moskito",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      }
+    ]
+  },
   "currentError": "",
   "previous": [
     {
