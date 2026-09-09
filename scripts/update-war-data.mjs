@@ -41,6 +41,8 @@ function mapCurrentWar(war, isCwl = false) {
     enemyStars: opponent?.stars ?? 0,
     ourAttacks: clan?.attacks ?? 0,
     enemyAttacks: opponent?.attacks ?? 0,
+    ourDestruction: clan?.destructionPercentage ?? 0,
+    enemyDestruction: opponent?.destructionPercentage ?? 0,
     warSize: war?.teamSize ?? clan?.members?.length ?? 0,
     preparationStartTime: war?.preparationStartTime ?? '',
     startTime: war?.startTime ?? '',
@@ -127,15 +129,12 @@ let current = null;
 let source = 'ClashKing';
 let currentError = '';
 
-// CWL first. The public CoC proxy avoids the IP restriction of the official
-// CoC API on GitHub runners and provides the live league war directly.
 const cwlCurrent = await getCurrentCwl();
 if (cwlCurrent) {
   current = mapCurrentWar(cwlCurrent, true);
   source = 'ClashKing/CoC-Proxy – CWL';
 }
 
-// Normal war fallback through ClashKing's current-war pointer.
 if (!current) {
   try {
     const basicRaw = await getClashKing(`/v2/war/${encoded}/basic`);
