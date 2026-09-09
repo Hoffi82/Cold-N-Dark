@@ -26,6 +26,7 @@ window.COLD_N_DARK_MEMBERS = [
   { name: 'Route66', role: 'member', trophies: 0, townHallLevel: 17 },
   { name: 'Duster 4.0', role: 'admin', trophies: 0, townHallLevel: 18 },
   { name: 'TinkerBell', role: 'admin', trophies: 0, townHallLevel: 17 },
+  { name: 'Nano', role: 'member', trophies: 0, townHallLevel: 16 },
   { name: '1Nicky43', role: 'member', trophies: 0, townHallLevel: 16 },
   { name: 'Hoffi8211', role: 'member', trophies: 0, townHallLevel: 16 },
   { name: 'King', role: 'admin', trophies: 0, townHallLevel: 16 },
