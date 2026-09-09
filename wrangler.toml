@@ -1,3 +1,0 @@
-name = "cold-n-dark-members-api"
-main = "cloudflare-worker-members.js"
-compatibility_date = "2026-09-09"
