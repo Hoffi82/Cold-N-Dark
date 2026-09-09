@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Repository auschecken
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Kriegsdaten von ClashKing abrufen
         run: node scripts/update-war-data.mjs
