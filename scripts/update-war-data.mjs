@@ -50,14 +50,21 @@ function mapCurrentWar(war, isCwl = false) {
 
 async function getCurrentCwl() {
   try {
-    // ClashKing stores the complete CWL group. Unlike the old endpoint,
-    // rounds.warTags contains full WarResponse objects, not only tag strings.
-    const raw = await getClashKing(`/v2/cwl/${encoded}/group`);
-    const rounds = Array.isArray(raw?.rounds) ? raw.rounds : [];
+    // The public group endpoint returns the CWL round as war tags. The
+    // season-specific legacy endpoint hydrates those tags into full war data.
+    const groupRaw = await getClashKing(`/v2/cwl/${encoded}/group`);
+    const group = groupRaw?.data ?? groupRaw ?? {};
+    const season = group?.season;
+    if (!season) return null;
+
+    const fullRaw = await getClashKing(`/cwl/${encoded}/${encodeURIComponent(season)}`);
+    const fullGroup = fullRaw?.data ?? fullRaw ?? {};
+    const rounds = Array.isArray(fullGroup?.rounds) ? fullGroup.rounds : [];
+
     const wars = rounds.flatMap(round => Array.isArray(round?.warTags) ? round.warTags : [])
       .filter(war => war && typeof war === 'object' && (war?.clan?.tag === CLAN_TAG || war?.opponent?.tag === CLAN_TAG));
 
-    const active = wars.filter(war => ['inwar', 'preparation'].includes(String(war?.state || '').toLowerCase()));
+    const active = wars.filter(war => ['inwar', 'inWar', 'preparation'].includes(String(war?.state || '')));
     if (!active.length) return null;
 
     active.sort((a, b) => String(b?.startTime || b?.preparationStartTime || '').localeCompare(String(a?.startTime || a?.preparationStartTime || '')));
@@ -72,8 +79,8 @@ let current = null;
 let source = 'ClashKing';
 let currentError = '';
 
-// CWL first: ClashKing provides the complete stored CWL group publicly and
-// therefore avoids the IP restriction of the official CoC API on GitHub runners.
+// CWL first: ClashKing provides the public CWL group and hydrated round data,
+// avoiding the IP restriction of the official CoC API on GitHub runners.
 const cwlCurrent = await getCurrentCwl();
 if (cwlCurrent) {
   current = mapCurrentWar(cwlCurrent, true);
