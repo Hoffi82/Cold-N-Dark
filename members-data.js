@@ -31,7 +31,13 @@ window.COLD_N_DARK_MEMBERS = [
   { name: 'King', role: 'admin', trophies: 0, townHallLevel: 16 },
   { name: 'WiQUBR', role: 'admin', trophies: 0, townHallLevel: 16 },
   { name: 'Leon', role: 'admin', trophies: 0, townHallLevel: 15 },
-  { name: 'Basti336', role: 'member', trophies: 0, townHallLevel: 14 }
+  { name: 'Basti336', role: 'member', trophies: 0, townHallLevel: 14 },
+  { name: 'Tommy-S04', role: 'member', trophies: 0, townHallLevel: 15 },
+  { name: 'Pree_Killer', role: 'member', trophies: 0, townHallLevel: 14 },
+  { name: '1Eric43', role: 'member', trophies: 0, townHallLevel: 14 },
+  { name: 'Karmakeks2', role: 'member', trophies: 0, townHallLevel: 14 },
+  { name: 'Schlingel', role: 'member', trophies: 0, townHallLevel: 13 },
+  { name: 'Darkside', role: 'member', trophies: 0, townHallLevel: 13 }
 ];
 
 window.COLD_N_DARK_CLAN = {
