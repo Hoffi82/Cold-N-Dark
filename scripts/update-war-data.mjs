@@ -10,7 +10,9 @@ async function get(path) {
   return response.json();
 }
 
-const basicRaw = await get(`/war/${encoded}/basic`);
+// Der aktuelle Krieg läuft bei ClashKing über den dokumentierten v2-Endpunkt.
+const basicRaw = await get(`/v2/war/${encoded}/basic`);
+// Für die bisherigen Kriege bleibt der dokumentierte Legacy-Endpunkt verfügbar.
 const previousRaw = await get(`/war/${encoded}/previous`);
 
 const basic = basicRaw?.data ?? basicRaw ?? {};
@@ -36,7 +38,9 @@ const current = hasWar ? {
   })) : []
 } : null;
 
-const previous = Array.isArray(previousRaw) ? previousRaw : (previousRaw?.items ?? previousRaw?.data ?? []);
+const previous = Array.isArray(previousRaw)
+  ? previousRaw
+  : (previousRaw?.items ?? previousRaw?.data ?? []);
 
 const payload = {
   ok: true,
