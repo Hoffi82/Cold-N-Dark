@@ -2,7 +2,7 @@
   "ok": true,
   "clanTag": "#C89CVRCP",
   "source": "ClashKing/CoC-Proxy – CWL",
-  "fetchedAt": "2026-09-09T20:43:05.439Z",
+  "fetchedAt": "2026-09-09T20:43:36.609Z",
   "current": {
     "state": "inWar",
     "type": "cwl",
@@ -13,6 +13,8 @@
     "enemyStars": 50,
     "ourAttacks": 30,
     "enemyAttacks": 24,
+    "ourDestruction": 95.2,
+    "enemyDestruction": 61.233333333333334,
     "warSize": 30,
     "preparationStartTime": "20260907T205340.000Z",
     "startTime": "20260908T205337.000Z",
