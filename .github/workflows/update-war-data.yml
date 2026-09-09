@@ -8,6 +8,9 @@ on:
 permissions:
   contents: write
 
+env:
+  CLASH_API_TOKEN: ${{ secrets.CLASH_API_TOKEN }}
+
 jobs:
   update-war-data:
     runs-on: ubuntu-latest
@@ -15,7 +18,7 @@ jobs:
       - name: Repository auschecken
         uses: actions/checkout@v4
 
-      - name: Kriegsdaten von ClashKing abrufen
+      - name: Kriegsdaten automatisch abrufen
         run: node scripts/update-war-data.mjs
 
       - name: Änderungen speichern
