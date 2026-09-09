@@ -8,6 +8,7 @@ on:
     paths:
       - 'scripts/update-war-data.mjs'
       - '.github/workflows/update-war-data.yml'
+      - 'auto-war-stats.js'
 
 permissions:
   contents: write
@@ -25,11 +26,26 @@ jobs:
       - name: Kriegsdaten automatisch abrufen
         run: node scripts/update-war-data.mjs
 
+      - name: Automatische Statistik in Kriegsseite aktivieren
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('krieg.html')
+          text = path.read_text(encoding='utf-8')
+          tag = '<script src="auto-war-stats.js?v=1"></script>'
+          if tag not in text:
+              marker = '</body>'
+              if marker not in text:
+                  raise SystemExit('krieg.html enthält kein </body>.')
+              text = text.replace(marker, tag + '\n' + marker, 1)
+              path.write_text(text, encoding='utf-8')
+          PY
+
       - name: Änderungen speichern
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add war-data.json
+          git add war-data.json krieg.html auto-war-stats.js
           git diff --cached --quiet && exit 0
-          git commit -m "Automatisch: Kriegsdaten aktualisieren"
+          git commit -m "Automatisch: Kriegsstatistik mit CoC-Daten verbinden"
           git push
