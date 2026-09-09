@@ -11,7 +11,6 @@ async function get(path) {
 }
 
 const basicRaw = await get(`/v2/war/${encoded}/basic`);
-const warlogRaw = await get(`/v2/clan/${encoded}/warlog`);
 
 const basic = basicRaw?.data ?? basicRaw ?? {};
 const clan = basic?.clan ?? basic?.ourClan ?? {};
@@ -39,16 +38,29 @@ const current = hasWar ? {
   }) : []
 } : null;
 
-const warlogItems = Array.isArray(warlogRaw)
-  ? warlogRaw
-  : (warlogRaw?.items ?? warlogRaw?.data ?? []);
-
-const previous = warlogItems
-  .filter(w => {
-    const clanTag = w?.clan?.tag ?? w?.ourClan?.tag ?? w?.clanTag ?? '';
-    return clanTag === CLAN_TAG;
-  })
-  .slice(0, 15);
+let previous = [];
+try {
+  const warlogRaw = await get(`/v2/clan/${encoded}/warlog`);
+  const warlogItems = Array.isArray(warlogRaw)
+    ? warlogRaw
+    : (warlogRaw?.items ?? warlogRaw?.data ?? []);
+  previous = warlogItems
+    .filter(w => {
+      const clanTag = w?.clan?.tag ?? w?.ourClan?.tag ?? w?.clanTag ?? '';
+      return clanTag === CLAN_TAG;
+    })
+    .slice(0, 15);
+} catch (error) {
+  console.warn(`Warlog konnte nicht geladen werden: ${error.message}`);
+  try {
+    const legacyRaw = await get(`/war/${encoded}/previous`);
+    previous = Array.isArray(legacyRaw)
+      ? legacyRaw
+      : (legacyRaw?.items ?? legacyRaw?.data ?? []);
+  } catch (legacyError) {
+    console.warn(`Auch Legacy-Warlog konnte nicht geladen werden: ${legacyError.message}`);
+  }
+}
 
 const payload = {
   ok: true,
