@@ -10,16 +10,14 @@ async function get(path) {
   return response.json();
 }
 
-// Der aktuelle Krieg läuft bei ClashKing über den dokumentierten v2-Endpunkt.
 const basicRaw = await get(`/v2/war/${encoded}/basic`);
-// Für die bisherigen Kriege bleibt der dokumentierte Legacy-Endpunkt verfügbar.
-const previousRaw = await get(`/war/${encoded}/previous`);
+const warlogRaw = await get(`/v2/clan/${encoded}/warlog`);
 
 const basic = basicRaw?.data ?? basicRaw ?? {};
 const clan = basic?.clan ?? basic?.ourClan ?? {};
 const opponent = basic?.opponent ?? basic?.enemyClan ?? {};
 const state = basic?.state ?? basic?.status ?? 'notInWar';
-const hasWar = state !== 'notInWar' && state !== 'unknown';
+const hasWar = state !== 'notInWar' && state !== 'unknown' && Object.keys(basic).length > 0;
 
 const current = hasWar ? {
   state,
@@ -27,20 +25,30 @@ const current = hasWar ? {
   opponentTag: opponent?.tag ?? '',
   ourStars: clan?.stars ?? clan?.clanStars ?? 0,
   enemyStars: opponent?.stars ?? opponent?.clanStars ?? 0,
-  ourAttacks: clan?.attacksUsed ?? basic?.attacksUsed ?? 0,
-  enemyAttacks: opponent?.attacksUsed ?? 0,
+  ourAttacks: clan?.attacksUsed ?? clan?.attacks ?? basic?.attacksUsed ?? 0,
+  enemyAttacks: opponent?.attacksUsed ?? opponent?.attacks ?? 0,
   warSize: basic?.teamSize ?? basic?.warSize ?? clan?.members?.length ?? 0,
-  players: Array.isArray(clan?.members) ? clan.members.map(p => ({
-    name: p.name ?? p.playerName ?? 'Unbekannt',
-    attacks: p.attacksUsed ?? p.attacks ?? 0,
-    stars: p.stars ?? p.attackStars ?? 0,
-    destruction: p.destructionPercentage ?? p.destruction ?? 0
-  })) : []
+  players: Array.isArray(clan?.members) ? clan.members.map(p => {
+    const attacks = Array.isArray(p.attacks) ? p.attacks : [];
+    return {
+      name: p.name ?? p.playerName ?? 'Unbekannt',
+      attacks: p.attacksUsed ?? p.attacksCount ?? attacks.length,
+      stars: p.stars ?? attacks.reduce((sum, a) => sum + Number(a?.stars || 0), 0),
+      destruction: p.destructionPercentage ?? p.destruction ?? attacks.reduce((max, a) => Math.max(max, Number(a?.destructionPercentage || 0)), 0)
+    };
+  }) : []
 } : null;
 
-const previous = Array.isArray(previousRaw)
-  ? previousRaw
-  : (previousRaw?.items ?? previousRaw?.data ?? []);
+const warlogItems = Array.isArray(warlogRaw)
+  ? warlogRaw
+  : (warlogRaw?.items ?? warlogRaw?.data ?? []);
+
+const previous = warlogItems
+  .filter(w => {
+    const clanTag = w?.clan?.tag ?? w?.ourClan?.tag ?? w?.clanTag ?? '';
+    return clanTag === CLAN_TAG;
+  })
+  .slice(0, 15);
 
 const payload = {
   ok: true,
