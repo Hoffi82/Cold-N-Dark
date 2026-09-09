@@ -2,12 +2,21 @@ import { writeFile } from 'node:fs/promises';
 
 const CLAN_TAG = '#C89CVRCP';
 const CLASHKING_API = 'https://api.clashk.ing';
+const COC_PROXY_API = 'https://proxy.clashk.ing/v1';
 const encoded = encodeURIComponent(CLAN_TAG);
 
-async function getClashKing(path) {
-  const response = await fetch(CLASHKING_API + path, { headers: { Accept: 'application/json' } });
-  if (!response.ok) throw new Error(`ClashKing HTTP ${response.status} for ${path}`);
+async function getJson(base, path) {
+  const response = await fetch(base + path, { headers: { Accept: 'application/json' } });
+  if (!response.ok) throw new Error(`HTTP ${response.status} for ${base}${path}`);
   return response.json();
+}
+
+async function getClashKing(path) {
+  return getJson(CLASHKING_API, path);
+}
+
+async function getCocProxy(path) {
+  return getJson(COC_PROXY_API, path);
 }
 
 function itemsOf(raw) {
@@ -48,43 +57,82 @@ function mapCurrentWar(war, isCwl = false) {
   };
 }
 
+function isActiveWar(war) {
+  return ['inwar', 'preparation'].includes(String(war?.state ?? '').toLowerCase());
+}
+
+function pickActiveWar(wars) {
+  const active = wars
+    .filter(war => war && (war?.clan?.tag === CLAN_TAG || war?.opponent?.tag === CLAN_TAG))
+    .filter(isActiveWar);
+  active.sort((a, b) => String(b?.startTime || b?.preparationStartTime || '').localeCompare(String(a?.startTime || a?.preparationStartTime || '')));
+  return active[0] ?? null;
+}
+
+async function getCurrentCwlViaProxy() {
+  const groupRaw = await getCocProxy(`/clans/${encoded}/currentwar/leaguegroup`);
+  const group = groupRaw?.data ?? groupRaw ?? {};
+  const rounds = Array.isArray(group?.rounds) ? group.rounds : [];
+  const warTags = rounds.flatMap(round => Array.isArray(round?.warTags) ? round.warTags : [])
+    .filter(tag => typeof tag === 'string' && tag && tag !== '#0');
+
+  const wars = [];
+  for (const warTag of [...new Set(warTags)]) {
+    try {
+      const warRaw = await getCocProxy(`/clanwarleagues/wars/${encodeURIComponent(warTag)}`);
+      const war = warRaw?.data ?? warRaw ?? {};
+      if (war?.clan || war?.opponent) wars.push(war);
+    } catch (error) {
+      console.warn(`CWL-War ${warTag} konnte über den CoC-Proxy nicht geladen werden: ${error.message}`);
+    }
+  }
+
+  return pickActiveWar(wars);
+}
+
+async function getCurrentCwlViaClashKing() {
+  const groupRaw = await getClashKing(`/v2/cwl/${encoded}/group`);
+  const group = groupRaw?.data ?? groupRaw ?? {};
+  const season = group?.season;
+  if (!season) return null;
+
+  const fullRaw = await getClashKing(`/cwl/${encoded}/${encodeURIComponent(season)}`);
+  const fullGroup = fullRaw?.data ?? fullRaw ?? {};
+  const rounds = Array.isArray(fullGroup?.rounds) ? fullGroup.rounds : [];
+  const wars = rounds.flatMap(round => Array.isArray(round?.warTags) ? round.warTags : [])
+    .filter(war => war && typeof war === 'object');
+
+  return pickActiveWar(wars);
+}
+
 async function getCurrentCwl() {
   try {
-    // The public group endpoint returns the CWL round as war tags. The
-    // season-specific legacy endpoint hydrates those tags into full war data.
-    const groupRaw = await getClashKing(`/v2/cwl/${encoded}/group`);
-    const group = groupRaw?.data ?? groupRaw ?? {};
-    const season = group?.season;
-    if (!season) return null;
+    const current = await getCurrentCwlViaProxy();
+    if (current) return current;
+  } catch (error) {
+    console.warn(`CWL über CoC-Proxy konnte nicht geladen werden: ${error.message}`);
+  }
 
-    const fullRaw = await getClashKing(`/cwl/${encoded}/${encodeURIComponent(season)}`);
-    const fullGroup = fullRaw?.data ?? fullRaw ?? {};
-    const rounds = Array.isArray(fullGroup?.rounds) ? fullGroup.rounds : [];
-
-    const wars = rounds.flatMap(round => Array.isArray(round?.warTags) ? round.warTags : [])
-      .filter(war => war && typeof war === 'object' && (war?.clan?.tag === CLAN_TAG || war?.opponent?.tag === CLAN_TAG));
-
-    const active = wars.filter(war => ['inwar', 'inWar', 'preparation'].includes(String(war?.state || '')));
-    if (!active.length) return null;
-
-    active.sort((a, b) => String(b?.startTime || b?.preparationStartTime || '').localeCompare(String(a?.startTime || a?.preparationStartTime || '')));
-    return active[0];
+  try {
+    const current = await getCurrentCwlViaClashKing();
+    if (current) return current;
   } catch (error) {
     console.warn(`CWL über ClashKing konnte nicht geladen werden: ${error.message}`);
-    return null;
   }
+
+  return null;
 }
 
 let current = null;
 let source = 'ClashKing';
 let currentError = '';
 
-// CWL first: ClashKing provides the public CWL group and hydrated round data,
-// avoiding the IP restriction of the official CoC API on GitHub runners.
+// CWL first. The public CoC proxy avoids the IP restriction of the official
+// CoC API on GitHub runners and provides the live league war directly.
 const cwlCurrent = await getCurrentCwl();
 if (cwlCurrent) {
   current = mapCurrentWar(cwlCurrent, true);
-  source = 'ClashKing – CWL';
+  source = 'ClashKing/CoC-Proxy – CWL';
 }
 
 // Normal war fallback through ClashKing's current-war pointer.
