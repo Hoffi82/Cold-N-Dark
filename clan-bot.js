@@ -5,18 +5,20 @@ const CND_BOT = (() => {
   const current = () => data?.current || null;
   function warText() {
     const w = current();
-    if (!w) return '🏁 Aktuell ist laut den letzten Kriegsdaten kein laufender Krieg eingetragen.';
+    if (!w) return data?.currentError ? `⚠️ Die aktuellen Kriegsdaten konnten noch nicht geladen werden (${data.currentError}). Die automatische Aktualisierung läuft weiter.` : '🏁 Aktuell ist laut den letzten Kriegsdaten kein laufender Krieg eingetragen.';
     const state = normalize(w.state);
     const status = state === 'war day' || state === 'warday' || state === 'inwar' ? 'Kriegstag' : state === 'preparation' ? 'Vorbereitung' : (w.state || 'Aktiv');
     const our = num(w.ourStars), enemy = num(w.enemyStars), oa = num(w.ourAttacks), ea = num(w.enemyAttacks);
-    return `⚔️ ${status}: Cold N' Dark ${our}:${enemy} gegen ${w.opponent || 'Gegner'}. Angriffe: ${oa}:${ea}. Krieggröße: ${w.warSize || '–'}.`;
+    const kind = w.type === 'cwl' ? '🏆 CWL' : '⚔️ Clan-Krieg';
+    return `${kind} – ${status}: Cold N' Dark ${our}:${enemy} gegen ${w.opponent || 'Gegner'}. Angriffe: ${oa}:${ea}. Krieggröße: ${w.warSize || '–'}.`;
   }
   function openAttacksText() {
     const w = current();
     if (!w || !Array.isArray(w.players)) return 'ℹ️ Für den aktuellen Krieg sind noch keine Teilnehmerdaten verfügbar.';
-    const open = w.players.filter(p => num(p.attacks) < 2);
-    if (!open.length) return '✅ Nach den vorhandenen Daten haben alle Teilnehmer ihre 2 Angriffe gemacht.';
-    return `⚠️ Noch nicht 2 Angriffe gemacht: ${open.map(p => `${p.name} (${num(p.attacks)}/2)`).join(', ')}`;
+    const maxAttacks = num(w.attacksPerMember) || (w.type === 'cwl' ? 1 : 2);
+    const open = w.players.filter(p => num(p.attacks) < maxAttacks);
+    if (!open.length) return `✅ Nach den vorhandenen Daten haben alle Teilnehmer ihre ${maxAttacks} Angriff${maxAttacks === 1 ? '' : 'e'} gemacht.`;
+    return `⚠️ Noch nicht ${maxAttacks} Angriff${maxAttacks === 1 ? '' : 'e'} gemacht: ${open.map(p => `${p.name} (${num(p.attacks)}/${maxAttacks})`).join(', ')}`;
   }
   function playerText(q) {
     const w = current();
@@ -24,7 +26,7 @@ const CND_BOT = (() => {
     const s = normalize(q);
     const p = w.players.find(x => s.includes(normalize(x.name)));
     if (!p) return '👤 Ich finde diesen Spieler nicht in den aktuellen Teilnehmerdaten.';
-    return `👤 ${p.name}: ${num(p.attacks)} Angriffe, ${num(p.stars)} ⭐ und ${num(p.destruction)}% Zerstörung.`;
+    return `👤 ${p.name}: ${num(p.attacks)} Angriff${num(p.attacks) === 1 ? '' : 'e'}, ${num(p.stars)} ⭐ und ${num(p.destruction)}% Zerstörung.`;
   }
   function answer(q) {
     const s = normalize(q);
@@ -32,7 +34,7 @@ const CND_BOT = (() => {
     if (/(wer|welche|spieler|mitglied).*(offen|angriff|noch)/.test(s) || /offen.*angriff/.test(s)) return openAttacksText();
     if (/wie.*(steht|stand)|kriegsstand|krieg.*(stand|score)|gegner|aktueller krieg/.test(s)) return warText();
     if (/angriff/.test(s) && /(wer|noch|offen)/.test(s)) return openAttacksText();
-    if (/cwl/.test(s)) return '🏆 Die CWL läuft über den automatischen Kriegsdaten-Import. Öffne den CWL-Bereich für die vollständige Übersicht.';
+    if (/cwl/.test(s)) return warText();
     if (/mitglieder|mitglied|clan/.test(s) && !/krieg/.test(s)) return '👥 Die Mitgliederübersicht findest du im Bereich Mitglieder. Bei einem aktuellen Krieg kann ich auch die Teilnehmerdaten auswerten.';
     if (/hilfe|help|was kannst|frage/.test(s)) return '🤖 Ich kann den aktuellen Krieg auswerten, den Spielstand nennen, offene Angriffe anzeigen und nach Teilnehmern suchen. Außerdem helfe ich bei CWL und Mitgliedern.';
     if (current()?.players?.length) return playerText(q);
