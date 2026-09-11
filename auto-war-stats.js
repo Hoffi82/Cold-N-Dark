@@ -5,8 +5,7 @@
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const date = value => {
     if (!value) return '';
-    const text = String(value);
-    const iso = text.length === 16 && text.includes('T') ? text.replace('T',' ').replace(/(\d{8})/, '$1') : text;
+    const iso = String(value);
     const d = new Date(value);
     return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString('de-DE', {day:'2-digit', month:'2-digit', year:'numeric'});
   };
@@ -77,13 +76,18 @@
       add(m.name, attacks.length, attacks.reduce((s,a) => s + n(a.stars), 0), attacks.reduce((s,a) => s + n(a.destructionPercentage), 0), 1);
     }));
 
-    const list = [...map.values()].sort((a,b) => b.stars - a.stars || b.destruction - a.destruction || b.attacks - a.attacks || a.name.localeCompare(b.name, 'de'));
+    const list = [...map.values()]
+      .filter(p => p.attacks > 0)
+      .map(p => ({...p, avgStars: p.stars / p.attacks, avgDestruction: p.destruction / p.attacks}))
+      .sort((a,b) => b.stars - a.stars || b.avgStars - a.avgStars || b.avgDestruction - a.avgDestruction || b.attacks - a.attacks || a.name.localeCompare(b.name, 'de'));
+
     $('statsCount').textContent = list.length + ' SPIELER';
     if (!list.length) {
       $('playerStats').innerHTML = '<div class="empty">🏆 Noch keine automatischen Spielerstatistiken vorhanden.</div>';
       return;
     }
-    $('playerStats').innerHTML = `<div class="stats-card"><p class="stats-note">Automatische Spielerstatistik aus dem aktuellen und den zuletzt erfassten Kriegen.</p><div class="stats-scroll"><table class="stats-table"><thead><tr><th>#</th><th>Spieler</th><th>⭐ Sterne</th><th>⚔️ Angriffe</th><th>💥 Zerstörung</th><th>Kriege</th></tr></thead><tbody>${list.map((p,i) => `<tr><td class="rank">${i+1}</td><td class="player">${esc(p.name)}</td><td class="small-stat">${p.stars}</td><td>${p.attacks}</td><td>${Math.round(p.destruction*10)/10}%</td><td>${p.wars}</td></tr>`).join('')}</tbody></table></div></div>`;
+
+    $('playerStats').innerHTML = `<div class="stats-card"><p class="stats-note">Automatische Spielerstatistik aus den erfassten Kriegen. Zerstörung und Sterne werden zusätzlich als Durchschnitt pro Angriff angezeigt.</p><div class="stats-scroll"><table class="stats-table"><thead><tr><th>#</th><th>Spieler</th><th>⭐ Sterne</th><th>⚔️ Angriffe</th><th>Ø Sterne</th><th>Ø Zerstörung</th><th>Kriege</th></tr></thead><tbody>${list.map((p,i) => `<tr><td class="rank">${i+1}</td><td class="player">${esc(p.name)}</td><td class="small-stat">${p.stars}</td><td>${p.attacks}</td><td>${p.avgStars.toFixed(2)}</td><td>${p.avgDestruction.toFixed(1)}%</td><td>${p.wars}</td></tr>`).join('')}</tbody></table></div></div>`;
   }
 
   async function loadAutomaticStats() {
