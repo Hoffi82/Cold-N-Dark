@@ -1,0 +1,51 @@
+name: CWL Liga aktualisieren
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    if: ${{ !contains(github.event.head_commit.message, 'CWL Liga auf Meister III aktualisieren') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Liga und CWL-Auswertung aktualisieren
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          replacements = {
+              'index.html': [
+                  ('CLAN-LEVEL 26 • KRISTALL-LIGA I', 'CLAN-LEVEL 26 • MEISTER III'),
+                  ('Level 26 • Kristall Liga I', 'Level 26 • Meister III')
+              ],
+              'cwl-auswertung.html': [
+                  ('KRISTALL-LIGA I • 7 RUNDEN', 'MEISTER III • 7 RUNDEN')
+              ]
+          }
+
+          for filename, pairs in replacements.items():
+              path = Path(filename)
+              if not path.exists():
+                  continue
+              text = path.read_text(encoding='utf-8')
+              for old, new in pairs:
+                  text = text.replace(old, new)
+              path.write_text(text, encoding='utf-8')
+          PY
+      - name: Änderungen speichern
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html cwl-auswertung.html
+          if git diff --cached --quiet; then
+            echo 'Keine Änderungen nötig.'
+          else
+            git commit -m 'CWL Liga auf Meister III aktualisieren'
+            git push
+          fi
