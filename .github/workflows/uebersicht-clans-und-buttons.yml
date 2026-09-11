@@ -1,0 +1,46 @@
+name: Uebersicht Clans und Buttons
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - index.html
+      - cwl.html
+      - krieg-dashboard.html
+      - cwl-spielerwertung.html
+jobs:
+  update:
+    if: ${{ !contains(github.event.head_commit.message, 'Clan-Ligen und Übersichtsbuttons aktualisieren') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aktualisieren
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('Gold Liga 3 • 31 Spieler','Gold Liga II • 31 Spieler')
+          s=s.replace('href="krieg.html">⚔️<div>NORMALE KRIEGE','href="krieg-dashboard.html">⚔️<div>NORMALE KRIEGE')
+          s=s.replace('href="cwl.html">🏆<div>CLAN-KRIEGSLIGA','href="cwl.html">🏆<div>CLAN-KRIEGSLIGA')
+          s=s.replace('Level 6 • Gold Liga 3 • 31 Spieler','Level 6 • Gold Liga II • 31 Spieler')
+          p.write_text(s,encoding='utf-8')
+          p=Path('cwl.html')
+          s=p.read_text(encoding='utf-8')
+          marker='<a class="cwl-opponents" href="cwl-gegner.html">'
+          if 'cwl-spielerwertung.html' not in s:
+            pos=s.find(marker)
+            if pos!=-1:
+              end=s.find('</a>',pos)+4
+              link='<a class="cwl-opponents" href="cwl-spielerwertung.html">🥇 CWL-Spielerwertung &amp; Platzierung ansehen →</a>\n'
+              s=s[:end]+'\n'+link+s[end:]
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html cwl.html
+          git diff --cached --quiet || git commit -m 'Clan-Ligen und Übersichtsbuttons aktualisieren'
+          git push
