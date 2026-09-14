@@ -3,24 +3,16 @@ import { writeFile } from 'node:fs/promises';
 const CLAN_TAG = '#C89CVRCP';
 const CLASHKING_API = 'https://api.clashk.ing';
 const COC_PROXY_API = 'https://proxy.clashk.ing/v1';
-const COC_API = 'https://api.clashofclans.com/v1';
-const COC_API_TOKEN = process.env.CLASH_API_TOKEN || '';
 const encoded = encodeURIComponent(CLAN_TAG);
 
-async function getJson(base, path, headers = {}) {
-  const response = await fetch(base + path, {
-    headers: { Accept: 'application/json', ...headers }
-  });
+async function getJson(base, path) {
+  const response = await fetch(base + path, { headers: { Accept: 'application/json' } });
   if (!response.ok) throw new Error(`HTTP ${response.status} for ${base}${path}`);
   return response.json();
 }
 
 async function getClashKing(path) { return getJson(CLASHKING_API, path); }
 async function getCocProxy(path) { return getJson(COC_PROXY_API, path); }
-async function getOfficialCoc(path) {
-  if (!COC_API_TOKEN) throw new Error('CLASH_API_TOKEN ist in GitHub Actions nicht gesetzt.');
-  return getJson(COC_API, path, { Authorization: `Bearer ${COC_API_TOKEN}` });
-}
 function itemsOf(raw) { return Array.isArray(raw) ? raw : (raw?.items ?? raw?.data ?? []); }
 
 function mapCurrentWar(war, isCwl = false) {
@@ -68,15 +60,6 @@ function pickActiveWar(wars) {
   return active[0] ?? null;
 }
 
-async function getCurrentOfficialWar() {
-  const raw = await getOfficialCoc(`/clans/${encoded}/currentwar`);
-  const war = raw?.data ?? raw ?? {};
-  const state = String(war?.state ?? 'notInWar');
-  if (state === 'notInWar' || !Object.keys(war).length) return null;
-  if (!war?.clan && !war?.opponent) return null;
-  return war;
-}
-
 async function getCurrentCwlViaProxy() {
   const groupRaw = await getCocProxy(`/clans/${encoded}/currentwar/leaguegroup`);
   const group = groupRaw?.data ?? groupRaw ?? {};
@@ -121,36 +104,39 @@ let current = null;
 let source = 'ClashKing';
 let currentError = '';
 
-// Der laufende normale Krieg kommt jetzt direkt aus der offiziellen Clash-of-Clans-API.
-// ClashKing wird nur noch als Fallback verwendet, falls die offizielle API nicht erreichbar ist.
+// Aktuellen normalen Krieg direkt über die offizielle CoC-API prüfen.
+// CLASH_API_TOKEN wird nur serverseitig im GitHub-Workflow verwendet.
 try {
-  const officialWar = await getCurrentOfficialWar();
-  if (officialWar) {
-    current = mapCurrentWar(officialWar, false);
-    source = 'Clash of Clans API – Normaler Krieg';
+  if (!process.env.CLASH_API_TOKEN) throw new Error('CLASH_API_TOKEN fehlt in GitHub Actions.');
+  const response = await fetch(`https://api.clashofclans.com/v1/clans/${encoded}/currentwar`, {
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${process.env.CLASH_API_TOKEN}`
+    }
+  });
+  if (!response.ok) throw new Error(`HTTP ${response.status} bei der offiziellen CoC-API.`);
+  const basic = await response.json();
+  const basicState = String(basic?.state ?? basic?.status ?? 'notInWar');
+  console.log(`CoC-API aktueller Krieg: HTTP ${response.status}, state=${basicState}, clan=${basic?.clan?.name || '–'}, opponent=${basic?.opponent?.name || '–'}`);
+  if (['inWar', 'inwar', 'preparation'].includes(basicState) && Object.keys(basic).length > 0) {
+    current = mapCurrentWar(basic, false);
+    source = 'Offizielle Clash-of-Clans-API – Normaler Krieg';
   }
 } catch (error) {
   currentError = error.message;
-  console.warn(`Offizielle Clash-of-Clans-API konnte den aktuellen Krieg nicht laden: ${error.message}`);
+  console.warn(`Offizielle CoC-API aktueller Krieg konnte nicht geladen werden: ${error.message}`);
 }
 
+// Falls die offizielle API keinen aktiven normalen Krieg liefert, CWL als Fallback prüfen.
 if (!current) {
   try {
     const basicRaw = await getClashKing(`/v2/war/${encoded}/basic`);
     const basic = basicRaw?.data ?? basicRaw ?? {};
     const basicState = String(basic?.state ?? basic?.status ?? 'notInWar');
-    if (['inwar', 'inWar', 'preparation'].includes(basicState) && Object.keys(basic).length > 0) {
-      current = mapCurrentWar(basic, false);
-      source = 'ClashKing – Normaler Krieg (Fallback)';
-    }
+    console.log(`ClashKing-Fallback aktueller Krieg: state=${basicState}`);
   } catch (error) {
-    currentError = currentError || error.message;
-    console.warn(`ClashKing normaler Krieg konnte nicht geladen werden: ${error.message}`);
+    console.warn(`ClashKing-Fallback konnte nicht geladen werden: ${error.message}`);
   }
-}
-
-// Nur wenn kein normaler Krieg läuft, CWL als Fallback bereitstellen.
-if (!current) {
   const cwlCurrent = await getCurrentCwl();
   if (cwlCurrent) {
     current = mapCurrentWar(cwlCurrent, true);
