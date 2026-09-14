@@ -13,6 +13,26 @@
   const resultLabel = r => r === 'win' ? 'SIEG' : r === 'loss' ? 'NIEDERLAGE' : 'UNENTSCHIEDEN';
   const resultClass = r => r === 'win' ? 'win' : r === 'loss' ? 'loss' : 'draw';
 
+  function timeValue(value) {
+    if (!value) return 0;
+    const text = String(value);
+    const normalized = text.length === 18 && /^\d{8}T\d{6}\.\d{3}Z$/.test(text)
+      ? `${text.slice(0,4)}-${text.slice(4,6)}-${text.slice(6,8)}T${text.slice(9,11)}:${text.slice(11,13)}:${text.slice(13,15)}.${text.slice(16,19)}Z`
+      : text;
+    const time = Date.parse(normalized);
+    return Number.isNaN(time) ? 0 : time;
+  }
+
+  function isValidCurrentWar(war) {
+    if (!war || !['inWar','inwar','preparation'].includes(String(war.state))) return false;
+    const now = Date.now();
+    const end = timeValue(war.endTime);
+    const start = timeValue(war.startTime) || timeValue(war.preparationStartTime);
+    if (end && end <= now) return false;
+    if (!start || start < now - 60 * 60 * 60 * 1000) return false;
+    return true;
+  }
+
   function warCard(w, finished) {
     const our = n(w.ourStars), enemy = n(w.enemyStars);
     const result = warResult(our, enemy);
@@ -118,7 +138,7 @@
       const response = await fetch(DATA_URL, {cache:'no-store'});
       if (!response.ok) throw new Error('war-data.json konnte nicht geladen werden.');
       const data = await response.json();
-      const current = data.current && ['inWar','inwar','preparation'].includes(String(data.current.state)) ? data.current : null;
+      const current = isValidCurrentWar(data.current) ? data.current : null;
       const previous = Array.isArray(data.previous) ? data.previous.map(normalizePrevious).sort((a,b) => new Date(b.endTime || 0) - new Date(a.endTime || 0)) : [];
 
       $('currentTag').textContent = current ? 'AUTOMATISCH LIVE' : 'KEIN AKTIVER KRIEG';
