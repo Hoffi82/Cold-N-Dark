@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Kriegsdaten automatisch abrufen
         run: node scripts/update-war-data.mjs
@@ -45,7 +47,40 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add war-data.json krieg.html auto-war-stats.js
-          git diff --cached --quiet && exit 0
-          git commit -m "Automatisch: Kriegsstatistik mit CoC-Daten verbinden"
-          git push
+
+          for attempt in 1 2 3; do
+            git add war-data.json krieg.html auto-war-stats.js
+            if git diff --cached --quiet; then
+              exit 0
+            fi
+
+            git commit -m "Automatisch: Kriegsstatistik mit CoC-Daten verbinden"
+
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            echo "Push wurde abgelehnt. Remote-Änderungen werden übernommen (Versuch $attempt/3)."
+            git fetch origin main
+            git rebase origin/main || {
+              echo "Rebase-Konflikt. Lokalen automatischen Commit verwerfen und Daten erneut vom aktuellen main abrufen."
+              git rebase --abort || true
+              git reset --hard origin/main
+              node scripts/update-war-data.mjs
+              python3 - <<'PY'
+          from pathlib import Path
+          path = Path('krieg.html')
+          text = path.read_text(encoding='utf-8')
+          tag = '<script src="auto-war-stats.js?v=1"></script>'
+          if tag not in text:
+              marker = '</body>'
+              if marker not in text:
+                  raise SystemExit('krieg.html enthält kein </body>.')
+              text = text.replace(marker, tag + '\n' + marker, 1)
+              path.write_text(text, encoding='utf-8')
+          PY
+            }
+          done
+
+          echo "Push konnte nach 3 Versuchen nicht abgeschlossen werden."
+          exit 1
