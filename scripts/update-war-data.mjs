@@ -15,6 +15,28 @@ async function getClashKing(path) { return getJson(CLASHKING_API, path); }
 async function getCocProxy(path) { return getJson(COC_PROXY_API, path); }
 function itemsOf(raw) { return Array.isArray(raw) ? raw : (raw?.items ?? raw?.data ?? []); }
 
+function timeValue(value) {
+  if (!value) return 0;
+  const text = String(value);
+  const iso = text.length === 18 && /^\d{8}T\d{6}\.\d{3}Z$/.test(text)
+    ? `${text.slice(0,4)}-${text.slice(4,6)}-${text.slice(6,8)}T${text.slice(9,11)}:${text.slice(11,13)}:${text.slice(13,15)}.${text.slice(16,19)}Z`
+    : text;
+  const time = Date.parse(iso);
+  return Number.isNaN(time) ? 0 : time;
+}
+
+function isFreshCurrentWar(war) {
+  const now = Date.now();
+  const end = timeValue(war?.endTime);
+  const start = timeValue(war?.startTime) || timeValue(war?.preparationStartTime);
+  if (end && end <= now) return false;
+  if (!start) return false;
+  // Ein normaler Krieg inkl. Vorbereitung ist deutlich unter 48 Stunden lang.
+  // 60 Stunden sind bewusst großzügig, verhindern aber alte gecachte Kriege.
+  if (start < now - 60 * 60 * 60 * 1000) return false;
+  return true;
+}
+
 function mapCurrentWar(war, isCwl = false) {
   let clan = war?.clan ?? {};
   let opponent = war?.opponent ?? {};
@@ -55,9 +77,18 @@ function isActiveWar(war) {
 function pickActiveWar(wars) {
   const active = wars
     .filter(war => war && (war?.clan?.tag === CLAN_TAG || war?.opponent?.tag === CLAN_TAG))
-    .filter(isActiveWar);
+    .filter(isActiveWar)
+    .filter(isFreshCurrentWar);
   active.sort((a, b) => String(b?.startTime || b?.preparationStartTime || '').localeCompare(String(a?.startTime || a?.preparationStartTime || '')));
   return active[0] ?? null;
+}
+
+async function getCurrentNormalViaProxy() {
+  const raw = await getCocProxy(`/clans/${encoded}/currentwar`);
+  const war = raw?.data ?? raw ?? {};
+  const state = String(war?.state ?? war?.status ?? 'notInWar');
+  console.log(`CoC-Proxy aktueller normaler Krieg: state=${state}, clan=${war?.clan?.name || '–'}, opponent=${war?.opponent?.name || '–'}`);
+  return isActiveWar(war) && isFreshCurrentWar(war) ? war : null;
 }
 
 async function getCurrentCwlViaProxy() {
@@ -104,43 +135,48 @@ let current = null;
 let source = 'ClashKing';
 let currentError = '';
 
-// Aktuellen normalen Krieg direkt über die offizielle CoC-API prüfen.
-// CLASH_API_TOKEN wird nur serverseitig im GitHub-Workflow verwendet.
+// Aktuellen normalen Krieg zuerst über die offizielle CoC-API prüfen.
 try {
   if (!process.env.CLASH_API_TOKEN) throw new Error('CLASH_API_TOKEN fehlt in GitHub Actions.');
   const response = await fetch(`https://api.clashofclans.com/v1/clans/${encoded}/currentwar`, {
-    headers: {
-      Accept: 'application/json',
-      Authorization: `Bearer ${process.env.CLASH_API_TOKEN}`
-    }
+    headers: { Accept: 'application/json', Authorization: `Bearer ${process.env.CLASH_API_TOKEN}` }
   });
   if (!response.ok) throw new Error(`HTTP ${response.status} bei der offiziellen CoC-API.`);
   const basic = await response.json();
   const basicState = String(basic?.state ?? basic?.status ?? 'notInWar');
   console.log(`CoC-API aktueller Krieg: HTTP ${response.status}, state=${basicState}, clan=${basic?.clan?.name || '–'}, opponent=${basic?.opponent?.name || '–'}`);
-  if (['inWar', 'inwar', 'preparation'].includes(basicState) && Object.keys(basic).length > 0) {
+  if (isActiveWar(basic) && isFreshCurrentWar(basic)) {
     current = mapCurrentWar(basic, false);
     source = 'Offizielle Clash-of-Clans-API – Normaler Krieg';
+  } else if (isActiveWar(basic)) {
+    currentError = 'Offizielle CoC-API lieferte einen veralteten Krieg; dieser wurde verworfen.';
   }
 } catch (error) {
   currentError = error.message;
   console.warn(`Offizielle CoC-API aktueller Krieg konnte nicht geladen werden: ${error.message}`);
 }
 
-// Falls die offizielle API keinen aktiven normalen Krieg liefert, CWL als Fallback prüfen.
+// Wenn die offizielle API nicht verfügbar ist, den aktuellen normalen Krieg über den CoC-Proxy prüfen.
 if (!current) {
   try {
-    const basicRaw = await getClashKing(`/v2/war/${encoded}/basic`);
-    const basic = basicRaw?.data ?? basicRaw ?? {};
-    const basicState = String(basic?.state ?? basic?.status ?? 'notInWar');
-    console.log(`ClashKing-Fallback aktueller Krieg: state=${basicState}`);
+    const normalCurrent = await getCurrentNormalViaProxy();
+    if (normalCurrent) {
+      current = mapCurrentWar(normalCurrent, false);
+      source = 'ClashKing CoC-Proxy – Normaler Krieg';
+      currentError = '';
+    }
   } catch (error) {
-    console.warn(`ClashKing-Fallback konnte nicht geladen werden: ${error.message}`);
+    console.warn(`Aktueller normaler Krieg über CoC-Proxy konnte nicht geladen werden: ${error.message}`);
   }
+}
+
+// Erst wenn kein gültiger normaler Krieg gefunden wurde, CWL prüfen.
+if (!current) {
   const cwlCurrent = await getCurrentCwl();
   if (cwlCurrent) {
     current = mapCurrentWar(cwlCurrent, true);
     source = 'ClashKing/CoC-Proxy – CWL';
+    currentError = '';
   }
 }
 
