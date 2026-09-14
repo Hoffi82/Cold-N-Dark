@@ -151,7 +151,7 @@
         "builderBaseTrophies": 4654,
         "clanRank": 3,
         "previousClanRank": 2,
-        "donations": 1212,
+        "donations": 1242,
         "donationsReceived": 700,
         "playerHouse": {
           "elements": [
@@ -257,7 +257,7 @@
         "builderBaseTrophies": 3269,
         "clanRank": 5,
         "previousClanRank": 5,
-        "donations": 2058,
+        "donations": 2093,
         "donationsReceived": 336,
         "playerHouse": {
           "elements": [
@@ -310,8 +310,8 @@
         "builderBaseTrophies": 3802,
         "clanRank": 6,
         "previousClanRank": 6,
-        "donations": 502,
-        "donationsReceived": 432,
+        "donations": 589,
+        "donationsReceived": 521,
         "playerHouse": {
           "elements": [
             {
@@ -363,7 +363,7 @@
         "builderBaseTrophies": 4169,
         "clanRank": 7,
         "previousClanRank": 9,
-        "donations": 474,
+        "donations": 611,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -416,7 +416,7 @@
         "builderBaseTrophies": 3348,
         "clanRank": 8,
         "previousClanRank": 10,
-        "donations": 1518,
+        "donations": 1588,
         "donationsReceived": 584,
         "playerHouse": {
           "elements": [
@@ -470,7 +470,7 @@
         "clanRank": 9,
         "previousClanRank": 7,
         "donations": 341,
-        "donationsReceived": 206,
+        "donationsReceived": 293,
         "playerHouse": {
           "elements": [
             {
@@ -736,8 +736,8 @@
         "builderBaseTrophies": 2950,
         "clanRank": 14,
         "previousClanRank": 14,
-        "donations": 775,
-        "donationsReceived": 1183,
+        "donations": 869,
+        "donationsReceived": 1361,
         "playerHouse": {
           "elements": [
             {
@@ -896,7 +896,7 @@
         "builderBaseTrophies": 2901,
         "clanRank": 17,
         "previousClanRank": 17,
-        "donations": 270,
+        "donations": 297,
         "donationsReceived": 88,
         "playerHouse": {
           "elements": [
@@ -1004,7 +1004,7 @@
         "clanRank": 19,
         "previousClanRank": 20,
         "donations": 820,
-        "donationsReceived": 1459,
+        "donationsReceived": 1517,
         "playerHouse": {
           "elements": [
             {
@@ -1110,8 +1110,8 @@
         "builderBaseTrophies": 3366,
         "clanRank": 21,
         "previousClanRank": 22,
-        "donations": 2149,
-        "donationsReceived": 2123,
+        "donations": 2473,
+        "donationsReceived": 2373,
         "playerHouse": {
           "elements": [
             {
@@ -1888,8 +1888,8 @@
         "builderBaseTrophies": 3644,
         "clanRank": 36,
         "previousClanRank": 36,
-        "donations": 1047,
-        "donationsReceived": 2004,
+        "donations": 1280,
+        "donationsReceived": 2379,
         "playerHouse": {
           "elements": [
             {
@@ -2056,7 +2056,7 @@
     "memberCount": 37
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-09-14T11:52:59.449Z",
+  "fetchedAt": "2026-09-14T16:30:41.409Z",
   "current": null,
   "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
