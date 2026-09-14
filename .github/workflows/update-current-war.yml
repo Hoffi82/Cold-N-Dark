@@ -1,0 +1,146 @@
+name: Aktualisiere aktuellen Krieg
+
+on:
+  schedule:
+    - cron: '2,17,32,47 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-current-war:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Aktuellen Krieg über CoC-Proxy abrufen
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = 'war-data.json';
+          const data = JSON.parse(fs.readFileSync(path, 'utf8'));
+          const clanTag = '#C89CVRCP';
+          const encoded = encodeURIComponent(clanTag);
+
+          function timeValue(value) {
+            if (!value) return 0;
+            const text = String(value);
+            const iso = text.length === 18 && /^\\d{8}T\\d{6}\\.\\d{3}Z$/.test(text)
+              ? `${text.slice(0,4)}-${text.slice(4,6)}-${text.slice(6,8)}T${text.slice(9,11)}:${text.slice(11,13)}:${text.slice(13,15)}.${text.slice(16,19)}Z`
+              : text;
+            const time = Date.parse(iso);
+            return Number.isNaN(time) ? 0 : time;
+          }
+
+          function fresh(war) {
+            const now = Date.now();
+            const end = timeValue(war?.endTime);
+            if (end && end <= now) return false;
+            return true;
+          }
+
+          function mapWar(war) {
+            let clan = war?.clan ?? {};
+            let opponent = war?.opponent ?? {};
+            if (opponent?.tag === clanTag && clan?.tag !== clanTag) [clan, opponent] = [opponent, clan];
+            return {
+              state: war?.state ?? 'unknown',
+              type: 'war',
+              attacksPerMember: war?.attacksPerMember ?? 2,
+              opponent: opponent?.name ?? '–',
+              opponentTag: opponent?.tag ?? '',
+              ourStars: clan?.stars ?? 0,
+              enemyStars: opponent?.stars ?? 0,
+              ourAttacks: clan?.attacks ?? 0,
+              enemyAttacks: opponent?.attacks ?? 0,
+              ourDestruction: clan?.destructionPercentage ?? 0,
+              enemyDestruction: opponent?.destructionPercentage ?? 0,
+              warSize: war?.teamSize ?? clan?.members?.length ?? 0,
+              preparationStartTime: war?.preparationStartTime ?? '',
+              startTime: war?.startTime ?? '',
+              endTime: war?.endTime ?? '',
+              players: Array.isArray(clan?.members) ? clan.members.map(p => {
+                const attacks = Array.isArray(p.attacks) ? p.attacks : [];
+                return {
+                  name: p.name ?? 'Unbekannt',
+                  attacks: attacks.length,
+                  stars: attacks.reduce((sum, a) => sum + Number(a?.stars || 0), 0),
+                  destruction: attacks.reduce((max, a) => Math.max(max, Number(a?.destructionPercentage || 0)), 0)
+                };
+              }) : []
+            };
+          }
+
+          async function get(url) {
+            const response = await fetch(url, { headers: { Accept: 'application/json' } });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.json();
+          }
+
+          let war = null;
+          let error = '';
+
+          try {
+            const raw = await get(`https://proxy.clashk.ing/v1/clans/${encoded}/currentwar`);
+            const candidate = raw?.data ?? raw ?? {};
+            const state = String(candidate?.state ?? 'notInWar');
+            if (['inWar', 'inwar', 'preparation'].includes(state) && fresh(candidate)) {
+              war = mapWar(candidate);
+              console.log(`CoC-Proxy aktueller Krieg: ${war.opponent} (${war.warSize}v${war.warSize}), state=${war.state}`);
+            } else if (state === 'notInWar') {
+              console.log('CoC-Proxy: Clan ist aktuell in keinem Krieg.');
+            } else {
+              console.log(`CoC-Proxy lieferte keinen aktiven Krieg: state=${state}`);
+            }
+          } catch (e) {
+            error = `CoC-Proxy: ${e.message}`;
+            console.warn(error);
+          }
+
+          if (!war && !error) {
+            try {
+              const raw = await get(`https://api.clashk.ing/war/${encoded}/basic`);
+              const candidate = raw?.data ?? raw ?? {};
+              const state = String(candidate?.state ?? candidate?.status ?? 'notInWar');
+              if (['inWar', 'inwar', 'preparation'].includes(state) && fresh(candidate)) {
+                war = mapWar(candidate);
+                console.log(`ClashKing aktueller Krieg: ${war.opponent} (${war.warSize}v${war.warSize}), state=${war.state}`);
+              }
+            } catch (e) {
+              error = `ClashKing: ${e.message}`;
+              console.warn(error);
+            }
+          }
+
+          if (war) {
+            data.current = war;
+            data.currentError = '';
+            data.source = 'CoC-Proxy – Normaler Krieg';
+          } else if (!error) {
+            data.current = null;
+            data.currentError = '';
+            data.source = 'ClashKing';
+          } else if (data.current) {
+            console.log('Abruf fehlgeschlagen, vorhandene aktuelle Kriegsdaten bleiben erhalten.');
+          } else {
+            data.currentError = error;
+          }
+
+          data.fetchedAt = new Date().toISOString();
+          fs.writeFileSync(path, JSON.stringify(data, null, 2) + '\\n', 'utf8');
+          NODE
+
+      - name: Änderungen speichern
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add war-data.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Aktuellen Krieg automatisch aktualisieren"
+          git push origin HEAD:main
