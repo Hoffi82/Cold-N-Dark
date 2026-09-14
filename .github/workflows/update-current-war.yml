@@ -19,8 +19,8 @@ jobs:
 
       - name: Aktuellen Krieg über CoC-Proxy abrufen
         run: |
-          node <<'NODE'
-          const fs = require('fs');
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
           const path = 'war-data.json';
           const data = JSON.parse(fs.readFileSync(path, 'utf8'));
           const clanTag = '#C89CVRCP';
@@ -29,7 +29,7 @@ jobs:
           function timeValue(value) {
             if (!value) return 0;
             const text = String(value);
-            const iso = text.length === 18 && /^\\d{8}T\\d{6}\\.\\d{3}Z$/.test(text)
+            const iso = text.length === 18 && /^\d{8}T\d{6}\.\d{3}Z$/.test(text)
               ? `${text.slice(0,4)}-${text.slice(4,6)}-${text.slice(6,8)}T${text.slice(9,11)}:${text.slice(11,13)}:${text.slice(13,15)}.${text.slice(16,19)}Z`
               : text;
             const time = Date.parse(iso);
@@ -131,7 +131,7 @@ jobs:
           }
 
           data.fetchedAt = new Date().toISOString();
-          fs.writeFileSync(path, JSON.stringify(data, null, 2) + '\\n', 'utf8');
+          fs.writeFileSync(path, JSON.stringify(data, null, 2) + '\n', 'utf8');
           NODE
 
       - name: Änderungen speichern
