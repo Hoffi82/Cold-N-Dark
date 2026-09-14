@@ -82,12 +82,19 @@ function pickActiveWar(wars) {
 }
 
 async function getCurrentNormalViaProxy() {
-  // ClashKing dokumentiert den aktuellen normalen Krieg über /war/{clan_tag}/basic.
   const raw = await getClashKing(`/war/${encoded}/basic`);
   const war = raw?.data ?? raw ?? {};
   const state = String(war?.state ?? war?.status ?? 'notInWar');
   console.log(`ClashKing aktueller normaler Krieg: state=${state}, clan=${war?.clan?.name || '–'}, opponent=${war?.opponent?.name || '–'}`);
   return isActiveWar(war) && isFreshCurrentWar(war) ? war : null;
+}
+
+async function getCurrentNormalViaV2Wars() {
+  const raw = await getClashKing(`/v2/clan/${encoded}/wars?limit=15`);
+  const wars = itemsOf(raw);
+  const current = pickActiveWar(wars);
+  console.log(`ClashKing v2 Kriegsliste: ${wars.length} Einträge, aktueller Krieg=${current?.opponent?.name || '–'}`);
+  return current;
 }
 
 async function getCurrentCwlViaProxy() {
@@ -164,6 +171,19 @@ if (!current) {
     }
   } catch (error) {
     console.warn(`Aktueller normaler Krieg über ClashKing konnte nicht geladen werden: ${error.message}`);
+  }
+}
+
+if (!current) {
+  try {
+    const normalCurrent = await getCurrentNormalViaV2Wars();
+    if (normalCurrent) {
+      current = mapCurrentWar(normalCurrent, false);
+      source = 'ClashKing v2 – Normaler Krieg';
+      currentError = '';
+    }
+  } catch (error) {
+    console.warn(`Aktueller normaler Krieg über ClashKing v2 konnte nicht geladen werden: ${error.message}`);
   }
 }
 
