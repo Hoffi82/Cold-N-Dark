@@ -1,0 +1,52 @@
+name: Teste Telegram-Quelle
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-telegram:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Telegram-Verbindung testen
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${TELEGRAM_BOT_TOKEN:-}" ]; then
+            echo "FEHLER: Das GitHub Secret TELEGRAM_BOT_TOKEN fehlt."
+            exit 1
+          fi
+
+          response="$(curl -fsS --get \
+            --data-urlencode "timeout=5" \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates")"
+
+          python3 - "$response" <<'PY'
+          import json, sys
+          data = json.loads(sys.argv[1])
+          if not data.get('ok'):
+              raise SystemExit('Telegram API meldet einen Fehler.')
+          updates = data.get('result', [])
+          print(f'Telegram-Verbindung OK. Updates empfangen: {len(updates)}')
+          found = False
+          for update in updates:
+              post = update.get('channel_post')
+              if not post:
+                  continue
+              found = True
+              chat = post.get('chat', {})
+              print(f"Kanal erkannt: {chat.get('title', 'unbekannt')} ({chat.get('id', 'unbekannt')})")
+              if post.get('video'):
+                  v = post['video']
+                  print(f"VIDEO erkannt: {v.get('file_name', 'ohne Dateinamen')} | file_id vorhanden: {'ja' if v.get('file_id') else 'nein'}")
+              elif post.get('document'):
+                  d = post['document']
+                  print(f"DATEI erkannt: {d.get('file_name', 'ohne Dateinamen')} | file_id vorhanden: {'ja' if d.get('file_id') else 'nein'}")
+              else:
+                  print('Beitrag erkannt, aber keine Video-/Dokumentdatei enthalten.')
+          if not found:
+              print('Noch kein channel_post im Update-Puffer. Bitte nach dem Start des Tests einen neuen Testbeitrag im privaten Kanal posten und den Workflow erneut starten.')
+          PY
