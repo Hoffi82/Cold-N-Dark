@@ -10,6 +10,7 @@ on:
       - '.github/workflows/update-war-data.yml'
       - 'auto-war-stats.js'
       - 'clan-finder.html'
+      - 'live-war-home.js'
 
 permissions:
   contents: write
@@ -44,18 +45,33 @@ jobs:
               path.write_text(text, encoding='utf-8')
           PY
 
+      - name: Live-Kriegsanzeige auf Startseite aktivieren
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          tag = '<script src="live-war-home.js?v=1"></script>'
+          if tag not in text:
+              marker = '</body>'
+              if marker not in text:
+                  raise SystemExit('index.html enthält kein </body>.')
+              text = text.replace(marker, tag + '\n' + marker, 1)
+              path.write_text(text, encoding='utf-8')
+          PY
+
       - name: Änderungen speichern
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           for attempt in 1 2 3; do
-            git add war-data.json krieg.html auto-war-stats.js
+            git add war-data.json krieg.html auto-war-stats.js index.html live-war-home.js
             if git diff --cached --quiet; then
               exit 0
             fi
 
-            git commit -m "Automatisch: Kriegsstatistik mit CoC-Daten verbinden"
+            git commit -m "Automatisch: Live-Kriegsanzeige auf Startseite verbinden"
 
             if git push origin HEAD:main; then
               exit 0
@@ -77,6 +93,18 @@ jobs:
               marker = '</body>'
               if marker not in text:
                   raise SystemExit('krieg.html enthält kein </body>.')
+              text = text.replace(marker, tag + '\n' + marker, 1)
+              path.write_text(text, encoding='utf-8')
+          PY
+              python3 - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          tag = '<script src="live-war-home.js?v=1"></script>'
+          if tag not in text:
+              marker = '</body>'
+              if marker not in text:
+                  raise SystemExit('index.html enthält kein </body>.')
               text = text.replace(marker, tag + '\n' + marker, 1)
               path.write_text(text, encoding='utf-8')
           PY
