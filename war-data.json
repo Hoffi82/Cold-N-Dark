@@ -1535,7 +1535,7 @@
         "builderBaseTrophies": 2422,
         "clanRank": 29,
         "previousClanRank": 29,
-        "donations": 139,
+        "donations": 211,
         "donationsReceived": 83,
         "playerHouse": {
           "elements": [
@@ -1748,7 +1748,7 @@
         "clanRank": 33,
         "previousClanRank": 33,
         "donations": 142,
-        "donationsReceived": 1248,
+        "donationsReceived": 1320,
         "builderBaseLeague": {
           "id": 44000021,
           "name": "Brass League II"
@@ -2055,118 +2055,10 @@
     },
     "memberCount": 37
   },
-  "source": "CoC-Proxy – Normaler Krieg",
-  "fetchedAt": "2026-09-14T11:23:42.936Z",
-  "current": {
-    "state": "inWar",
-    "type": "war",
-    "attacksPerMember": 2,
-    "opponent": "DeathByPirates",
-    "opponentTag": "#2UY80CUG",
-    "ourStars": 43,
-    "enemyStars": 26,
-    "ourAttacks": 21,
-    "enemyAttacks": 15,
-    "ourDestruction": 98.26667,
-    "enemyDestruction": 69.13333,
-    "warSize": 15,
-    "preparationStartTime": "20260912T192135.000Z",
-    "startTime": "20260913T182135.000Z",
-    "endTime": "20260914T182135.000Z",
-    "players": [
-      {
-        "name": "Vanille Waffel",
-        "attacks": 2,
-        "stars": 5,
-        "destruction": 100
-      },
-      {
-        "name": "Coc Hoffi",
-        "attacks": 2,
-        "stars": 5,
-        "destruction": 100
-      },
-      {
-        "name": "Kallee",
-        "attacks": 1,
-        "stars": 0,
-        "destruction": 24
-      },
-      {
-        "name": "Tinkerbell",
-        "attacks": 2,
-        "stars": 5,
-        "destruction": 100
-      },
-      {
-        "name": "King",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 82
-      },
-      {
-        "name": "King Olli",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 74
-      },
-      {
-        "name": "1Nicky43",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "Kampfkeks",
-        "attacks": 2,
-        "stars": 6,
-        "destruction": 100
-      },
-      {
-        "name": "Sebastian ||",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 69
-      },
-      {
-        "name": "BlackDragon",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "Rhodos",
-        "attacks": 2,
-        "stars": 6,
-        "destruction": 100
-      },
-      {
-        "name": "Kallchen",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "WiQuBr",
-        "attacks": 2,
-        "stars": 5,
-        "destruction": 100
-      },
-      {
-        "name": "The Next Level",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "Kalle",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      }
-    ]
-  },
-  "currentError": "",
+  "source": "ClashKing",
+  "fetchedAt": "2026-09-14T11:41:05.328Z",
+  "current": null,
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
