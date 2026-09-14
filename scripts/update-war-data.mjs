@@ -137,6 +137,15 @@ async function getCurrentCwl() {
   return null;
 }
 
+let clanInfo = {};
+try {
+  const clanRaw = await getClashKing(`/clan/${encoded}/basic`);
+  clanInfo = clanRaw?.data ?? clanRaw ?? {};
+  console.log(`Clan-Basisdaten: name=${clanInfo?.name || '–'}, members=${clanInfo?.memberCount ?? clanInfo?.members?.length ?? '–'}, level=${clanInfo?.clanLevel ?? '–'}`);
+} catch (error) {
+  console.warn(`Clan-Basisdaten konnten nicht geladen werden: ${error.message}`);
+}
+
 let current = null;
 let source = 'ClashKing';
 let currentError = '';
@@ -207,6 +216,7 @@ try {
 const payload = {
   ok: true,
   clanTag: CLAN_TAG,
+  clanInfo,
   source,
   fetchedAt: new Date().toISOString(),
   current,
@@ -215,5 +225,5 @@ const payload = {
 };
 
 await writeFile('war-data.json', JSON.stringify(payload, null, 2) + '\n', 'utf8');
-console.log(`War data updated: current=${current ? current.state : 'notInWar'}, source=${source}, previous=${previous.length}`);
+console.log(`War data updated: current=${current ? current.state : 'notInWar'}, source=${source}, previous=${previous.length}, members=${clanInfo?.memberCount ?? '–'}`);
 if (currentError) console.log(`Current-war diagnostic: ${currentError}`);
