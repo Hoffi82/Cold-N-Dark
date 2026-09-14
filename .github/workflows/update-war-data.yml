@@ -9,6 +9,7 @@ on:
       - 'scripts/update-war-data.mjs'
       - '.github/workflows/update-war-data.yml'
       - 'auto-war-stats.js'
+      - 'clan-finder.html'
 
 permissions:
   contents: write
