@@ -5,8 +5,8 @@ const CLASHKING_API = 'https://api.clashk.ing';
 const COC_PROXY_API = 'https://proxy.clashk.ing/v1';
 const encoded = encodeURIComponent(CLAN_TAG);
 
-async function getJson(base, path) {
-  const response = await fetch(base + path, { headers: { Accept: 'application/json' } });
+async function getJson(base, path, headers = {}) {
+  const response = await fetch(base + path, { headers: { Accept: 'application/json', ...headers } });
   if (!response.ok) throw new Error(`HTTP ${response.status} for ${base}${path}`);
   return response.json();
 }
@@ -137,14 +137,37 @@ async function getCurrentCwl() {
   return null;
 }
 
-let clanInfo = {};
-try {
-  const clanRaw = await getClashKing(`/clan/${encoded}/basic`);
-  clanInfo = clanRaw?.data ?? clanRaw ?? {};
-  console.log(`Clan-Basisdaten: name=${clanInfo?.name || '–'}, members=${clanInfo?.memberCount ?? clanInfo?.members?.length ?? '–'}, level=${clanInfo?.clanLevel ?? '–'}`);
-} catch (error) {
-  console.warn(`Clan-Basisdaten konnten nicht geladen werden: ${error.message}`);
+async function getClanInfo() {
+  const sources = [
+    ['ClashKing', async () => getClashKing(`/clan/${encoded}/basic`)],
+    ['CoC-Proxy', async () => getCocProxy(`/clans/${encoded}`)]
+  ];
+
+  if (process.env.CLASH_API_TOKEN) {
+    sources.push(['Offizielle CoC-API', async () => getJson('https://api.clashofclans.com/v1', `/clans/${encoded}`, {
+      Authorization: `Bearer ${process.env.CLASH_API_TOKEN}`
+    })]);
+  }
+
+  for (const [name, loader] of sources) {
+    try {
+      const raw = await loader();
+      const info = raw?.data ?? raw ?? {};
+      const memberCount = info?.memberCount ?? (typeof info?.members === 'number' ? info.members : Array.isArray(info?.members) ? info.members.length : null);
+      if (info?.name || info?.tag || memberCount != null) {
+        if (memberCount != null) info.memberCount = memberCount;
+        console.log(`Clan-Basisdaten über ${name}: name=${info?.name || '–'}, members=${info?.memberCount ?? '–'}, level=${info?.clanLevel ?? '–'}`);
+        return info;
+      }
+    } catch (error) {
+      console.warn(`Clan-Basisdaten über ${name} konnten nicht geladen werden: ${error.message}`);
+    }
+  }
+
+  return {};
 }
+
+const clanInfo = await getClanInfo();
 
 let current = null;
 let source = 'ClashKing';
