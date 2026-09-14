@@ -11,26 +11,15 @@ async function getJson(base, path) {
   return response.json();
 }
 
-async function getClashKing(path) {
-  return getJson(CLASHKING_API, path);
-}
-
-async function getCocProxy(path) {
-  return getJson(COC_PROXY_API, path);
-}
-
-function itemsOf(raw) {
-  return Array.isArray(raw) ? raw : (raw?.items ?? raw?.data ?? []);
-}
+async function getClashKing(path) { return getJson(CLASHKING_API, path); }
+async function getCocProxy(path) { return getJson(COC_PROXY_API, path); }
+function itemsOf(raw) { return Array.isArray(raw) ? raw : (raw?.items ?? raw?.data ?? []); }
 
 function mapCurrentWar(war, isCwl = false) {
   let clan = war?.clan ?? {};
   let opponent = war?.opponent ?? {};
-
   if (opponent?.tag === CLAN_TAG && clan?.tag !== CLAN_TAG) [clan, opponent] = [opponent, clan];
-
   const state = war?.state ?? war?.status ?? 'unknown';
-
   return {
     state,
     type: isCwl ? 'cwl' : 'war',
@@ -60,7 +49,7 @@ function mapCurrentWar(war, isCwl = false) {
 }
 
 function isActiveWar(war) {
-  return ['inwar', 'preparation'].includes(String(war?.state ?? '').toLowerCase());
+  return ['inwar', 'inWar', 'preparation'].includes(String(war?.state ?? war?.status ?? ''));
 }
 
 function pickActiveWar(wars) {
@@ -77,7 +66,6 @@ async function getCurrentCwlViaProxy() {
   const rounds = Array.isArray(group?.rounds) ? group.rounds : [];
   const warTags = rounds.flatMap(round => Array.isArray(round?.warTags) ? round.warTags : [])
     .filter(tag => typeof tag === 'string' && tag && tag !== '#0');
-
   const wars = [];
   for (const warTag of [...new Set(warTags)]) {
     try {
@@ -88,7 +76,6 @@ async function getCurrentCwlViaProxy() {
       console.warn(`CWL-War ${warTag} konnte über den CoC-Proxy nicht geladen werden: ${error.message}`);
     }
   }
-
   return pickActiveWar(wars);
 }
 
@@ -97,31 +84,19 @@ async function getCurrentCwlViaClashKing() {
   const group = groupRaw?.data ?? groupRaw ?? {};
   const season = group?.season;
   if (!season) return null;
-
   const fullRaw = await getClashKing(`/cwl/${encoded}/${encodeURIComponent(season)}`);
   const fullGroup = fullRaw?.data ?? fullRaw ?? {};
   const rounds = Array.isArray(fullGroup?.rounds) ? fullGroup.rounds : [];
   const wars = rounds.flatMap(round => Array.isArray(round?.warTags) ? round.warTags : [])
     .filter(war => war && typeof war === 'object');
-
   return pickActiveWar(wars);
 }
 
 async function getCurrentCwl() {
-  try {
-    const current = await getCurrentCwlViaProxy();
-    if (current) return current;
-  } catch (error) {
-    console.warn(`CWL über CoC-Proxy konnte nicht geladen werden: ${error.message}`);
-  }
-
-  try {
-    const current = await getCurrentCwlViaClashKing();
-    if (current) return current;
-  } catch (error) {
-    console.warn(`CWL über ClashKing konnte nicht geladen werden: ${error.message}`);
-  }
-
+  try { const current = await getCurrentCwlViaProxy(); if (current) return current; }
+  catch (error) { console.warn(`CWL über CoC-Proxy konnte nicht geladen werden: ${error.message}`); }
+  try { const current = await getCurrentCwlViaClashKing(); if (current) return current; }
+  catch (error) { console.warn(`CWL über ClashKing konnte nicht geladen werden: ${error.message}`); }
   return null;
 }
 
@@ -129,24 +104,27 @@ let current = null;
 let source = 'ClashKing';
 let currentError = '';
 
-const cwlCurrent = await getCurrentCwl();
-if (cwlCurrent) {
-  current = mapCurrentWar(cwlCurrent, true);
-  source = 'ClashKing/CoC-Proxy – CWL';
+// Für die normale Kriegsseite zuerst den normalen Clash-of-Clans-Krieg prüfen.
+// Dadurch wird ein parallel laufender CWL-Krieg nicht fälschlich als normaler Krieg angezeigt.
+try {
+  const basicRaw = await getClashKing(`/v2/war/${encoded}/basic`);
+  const basic = basicRaw?.data ?? basicRaw ?? {};
+  const basicState = String(basic?.state ?? basic?.status ?? 'notInWar');
+  if (['inwar', 'inWar', 'preparation'].includes(basicState) && Object.keys(basic).length > 0) {
+    current = mapCurrentWar(basic, false);
+    source = 'ClashKing – Normaler Krieg';
+  }
+} catch (error) {
+  currentError = error.message;
+  console.warn(`ClashKing normaler Krieg konnte nicht geladen werden: ${error.message}`);
 }
 
+// Nur wenn kein normaler Krieg läuft, CWL als Fallback bereitstellen.
 if (!current) {
-  try {
-    const basicRaw = await getClashKing(`/v2/war/${encoded}/basic`);
-    const basic = basicRaw?.data ?? basicRaw ?? {};
-    const basicState = basic?.state ?? basic?.status ?? 'notInWar';
-    if (basicState !== 'notInWar' && basicState !== 'unknown' && Object.keys(basic).length > 0) {
-      current = mapCurrentWar(basic, false);
-      source = 'ClashKing';
-    }
-  } catch (error) {
-    currentError = error.message;
-    console.warn(`ClashKing aktueller Krieg konnte nicht geladen werden: ${error.message}`);
+  const cwlCurrent = await getCurrentCwl();
+  if (cwlCurrent) {
+    current = mapCurrentWar(cwlCurrent, true);
+    source = 'ClashKing/CoC-Proxy – CWL';
   }
 }
 
