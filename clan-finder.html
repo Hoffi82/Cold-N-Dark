@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#09070b">
+<title>Clan Finder – Cold N' Dark</title>
+<style>
+body{margin:0;background:#08070a;color:#fffaf0;font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}
+.wrap{max-width:1050px;margin:auto;padding:22px 18px 90px}.head{text-align:center}.logo{width:100px;height:100px;object-fit:contain}.title{font-size:clamp(34px,7vw,62px);font-weight:1000;margin:5px 0}.gold{color:#f4b82e}.sub{color:#ffd45b;font-weight:900}
+.card{margin:20px auto;padding:20px;border:3px solid #f4b82e;border-radius:18px;background:#281233}.finder{display:grid;grid-template-columns:1fr auto;gap:10px}.finder input{min-width:0;padding:15px;border-radius:10px;border:1px solid #ffffff22;background:#09070e;color:#fff;font-size:18px}.btn{border:0;border-radius:10px;padding:15px 22px;background:linear-gradient(135deg,#ffc43d,#ff9a18);color:#211000;font-weight:1000;cursor:pointer}.msg{text-align:center;margin-top:12px;min-height:20px}.error{color:#ff7777}.ok{color:#63e68b}.loading{color:#ffd45b}
+.clan-head{display:flex;align-items:center;gap:18px}.badge{width:100px;height:100px;object-fit:contain}.clan-name{font-size:32px;font-weight:1000}.tag{color:#aaa0aa}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.stat{background:#09090c;padding:14px;border-radius:10px;text-align:center}.stat b{display:block;font-size:24px;color:#ffd45b}.stat span{display:block;margin-top:4px;color:#aaa0aa;font-size:12px}
+.section{margin-top:18px}.section h2{color:#ffd45b;margin:0 0 12px}.war{display:grid;grid-template-columns:1fr 90px 1fr;align-items:center;gap:10px}.side{text-align:center}.side img{width:90px;height:90px;object-fit:contain}.side strong{display:block;margin-top:6px}.vs{text-align:center;font-size:30px;font-weight:1000;color:#f4b82e}.warbox{background:#09090c;border-radius:12px;padding:14px;margin-top:12px}.members{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.member{display:flex;justify-content:space-between;gap:10px;padding:10px;background:#09090c;border-radius:9px}.member small{color:#aaa0aa}.previous{display:grid;gap:8px}.prev{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;background:#09090c;padding:12px;border-radius:9px}.prev div:nth-child(2){text-align:center;color:#ffd45b;font-weight:1000}.muted{color:#aaa0aa;text-align:center}.back{text-align:center;margin-top:22px}.back a{color:#ffd45b;font-weight:1000}
+@media(max-width:700px){.finder{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.clan-head{align-items:flex-start}.members{grid-template-columns:1fr}.war{grid-template-columns:1fr 60px 1fr}.side img{width:70px;height:70px}.prev{grid-template-columns:1fr}.prev div:nth-child(2){order:3}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="head"><img class="logo" src="Wappen.png" alt="Cold N' Dark"><div class="title">CLAN <span class="gold">FINDER</span></div><div class="sub">CLAN-KÜRZEL EINGEBEN UND AUTOMATISCH ERKENNEN</div></section>
+<section class="card">
+<div class="finder"><input id="tag" value="#C89CVRCP" placeholder="#C89CVRCP" autocomplete="off"><button class="btn" id="load">Clan laden</button></div>
+<div id="msg" class="msg"></div>
+</section>
+<section id="result" hidden></section>
+<div class="back"><a href="index.html">← Zurück zur Startseite</a></div>
+</main>
+<script>
+const API='https://api.clashk.ing';
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function cleanTag(v){v=String(v||'').trim().toUpperCase();if(!v)return '';return v.startsWith('#')?v:'#'+v}
+async function get(path){const r=await fetch(API+path,{headers:{Accept:'application/json'}});if(!r.ok)throw new Error('HTTP '+r.status+' bei '+path);return r.json()}
+function unwrap(v){return v?.data??v??{}}
+function arr(v){if(Array.isArray(v))return v;if(Array.isArray(v?.data))return v.data;if(Array.isArray(v?.items))return v.items;return []}
+function nameOf(x){return x?.name||x?.clan?.name||'–'}
+function badgeOf(x){return x?.badgeUrls?.medium||x?.badgeUrls?.small||x?.clan?.badgeUrls?.medium||''}
+function stars(x){return x?.stars??x?.clan?.stars??0}
+function destruction(x){return x?.destructionPercentage??x?.clan?.destructionPercentage??0}
+function attacks(x){return x?.attacks??x?.clan?.attacks??0}
+function stateText(s){const m={inWar:'Krieg läuft',preparation:'Vorbereitung',warEnded:'Beendet',notInWar:'Kein aktueller Krieg'};return m[String(s||'').toLowerCase()]||s||'Unbekannt'}
+function renderClan(clan,war,previous){
+ const r=$('result');const members=arr(clan.members);const w=unwrap(war);const active=['inwar','inWar','preparation'].includes(String(w.state||w.status||''));
+ const own=w.clan||{};const opp=w.opponent||{};
+ let prev=arr(previous);if(previous?.wars)prev=previous.wars;if(previous?.data?.wars)prev=previous.data.wars;prev=prev.slice(0,10);
+ r.innerHTML=`<section class="card"><div class="clan-head"><img class="badge" src="${esc(badgeOf(clan))}" alt="Clan-Wappen"><div><div class="clan-name">${esc(clan.name||'Unbekannter Clan')}</div><div class="tag">${esc(clan.tag||'')}</div></div></div><div class="grid"><div class="stat"><b>${esc(clan.clanLevel??'–')}</b><span>Clan-Level</span></div><div class="stat"><b>${esc(clan.members?.length??clan.memberList?.length??'–')}</b><span>Mitglieder</span></div><div class="stat"><b>${esc(clan.clanPoints??clan.clanPoints??'–')}</b><span>Clanpunkte</span></div><div class="stat"><b>${esc(clan.warWins??'–')}</b><span>Kriegssiege</span></div></div><div class="section"><h2>⚔️ Aktueller Krieg</h2>${active?`<div class="war"><div class="side"><img src="${esc(badgeOf(own)||badgeOf(clan))}" alt=""><strong>${esc(nameOf(own))}</strong><span>⭐ ${esc(stars(own))} • ${esc(destruction(own))}%</span></div><div class="vs">VS</div><div class="side"><img src="${esc(badgeOf(opp))}" alt=""><strong>${esc(nameOf(opp))}</strong><span>⭐ ${esc(stars(opp))} • ${esc(destruction(opp))}%</span></div></div><div class="warbox"><b>Status:</b> ${esc(stateText(w.state||w.status))} · Größe: ${esc(w.teamSize||own.members?.length||'–')} vs ${esc(w.teamSize||opp.members?.length||'–')} · Angriffe: ${esc(attacks(own))} : ${esc(attacks(opp))}</div>`:`<div class="muted">${esc(stateText(w.state||w.status||'notInWar'))}</div>`}</div><div class="section"><h2>👥 Mitglieder</h2><div class="members">${members.map(m=>`<div class="member"><span>${esc(m.name)}</span><small>TH ${esc(m.townHallLevel??m.townhallLevel??'–')} · 🏆 ${esc(m.trophies??'–')}</small></div>`).join('')||'<div class="muted">Keine Mitglieder geliefert.</div>'}</div></div><div class="section"><h2>📊 Letzte Kriege</h2><div class="previous">${prev.map(x=>{const c=x.clan||{},o=x.opponent||{};return `<div class="prev"><div>${esc(nameOf(c))}<br>⭐ ${esc(stars(c))} · ${esc(destruction(c))}%</div><div>${esc(x.teamSize||'')}<br>VS</div><div>${esc(nameOf(o))}<br>⭐ ${esc(stars(o))} · ${esc(destruction(o))}%</div></div>`}).join('')||'<div class="muted">Keine früheren Kriege geliefert.</div>'}</div></div></section>`;
+r.hidden=false}
+async function load(){const tag=cleanTag($('tag').value);if(!tag){$('msg').textContent='Bitte ein Clan-Kürzel eingeben.';$('msg').className='msg error';return}$('msg').textContent='Clan-Daten werden geladen …';$('msg').className='msg loading';$('result').hidden=true;try{const e=encodeURIComponent(tag);const [clan,war,previous]=await Promise.all([get('/clan/'+e+'/basic'),get('/war/'+e+'/basic'),get('/war/'+e+'/previous')]);renderClan(unwrap(clan),unwrap(war),previous);$('msg').textContent='✅ Clan erfolgreich erkannt.';$('msg').className='msg ok'}catch(err){$('msg').textContent='Fehler: '+err.message;$('msg').className='msg error'}}
+$('load').onclick=load;$('tag').addEventListener('keydown',e=>{if(e.key==='Enter')load()});load();
+</script>
+</body>
+</html>
