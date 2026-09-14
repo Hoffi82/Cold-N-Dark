@@ -30,6 +30,24 @@ jobs:
       - name: Kriegsdaten automatisch abrufen
         run: node scripts/update-war-data.mjs
 
+      - name: Alte Supabase-Live-Kriegsanzeige entfernen
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          start_marker = "<script>(function(){const U='https://jvgqvtnqncelbhuordzy.supabase.co',K="
+          endpoint_marker = "endpoint=U+'/rest/v1/clan_wars?select=*"
+          start = text.find(start_marker)
+          if start != -1:
+              endpoint = text.find(endpoint_marker, start)
+              end = text.find('</script>', endpoint if endpoint != -1 else start)
+              if endpoint != -1 and end != -1:
+                  text = text[:start] + text[end + len('</script>'):]
+                  path.write_text(text, encoding='utf-8')
+                  print('Alte Supabase-Kriegsanzeige entfernt.')
+          PY
+
       - name: Automatische Statistik in Kriegsseite aktivieren
         run: |
           python3 - <<'PY'
@@ -84,6 +102,20 @@ jobs:
               git rebase --abort || true
               git reset --hard origin/main
               node scripts/update-war-data.mjs
+              python3 - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          start_marker = "<script>(function(){const U='https://jvgqvtnqncelbhuordzy.supabase.co',K="
+          endpoint_marker = "endpoint=U+'/rest/v1/clan_wars?select=*"
+          start = text.find(start_marker)
+          if start != -1:
+              endpoint = text.find(endpoint_marker, start)
+              end = text.find('</script>', endpoint if endpoint != -1 else start)
+              if endpoint != -1 and end != -1:
+                  text = text[:start] + text[end + len('</script>'):]
+                  path.write_text(text, encoding='utf-8')
+          PY
               python3 - <<'PY'
           from pathlib import Path
           path = Path('krieg.html')
