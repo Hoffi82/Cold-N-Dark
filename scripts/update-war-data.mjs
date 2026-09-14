@@ -31,8 +31,6 @@ function isFreshCurrentWar(war) {
   const start = timeValue(war?.startTime) || timeValue(war?.preparationStartTime);
   if (end && end <= now) return false;
   if (!start) return false;
-  // Ein normaler Krieg inkl. Vorbereitung ist deutlich unter 48 Stunden lang.
-  // 60 Stunden sind bewusst großzügig, verhindern aber alte gecachte Kriege.
   if (start < now - 60 * 60 * 60 * 1000) return false;
   return true;
 }
@@ -84,10 +82,11 @@ function pickActiveWar(wars) {
 }
 
 async function getCurrentNormalViaProxy() {
-  const raw = await getCocProxy(`/clans/${encoded}/currentwar`);
+  // ClashKing dokumentiert den aktuellen normalen Krieg über /war/{clan_tag}/basic.
+  const raw = await getClashKing(`/war/${encoded}/basic`);
   const war = raw?.data ?? raw ?? {};
   const state = String(war?.state ?? war?.status ?? 'notInWar');
-  console.log(`CoC-Proxy aktueller normaler Krieg: state=${state}, clan=${war?.clan?.name || '–'}, opponent=${war?.opponent?.name || '–'}`);
+  console.log(`ClashKing aktueller normaler Krieg: state=${state}, clan=${war?.clan?.name || '–'}, opponent=${war?.opponent?.name || '–'}`);
   return isActiveWar(war) && isFreshCurrentWar(war) ? war : null;
 }
 
@@ -135,7 +134,6 @@ let current = null;
 let source = 'ClashKing';
 let currentError = '';
 
-// Aktuellen normalen Krieg zuerst über die offizielle CoC-API prüfen.
 try {
   if (!process.env.CLASH_API_TOKEN) throw new Error('CLASH_API_TOKEN fehlt in GitHub Actions.');
   const response = await fetch(`https://api.clashofclans.com/v1/clans/${encoded}/currentwar`, {
@@ -156,21 +154,19 @@ try {
   console.warn(`Offizielle CoC-API aktueller Krieg konnte nicht geladen werden: ${error.message}`);
 }
 
-// Wenn die offizielle API nicht verfügbar ist, den aktuellen normalen Krieg über den CoC-Proxy prüfen.
 if (!current) {
   try {
     const normalCurrent = await getCurrentNormalViaProxy();
     if (normalCurrent) {
       current = mapCurrentWar(normalCurrent, false);
-      source = 'ClashKing CoC-Proxy – Normaler Krieg';
+      source = 'ClashKing – Normaler Krieg';
       currentError = '';
     }
   } catch (error) {
-    console.warn(`Aktueller normaler Krieg über CoC-Proxy konnte nicht geladen werden: ${error.message}`);
+    console.warn(`Aktueller normaler Krieg über ClashKing konnte nicht geladen werden: ${error.message}`);
   }
 }
 
-// Erst wenn kein gültiger normaler Krieg gefunden wurde, CWL prüfen.
 if (!current) {
   const cwlCurrent = await getCurrentCwl();
   if (cwlCurrent) {
