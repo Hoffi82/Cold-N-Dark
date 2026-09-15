@@ -338,6 +338,59 @@
         }
       },
       {
+        "tag": "#8PYPC99QP",
+        "name": "Kalle",
+        "role": "coLeader",
+        "townHallLevel": 18,
+        "expLevel": 275,
+        "league": {
+          "id": 29000000,
+          "name": "Unranked",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
+          }
+        },
+        "leagueTier": {
+          "id": 105000029,
+          "name": "Dragon League 29",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leaguetiers/125/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png",
+            "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
+          }
+        },
+        "trophies": 44,
+        "builderBaseTrophies": 3946,
+        "clanRank": 7,
+        "previousClanRank": 9,
+        "donations": 341,
+        "donationsReceived": 381,
+        "playerHouse": {
+          "elements": [
+            {
+              "type": "ground",
+              "id": 82000002
+            },
+            {
+              "type": "walls",
+              "id": 82000052
+            },
+            {
+              "type": "roof",
+              "id": 82000032
+            },
+            {
+              "type": "decoration",
+              "id": 82000066
+            }
+          ]
+        },
+        "builderBaseLeague": {
+          "id": 44000029,
+          "name": "Titanium League III"
+        }
+      },
+      {
         "tag": "#GG2P9LY9",
         "name": "Sebastian ||",
         "role": "coLeader",
@@ -361,7 +414,7 @@
         },
         "trophies": 0,
         "builderBaseTrophies": 4169,
-        "clanRank": 7,
+        "clanRank": 8,
         "previousClanRank": 7,
         "donations": 611,
         "donationsReceived": 0,
@@ -414,7 +467,7 @@
         },
         "trophies": 0,
         "builderBaseTrophies": 3348,
-        "clanRank": 8,
+        "clanRank": 9,
         "previousClanRank": 8,
         "donations": 1592,
         "donationsReceived": 584,
@@ -444,11 +497,11 @@
         }
       },
       {
-        "tag": "#8PYPC99QP",
-        "name": "Kalle",
-        "role": "coLeader",
-        "townHallLevel": 18,
-        "expLevel": 275,
+        "tag": "#QCUGLUQ9L",
+        "name": "Kallee",
+        "role": "member",
+        "townHallLevel": 17,
+        "expLevel": 192,
         "league": {
           "id": 29000000,
           "name": "Unranked",
@@ -458,19 +511,19 @@
           }
         },
         "leagueTier": {
-          "id": 105000029,
-          "name": "Dragon League 29",
+          "id": 105000028,
+          "name": "Dragon League 28",
           "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leaguetiers/125/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png",
-            "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
+            "small": "https://api-assets.clashofclans.com/leaguetiers/125/YCZ7O_3_c8eCBYvX-92qiWeLc6Md6eNJ5A8O-2vUg7I.png",
+            "large": "https://api-assets.clashofclans.com/leaguetiers/326/YCZ7O_3_c8eCBYvX-92qiWeLc6Md6eNJ5A8O-2vUg7I.png"
           }
         },
-        "trophies": 0,
-        "builderBaseTrophies": 3946,
-        "clanRank": 9,
-        "previousClanRank": 9,
+        "trophies": 360,
+        "builderBaseTrophies": 2703,
+        "clanRank": 10,
+        "previousClanRank": 10,
         "donations": 341,
-        "donationsReceived": 293,
+        "donationsReceived": 319,
         "playerHouse": {
           "elements": [
             {
@@ -479,21 +532,21 @@
             },
             {
               "type": "walls",
-              "id": 82000052
+              "id": 82000092
             },
             {
               "type": "roof",
-              "id": 82000032
+              "id": 82000087
             },
             {
               "type": "decoration",
-              "id": 82000066
+              "id": 82000064
             }
           ]
         },
         "builderBaseLeague": {
-          "id": 44000029,
-          "name": "Titanium League III"
+          "id": 44000023,
+          "name": "Iron League III"
         }
       },
       {
@@ -521,7 +574,7 @@
         },
         "trophies": 36,
         "builderBaseTrophies": 3536,
-        "clanRank": 10,
+        "clanRank": 11,
         "previousClanRank": 11,
         "donations": 639,
         "donationsReceived": 2033,
@@ -548,59 +601,6 @@
         "builderBaseLeague": {
           "id": 44000027,
           "name": "Steel League II"
-        }
-      },
-      {
-        "tag": "#QCUGLUQ9L",
-        "name": "Kallee",
-        "role": "member",
-        "townHallLevel": 17,
-        "expLevel": 191,
-        "league": {
-          "id": 29000000,
-          "name": "Unranked",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
-            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
-          }
-        },
-        "leagueTier": {
-          "id": 105000028,
-          "name": "Dragon League 28",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leaguetiers/125/YCZ7O_3_c8eCBYvX-92qiWeLc6Md6eNJ5A8O-2vUg7I.png",
-            "large": "https://api-assets.clashofclans.com/leaguetiers/326/YCZ7O_3_c8eCBYvX-92qiWeLc6Md6eNJ5A8O-2vUg7I.png"
-          }
-        },
-        "trophies": 0,
-        "builderBaseTrophies": 2703,
-        "clanRank": 11,
-        "previousClanRank": 10,
-        "donations": 253,
-        "donationsReceived": 319,
-        "playerHouse": {
-          "elements": [
-            {
-              "type": "ground",
-              "id": 82000002
-            },
-            {
-              "type": "walls",
-              "id": 82000092
-            },
-            {
-              "type": "roof",
-              "id": 82000087
-            },
-            {
-              "type": "decoration",
-              "id": 82000064
-            }
-          ]
-        },
-        "builderBaseLeague": {
-          "id": 44000023,
-          "name": "Iron League III"
         }
       },
       {
@@ -2055,118 +2055,10 @@
     },
     "memberCount": 37
   },
-  "source": "CoC-Proxy – Normaler Krieg",
-  "fetchedAt": "2026-09-14T23:41:53.279Z",
-  "current": {
-    "state": "preparation",
-    "type": "war",
-    "attacksPerMember": 2,
-    "opponent": "ابطال كوردستان",
-    "opponentTag": "#QGPV98CQ",
-    "ourStars": 0,
-    "enemyStars": 0,
-    "ourAttacks": 0,
-    "enemyAttacks": 0,
-    "ourDestruction": 0,
-    "enemyDestruction": 0,
-    "warSize": 15,
-    "preparationStartTime": "20260914T193656.000Z",
-    "startTime": "20260915T183656.000Z",
-    "endTime": "20260916T183656.000Z",
-    "players": [
-      {
-        "name": "Vanille Waffel",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Coc Hoffi",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kallee",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Tinkerbell",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "King",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "King Olli",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "1Nicky43",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kampfkeks",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Sebastian ||",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "BlackDragon",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Rhodos",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kallchen",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "WiQuBr",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "The Next Level",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kalle",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      }
-    ]
-  },
-  "currentError": "",
+  "source": "ClashKing",
+  "fetchedAt": "2026-09-15T01:44:33.946Z",
+  "current": null,
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
