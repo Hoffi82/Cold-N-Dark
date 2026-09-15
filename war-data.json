@@ -179,11 +179,11 @@
         }
       },
       {
-        "tag": "#2GUV2UYV",
-        "name": "Coc Hoffi",
-        "role": "leader",
+        "tag": "#YJCJ9P898",
+        "name": "Kallchen",
+        "role": "admin",
         "townHallLevel": 18,
-        "expLevel": 274,
+        "expLevel": 244,
         "league": {
           "id": 29000000,
           "name": "Unranked",
@@ -200,12 +200,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 29,
-        "builderBaseTrophies": 2998,
+        "trophies": 439,
+        "builderBaseTrophies": 3802,
         "clanRank": 4,
-        "previousClanRank": 4,
-        "donations": 876,
-        "donationsReceived": 0,
+        "previousClanRank": 6,
+        "donations": 765,
+        "donationsReceived": 576,
         "playerHouse": {
           "elements": [
             {
@@ -218,17 +218,17 @@
             },
             {
               "type": "roof",
-              "id": 82000032
+              "id": 82000031
             },
             {
               "type": "decoration",
-              "id": 82000063
+              "id": 82000064
             }
           ]
         },
         "builderBaseLeague": {
-          "id": 44000024,
-          "name": "Iron League II"
+          "id": 44000029,
+          "name": "Titanium League III"
         }
       },
       {
@@ -253,7 +253,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 26,
+        "trophies": 40,
         "builderBaseTrophies": 3269,
         "clanRank": 5,
         "previousClanRank": 5,
@@ -285,11 +285,11 @@
         }
       },
       {
-        "tag": "#YJCJ9P898",
-        "name": "Kallchen",
-        "role": "admin",
+        "tag": "#2GUV2UYV",
+        "name": "Coc Hoffi",
+        "role": "leader",
         "townHallLevel": 18,
-        "expLevel": 244,
+        "expLevel": 274,
         "league": {
           "id": 29000000,
           "name": "Unranked",
@@ -306,12 +306,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 0,
-        "builderBaseTrophies": 3802,
+        "trophies": 29,
+        "builderBaseTrophies": 2998,
         "clanRank": 6,
-        "previousClanRank": 6,
-        "donations": 589,
-        "donationsReceived": 521,
+        "previousClanRank": 4,
+        "donations": 876,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -324,17 +324,17 @@
             },
             {
               "type": "roof",
-              "id": 82000031
+              "id": 82000032
             },
             {
               "type": "decoration",
-              "id": 82000064
+              "id": 82000063
             }
           ]
         },
         "builderBaseLeague": {
-          "id": 44000029,
-          "name": "Titanium League III"
+          "id": 44000024,
+          "name": "Iron League II"
         }
       },
       {
@@ -359,12 +359,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 44,
+        "trophies": 204,
         "builderBaseTrophies": 3946,
         "clanRank": 7,
         "previousClanRank": 9,
-        "donations": 341,
-        "donationsReceived": 381,
+        "donations": 396,
+        "donationsReceived": 470,
         "playerHouse": {
           "elements": [
             {
@@ -518,12 +518,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/YCZ7O_3_c8eCBYvX-92qiWeLc6Md6eNJ5A8O-2vUg7I.png"
           }
         },
-        "trophies": 360,
+        "trophies": 574,
         "builderBaseTrophies": 2703,
         "clanRank": 10,
         "previousClanRank": 10,
-        "donations": 341,
-        "donationsReceived": 319,
+        "donations": 381,
+        "donationsReceived": 407,
         "playerHouse": {
           "elements": [
             {
@@ -576,7 +576,7 @@
         "builderBaseTrophies": 3536,
         "clanRank": 11,
         "previousClanRank": 11,
-        "donations": 639,
+        "donations": 714,
         "donationsReceived": 2033,
         "playerHouse": {
           "elements": [
@@ -1514,7 +1514,7 @@
         "name": "Tommy-S04",
         "role": "member",
         "townHallLevel": 15,
-        "expLevel": 148,
+        "expLevel": 149,
         "league": {
           "id": 29000000,
           "name": "Unranked",
@@ -1531,7 +1531,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/yS8XBv_a_SNtCpcofsWMFaojRNwO504Py7HyDCBCjYU.png"
           }
         },
-        "trophies": 24,
+        "trophies": 46,
         "builderBaseTrophies": 2422,
         "clanRank": 29,
         "previousClanRank": 29,
@@ -1620,7 +1620,7 @@
         "name": "1Eric43",
         "role": "member",
         "townHallLevel": 14,
-        "expLevel": 154,
+        "expLevel": 155,
         "league": {
           "id": 29000000,
           "name": "Unranked",
@@ -1642,7 +1642,7 @@
         "clanRank": 31,
         "previousClanRank": 31,
         "donations": 285,
-        "donationsReceived": 669,
+        "donationsReceived": 744,
         "playerHouse": {
           "elements": [
             {
@@ -1747,8 +1747,8 @@
         "builderBaseTrophies": 2241,
         "clanRank": 33,
         "previousClanRank": 33,
-        "donations": 142,
-        "donationsReceived": 1320,
+        "donations": 143,
+        "donationsReceived": 1360,
         "builderBaseLeague": {
           "id": 44000021,
           "name": "Brass League II"
@@ -2055,118 +2055,10 @@
     },
     "memberCount": 37
   },
-  "source": "CoC-Proxy – Normaler Krieg",
-  "fetchedAt": "2026-09-15T01:54:35.680Z",
-  "current": {
-    "state": "preparation",
-    "type": "war",
-    "attacksPerMember": 2,
-    "opponent": "ابطال كوردستان",
-    "opponentTag": "#QGPV98CQ",
-    "ourStars": 0,
-    "enemyStars": 0,
-    "ourAttacks": 0,
-    "enemyAttacks": 0,
-    "ourDestruction": 0,
-    "enemyDestruction": 0,
-    "warSize": 15,
-    "preparationStartTime": "20260914T193656.000Z",
-    "startTime": "20260915T183656.000Z",
-    "endTime": "20260916T183656.000Z",
-    "players": [
-      {
-        "name": "Vanille Waffel",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Coc Hoffi",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kallee",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Tinkerbell",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "King",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "King Olli",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "1Nicky43",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kampfkeks",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Sebastian ||",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "BlackDragon",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Rhodos",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kallchen",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "WiQuBr",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "The Next Level",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kalle",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      }
-    ]
-  },
-  "currentError": "",
+  "source": "ClashKing",
+  "fetchedAt": "2026-09-15T06:47:28.214Z",
+  "current": null,
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
