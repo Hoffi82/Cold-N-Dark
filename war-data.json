@@ -2055,10 +2055,118 @@
     },
     "memberCount": 37
   },
-  "source": "ClashKing",
-  "fetchedAt": "2026-09-16T15:14:51.011Z",
-  "current": null,
-  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
+  "source": "CoC-Proxy – Normaler Krieg",
+  "fetchedAt": "2026-09-16T16:14:51.835Z",
+  "current": {
+    "state": "inWar",
+    "type": "war",
+    "attacksPerMember": 2,
+    "opponent": "ابطال كوردستان",
+    "opponentTag": "#QGPV98CQ",
+    "ourStars": 42,
+    "enemyStars": 45,
+    "ourAttacks": 25,
+    "enemyAttacks": 25,
+    "ourDestruction": 98,
+    "enemyDestruction": 100,
+    "warSize": 15,
+    "preparationStartTime": "20260914T193656.000Z",
+    "startTime": "20260915T183656.000Z",
+    "endTime": "20260916T183656.000Z",
+    "players": [
+      {
+        "name": "Vanille Waffel",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "Coc Hoffi",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 77
+      },
+      {
+        "name": "Kallee",
+        "attacks": 2,
+        "stars": 4,
+        "destruction": 100
+      },
+      {
+        "name": "Tinkerbell",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "King",
+        "attacks": 2,
+        "stars": 6,
+        "destruction": 100
+      },
+      {
+        "name": "King Olli",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 85
+      },
+      {
+        "name": "1Nicky43",
+        "attacks": 2,
+        "stars": 4,
+        "destruction": 100
+      },
+      {
+        "name": "Kampfkeks",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "Sebastian ||",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "BlackDragon",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Rhodos",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Kallchen",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "WiQuBr",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "The Next Level",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 69
+      },
+      {
+        "name": "Kalle",
+        "attacks": 2,
+        "stars": 3,
+        "destruction": 99
+      }
+    ]
+  },
+  "currentError": "",
   "previous": [
     {
       "state": "warEnded",
