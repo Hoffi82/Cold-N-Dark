@@ -20,7 +20,7 @@
     },
     "clanLevel": 26,
     "clanPoints": 90400,
-    "clanBuilderBasePoints": 34655,
+    "clanBuilderBasePoints": 34654,
     "clanCapitalPoints": 2890,
     "capitalLeague": {
       "id": 85000014,
@@ -114,11 +114,11 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 277,
+        "trophies": 288,
         "builderBaseTrophies": 4654,
         "clanRank": 2,
         "previousClanRank": 3,
-        "donations": 1394,
+        "donations": 1395,
         "donationsReceived": 936,
         "playerHouse": {
           "elements": [
@@ -167,7 +167,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 70,
+        "trophies": 86,
         "builderBaseTrophies": 2776,
         "clanRank": 3,
         "previousClanRank": 2,
@@ -306,7 +306,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 105,
+        "trophies": 123,
         "builderBaseTrophies": 2998,
         "clanRank": 6,
         "previousClanRank": 6,
@@ -577,7 +577,7 @@
         "clanRank": 11,
         "previousClanRank": 11,
         "donations": 912,
-        "donationsReceived": 2483,
+        "donationsReceived": 2484,
         "playerHouse": {
           "elements": [
             {
@@ -1744,7 +1744,7 @@
           }
         },
         "trophies": 0,
-        "builderBaseTrophies": 2310,
+        "builderBaseTrophies": 2302,
         "clanRank": 33,
         "previousClanRank": 33,
         "donations": 193,
@@ -2056,9 +2056,9 @@
     "memberCount": 37
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-09-16T19:34:51.272Z",
+  "fetchedAt": "2026-09-16T21:56:00.961Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
