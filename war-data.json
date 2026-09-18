@@ -61,7 +61,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/VFqkaQimExWtSmIf9PC8WEpj4Vd58oLjPWyZqfVb5VE.png"
           }
         },
-        "trophies": 306,
+        "trophies": 346,
         "builderBaseTrophies": 4046,
         "clanRank": 1,
         "previousClanRank": 1,
@@ -114,12 +114,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 341,
+        "trophies": 381,
         "builderBaseTrophies": 4654,
         "clanRank": 2,
         "previousClanRank": 2,
         "donations": 1840,
-        "donationsReceived": 1054,
+        "donationsReceived": 1109,
         "playerHouse": {
           "elements": [
             {
@@ -167,11 +167,11 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 188,
+        "trophies": 222,
         "builderBaseTrophies": 2776,
         "clanRank": 3,
         "previousClanRank": 3,
-        "donations": 1869,
+        "donations": 1924,
         "donationsReceived": 2992,
         "builderBaseLeague": {
           "id": 44000023,
@@ -2056,9 +2056,9 @@
     "memberCount": 37
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-09-18T22:20:10.224Z",
+  "fetchedAt": "2026-09-18T23:31:37.528Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
