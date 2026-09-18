@@ -2055,10 +2055,178 @@
     },
     "memberCount": 37
   },
-  "source": "ClashKing",
-  "fetchedAt": "2026-09-18T15:45:21.269Z",
-  "current": null,
-  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
+  "source": "CoC-Proxy – Normaler Krieg",
+  "fetchedAt": "2026-09-18T17:31:12.974Z",
+  "current": {
+    "state": "inWar",
+    "type": "war",
+    "attacksPerMember": 2,
+    "opponent": "STEELERS",
+    "opponentTag": "#2JYYUCUV9",
+    "ourStars": 72,
+    "enemyStars": 65,
+    "ourAttacks": 45,
+    "enemyAttacks": 36,
+    "ourDestruction": 98.24,
+    "enemyDestruction": 92.56,
+    "warSize": 25,
+    "preparationStartTime": "20260916T201255.000Z",
+    "startTime": "20260917T191255.000Z",
+    "endTime": "20260918T191255.000Z",
+    "players": [
+      {
+        "name": "Route66",
+        "attacks": 2,
+        "stars": 4,
+        "destruction": 80
+      },
+      {
+        "name": "Vanille Waffel",
+        "attacks": 2,
+        "stars": 6,
+        "destruction": 100
+      },
+      {
+        "name": "Coc Hoffi",
+        "attacks": 2,
+        "stars": 4,
+        "destruction": 88
+      },
+      {
+        "name": "Kallee",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "Nano",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "Tinkerbell",
+        "attacks": 2,
+        "stars": 6,
+        "destruction": 100
+      },
+      {
+        "name": "basti336",
+        "attacks": 2,
+        "stars": 6,
+        "destruction": 100
+      },
+      {
+        "name": "King",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "Hoffi8211",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "King Olli",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 60
+      },
+      {
+        "name": "1Nicky43",
+        "attacks": 2,
+        "stars": 4,
+        "destruction": 100
+      },
+      {
+        "name": "Kampfkeks",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "1Eric43",
+        "attacks": 2,
+        "stars": 6,
+        "destruction": 100
+      },
+      {
+        "name": "Schlingel258",
+        "attacks": 2,
+        "stars": 4,
+        "destruction": 100
+      },
+      {
+        "name": "Sebastian ||",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "BlackDragon",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "Rhodos",
+        "attacks": 2,
+        "stars": 3,
+        "destruction": 95
+      },
+      {
+        "name": "Duster 2.0",
+        "attacks": 2,
+        "stars": 4,
+        "destruction": 88
+      },
+      {
+        "name": "SilverStar",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "Kallchen",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "WiQuBr",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      },
+      {
+        "name": "The Next Level",
+        "attacks": 2,
+        "stars": 6,
+        "destruction": 100
+      },
+      {
+        "name": "Kalle",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "CoC-CR",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Moskito",
+        "attacks": 2,
+        "stars": 5,
+        "destruction": 100
+      }
+    ]
+  },
+  "currentError": "",
   "previous": [
     {
       "state": "warEnded",
