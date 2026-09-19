@@ -20,7 +20,7 @@
     },
     "clanLevel": 26,
     "clanPoints": 90400,
-    "clanBuilderBasePoints": 34641,
+    "clanBuilderBasePoints": 34645,
     "clanCapitalPoints": 2890,
     "capitalLeague": {
       "id": 85000014,
@@ -1110,8 +1110,8 @@
         "builderBaseTrophies": 3380,
         "clanRank": 21,
         "previousClanRank": 21,
-        "donations": 3849,
-        "donationsReceived": 3724,
+        "donations": 3869,
+        "donationsReceived": 3773,
         "playerHouse": {
           "elements": [
             {
@@ -1531,11 +1531,11 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/yS8XBv_a_SNtCpcofsWMFaojRNwO504Py7HyDCBCjYU.png"
           }
         },
-        "trophies": 362,
+        "trophies": 623,
         "builderBaseTrophies": 2422,
         "clanRank": 29,
         "previousClanRank": 29,
-        "donations": 403,
+        "donations": 438,
         "donationsReceived": 83,
         "playerHouse": {
           "elements": [
@@ -1638,7 +1638,7 @@
           }
         },
         "trophies": 0,
-        "builderBaseTrophies": 2363,
+        "builderBaseTrophies": 2403,
         "clanRank": 31,
         "previousClanRank": 31,
         "donations": 425,
@@ -1664,8 +1664,8 @@
           ]
         },
         "builderBaseLeague": {
-          "id": 44000021,
-          "name": "Brass League II"
+          "id": 44000022,
+          "name": "Brass League I"
         }
       },
       {
@@ -1888,8 +1888,8 @@
         "builderBaseTrophies": 3644,
         "clanRank": 36,
         "previousClanRank": 36,
-        "donations": 1922,
-        "donationsReceived": 3523,
+        "donations": 1971,
+        "donationsReceived": 3578,
         "playerHouse": {
           "elements": [
             {
@@ -2056,9 +2056,9 @@
     "memberCount": 37
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-09-19T18:47:27.963Z",
+  "fetchedAt": "2026-09-19T19:31:51.232Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
