@@ -20,7 +20,7 @@
     },
     "clanLevel": 26,
     "clanPoints": 90400,
-    "clanBuilderBasePoints": 34626,
+    "clanBuilderBasePoints": 34629,
     "clanCapitalPoints": 2890,
     "capitalLeague": {
       "id": 85000014,
@@ -61,12 +61,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/VFqkaQimExWtSmIf9PC8WEpj4Vd58oLjPWyZqfVb5VE.png"
           }
         },
-        "trophies": 346,
+        "trophies": 359,
         "builderBaseTrophies": 4046,
         "clanRank": 1,
         "previousClanRank": 1,
-        "donations": 2138,
-        "donationsReceived": 3233,
+        "donations": 2226,
+        "donationsReceived": 3322,
         "playerHouse": {
           "elements": [
             {
@@ -167,12 +167,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 222,
+        "trophies": 243,
         "builderBaseTrophies": 2776,
         "clanRank": 3,
         "previousClanRank": 3,
         "donations": 1924,
-        "donationsReceived": 3080,
+        "donationsReceived": 3168,
         "builderBaseLeague": {
           "id": 44000023,
           "name": "Iron League III"
@@ -204,8 +204,8 @@
         "builderBaseTrophies": 3802,
         "clanRank": 4,
         "previousClanRank": 4,
-        "donations": 1203,
-        "donationsReceived": 1040,
+        "donations": 1286,
+        "donationsReceived": 1069,
         "playerHouse": {
           "elements": [
             {
@@ -258,7 +258,7 @@
         "clanRank": 5,
         "previousClanRank": 5,
         "donations": 3568,
-        "donationsReceived": 538,
+        "donationsReceived": 621,
         "playerHouse": {
           "elements": [
             {
@@ -416,7 +416,7 @@
         "builderBaseTrophies": 4169,
         "clanRank": 8,
         "previousClanRank": 8,
-        "donations": 926,
+        "donations": 1015,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -522,7 +522,7 @@
         "builderBaseTrophies": 2703,
         "clanRank": 10,
         "previousClanRank": 10,
-        "donations": 765,
+        "donations": 794,
         "donationsReceived": 759,
         "playerHouse": {
           "elements": [
@@ -1641,7 +1641,7 @@
         "builderBaseTrophies": 2363,
         "clanRank": 31,
         "previousClanRank": 31,
-        "donations": 385,
+        "donations": 425,
         "donationsReceived": 870,
         "playerHouse": {
           "elements": [
@@ -1744,11 +1744,11 @@
           }
         },
         "trophies": 0,
-        "builderBaseTrophies": 2411,
+        "builderBaseTrophies": 2444,
         "clanRank": 33,
         "previousClanRank": 33,
         "donations": 323,
-        "donationsReceived": 1742,
+        "donationsReceived": 1782,
         "builderBaseLeague": {
           "id": 44000022,
           "name": "Brass League I"
@@ -2056,9 +2056,9 @@
     "memberCount": 37
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-09-19T09:12:31.617Z",
+  "fetchedAt": "2026-09-19T11:06:10.003Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
