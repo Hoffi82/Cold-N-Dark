@@ -2056,9 +2056,9 @@
     "memberCount": 37
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-09-19T06:18:03.307Z",
+  "fetchedAt": "2026-09-19T09:12:31.617Z",
   "current": null,
-  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
+  "currentError": "ClashKing: HTTP 404",
   "previous": [
     {
       "state": "warEnded",
