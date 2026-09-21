@@ -2055,10 +2055,208 @@
     },
     "memberCount": 37
   },
-  "source": "ClashKing",
-  "fetchedAt": "2026-09-20T23:19:17.257Z",
-  "current": null,
-  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
+  "source": "CoC-Proxy – Normaler Krieg",
+  "fetchedAt": "2026-09-21T01:05:18.131Z",
+  "current": {
+    "state": "inWar",
+    "type": "war",
+    "attacksPerMember": 2,
+    "opponent": "WolverineZ",
+    "opponentTag": "#CCQ2U9V2",
+    "ourStars": 13,
+    "enemyStars": 27,
+    "ourAttacks": 6,
+    "enemyAttacks": 9,
+    "ourDestruction": 16,
+    "enemyDestruction": 30,
+    "warSize": 30,
+    "preparationStartTime": "20260919T201217.000Z",
+    "startTime": "20260920T191217.000Z",
+    "endTime": "20260921T191217.000Z",
+    "players": [
+      {
+        "name": "Route66",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Vanille Waffel",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 90
+      },
+      {
+        "name": "Coc Hoffi",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Kallee",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Rocky",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Nano",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Tinkerbell",
+        "attacks": 2,
+        "stars": 6,
+        "destruction": 100
+      },
+      {
+        "name": "Leon",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "basti336",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "King",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 92
+      },
+      {
+        "name": "Hoffi8211",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "King Olli",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "duster",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "1Nicky43",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 90
+      },
+      {
+        "name": "Düster 4.0",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Kampfkeks",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "1Eric43",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Schlingel258",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Sebastian ||",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "BlackDragon",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Rhodos",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Duster 2.0",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "SilverStar",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Duster 1.0",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Kallchen",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "WiQuBr",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "The Next Level",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Kalle",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "CoC-CR",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Moskito",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      }
+    ]
+  },
+  "currentError": "",
   "previous": [
     {
       "state": "warEnded",
