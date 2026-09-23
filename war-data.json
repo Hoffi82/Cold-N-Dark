@@ -114,12 +114,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 553,
+        "trophies": 620,
         "builderBaseTrophies": 3802,
         "clanRank": 2,
-        "previousClanRank": 3,
-        "donations": 1941,
-        "donationsReceived": 1775,
+        "previousClanRank": 2,
+        "donations": 2033,
+        "donationsReceived": 1894,
         "playerHouse": {
           "elements": [
             {
@@ -170,7 +170,7 @@
         "trophies": 180,
         "builderBaseTrophies": 4654,
         "clanRank": 3,
-        "previousClanRank": 2,
+        "previousClanRank": 3,
         "donations": 2667,
         "donationsReceived": 1526,
         "playerHouse": {
@@ -220,12 +220,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 276,
+        "trophies": 335,
         "builderBaseTrophies": 2776,
         "clanRank": 4,
         "previousClanRank": 4,
-        "donations": 2454,
-        "donationsReceived": 4664,
+        "donations": 2479,
+        "donationsReceived": 4752,
         "builderBaseLeague": {
           "id": 44000023,
           "name": "Iron League III"
@@ -253,12 +253,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 133,
+        "trophies": 193,
         "builderBaseTrophies": 3269,
         "clanRank": 5,
         "previousClanRank": 5,
-        "donations": 4966,
-        "donationsReceived": 954,
+        "donations": 5254,
+        "donationsReceived": 1120,
         "playerHouse": {
           "elements": [
             {
@@ -310,7 +310,7 @@
         "builderBaseTrophies": 2998,
         "clanRank": 6,
         "previousClanRank": 6,
-        "donations": 1386,
+        "donations": 1503,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -359,12 +359,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 521,
+        "trophies": 530,
         "builderBaseTrophies": 2610,
         "clanRank": 7,
         "previousClanRank": 7,
-        "donations": 1312,
-        "donationsReceived": 1318,
+        "donations": 1367,
+        "donationsReceived": 1508,
         "playerHouse": {
           "elements": [
             {
@@ -412,12 +412,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 266,
+        "trophies": 288,
         "builderBaseTrophies": 3946,
         "clanRank": 8,
         "previousClanRank": 8,
-        "donations": 1807,
-        "donationsReceived": 1307,
+        "donations": 1944,
+        "donationsReceived": 1510,
         "playerHouse": {
           "elements": [
             {
@@ -522,7 +522,7 @@
         "builderBaseTrophies": 4169,
         "clanRank": 10,
         "previousClanRank": 10,
-        "donations": 1495,
+        "donations": 1571,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -630,7 +630,7 @@
         "clanRank": 12,
         "previousClanRank": 12,
         "donations": 1411,
-        "donationsReceived": 3873,
+        "donationsReceived": 3928,
         "playerHouse": {
           "elements": [
             {
@@ -1534,7 +1534,7 @@
         "builderBaseTrophies": 3359,
         "clanRank": 29,
         "previousClanRank": 29,
-        "donations": 3,
+        "donations": 34,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -2109,7 +2109,7 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-09-23T14:56:00.170Z",
+  "fetchedAt": "2026-09-23T18:51:49.941Z",
   "current": null,
   "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
