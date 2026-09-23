@@ -20,7 +20,7 @@
     },
     "clanLevel": 26,
     "clanPoints": 89450,
-    "clanBuilderBasePoints": 35017,
+    "clanBuilderBasePoints": 35007,
     "clanCapitalPoints": 2852,
     "capitalLeague": {
       "id": 85000014,
@@ -65,8 +65,8 @@
         "builderBaseTrophies": 4046,
         "clanRank": 1,
         "previousClanRank": 1,
-        "donations": 3008,
-        "donationsReceived": 5014,
+        "donations": 3124,
+        "donationsReceived": 5103,
         "playerHouse": {
           "elements": [
             {
@@ -167,12 +167,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 180,
+        "trophies": 220,
         "builderBaseTrophies": 4654,
         "clanRank": 3,
         "previousClanRank": 3,
-        "donations": 2667,
-        "donationsReceived": 1526,
+        "donations": 2757,
+        "donationsReceived": 1585,
         "playerHouse": {
           "elements": [
             {
@@ -220,12 +220,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 335,
+        "trophies": 375,
         "builderBaseTrophies": 2776,
         "clanRank": 4,
         "previousClanRank": 4,
-        "donations": 2479,
-        "donationsReceived": 4752,
+        "donations": 2821,
+        "donationsReceived": 4928,
         "builderBaseLeague": {
           "id": 44000023,
           "name": "Iron League III"
@@ -364,7 +364,7 @@
         "clanRank": 7,
         "previousClanRank": 7,
         "donations": 1367,
-        "donationsReceived": 1508,
+        "donationsReceived": 1518,
         "playerHouse": {
           "elements": [
             {
@@ -412,12 +412,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 288,
+        "trophies": 308,
         "builderBaseTrophies": 3946,
         "clanRank": 8,
         "previousClanRank": 8,
         "donations": 1944,
-        "donationsReceived": 1510,
+        "donationsReceived": 1540,
         "playerHouse": {
           "elements": [
             {
@@ -575,7 +575,7 @@
         "builderBaseTrophies": 3614,
         "clanRank": 11,
         "previousClanRank": 11,
-        "donations": 1322,
+        "donations": 1381,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -625,12 +625,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/YCZ7O_3_c8eCBYvX-92qiWeLc6Md6eNJ5A8O-2vUg7I.png"
           }
         },
-        "trophies": 33,
-        "builderBaseTrophies": 3582,
+        "trophies": 90,
+        "builderBaseTrophies": 3584,
         "clanRank": 12,
         "previousClanRank": 12,
-        "donations": 1411,
-        "donationsReceived": 3928,
+        "donations": 1440,
+        "donationsReceived": 4106,
         "playerHouse": {
           "elements": [
             {
@@ -1888,7 +1888,7 @@
         "clanRank": 36,
         "previousClanRank": 36,
         "donations": 1265,
-        "donationsReceived": 2268,
+        "donationsReceived": 2291,
         "playerHouse": {
           "elements": [
             {
@@ -1938,11 +1938,11 @@
           }
         },
         "trophies": 0,
-        "builderBaseTrophies": 3644,
+        "builderBaseTrophies": 3600,
         "clanRank": 37,
         "previousClanRank": 37,
-        "donations": 2238,
-        "donationsReceived": 3973,
+        "donations": 2256,
+        "donationsReceived": 4062,
         "playerHouse": {
           "elements": [
             {
@@ -2108,208 +2108,10 @@
     },
     "memberCount": 38
   },
-  "source": "CoC-Proxy – Normaler Krieg",
-  "fetchedAt": "2026-09-23T18:52:21.139Z",
-  "current": {
-    "state": "preparation",
-    "type": "war",
-    "attacksPerMember": 2,
-    "opponent": "Sigma Sicks",
-    "opponentTag": "#2J9UPYCCY",
-    "ourStars": 0,
-    "enemyStars": 0,
-    "ourAttacks": 0,
-    "enemyAttacks": 0,
-    "ourDestruction": 0,
-    "enemyDestruction": 0,
-    "warSize": 30,
-    "preparationStartTime": "20260922T205919.000Z",
-    "startTime": "20260923T195919.000Z",
-    "endTime": "20260924T195919.000Z",
-    "players": [
-      {
-        "name": "Route66",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Vanille Waffel",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Zymeth1735",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Coc Hoffi",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kallee",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Rocky",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Nano",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Tinkerbell",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "basti336",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "King",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Hoffi8211",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "King Olli",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "duster",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "1Nicky43",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Düster 4.0",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kampfkeks",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "1Eric43",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Schlingel258",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Sebastian ||",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "BlackDragon",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Rhodos",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Duster 2.0",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "SilverStar",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Duster 1.0",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kallchen",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "WiQuBr",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "The Next Level",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kalle",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "CoC-CR",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Moskito",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      }
-    ]
-  },
-  "currentError": "",
+  "source": "ClashKing",
+  "fetchedAt": "2026-09-23T22:03:03.325Z",
+  "current": null,
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
