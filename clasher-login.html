@@ -26,13 +26,100 @@
 <script src="members-data.js"></script>
 <script>
 const SUPABASE_URL='https://jvgqvtnqncelbhuordzy.supabase.co',SUPABASE_KEY='sb_publishable_4PusmhJVMm0b3Bm-2Y-FPQ__tnZZzZO';
-const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);let mode=new URLSearchParams(location.search).get('mode')==='register'?'register':'login';
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const REGISTER_ENDPOINT=SUPABASE_URL+'/functions/v1/clasher-register';
+let mode=new URLSearchParams(location.search).get('mode')==='register'?'register':'login';
 const $=id=>document.getElementById(id),msg=$('msg');
-function findMember(name){return(window.COLD_N_DARK_MEMBERS||[]).find(m=>m.name.toLowerCase()===name.trim().toLowerCase())}
-function emailFor(name){return'clasher+'+encodeURIComponent(name.trim().toLowerCase()).replace(/%/g,'')+'@coldndark.de'}
-function setMode(next){mode=next;$('loginTab').classList.toggle('active',mode==='login');$('registerTab').classList.toggle('active',mode==='register');$('submit').textContent=mode==='login'?'Einloggen':'Registrieren';$('password').autocomplete=mode==='login'?'current-password':'new-password';$('hint').textContent=mode==='login'?'Mit deinem exakten In-Game-Namen und Passwort anmelden.':'Nur bereits eingetragene Cold N\' Dark Mitglieder können sich erstmalig registrieren.';msg.textContent='';msg.className='msg'}
-$('loginTab').onclick=()=>setMode('login');$('registerTab').onclick=()=>setMode('register');
-$('form').onsubmit=async e=>{e.preventDefault();msg.className='msg';msg.textContent='';const name=$('name').value.trim(),password=$('password').value,m=findMember(name);if(!m){msg.className='msg error';msg.textContent='❌ Dieser In-Game-Name ist nicht in der zentralen Mitgliederliste.';return}const email=emailFor(name);try{if(mode==='register'){const{data,error}=await db.auth.signUp({email,password,options:{data:{display_name:m.name,member_role:'clasher'}}});if(error)throw error;if(data.session){location.href='index.html'}else{msg.className='msg ok';msg.textContent='✅ Registrierung angelegt. Falls eine Bestätigung verlangt wird, muss diese zuerst abgeschlossen werden.'}}else{const{data,error}=await db.auth.signInWithPassword({email,password});if(error)throw error;location.href='index.html'}}catch(err){console.error(err);msg.className='msg error';msg.textContent='❌ '+(err.message||'Anmeldung fehlgeschlagen.')}};
-(async()=>{const{data}=await db.auth.getSession();if(data.session)location.href='index.html';else setMode(mode)})();
+
+function findMember(name){
+  return(window.COLD_N_DARK_MEMBERS||[]).find(m=>m.name.toLowerCase()===name.trim().toLowerCase());
+}
+function emailFor(name){
+  return'clasher+'+encodeURIComponent(name.trim().toLowerCase()).replace(/%/g,'')+'@coldndark.de';
+}
+function setMode(next){
+  mode=next;
+  $('loginTab').classList.toggle('active',mode==='login');
+  $('registerTab').classList.toggle('active',mode==='register');
+  $('submit').textContent=mode==='login'?'Einloggen':'Registrieren';
+  $('password').autocomplete=mode==='login'?'current-password':'new-password';
+  $('hint').textContent=mode==='login'
+    ?'Mit deinem exakten In-Game-Namen und Passwort anmelden.'
+    :'Nur bereits eingetragene Cold N\' Dark Mitglieder können sich erstmalig registrieren.';
+  msg.textContent='';
+  msg.className='msg';
+}
+$('loginTab').onclick=()=>setMode('login');
+$('registerTab').onclick=()=>setMode('register');
+
+$('form').onsubmit=async e=>{
+  e.preventDefault();
+  msg.className='msg';
+  msg.textContent='';
+
+  const name=$('name').value.trim();
+  const password=$('password').value;
+  const member=findMember(name);
+
+  if(!member){
+    msg.className='msg error';
+    msg.textContent='❌ Dieser In-Game-Name ist nicht in der zentralen Mitgliederliste.';
+    return;
+  }
+
+  if(password.length<6){
+    msg.className='msg error';
+    msg.textContent='❌ Das Passwort muss mindestens 6 Zeichen haben.';
+    return;
+  }
+
+  const email=emailFor(member.name);
+
+  try{
+    if(mode==='register'){
+      msg.textContent='Registrierung wird angelegt …';
+
+      const response=await fetch(REGISTER_ENDPOINT,{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'apikey':SUPABASE_KEY
+        },
+        body:JSON.stringify({name:member.name,password})
+      });
+
+      const result=await response.json().catch(()=>({}));
+      if(!response.ok) throw new Error(result.error||'Registrierung fehlgeschlagen.');
+
+      const login=await db.auth.signInWithPassword({
+        email:result.email||email,
+        password
+      });
+
+      if(login.error) throw login.error;
+
+      msg.className='msg ok';
+      msg.textContent='✅ Registrierung erfolgreich. Du bist jetzt angemeldet.';
+      setTimeout(()=>location.href='index.html',500);
+      return;
+    }
+
+    msg.textContent='Anmeldung wird geprüft …';
+    const{error}=await db.auth.signInWithPassword({email,password});
+    if(error) throw error;
+    location.href='index.html';
+
+  }catch(err){
+    console.error(err);
+    msg.className='msg error';
+    msg.textContent='❌ '+(err.message||'Anmeldung fehlgeschlagen.');
+  }
+};
+
+(async()=>{
+  const{data}=await db.auth.getSession();
+  if(data.session)location.href='index.html';
+  else setMode(mode);
+})();
 </script>
 </body></html>
