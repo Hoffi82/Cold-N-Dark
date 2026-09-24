@@ -108,7 +108,12 @@ footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var
 </div>
 </div>
 
-<a class="cwl-opponents" href="cwl-gegner.html">⚔️ CWL-Gegner &amp; Ergebnisse eintragen →</a>
+<section class="registration-list" id="registrationList">
+<h2>👥 Bereits angemeldet</h2>
+<div class="sub">Aktuelle CWL-Anmeldungen aus der zentralen Liste.</div>
+<div class="reg-status" id="regStatus">Anmeldungen werden geladen …</div>
+<div class="reg-grid" id="regRows"></div>
+</section><a class="cwl-opponents" href="cwl-gegner.html">⚔️ CWL-Gegner &amp; Ergebnisse eintragen →</a>
 <a class="cwl-opponents" href="cwl-spielerwertung.html">🥇 CWL-Spielerwertung &amp; Platzierung ansehen →</a>
 
 
@@ -162,5 +167,46 @@ document.getElementById('cwlForm').addEventListener('submit', async function(e) 
   }
 });
 </script>
-</body>
+<script id="cwl-registration-list-script">
+const CWL_REGISTRATION_URL = "https://script.google.com/macros/s/AKfycbxoqqoD5YBsedBoYikd6YbcHwZSR7fiTX9lBLLgmZpGFKOlcYWpzSSjps64qDxx6argGg/exec";
+function loadCWLRegistrations(){
+  return new Promise((resolve,reject)=>{
+    const callbackName="cwlList_"+Date.now();
+    const script=document.createElement("script");
+    window[callbackName]=(data)=>{
+      delete window[callbackName];
+      script.remove();
+      resolve(Array.isArray(data)?data:[]);
+    };
+    script.onerror=()=>{
+      delete window[callbackName];
+      script.remove();
+      reject(new Error("Liste konnte nicht geladen werden."));
+    };
+    script.src=CWL_REGISTRATION_URL+"?callback="+encodeURIComponent(callbackName);
+    document.body.appendChild(script);
+  });
+}
+async function renderCWLRegistrations(){
+  const status=document.getElementById("regStatus");
+  const rows=document.getElementById("regRows");
+  try{
+    const data=await loadCWLRegistrations();
+    status.textContent=data.length
+      ? data.length+" Anmeldung"+(data.length===1?"":"en")+" vorhanden"
+      : "Noch keine Anmeldung vorhanden.";
+    rows.innerHTML=data.map(x=>{
+      const yes=String(x.teilnahme||"").startsWith("✅");
+      return '<div class="reg-item"><div class="reg-name">'+escReg(x.spieler)+'</div><div class="reg-meta">RH '+escReg(x.rh)+' · <span class="'+(yes?'reg-yes':'reg-no')+'">'+escReg(x.teilnahme)+'</span></div></div>';
+    }).join("");
+  }catch(e){
+    console.error(e);
+    status.textContent="⚠️ Die zentrale Anmeldeliste konnte gerade nicht geladen werden.";
+  }
+}
+function escReg(v){
+  return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+}
+renderCWLRegistrations();
+</script></body>
 </html>
