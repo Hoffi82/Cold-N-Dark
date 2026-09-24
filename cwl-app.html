@@ -7,15 +7,23 @@
 :root{--bg:#09070d;--panel:#171122;--gold:#ffc43d;--gold2:#ff9f1c;--text:#f7f4ff;--muted:#b9b2c9;--line:#ffffff1f}*{box-sizing:border-box}body{margin:0;padding-bottom:86px;background:radial-gradient(circle at 50% 0,#302044,#09070d 58%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.5}.appbar{position:sticky;top:0;z-index:20;background:#08060df2;backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:12px 16px}.appbar-inner,main{max-width:760px;margin:auto}.appbar-inner{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:14px;border:2px solid var(--gold);object-fit:cover}.brand{flex:1}.brand strong{display:block;letter-spacing:1.5px}.brand small{color:var(--gold);font-weight:800;font-size:11px}.back{color:var(--gold);text-decoration:none;font-weight:800;font-size:13px}main{padding:22px 16px}.hero{text-align:center;padding:12px 0 20px}.badge{display:inline-block;border:1px solid #ffc43d66;border-radius:999px;padding:5px 10px;color:var(--gold);font-weight:800;font-size:11px}.hero h1{font-size:38px;margin:14px 0 6px}.hero h1 span{color:var(--gold)}.hero p{color:var(--muted);margin:0}.card{padding:20px;border:1px solid var(--line);border-radius:18px;background:#171122dd}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:7px}.full{grid-column:1/-1}label{font-weight:800;font-size:14px}.required{color:var(--gold)}input,select,textarea{width:100%;padding:12px;border-radius:11px;border:1px solid #ffffff22;background:#09070d;color:var(--text);font:inherit;outline:none}input:focus,select:focus,textarea:focus{border-color:#ffc43d99}textarea{min-height:100px;resize:vertical}.check{display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid var(--line);border-radius:11px;background:#ffffff06}.check input{width:auto;margin-top:4px}.submit{width:100%;border:0;border-radius:13px;padding:15px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#171122;font-weight:900;font-size:16px;cursor:pointer}.notice{margin-top:12px;padding:12px;border-radius:11px;background:#ffc43d0b;border:1px solid #ffc43d22;color:var(--muted);font-size:12px}.notice b{color:var(--gold)}.success{display:none;text-align:center;padding:30px 15px}.success h2{color:var(--gold)}.nav-bottom{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#08060df5;backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom))}.nav-inner{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.nav-item{text-align:center;text-decoration:none;color:var(--muted);font-size:10px;font-weight:800;padding:5px 2px;border-radius:10px}.nav-item.active,.nav-item:hover{color:var(--gold);background:#ffc43d0c}.nav-item i{display:block;font-style:normal;font-size:20px;line-height:22px}@media(max-width:560px){.grid{grid-template-columns:1fr}.full{grid-column:auto}}
 </style><style id="cwl-registration-list-style">
 .registration-list{margin:22px 0;padding:22px;border:1px solid var(--line);border-radius:20px;background:#171122dd}
-.registration-list h2{margin:0 0 6px;color:var(--gold)}
-.registration-list .sub{color:var(--muted);font-size:13px;margin-bottom:14px}
-.reg-status{color:var(--muted);font-size:13px;margin:10px 0}
-.reg-grid{display:grid;gap:8px}
-.reg-item{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:#ffffff06}
+.registration-list h2{margin:0 0 4px;color:var(--gold)}
+.registration-list .sub{color:var(--muted);font-size:13px;margin-bottom:12px}
+.reg-status{color:var(--muted);font-size:13px;margin:8px 0 12px}
+.reg-table-wrap{max-height:2050px;overflow:auto;border:1px solid var(--line);border-radius:14px}
+.reg-table{width:100%;border-collapse:collapse;min-width:720px}
+.reg-table th,.reg-table td{padding:10px 11px;border-bottom:1px solid var(--line);text-align:left}
+.reg-table th{position:sticky;top:0;z-index:2;background:#21152f;color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+.reg-table tr:last-child td{border-bottom:0}
+.reg-table td:first-child{color:var(--muted);width:45px}
 .reg-name{font-weight:900}
-.reg-meta{color:var(--muted);font-size:12px;text-align:right}
-.reg-yes{color:#65e6a5}.reg-no{color:#ff8989}
-@media(max-width:560px){.reg-item{grid-template-columns:1fr}.reg-meta{text-align:left}}
+.reg-yes{color:#65e6a5;font-weight:800}.reg-no{color:#ff8989;font-weight:800}
+.reg-empty{text-align:center;color:var(--muted);padding:25px}
+@media(max-width:760px){
+  .registration-list{padding:16px}
+  .reg-table-wrap{max-height:1800px}
+  .reg-table{min-width:650px}
+}
 </style></head><body>
 <header class="appbar"><div class="appbar-inner"><img class="logo" src="Wappen.png" alt="Cold N' Dark Wappen"><div class="brand"><strong>COLD N' DARK</strong><small>CLAN-APP • CWL</small></div><a class="back" href="app.html">← Zurück</a></div></header>
 <main>
@@ -32,10 +40,15 @@
 <div class="notice"><b>Hinweis:</b> Die App verwendet dieselbe zentrale Übertragung wie die bisherige CWL-Anmeldung. Zusätzlich wird die Anmeldung lokal auf dem Gerät zwischengespeichert.</div></div>
 <div class="success" id="success"><h2>✅ Anmeldung erfasst!</h2><p>Deine CWL-Anmeldung wurde übertragen.</p><a class="back" href="app.html">← Zurück zur App</a></div>
 <section class="registration-list" id="registrationList">
-<h2>👥 Bereits angemeldet</h2>
-<div class="sub">Aktuelle CWL-Anmeldungen aus der zentralen Liste.</div>
+<h2>👥 CWL-Anmeldungen</h2>
+<div class="sub">Alle zentral gespeicherten Anmeldungen – bis zu 40 Teilnehmer übersichtlich in einer Tabelle.</div>
 <div class="reg-status" id="regStatus">Anmeldungen werden geladen …</div>
-<div class="reg-grid" id="regRows"></div>
+<div class="reg-table-wrap">
+<table class="reg-table">
+<thead><tr><th>#</th><th>Spieler</th><th>RH</th><th>Teilnahme</th><th>Verfügbarkeit</th><th>Tage</th></tr></thead>
+<tbody id="regRows"></tbody>
+</table>
+</div>
 </section></main>
 <nav class="nav-bottom"><div class="nav-inner"><a class="nav-item" href="app.html"><i>⌂</i>Start</a><a class="nav-item" href="krieg.html"><i>⚔️</i>Krieg</a><a class="nav-item active" href="cwl-app.html"><i>🏆</i>CWL</a><a class="nav-item" href="mitglieder.html"><i>👥</i>Mitglieder</a><a class="nav-item" href="regeln.html"><i>☰</i>Mehr</a></div></nav>
 <script>
@@ -65,14 +78,12 @@ async function renderCWLRegistrations(){
   const status=document.getElementById("regStatus");
   const rows=document.getElementById("regRows");
   try{
-    const data=await loadCWLRegistrations();
-    status.textContent=data.length
-      ? data.length+" Anmeldung"+(data.length===1?"":"en")+" vorhanden"
-      : "Noch keine Anmeldung vorhanden.";
-    rows.innerHTML=data.map(x=>{
+    const data=(await loadCWLRegistrations()).slice(0,40);
+    status.textContent=data.length+" / 40 Teilnehmer";
+    rows.innerHTML=data.length?data.map((x,i)=>{
       const yes=String(x.teilnahme||"").startsWith("✅");
-      return '<div class="reg-item"><div class="reg-name">'+escReg(x.spieler)+'</div><div class="reg-meta">RH '+escReg(x.rh)+' · <span class="'+(yes?'reg-yes':'reg-no')+'">'+escReg(x.teilnahme)+'</span></div></div>';
-    }).join("");
+      return '<tr><td>'+(i+1)+'</td><td class="reg-name">'+escReg(x.spieler)+'</td><td>'+escReg(x.rh)+'</td><td class="'+(yes?'reg-yes':'reg-no')+'">'+escReg(x.teilnahme)+'</td><td>'+escReg(x.verfuegbarkeit)+'</td><td>'+escReg(x.tage)+'</td></tr>';
+    }).join(""):'<tr><td colspan="6" class="reg-empty">Noch keine Anmeldungen vorhanden.</td></tr>';
   }catch(e){
     console.error(e);
     status.textContent="⚠️ Die zentrale Anmeldeliste konnte gerade nicht geladen werden.";
