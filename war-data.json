@@ -114,12 +114,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 823,
+        "trophies": 863,
         "builderBaseTrophies": 3822,
         "clanRank": 2,
         "previousClanRank": 2,
         "donations": 2592,
-        "donationsReceived": 1983,
+        "donationsReceived": 2072,
         "playerHouse": {
           "elements": [
             {
@@ -306,7 +306,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 666,
+        "trophies": 693,
         "builderBaseTrophies": 2998,
         "clanRank": 6,
         "previousClanRank": 6,
@@ -395,7 +395,7 @@
         "name": "Kallee",
         "role": "member",
         "townHallLevel": 17,
-        "expLevel": 192,
+        "expLevel": 193,
         "league": {
           "id": 29000000,
           "name": "Unranked",
@@ -416,7 +416,7 @@
         "builderBaseTrophies": 2567,
         "clanRank": 8,
         "previousClanRank": 7,
-        "donations": 1521,
+        "donations": 1580,
         "donationsReceived": 1694,
         "playerHouse": {
           "elements": [
@@ -469,7 +469,7 @@
         "builderBaseTrophies": 3906,
         "clanRank": 9,
         "previousClanRank": 8,
-        "donations": 2366,
+        "donations": 2396,
         "donationsReceived": 1938,
         "playerHouse": {
           "elements": [
@@ -2109,7 +2109,7 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-09-26T01:02:50.051Z",
+  "fetchedAt": "2026-09-26T05:50:51.747Z",
   "current": null,
   "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
