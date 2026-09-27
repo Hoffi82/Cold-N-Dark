@@ -61,12 +61,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/VFqkaQimExWtSmIf9PC8WEpj4Vd58oLjPWyZqfVb5VE.png"
           }
         },
-        "trophies": 567,
+        "trophies": 647,
         "builderBaseTrophies": 4046,
         "clanRank": 1,
         "previousClanRank": 1,
         "donations": 4102,
-        "donationsReceived": 6187,
+        "donationsReceived": 6397,
         "playerHouse": {
           "elements": [
             {
@@ -114,7 +114,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 950,
+        "trophies": 979,
         "builderBaseTrophies": 3822,
         "clanRank": 2,
         "previousClanRank": 2,
@@ -224,7 +224,7 @@
         "builderBaseTrophies": 2776,
         "clanRank": 4,
         "previousClanRank": 4,
-        "donations": 3005,
+        "donations": 3126,
         "donationsReceived": 5780,
         "builderBaseLeague": {
           "id": 44000023,
@@ -362,7 +362,7 @@
         "trophies": 587,
         "builderBaseTrophies": 2567,
         "clanRank": 7,
-        "previousClanRank": 8,
+        "previousClanRank": 7,
         "donations": 2048,
         "donationsReceived": 1893,
         "playerHouse": {
@@ -415,7 +415,7 @@
         "trophies": 579,
         "builderBaseTrophies": 3348,
         "clanRank": 8,
-        "previousClanRank": 7,
+        "previousClanRank": 8,
         "donations": 3119,
         "donationsReceived": 1941,
         "playerHouse": {
@@ -790,7 +790,7 @@
         "builderBaseTrophies": 2832,
         "clanRank": 15,
         "previousClanRank": 15,
-        "donations": 760,
+        "donations": 849,
         "donationsReceived": 88,
         "playerHouse": {
           "elements": [
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-09-27T20:57:20.992Z",
+  "fetchedAt": "2026-09-27T23:30:01.193Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
