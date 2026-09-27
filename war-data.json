@@ -2109,7 +2109,7 @@
     "memberCount": 38
   },
   "source": "CoC-Proxy – Normaler Krieg",
-  "fetchedAt": "2026-09-26T23:45:03.860Z",
+  "fetchedAt": "2026-09-27T01:51:32.379Z",
   "current": {
     "state": "inWar",
     "type": "war",
@@ -2117,11 +2117,11 @@
     "opponent": "MEGA EMPIRE UZB",
     "opponentTag": "#PVY8GL29",
     "ourStars": 13,
-    "enemyStars": 18,
+    "enemyStars": 23,
     "ourAttacks": 5,
-    "enemyAttacks": 8,
+    "enemyAttacks": 10,
     "ourDestruction": 15.5,
-    "enemyDestruction": 23.866667,
+    "enemyDestruction": 29.866667,
     "warSize": 30,
     "preparationStartTime": "20260925T205658.000Z",
     "startTime": "20260926T195658.000Z",
