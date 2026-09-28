@@ -20,7 +20,7 @@
     },
     "clanLevel": 26,
     "clanPoints": 90050,
-    "clanBuilderBasePoints": 34929,
+    "clanBuilderBasePoints": 34928,
     "clanCapitalPoints": 2833,
     "capitalLeague": {
       "id": 85000014,
@@ -310,8 +310,8 @@
         "builderBaseTrophies": 3269,
         "clanRank": 6,
         "previousClanRank": 5,
-        "donations": 5928,
-        "donationsReceived": 1447,
+        "donations": 6013,
+        "donationsReceived": 1448,
         "playerHouse": {
           "elements": [
             {
@@ -363,8 +363,8 @@
         "builderBaseTrophies": 4654,
         "clanRank": 7,
         "previousClanRank": 3,
-        "donations": 3191,
-        "donationsReceived": 1950,
+        "donations": 3279,
+        "donationsReceived": 2009,
         "playerHouse": {
           "elements": [
             {
@@ -576,8 +576,8 @@
         "builderBaseTrophies": 3560,
         "clanRank": 11,
         "previousClanRank": 12,
-        "donations": 1503,
-        "donationsReceived": 4930,
+        "donations": 1555,
+        "donationsReceived": 4985,
         "playerHouse": {
           "elements": [
             {
@@ -629,7 +629,7 @@
         "builderBaseTrophies": 3632,
         "clanRank": 12,
         "previousClanRank": 11,
-        "donations": 1661,
+        "donations": 1662,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -790,7 +790,7 @@
         "builderBaseTrophies": 2832,
         "clanRank": 15,
         "previousClanRank": 15,
-        "donations": 849,
+        "donations": 899,
         "donationsReceived": 88,
         "playerHouse": {
           "elements": [
@@ -1481,7 +1481,7 @@
         "builderBaseTrophies": 2422,
         "clanRank": 28,
         "previousClanRank": 28,
-        "donations": 438,
+        "donations": 483,
         "donationsReceived": 83,
         "playerHouse": {
           "elements": [
@@ -1566,7 +1566,7 @@
         "name": "1Eric43",
         "role": "member",
         "townHallLevel": 15,
-        "expLevel": 157,
+        "expLevel": 158,
         "league": {
           "id": 29000000,
           "name": "Unranked",
@@ -1588,7 +1588,7 @@
         "clanRank": 30,
         "previousClanRank": 30,
         "donations": 947,
-        "donationsReceived": 1617,
+        "donationsReceived": 1695,
         "playerHouse": {
           "elements": [
             {
@@ -1743,11 +1743,11 @@
           }
         },
         "trophies": 0,
-        "builderBaseTrophies": 2359,
+        "builderBaseTrophies": 2346,
         "clanRank": 33,
         "previousClanRank": 33,
         "donations": 757,
-        "donationsReceived": 3354,
+        "donationsReceived": 3394,
         "builderBaseLeague": {
           "id": 44000021,
           "name": "Brass League II"
@@ -1781,7 +1781,7 @@
         "clanRank": 34,
         "previousClanRank": 34,
         "donations": 185,
-        "donationsReceived": 352,
+        "donationsReceived": 440,
         "playerHouse": {
           "elements": [
             {
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-09-28T08:33:02.411Z",
+  "fetchedAt": "2026-09-28T16:48:16.265Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
