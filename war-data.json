@@ -20,7 +20,7 @@
     },
     "clanLevel": 26,
     "clanPoints": 90050,
-    "clanBuilderBasePoints": 34923,
+    "clanBuilderBasePoints": 34926,
     "clanCapitalPoints": 2833,
     "capitalLeague": {
       "id": 85000014,
@@ -66,7 +66,7 @@
         "clanRank": 1,
         "previousClanRank": 1,
         "donations": 4333,
-        "donationsReceived": 6834,
+        "donationsReceived": 6923,
         "playerHouse": {
           "elements": [
             {
@@ -114,11 +114,11 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/iX8uNhG6jBcQATWFS8a0gtidGy9O1PRYtXZZMTtUK3U.png"
           }
         },
-        "trophies": 206,
+        "trophies": 258,
         "builderBaseTrophies": 3822,
         "clanRank": 2,
         "previousClanRank": 2,
-        "donations": 3630,
+        "donations": 3686,
         "donationsReceived": 3164,
         "playerHouse": {
           "elements": [
@@ -172,7 +172,7 @@
         "clanRank": 3,
         "previousClanRank": 3,
         "donations": 3385,
-        "donationsReceived": 6220,
+        "donationsReceived": 6308,
         "builderBaseLeague": {
           "id": 44000023,
           "name": "Iron League III"
@@ -310,8 +310,8 @@
         "builderBaseTrophies": 2567,
         "clanRank": 6,
         "previousClanRank": 6,
-        "donations": 2048,
-        "donationsReceived": 2245,
+        "donations": 2169,
+        "donationsReceived": 2300,
         "playerHouse": {
           "elements": [
             {
@@ -1796,10 +1796,10 @@
           }
         },
         "trophies": 0,
-        "builderBaseTrophies": 2345,
+        "builderBaseTrophies": 2377,
         "clanRank": 34,
         "previousClanRank": 34,
-        "donations": 757,
+        "donations": 812,
         "donationsReceived": 3626,
         "builderBaseLeague": {
           "id": 44000021,
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-01T00:03:26.461Z",
+  "fetchedAt": "2026-10-01T03:47:05.432Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
