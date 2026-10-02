@@ -61,12 +61,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/VFqkaQimExWtSmIf9PC8WEpj4Vd58oLjPWyZqfVb5VE.png"
           }
         },
-        "trophies": 201,
+        "trophies": 241,
         "builderBaseTrophies": 4046,
         "clanRank": 1,
         "previousClanRank": 1,
-        "donations": 4333,
-        "donationsReceived": 6923,
+        "donations": 4421,
+        "donationsReceived": 6978,
         "playerHouse": {
           "elements": [
             {
@@ -167,12 +167,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 213,
+        "trophies": 253,
         "builderBaseTrophies": 2776,
         "clanRank": 3,
         "previousClanRank": 3,
-        "donations": 3385,
-        "donationsReceived": 6308,
+        "donations": 3474,
+        "donationsReceived": 6396,
         "builderBaseLeague": {
           "id": 44000023,
           "name": "Iron League III"
@@ -577,7 +577,7 @@
         "clanRank": 11,
         "previousClanRank": 11,
         "donations": 1671,
-        "donationsReceived": 5416,
+        "donationsReceived": 5505,
         "playerHouse": {
           "elements": [
             {
@@ -1799,7 +1799,7 @@
         "builderBaseTrophies": 2377,
         "clanRank": 34,
         "previousClanRank": 34,
-        "donations": 812,
+        "donations": 867,
         "donationsReceived": 3666,
         "builderBaseLeague": {
           "id": 44000021,
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-01T22:55:04.070Z",
+  "fetchedAt": "2026-10-02T01:19:46.303Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
