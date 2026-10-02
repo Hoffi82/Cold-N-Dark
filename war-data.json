@@ -61,12 +61,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/VFqkaQimExWtSmIf9PC8WEpj4Vd58oLjPWyZqfVb5VE.png"
           }
         },
-        "trophies": 241,
+        "trophies": 283,
         "builderBaseTrophies": 4046,
         "clanRank": 1,
         "previousClanRank": 1,
-        "donations": 4421,
-        "donationsReceived": 7012,
+        "donations": 4476,
+        "donationsReceived": 7101,
         "playerHouse": {
           "elements": [
             {
@@ -167,68 +167,15 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 253,
+        "trophies": 293,
         "builderBaseTrophies": 2776,
         "clanRank": 3,
         "previousClanRank": 3,
         "donations": 3474,
-        "donationsReceived": 6396,
+        "donationsReceived": 6484,
         "builderBaseLeague": {
           "id": 44000023,
           "name": "Iron League III"
-        }
-      },
-      {
-        "tag": "#GYC2LL2RV",
-        "name": "Kampfkeks",
-        "role": "admin",
-        "townHallLevel": 18,
-        "expLevel": 224,
-        "league": {
-          "id": 29000000,
-          "name": "Unranked",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
-            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
-          }
-        },
-        "leagueTier": {
-          "id": 105000030,
-          "name": "Dragon League 30",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leaguetiers/125/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png",
-            "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
-          }
-        },
-        "trophies": 629,
-        "builderBaseTrophies": 4654,
-        "clanRank": 4,
-        "previousClanRank": 4,
-        "donations": 3747,
-        "donationsReceived": 2127,
-        "playerHouse": {
-          "elements": [
-            {
-              "type": "ground",
-              "id": 82000004
-            },
-            {
-              "type": "walls",
-              "id": 82000049
-            },
-            {
-              "type": "roof",
-              "id": 82000036
-            },
-            {
-              "type": "decoration",
-              "id": 82000066
-            }
-          ]
-        },
-        "builderBaseLeague": {
-          "id": 44000033,
-          "name": "Platinum League II"
         }
       },
       {
@@ -253,9 +200,9 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 622,
+        "trophies": 646,
         "builderBaseTrophies": 2998,
-        "clanRank": 5,
+        "clanRank": 4,
         "previousClanRank": 5,
         "donations": 2295,
         "donationsReceived": 0,
@@ -285,6 +232,59 @@
         }
       },
       {
+        "tag": "#GYC2LL2RV",
+        "name": "Kampfkeks",
+        "role": "admin",
+        "townHallLevel": 18,
+        "expLevel": 224,
+        "league": {
+          "id": 29000000,
+          "name": "Unranked",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
+          }
+        },
+        "leagueTier": {
+          "id": 105000030,
+          "name": "Dragon League 30",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leaguetiers/125/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png",
+            "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
+          }
+        },
+        "trophies": 629,
+        "builderBaseTrophies": 4654,
+        "clanRank": 5,
+        "previousClanRank": 4,
+        "donations": 3747,
+        "donationsReceived": 2127,
+        "playerHouse": {
+          "elements": [
+            {
+              "type": "ground",
+              "id": 82000004
+            },
+            {
+              "type": "walls",
+              "id": 82000049
+            },
+            {
+              "type": "roof",
+              "id": 82000036
+            },
+            {
+              "type": "decoration",
+              "id": 82000066
+            }
+          ]
+        },
+        "builderBaseLeague": {
+          "id": 44000033,
+          "name": "Platinum League II"
+        }
+      },
+      {
         "tag": "#QCUGLUQ9L",
         "name": "Kallee",
         "role": "member",
@@ -306,7 +306,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 329,
+        "trophies": 342,
         "builderBaseTrophies": 2567,
         "clanRank": 6,
         "previousClanRank": 6,
@@ -465,7 +465,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 254,
+        "trophies": 284,
         "builderBaseTrophies": 3906,
         "clanRank": 9,
         "previousClanRank": 9,
@@ -577,7 +577,7 @@
         "clanRank": 11,
         "previousClanRank": 11,
         "donations": 1671,
-        "donationsReceived": 5505,
+        "donationsReceived": 5560,
         "playerHouse": {
           "elements": [
             {
@@ -629,7 +629,7 @@
         "builderBaseTrophies": 3660,
         "clanRank": 12,
         "previousClanRank": 12,
-        "donations": 1751,
+        "donations": 1825,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1799,8 +1799,8 @@
         "builderBaseTrophies": 2369,
         "clanRank": 34,
         "previousClanRank": 34,
-        "donations": 867,
-        "donationsReceived": 3666,
+        "donations": 977,
+        "donationsReceived": 3706,
         "builderBaseLeague": {
           "id": 44000021,
           "name": "Brass League II"
@@ -1833,8 +1833,8 @@
         "builderBaseTrophies": 3168,
         "clanRank": 35,
         "previousClanRank": 35,
-        "donations": 316,
-        "donationsReceived": 528,
+        "donations": 404,
+        "donationsReceived": 583,
         "playerHouse": {
           "elements": [
             {
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-02T08:23:02.030Z",
+  "fetchedAt": "2026-10-02T13:55:33.700Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
