@@ -20,7 +20,7 @@
     },
     "clanLevel": 26,
     "clanPoints": 90050,
-    "clanBuilderBasePoints": 34881,
+    "clanBuilderBasePoints": 34883,
     "clanCapitalPoints": 2833,
     "capitalLeague": {
       "id": 85000014,
@@ -203,8 +203,8 @@
         "trophies": 647,
         "builderBaseTrophies": 4654,
         "clanRank": 4,
-        "previousClanRank": 4,
-        "donations": 3832,
+        "previousClanRank": 5,
+        "donations": 3903,
         "donationsReceived": 2245,
         "playerHouse": {
           "elements": [
@@ -256,7 +256,7 @@
         "trophies": 646,
         "builderBaseTrophies": 2998,
         "clanRank": 5,
-        "previousClanRank": 5,
+        "previousClanRank": 4,
         "donations": 2296,
         "donationsReceived": 0,
         "playerHouse": {
@@ -285,6 +285,59 @@
         }
       },
       {
+        "tag": "#G8YU2PRGV",
+        "name": "King",
+        "role": "member",
+        "townHallLevel": 16,
+        "expLevel": 200,
+        "league": {
+          "id": 29000000,
+          "name": "Unranked",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
+          }
+        },
+        "leagueTier": {
+          "id": 105000030,
+          "name": "Dragon League 30",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leaguetiers/125/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png",
+            "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
+          }
+        },
+        "trophies": 417,
+        "builderBaseTrophies": 3269,
+        "clanRank": 6,
+        "previousClanRank": 7,
+        "donations": 7273,
+        "donationsReceived": 2063,
+        "playerHouse": {
+          "elements": [
+            {
+              "type": "ground",
+              "id": 82000141
+            },
+            {
+              "type": "walls",
+              "id": 82000128
+            },
+            {
+              "type": "roof",
+              "id": 82000032
+            },
+            {
+              "type": "decoration",
+              "id": 82000138
+            }
+          ]
+        },
+        "builderBaseLeague": {
+          "id": 44000026,
+          "name": "Steel League III"
+        }
+      },
+      {
         "tag": "#QCUGLUQ9L",
         "name": "Kallee",
         "role": "member",
@@ -308,7 +361,7 @@
         },
         "trophies": 358,
         "builderBaseTrophies": 2567,
-        "clanRank": 6,
+        "clanRank": 7,
         "previousClanRank": 6,
         "donations": 2224,
         "donationsReceived": 2355,
@@ -335,59 +388,6 @@
         "builderBaseLeague": {
           "id": 44000022,
           "name": "Brass League I"
-        }
-      },
-      {
-        "tag": "#G8YU2PRGV",
-        "name": "King",
-        "role": "member",
-        "townHallLevel": 16,
-        "expLevel": 200,
-        "league": {
-          "id": 29000000,
-          "name": "Unranked",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
-            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
-          }
-        },
-        "leagueTier": {
-          "id": 105000030,
-          "name": "Dragon League 30",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leaguetiers/125/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png",
-            "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
-          }
-        },
-        "trophies": 352,
-        "builderBaseTrophies": 3269,
-        "clanRank": 7,
-        "previousClanRank": 7,
-        "donations": 7273,
-        "donationsReceived": 1976,
-        "playerHouse": {
-          "elements": [
-            {
-              "type": "ground",
-              "id": 82000141
-            },
-            {
-              "type": "walls",
-              "id": 82000128
-            },
-            {
-              "type": "roof",
-              "id": 82000032
-            },
-            {
-              "type": "decoration",
-              "id": 82000138
-            }
-          ]
-        },
-        "builderBaseLeague": {
-          "id": 44000026,
-          "name": "Steel League III"
         }
       },
       {
@@ -522,7 +522,7 @@
         "builderBaseTrophies": 4169,
         "clanRank": 10,
         "previousClanRank": 10,
-        "donations": 2159,
+        "donations": 2210,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -572,7 +572,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/YCZ7O_3_c8eCBYvX-92qiWeLc6Md6eNJ5A8O-2vUg7I.png"
           }
         },
-        "trophies": 129,
+        "trophies": 153,
         "builderBaseTrophies": 3560,
         "clanRank": 11,
         "previousClanRank": 11,
@@ -626,7 +626,7 @@
           }
         },
         "trophies": 0,
-        "builderBaseTrophies": 3660,
+        "builderBaseTrophies": 3668,
         "clanRank": 12,
         "previousClanRank": 12,
         "donations": 1826,
@@ -1056,7 +1056,7 @@
         "builderBaseTrophies": 3433,
         "clanRank": 20,
         "previousClanRank": 20,
-        "donations": 5485,
+        "donations": 5508,
         "donationsReceived": 4904,
         "playerHouse": {
           "elements": [
@@ -1888,7 +1888,7 @@
         "clanRank": 36,
         "previousClanRank": 36,
         "donations": 1644,
-        "donationsReceived": 2810,
+        "donationsReceived": 2868,
         "playerHouse": {
           "elements": [
             {
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-03T13:22:59.877Z",
+  "fetchedAt": "2026-10-03T16:48:01.821Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
