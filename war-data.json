@@ -19,9 +19,9 @@
       "medium": "https://api-assets.clashofclans.com/badges/200/eQHof8mVHIsLl-COHhnQReVQk3XcDHddJi2W-z3tiiM.png"
     },
     "clanLevel": 26,
-    "clanPoints": 90050,
-    "clanBuilderBasePoints": 34887,
-    "clanCapitalPoints": 2833,
+    "clanPoints": 90800,
+    "clanBuilderBasePoints": 34893,
+    "clanCapitalPoints": 2816,
     "capitalLeague": {
       "id": 85000014,
       "name": "Master League II"
@@ -61,12 +61,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/VFqkaQimExWtSmIf9PC8WEpj4Vd58oLjPWyZqfVb5VE.png"
           }
         },
-        "trophies": 563,
+        "trophies": 0,
         "builderBaseTrophies": 4046,
         "clanRank": 1,
         "previousClanRank": 1,
-        "donations": 4704,
-        "donationsReceived": 7718,
+        "donations": 56,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -114,12 +114,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/iX8uNhG6jBcQATWFS8a0gtidGy9O1PRYtXZZMTtUK3U.png"
           }
         },
-        "trophies": 436,
+        "trophies": 0,
         "builderBaseTrophies": 3822,
         "clanRank": 2,
         "previousClanRank": 2,
-        "donations": 4010,
-        "donationsReceived": 3371,
+        "donations": 0,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -146,11 +146,11 @@
         }
       },
       {
-        "tag": "#20YYG209V",
-        "name": "Tinkerbell",
-        "role": "admin",
-        "townHallLevel": 17,
-        "expLevel": 221,
+        "tag": "#2GUV2UYV",
+        "name": "Coc Hoffi",
+        "role": "leader",
+        "townHallLevel": 18,
+        "expLevel": 274,
         "league": {
           "id": 29000000,
           "name": "Unranked",
@@ -167,44 +167,11 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 525,
-        "builderBaseTrophies": 2776,
-        "clanRank": 3,
-        "previousClanRank": 3,
-        "donations": 3683,
-        "donationsReceived": 7012,
-        "builderBaseLeague": {
-          "id": 44000023,
-          "name": "Iron League III"
-        }
-      },
-      {
-        "tag": "#2GUV2UYV",
-        "name": "Coc Hoffi",
-        "role": "leader",
-        "townHallLevel": 18,
-        "expLevel": 274,
-        "league": {
-          "id": 29000000,
-          "name": "Unranked",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
-            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
-          }
-        },
-        "leagueTier": {
-          "id": 105000030,
-          "name": "Dragon League 30",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leaguetiers/125/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png",
-            "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
-          }
-        },
-        "trophies": 717,
+        "trophies": 0,
         "builderBaseTrophies": 2998,
-        "clanRank": 4,
+        "clanRank": 3,
         "previousClanRank": 4,
-        "donations": 2471,
+        "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -232,6 +199,39 @@
         }
       },
       {
+        "tag": "#20YYG209V",
+        "name": "Tinkerbell",
+        "role": "admin",
+        "townHallLevel": 17,
+        "expLevel": 221,
+        "league": {
+          "id": 29000000,
+          "name": "Unranked",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
+          }
+        },
+        "leagueTier": {
+          "id": 105000031,
+          "name": "Electro League 31",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leaguetiers/125/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png",
+            "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
+          }
+        },
+        "trophies": 0,
+        "builderBaseTrophies": 2776,
+        "clanRank": 4,
+        "previousClanRank": 3,
+        "donations": 0,
+        "donationsReceived": 0,
+        "builderBaseLeague": {
+          "id": 44000023,
+          "name": "Iron League III"
+        }
+      },
+      {
         "tag": "#GYC2LL2RV",
         "name": "Kampfkeks",
         "role": "admin",
@@ -246,19 +246,19 @@
           }
         },
         "leagueTier": {
-          "id": 105000030,
-          "name": "Dragon League 30",
+          "id": 105000031,
+          "name": "Electro League 31",
           "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leaguetiers/125/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png",
-            "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
+            "small": "https://api-assets.clashofclans.com/leaguetiers/125/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png",
+            "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 659,
+        "trophies": 0,
         "builderBaseTrophies": 4654,
         "clanRank": 5,
         "previousClanRank": 5,
-        "donations": 3993,
-        "donationsReceived": 2477,
+        "donations": 148,
+        "donationsReceived": 118,
         "playerHouse": {
           "elements": [
             {
@@ -306,12 +306,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 477,
+        "trophies": 0,
         "builderBaseTrophies": 2567,
         "clanRank": 6,
         "previousClanRank": 6,
-        "donations": 2224,
-        "donationsReceived": 2618,
+        "donations": 40,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -359,12 +359,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 464,
+        "trophies": 0,
         "builderBaseTrophies": 3269,
         "clanRank": 7,
         "previousClanRank": 7,
-        "donations": 7559,
-        "donationsReceived": 2177,
+        "donations": 0,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -416,8 +416,8 @@
         "builderBaseTrophies": 3348,
         "clanRank": 8,
         "previousClanRank": 8,
-        "donations": 3781,
-        "donationsReceived": 2360,
+        "donations": 63,
+        "donationsReceived": 78,
         "playerHouse": {
           "elements": [
             {
@@ -444,17 +444,18 @@
         }
       },
       {
-        "tag": "#8PYPC99QP",
-        "name": "Kalle",
+        "tag": "#VQ28P8QJ",
+        "name": "King Olli",
         "role": "coLeader",
         "townHallLevel": 18,
-        "expLevel": 276,
+        "expLevel": 241,
         "league": {
-          "id": 29000000,
-          "name": "Unranked",
+          "id": 29000020,
+          "name": "Titan League II",
           "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
-            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
+            "small": "https://api-assets.clashofclans.com/leagues/72/llpWocHlOoFliwyaEx5Z6dmoZG4u4NmxwpF-Jg7su7Q.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/llpWocHlOoFliwyaEx5Z6dmoZG4u4NmxwpF-Jg7su7Q.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/llpWocHlOoFliwyaEx5Z6dmoZG4u4NmxwpF-Jg7su7Q.png"
           }
         },
         "leagueTier": {
@@ -465,35 +466,35 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 360,
-        "builderBaseTrophies": 3906,
+        "trophies": 0,
+        "builderBaseTrophies": 3560,
         "clanRank": 9,
-        "previousClanRank": 9,
-        "donations": 3499,
-        "donationsReceived": 2823,
+        "previousClanRank": 11,
+        "donations": 0,
+        "donationsReceived": 89,
         "playerHouse": {
           "elements": [
             {
               "type": "ground",
-              "id": 82000002
+              "id": 82000000
             },
             {
               "type": "walls",
-              "id": 82000052
+              "id": 82000048
             },
             {
               "type": "roof",
-              "id": 82000032
+              "id": 82000009
             },
             {
               "type": "decoration",
-              "id": 82000066
+              "id": 82000058
             }
           ]
         },
         "builderBaseLeague": {
-          "id": 44000029,
-          "name": "Titanium League III"
+          "id": 44000027,
+          "name": "Steel League II"
         }
       },
       {
@@ -501,7 +502,7 @@
         "name": "Sebastian ||",
         "role": "coLeader",
         "townHallLevel": 18,
-        "expLevel": 236,
+        "expLevel": 237,
         "league": {
           "id": 29000000,
           "name": "Unranked",
@@ -522,7 +523,7 @@
         "builderBaseTrophies": 4169,
         "clanRank": 10,
         "previousClanRank": 10,
-        "donations": 2280,
+        "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -550,57 +551,56 @@
         }
       },
       {
-        "tag": "#VQ28P8QJ",
-        "name": "King Olli",
+        "tag": "#8PYPC99QP",
+        "name": "Kalle",
         "role": "coLeader",
         "townHallLevel": 18,
-        "expLevel": 241,
+        "expLevel": 276,
         "league": {
-          "id": 29000020,
-          "name": "Titan League II",
+          "id": 29000000,
+          "name": "Unranked",
           "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leagues/72/llpWocHlOoFliwyaEx5Z6dmoZG4u4NmxwpF-Jg7su7Q.png",
-            "tiny": "https://api-assets.clashofclans.com/leagues/36/llpWocHlOoFliwyaEx5Z6dmoZG4u4NmxwpF-Jg7su7Q.png",
-            "medium": "https://api-assets.clashofclans.com/leagues/288/llpWocHlOoFliwyaEx5Z6dmoZG4u4NmxwpF-Jg7su7Q.png"
+            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
           }
         },
         "leagueTier": {
-          "id": 105000028,
-          "name": "Dragon League 28",
+          "id": 105000029,
+          "name": "Dragon League 29",
           "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leaguetiers/125/YCZ7O_3_c8eCBYvX-92qiWeLc6Md6eNJ5A8O-2vUg7I.png",
-            "large": "https://api-assets.clashofclans.com/leaguetiers/326/YCZ7O_3_c8eCBYvX-92qiWeLc6Md6eNJ5A8O-2vUg7I.png"
+            "small": "https://api-assets.clashofclans.com/leaguetiers/125/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png",
+            "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 495,
-        "builderBaseTrophies": 3560,
+        "trophies": 0,
+        "builderBaseTrophies": 3906,
         "clanRank": 11,
-        "previousClanRank": 11,
-        "donations": 1770,
-        "donationsReceived": 5704,
+        "previousClanRank": 9,
+        "donations": 0,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
               "type": "ground",
-              "id": 82000000
+              "id": 82000002
             },
             {
               "type": "walls",
-              "id": 82000048
+              "id": 82000052
             },
             {
               "type": "roof",
-              "id": 82000009
+              "id": 82000032
             },
             {
               "type": "decoration",
-              "id": 82000058
+              "id": 82000066
             }
           ]
         },
         "builderBaseLeague": {
-          "id": 44000027,
-          "name": "Steel League II"
+          "id": 44000029,
+          "name": "Titanium League III"
         }
       },
       {
@@ -626,10 +626,10 @@
           }
         },
         "trophies": 0,
-        "builderBaseTrophies": 3657,
+        "builderBaseTrophies": 3676,
         "clanRank": 12,
         "previousClanRank": 12,
-        "donations": 1953,
+        "donations": 55,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -683,8 +683,8 @@
         "builderBaseTrophies": 2775,
         "clanRank": 13,
         "previousClanRank": 13,
-        "donations": 2513,
-        "donationsReceived": 3746,
+        "donations": 59,
+        "donationsReceived": 89,
         "playerHouse": {
           "elements": [
             {
@@ -736,7 +736,7 @@
         "builderBaseTrophies": 3592,
         "clanRank": 14,
         "previousClanRank": 14,
-        "donations": 112,
+        "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -790,8 +790,8 @@
         "builderBaseTrophies": 2832,
         "clanRank": 15,
         "previousClanRank": 15,
-        "donations": 1161,
-        "donationsReceived": 88,
+        "donations": 0,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -818,59 +818,6 @@
         }
       },
       {
-        "tag": "#PLUGY8PPR",
-        "name": "Origin170",
-        "role": "coLeader",
-        "townHallLevel": 17,
-        "expLevel": 208,
-        "league": {
-          "id": 29000000,
-          "name": "Unranked",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
-            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
-          }
-        },
-        "leagueTier": {
-          "id": 105000026,
-          "name": "Titan League 26",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leaguetiers/125/yIfqSgrhiYRcuMbAPCoeCj1FTmfylCLxnrAljEZc8K0.png",
-            "large": "https://api-assets.clashofclans.com/leaguetiers/326/yIfqSgrhiYRcuMbAPCoeCj1FTmfylCLxnrAljEZc8K0.png"
-          }
-        },
-        "trophies": 121,
-        "builderBaseTrophies": 3043,
-        "clanRank": 16,
-        "previousClanRank": 16,
-        "donations": 168,
-        "donationsReceived": 0,
-        "playerHouse": {
-          "elements": [
-            {
-              "type": "ground",
-              "id": 82000002
-            },
-            {
-              "type": "walls",
-              "id": 82000049
-            },
-            {
-              "type": "roof",
-              "id": 82000032
-            },
-            {
-              "type": "decoration",
-              "id": 82000063
-            }
-          ]
-        },
-        "builderBaseLeague": {
-          "id": 44000025,
-          "name": "Iron League I"
-        }
-      },
-      {
         "tag": "#2VCC9QLLR",
         "name": "Rocky",
         "role": "member",
@@ -894,9 +841,9 @@
         },
         "trophies": 0,
         "builderBaseTrophies": 3884,
-        "clanRank": 17,
+        "clanRank": 16,
         "previousClanRank": 17,
-        "donations": 127,
+        "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -921,6 +868,59 @@
         "builderBaseLeague": {
           "id": 44000029,
           "name": "Titanium League III"
+        }
+      },
+      {
+        "tag": "#PLUGY8PPR",
+        "name": "Origin170",
+        "role": "coLeader",
+        "townHallLevel": 17,
+        "expLevel": 208,
+        "league": {
+          "id": 29000000,
+          "name": "Unranked",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
+          }
+        },
+        "leagueTier": {
+          "id": 105000026,
+          "name": "Titan League 26",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leaguetiers/125/yIfqSgrhiYRcuMbAPCoeCj1FTmfylCLxnrAljEZc8K0.png",
+            "large": "https://api-assets.clashofclans.com/leaguetiers/326/yIfqSgrhiYRcuMbAPCoeCj1FTmfylCLxnrAljEZc8K0.png"
+          }
+        },
+        "trophies": 0,
+        "builderBaseTrophies": 3043,
+        "clanRank": 17,
+        "previousClanRank": 16,
+        "donations": 0,
+        "donationsReceived": 0,
+        "playerHouse": {
+          "elements": [
+            {
+              "type": "ground",
+              "id": 82000002
+            },
+            {
+              "type": "walls",
+              "id": 82000049
+            },
+            {
+              "type": "roof",
+              "id": 82000032
+            },
+            {
+              "type": "decoration",
+              "id": 82000063
+            }
+          ]
+        },
+        "builderBaseLeague": {
+          "id": 44000025,
+          "name": "Iron League I"
         }
       },
       {
@@ -949,7 +949,7 @@
         "builderBaseTrophies": 3781,
         "clanRank": 18,
         "previousClanRank": 18,
-        "donations": 519,
+        "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1002,7 +1002,7 @@
         "builderBaseTrophies": 4203,
         "clanRank": 19,
         "previousClanRank": 19,
-        "donations": 223,
+        "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1056,8 +1056,8 @@
         "builderBaseTrophies": 3421,
         "clanRank": 20,
         "previousClanRank": 20,
-        "donations": 5782,
-        "donationsReceived": 5226,
+        "donations": 54,
+        "donationsReceived": 89,
         "playerHouse": {
           "elements": [
             {
@@ -1109,7 +1109,7 @@
         "builderBaseTrophies": 3645,
         "clanRank": 21,
         "previousClanRank": 21,
-        "donations": 644,
+        "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1162,7 +1162,7 @@
         "builderBaseTrophies": 3229,
         "clanRank": 22,
         "previousClanRank": 22,
-        "donations": 688,
+        "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1215,7 +1215,7 @@
         "builderBaseTrophies": 4425,
         "clanRank": 23,
         "previousClanRank": 23,
-        "donations": 33,
+        "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1268,8 +1268,8 @@
         "builderBaseTrophies": 3847,
         "clanRank": 24,
         "previousClanRank": 24,
-        "donations": 228,
-        "donationsReceived": 88,
+        "donations": 0,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -1322,8 +1322,8 @@
         "builderBaseTrophies": 3747,
         "clanRank": 25,
         "previousClanRank": 25,
-        "donations": 436,
-        "donationsReceived": 2144,
+        "donations": 0,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -1375,7 +1375,7 @@
         "builderBaseTrophies": 2774,
         "clanRank": 26,
         "previousClanRank": 26,
-        "donations": 509,
+        "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1429,7 +1429,7 @@
         "clanRank": 27,
         "previousClanRank": 27,
         "donations": 0,
-        "donationsReceived": 747,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -1481,8 +1481,8 @@
         "builderBaseTrophies": 2460,
         "clanRank": 28,
         "previousClanRank": 28,
-        "donations": 483,
-        "donationsReceived": 83,
+        "donations": 0,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -1513,7 +1513,7 @@
         "name": "Zymeth1735",
         "role": "member",
         "townHallLevel": 15,
-        "expLevel": 202,
+        "expLevel": 203,
         "league": {
           "id": 29000000,
           "name": "Unranked",
@@ -1530,12 +1530,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/GeLamlTvRYNnZp5lEW64pyaORN30rCdrxTjU7oJoTN8.png"
           }
         },
-        "trophies": 241,
+        "trophies": 0,
         "builderBaseTrophies": 3359,
         "clanRank": 29,
         "previousClanRank": 29,
-        "donations": 230,
-        "donationsReceived": 219,
+        "donations": 33,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -1587,8 +1587,8 @@
         "builderBaseTrophies": 1918,
         "clanRank": 30,
         "previousClanRank": 30,
-        "donations": 1151,
-        "donationsReceived": 1908,
+        "donations": 0,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -1640,7 +1640,7 @@
         "builderBaseTrophies": 2597,
         "clanRank": 31,
         "previousClanRank": 31,
-        "donations": 217,
+        "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1682,18 +1682,18 @@
           }
         },
         "leagueTier": {
-          "id": 105000014,
-          "name": "Valkyrie League 14",
+          "id": 105000015,
+          "name": "Valkyrie League 15",
           "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leaguetiers/125/7AbbZbiV6whmfa6CZtqt6Ml4NgFH1B-UqCxc59ziqfk.png",
-            "large": "https://api-assets.clashofclans.com/leaguetiers/326/7AbbZbiV6whmfa6CZtqt6Ml4NgFH1B-UqCxc59ziqfk.png"
+            "small": "https://api-assets.clashofclans.com/leaguetiers/125/vT-0ssHYx5zJbBbbjB5NHPXnlHk76MDxJmG7iKmghc4.png",
+            "large": "https://api-assets.clashofclans.com/leaguetiers/326/vT-0ssHYx5zJbBbbjB5NHPXnlHk76MDxJmG7iKmghc4.png"
           }
         },
-        "trophies": 444,
+        "trophies": 0,
         "builderBaseTrophies": 2320,
         "clanRank": 32,
         "previousClanRank": 32,
-        "donations": 196,
+        "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1796,11 +1796,11 @@
           }
         },
         "trophies": 0,
-        "builderBaseTrophies": 2423,
+        "builderBaseTrophies": 2438,
         "clanRank": 34,
         "previousClanRank": 34,
-        "donations": 1063,
-        "donationsReceived": 4285,
+        "donations": 0,
+        "donationsReceived": 40,
         "builderBaseLeague": {
           "id": 44000022,
           "name": "Brass League I"
@@ -1833,8 +1833,8 @@
         "builderBaseTrophies": 3168,
         "clanRank": 35,
         "previousClanRank": 35,
-        "donations": 476,
-        "donationsReceived": 671,
+        "donations": 0,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -1887,8 +1887,8 @@
         "builderBaseTrophies": 3614,
         "clanRank": 36,
         "previousClanRank": 36,
-        "donations": 1692,
-        "donationsReceived": 2926,
+        "donations": 0,
+        "donationsReceived": 0,
         "playerHouse": {
           "elements": [
             {
@@ -1941,8 +1941,8 @@
         "builderBaseTrophies": 3565,
         "clanRank": 37,
         "previousClanRank": 37,
-        "donations": 2759,
-        "donationsReceived": 5084,
+        "donations": 49,
+        "donationsReceived": 54,
         "playerHouse": {
           "elements": [
             {
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-05T05:41:35.964Z",
+  "fetchedAt": "2026-10-05T10:56:20.710Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
