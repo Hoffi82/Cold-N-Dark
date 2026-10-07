@@ -1423,7 +1423,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/uizNRh8glQZuAbLdCa-EQSf3oJnge3nqoXHjtQ6O8pw.png"
           }
         },
-        "trophies": 444,
+        "trophies": 473,
         "builderBaseTrophies": 2460,
         "clanRank": 27,
         "previousClanRank": 27,
@@ -1529,7 +1529,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/3mEMvpajLceJ3EKu7u_JIh_cOEsT7wyh701zum9hqCY.png"
           }
         },
-        "trophies": 57,
+        "trophies": 97,
         "builderBaseTrophies": 1918,
         "clanRank": 29,
         "previousClanRank": 29,
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-06T23:58:10.868Z",
+  "fetchedAt": "2026-10-07T02:31:38.440Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
