@@ -114,12 +114,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/iX8uNhG6jBcQATWFS8a0gtidGy9O1PRYtXZZMTtUK3U.png"
           }
         },
-        "trophies": 255,
+        "trophies": 283,
         "builderBaseTrophies": 3822,
         "clanRank": 2,
         "previousClanRank": 2,
-        "donations": 632,
-        "donationsReceived": 177,
+        "donations": 635,
+        "donationsReceived": 266,
         "playerHouse": {
           "elements": [
             {
@@ -306,11 +306,11 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 189,
+        "trophies": 198,
         "builderBaseTrophies": 3269,
         "clanRank": 6,
         "previousClanRank": 6,
-        "donations": 923,
+        "donations": 998,
         "donationsReceived": 395,
         "playerHouse": {
           "elements": [
@@ -519,11 +519,11 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 145,
+        "trophies": 201,
         "builderBaseTrophies": 3906,
         "clanRank": 10,
         "previousClanRank": 10,
-        "donations": 211,
+        "donations": 300,
         "donationsReceived": 234,
         "playerHouse": {
           "elements": [
@@ -1317,7 +1317,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/WkqDvnK0CXI-Nc0TNTKG_fSuzRYoLRC54HFOdMCxVTI.png"
           }
         },
-        "trophies": 501,
+        "trophies": 523,
         "builderBaseTrophies": 3197,
         "clanRank": 25,
         "previousClanRank": 25,
@@ -1534,7 +1534,7 @@
         "clanRank": 29,
         "previousClanRank": 29,
         "donations": 99,
-        "donationsReceived": 78,
+        "donationsReceived": 156,
         "playerHouse": {
           "elements": [
             {
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-10T11:59:12.018Z",
+  "fetchedAt": "2026-10-10T15:26:05.808Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
