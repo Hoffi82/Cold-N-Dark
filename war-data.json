@@ -2108,10 +2108,148 @@
     },
     "memberCount": 38
   },
-  "source": "ClashKing",
-  "fetchedAt": "2026-10-13T21:01:56.188Z",
-  "current": null,
-  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
+  "source": "CoC-Proxy – Normaler Krieg",
+  "fetchedAt": "2026-10-13T21:57:51.411Z",
+  "current": {
+    "state": "inWar",
+    "type": "war",
+    "attacksPerMember": 2,
+    "opponent": "ĐÀ NẴNG VN",
+    "opponentTag": "#20LPGJU8",
+    "ourStars": 22,
+    "enemyStars": 0,
+    "ourAttacks": 9,
+    "enemyAttacks": 0,
+    "ourDestruction": 38.1,
+    "enemyDestruction": 0,
+    "warSize": 20,
+    "preparationStartTime": "20261012T175456.000Z",
+    "startTime": "20261013T172923.000Z",
+    "endTime": "20261014T172923.000Z",
+    "players": [
+      {
+        "name": "Vanille Waffel",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Coc Hoffi",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Kallee",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Nano",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Tinkerbell",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "basti336",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Tommy-S04",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "King Olli",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 65
+      },
+      {
+        "name": "Duster 3.0",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 72
+      },
+      {
+        "name": "duster",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 63
+      },
+      {
+        "name": "Düster 4.0",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "Kampfkeks",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "1Eric43",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 96
+      },
+      {
+        "name": "Duster 2.0",
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
+      },
+      {
+        "name": "SilverStar",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Duster 1.0",
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 66
+      },
+      {
+        "name": "Kallchen",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "WiQuBr",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Kalle",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      },
+      {
+        "name": "Moskito",
+        "attacks": 0,
+        "stars": 0,
+        "destruction": 0
+      }
+    ]
+  },
+  "currentError": "",
   "previous": [
     {
       "state": "warEnded",
