@@ -20,7 +20,7 @@
     },
     "clanLevel": 26,
     "clanPoints": 89100,
-    "clanBuilderBasePoints": 34913,
+    "clanBuilderBasePoints": 34909,
     "clanCapitalPoints": 2849,
     "capitalLeague": {
       "id": 85000014,
@@ -220,7 +220,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 673,
+        "trophies": 689,
         "builderBaseTrophies": 2998,
         "clanRank": 4,
         "previousClanRank": 4,
@@ -412,7 +412,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 277,
+        "trophies": 317,
         "builderBaseTrophies": 4190,
         "clanRank": 8,
         "previousClanRank": 8,
@@ -657,6 +657,60 @@
         }
       },
       {
+        "tag": "#QVP2PGR22",
+        "name": "CoC-CR",
+        "role": "coLeader",
+        "townHallLevel": 18,
+        "expLevel": 216,
+        "league": {
+          "id": 29000021,
+          "name": "Titan League I",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/qVCZmeYH0lS7Gaa6YoB7LrNly7bfw7fV_d4Vp2CU-gk.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/qVCZmeYH0lS7Gaa6YoB7LrNly7bfw7fV_d4Vp2CU-gk.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/qVCZmeYH0lS7Gaa6YoB7LrNly7bfw7fV_d4Vp2CU-gk.png"
+          }
+        },
+        "leagueTier": {
+          "id": 105000027,
+          "name": "Titan League 27",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leaguetiers/125/1AhObOl55grQIWnGmn1J9qMWq5pmRA3aBObfYkQEjko.png",
+            "large": "https://api-assets.clashofclans.com/leaguetiers/326/1AhObOl55grQIWnGmn1J9qMWq5pmRA3aBObfYkQEjko.png"
+          }
+        },
+        "trophies": 23,
+        "builderBaseTrophies": 2832,
+        "clanRank": 13,
+        "previousClanRank": 15,
+        "donations": 208,
+        "donationsReceived": 0,
+        "playerHouse": {
+          "elements": [
+            {
+              "type": "ground",
+              "id": 82000094
+            },
+            {
+              "type": "walls",
+              "id": 82000092
+            },
+            {
+              "type": "roof",
+              "id": 82000130
+            },
+            {
+              "type": "decoration",
+              "id": 82000066
+            }
+          ]
+        },
+        "builderBaseLeague": {
+          "id": 44000024,
+          "name": "Iron League II"
+        }
+      },
+      {
         "tag": "#8Y8QLVLVQ",
         "name": "BlackDragon",
         "role": "member",
@@ -680,7 +734,7 @@
         },
         "trophies": 0,
         "builderBaseTrophies": 3781,
-        "clanRank": 13,
+        "clanRank": 14,
         "previousClanRank": 13,
         "donations": 90,
         "donationsReceived": 0,
@@ -733,7 +787,7 @@
         },
         "trophies": 0,
         "builderBaseTrophies": 3592,
-        "clanRank": 14,
+        "clanRank": 15,
         "previousClanRank": 14,
         "donations": 0,
         "donationsReceived": 0,
@@ -760,60 +814,6 @@
         "builderBaseLeague": {
           "id": 44000027,
           "name": "Steel League II"
-        }
-      },
-      {
-        "tag": "#QVP2PGR22",
-        "name": "CoC-CR",
-        "role": "coLeader",
-        "townHallLevel": 18,
-        "expLevel": 216,
-        "league": {
-          "id": 29000021,
-          "name": "Titan League I",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leagues/72/qVCZmeYH0lS7Gaa6YoB7LrNly7bfw7fV_d4Vp2CU-gk.png",
-            "tiny": "https://api-assets.clashofclans.com/leagues/36/qVCZmeYH0lS7Gaa6YoB7LrNly7bfw7fV_d4Vp2CU-gk.png",
-            "medium": "https://api-assets.clashofclans.com/leagues/288/qVCZmeYH0lS7Gaa6YoB7LrNly7bfw7fV_d4Vp2CU-gk.png"
-          }
-        },
-        "leagueTier": {
-          "id": 105000027,
-          "name": "Titan League 27",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leaguetiers/125/1AhObOl55grQIWnGmn1J9qMWq5pmRA3aBObfYkQEjko.png",
-            "large": "https://api-assets.clashofclans.com/leaguetiers/326/1AhObOl55grQIWnGmn1J9qMWq5pmRA3aBObfYkQEjko.png"
-          }
-        },
-        "trophies": 0,
-        "builderBaseTrophies": 2832,
-        "clanRank": 15,
-        "previousClanRank": 15,
-        "donations": 208,
-        "donationsReceived": 0,
-        "playerHouse": {
-          "elements": [
-            {
-              "type": "ground",
-              "id": 82000094
-            },
-            {
-              "type": "walls",
-              "id": 82000092
-            },
-            {
-              "type": "roof",
-              "id": 82000130
-            },
-            {
-              "type": "decoration",
-              "id": 82000066
-            }
-          ]
-        },
-        "builderBaseLeague": {
-          "id": 44000024,
-          "name": "Iron League II"
         }
       },
       {
@@ -1108,7 +1108,7 @@
         "builderBaseTrophies": 3229,
         "clanRank": 21,
         "previousClanRank": 21,
-        "donations": 591,
+        "donations": 631,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1267,7 +1267,7 @@
         "builderBaseTrophies": 3197,
         "clanRank": 24,
         "previousClanRank": 25,
-        "donations": 319,
+        "donations": 407,
         "donationsReceived": 528,
         "playerHouse": {
           "elements": [
@@ -1299,7 +1299,7 @@
         "name": "Tommy-S04",
         "role": "member",
         "townHallLevel": 15,
-        "expLevel": 152,
+        "expLevel": 153,
         "league": {
           "id": 29000000,
           "name": "Unranked",
@@ -1639,7 +1639,7 @@
         "clanRank": 31,
         "previousClanRank": 32,
         "donations": 132,
-        "donationsReceived": 989,
+        "donationsReceived": 1066,
         "builderBaseLeague": {
           "id": 44000021,
           "name": "Brass League II"
@@ -1779,8 +1779,8 @@
         "builderBaseTrophies": 3734,
         "clanRank": 34,
         "previousClanRank": 24,
-        "donations": 352,
-        "donationsReceived": 815,
+        "donations": 429,
+        "donationsReceived": 956,
         "playerHouse": {
           "elements": [
             {
@@ -1830,11 +1830,11 @@
           }
         },
         "trophies": 0,
-        "builderBaseTrophies": 3627,
+        "builderBaseTrophies": 3611,
         "clanRank": 35,
         "previousClanRank": 35,
-        "donations": 706,
-        "donationsReceived": 562,
+        "donations": 755,
+        "donationsReceived": 610,
         "playerHouse": {
           "elements": [
             {
@@ -1887,8 +1887,8 @@
         "builderBaseTrophies": 3631,
         "clanRank": 36,
         "previousClanRank": 36,
-        "donations": 161,
-        "donationsReceived": 642,
+        "donations": 180,
+        "donationsReceived": 696,
         "playerHouse": {
           "elements": [
             {
@@ -1994,8 +1994,8 @@
         "builderBaseTrophies": 3416,
         "clanRank": 38,
         "previousClanRank": 38,
-        "donations": 740,
-        "donationsReceived": 951,
+        "donations": 876,
+        "donationsReceived": 1040,
         "playerHouse": {
           "elements": [
             {
@@ -2108,148 +2108,10 @@
     },
     "memberCount": 38
   },
-  "source": "CoC-Proxy – Normaler Krieg",
-  "fetchedAt": "2026-10-14T05:52:17.816Z",
-  "current": {
-    "state": "inWar",
-    "type": "war",
-    "attacksPerMember": 2,
-    "opponent": "ĐÀ NẴNG VN",
-    "opponentTag": "#20LPGJU8",
-    "ourStars": 38,
-    "enemyStars": 31,
-    "ourAttacks": 16,
-    "enemyAttacks": 16,
-    "ourDestruction": 65.3,
-    "enemyDestruction": 61.55,
-    "warSize": 20,
-    "preparationStartTime": "20261012T175456.000Z",
-    "startTime": "20261013T172923.000Z",
-    "endTime": "20261014T172923.000Z",
-    "players": [
-      {
-        "name": "Vanille Waffel",
-        "attacks": 2,
-        "stars": 6,
-        "destruction": 100
-      },
-      {
-        "name": "Coc Hoffi",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kallee",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Nano",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Tinkerbell",
-        "attacks": 2,
-        "stars": 6,
-        "destruction": 100
-      },
-      {
-        "name": "basti336",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "Tommy-S04",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "King Olli",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 65
-      },
-      {
-        "name": "Duster 3.0",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 72
-      },
-      {
-        "name": "duster",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 63
-      },
-      {
-        "name": "Düster 4.0",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "Kampfkeks",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "1Eric43",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 96
-      },
-      {
-        "name": "Duster 2.0",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "SilverStar",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Duster 1.0",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 66
-      },
-      {
-        "name": "Kallchen",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "WiQuBr",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "Kalle",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 79
-      },
-      {
-        "name": "Moskito",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      }
-    ]
-  },
-  "currentError": "",
+  "source": "ClashKing",
+  "fetchedAt": "2026-10-14T09:57:58.374Z",
+  "current": null,
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
