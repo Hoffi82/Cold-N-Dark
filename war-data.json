@@ -20,7 +20,7 @@
     },
     "clanLevel": 26,
     "clanPoints": 88850,
-    "clanBuilderBasePoints": 34924,
+    "clanBuilderBasePoints": 34933,
     "clanCapitalPoints": 2849,
     "capitalLeague": {
       "id": 85000014,
@@ -114,12 +114,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/iX8uNhG6jBcQATWFS8a0gtidGy9O1PRYtXZZMTtUK3U.png"
           }
         },
-        "trophies": 327,
+        "trophies": 348,
         "builderBaseTrophies": 4654,
         "clanRank": 2,
         "previousClanRank": 2,
-        "donations": 1019,
-        "donationsReceived": 1058,
+        "donations": 1097,
+        "donationsReceived": 1117,
         "playerHouse": {
           "elements": [
             {
@@ -363,7 +363,7 @@
         "builderBaseTrophies": 3348,
         "clanRank": 7,
         "previousClanRank": 7,
-        "donations": 325,
+        "donations": 384,
         "donationsReceived": 495,
         "playerHouse": {
           "elements": [
@@ -518,7 +518,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 207,
+        "trophies": 231,
         "builderBaseTrophies": 3906,
         "clanRank": 10,
         "previousClanRank": 9,
@@ -1423,11 +1423,11 @@
           }
         },
         "trophies": 82,
-        "builderBaseTrophies": 2339,
+        "builderBaseTrophies": 2426,
         "clanRank": 27,
         "previousClanRank": 27,
         "donations": 313,
-        "donationsReceived": 387,
+        "donationsReceived": 465,
         "playerHouse": {
           "elements": [
             {
@@ -1449,8 +1449,8 @@
           ]
         },
         "builderBaseLeague": {
-          "id": 44000021,
-          "name": "Brass League II"
+          "id": 44000022,
+          "name": "Brass League I"
         }
       },
       {
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-15T19:58:45.991Z",
+  "fetchedAt": "2026-10-15T21:51:32.865Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
