@@ -61,7 +61,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/VFqkaQimExWtSmIf9PC8WEpj4Vd58oLjPWyZqfVb5VE.png"
           }
         },
-        "trophies": 166,
+        "trophies": 176,
         "builderBaseTrophies": 4046,
         "clanRank": 1,
         "previousClanRank": 1,
@@ -114,12 +114,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/iX8uNhG6jBcQATWFS8a0gtidGy9O1PRYtXZZMTtUK3U.png"
           }
         },
-        "trophies": 287,
+        "trophies": 327,
         "builderBaseTrophies": 4654,
         "clanRank": 2,
         "previousClanRank": 2,
         "donations": 1019,
-        "donationsReceived": 999,
+        "donationsReceived": 1058,
         "playerHouse": {
           "elements": [
             {
@@ -444,6 +444,59 @@
         }
       },
       {
+        "tag": "#QCUGLUQ9L",
+        "name": "Kallee",
+        "role": "member",
+        "townHallLevel": 17,
+        "expLevel": 193,
+        "league": {
+          "id": 29000000,
+          "name": "Unranked",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
+          }
+        },
+        "leagueTier": {
+          "id": 105000029,
+          "name": "Dragon League 29",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leaguetiers/125/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png",
+            "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
+          }
+        },
+        "trophies": 397,
+        "builderBaseTrophies": 2567,
+        "clanRank": 9,
+        "previousClanRank": 11,
+        "donations": 215,
+        "donationsReceived": 261,
+        "playerHouse": {
+          "elements": [
+            {
+              "type": "ground",
+              "id": 82000002
+            },
+            {
+              "type": "walls",
+              "id": 82000092
+            },
+            {
+              "type": "roof",
+              "id": 82000087
+            },
+            {
+              "type": "decoration",
+              "id": 82000064
+            }
+          ]
+        },
+        "builderBaseLeague": {
+          "id": 44000022,
+          "name": "Brass League I"
+        }
+      },
+      {
         "tag": "#8PYPC99QP",
         "name": "Kalle",
         "role": "coLeader",
@@ -465,11 +518,11 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 137,
+        "trophies": 207,
         "builderBaseTrophies": 3906,
-        "clanRank": 9,
+        "clanRank": 10,
         "previousClanRank": 9,
-        "donations": 476,
+        "donations": 535,
         "donationsReceived": 519,
         "playerHouse": {
           "elements": [
@@ -521,7 +574,7 @@
         },
         "trophies": 128,
         "builderBaseTrophies": 3560,
-        "clanRank": 10,
+        "clanRank": 11,
         "previousClanRank": 10,
         "donations": 582,
         "donationsReceived": 2381,
@@ -548,59 +601,6 @@
         "builderBaseLeague": {
           "id": 44000027,
           "name": "Steel League II"
-        }
-      },
-      {
-        "tag": "#QCUGLUQ9L",
-        "name": "Kallee",
-        "role": "member",
-        "townHallLevel": 17,
-        "expLevel": 193,
-        "league": {
-          "id": 29000000,
-          "name": "Unranked",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
-            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
-          }
-        },
-        "leagueTier": {
-          "id": 105000029,
-          "name": "Dragon League 29",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leaguetiers/125/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png",
-            "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
-          }
-        },
-        "trophies": 0,
-        "builderBaseTrophies": 2567,
-        "clanRank": 11,
-        "previousClanRank": 11,
-        "donations": 215,
-        "donationsReceived": 261,
-        "playerHouse": {
-          "elements": [
-            {
-              "type": "ground",
-              "id": 82000002
-            },
-            {
-              "type": "walls",
-              "id": 82000092
-            },
-            {
-              "type": "roof",
-              "id": 82000087
-            },
-            {
-              "type": "decoration",
-              "id": 82000064
-            }
-          ]
-        },
-        "builderBaseLeague": {
-          "id": 44000022,
-          "name": "Brass League I"
         }
       },
       {
@@ -679,11 +679,11 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/1AhObOl55grQIWnGmn1J9qMWq5pmRA3aBObfYkQEjko.png"
           }
         },
-        "trophies": 81,
+        "trophies": 405,
         "builderBaseTrophies": 2832,
         "clanRank": 13,
         "previousClanRank": 13,
-        "donations": 208,
+        "donations": 285,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1263,7 +1263,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/iTWXPUUFQy0uEb7NDpMTyzGMFOJvlC4SLAqlHYgC8do.png"
           }
         },
-        "trophies": 83,
+        "trophies": 95,
         "builderBaseTrophies": 3197,
         "clanRank": 24,
         "previousClanRank": 24,
@@ -1639,7 +1639,7 @@
         "clanRank": 31,
         "previousClanRank": 31,
         "donations": 139,
-        "donationsReceived": 1218,
+        "donationsReceived": 1295,
         "builderBaseLeague": {
           "id": 44000021,
           "name": "Brass League II"
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-15T16:24:22.653Z",
+  "fetchedAt": "2026-10-15T18:45:32.480Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
