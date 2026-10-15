@@ -61,7 +61,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/VFqkaQimExWtSmIf9PC8WEpj4Vd58oLjPWyZqfVb5VE.png"
           }
         },
-        "trophies": 117,
+        "trophies": 157,
         "builderBaseTrophies": 4046,
         "clanRank": 1,
         "previousClanRank": 1,
@@ -326,7 +326,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 79,
+        "trophies": 107,
         "builderBaseTrophies": 2776,
         "clanRank": 6,
         "previousClanRank": 6,
@@ -519,7 +519,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 98,
+        "trophies": 128,
         "builderBaseTrophies": 3560,
         "clanRank": 10,
         "previousClanRank": 10,
@@ -682,7 +682,7 @@
         "trophies": 23,
         "builderBaseTrophies": 2832,
         "clanRank": 13,
-        "previousClanRank": 15,
+        "previousClanRank": 13,
         "donations": 208,
         "donationsReceived": 0,
         "playerHouse": {
@@ -735,7 +735,7 @@
         "trophies": 0,
         "builderBaseTrophies": 3781,
         "clanRank": 14,
-        "previousClanRank": 13,
+        "previousClanRank": 14,
         "donations": 90,
         "donationsReceived": 0,
         "playerHouse": {
@@ -1001,7 +1001,7 @@
         "trophies": 0,
         "builderBaseTrophies": 3592,
         "clanRank": 19,
-        "previousClanRank": 14,
+        "previousClanRank": 15,
         "donations": 0,
         "donationsReceived": 0,
         "playerHouse": {
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-14T23:07:07.579Z",
+  "fetchedAt": "2026-10-15T00:46:15.807Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
