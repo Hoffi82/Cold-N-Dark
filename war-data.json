@@ -61,12 +61,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/VFqkaQimExWtSmIf9PC8WEpj4Vd58oLjPWyZqfVb5VE.png"
           }
         },
-        "trophies": 157,
+        "trophies": 166,
         "builderBaseTrophies": 4046,
         "clanRank": 1,
         "previousClanRank": 1,
         "donations": 877,
-        "donationsReceived": 1677,
+        "donationsReceived": 1764,
         "playerHouse": {
           "elements": [
             {
@@ -114,12 +114,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/iX8uNhG6jBcQATWFS8a0gtidGy9O1PRYtXZZMTtUK3U.png"
           }
         },
-        "trophies": 180,
+        "trophies": 207,
         "builderBaseTrophies": 4654,
         "clanRank": 2,
         "previousClanRank": 2,
-        "donations": 989,
-        "donationsReceived": 822,
+        "donations": 1019,
+        "donationsReceived": 877,
         "playerHouse": {
           "elements": [
             {
@@ -220,7 +220,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/qVORiRguZ-xMq8L0g7rE1-rZuiA-lKlI8VKuMndRy4w.png"
           }
         },
-        "trophies": 708,
+        "trophies": 735,
         "builderBaseTrophies": 2998,
         "clanRank": 4,
         "previousClanRank": 4,
@@ -277,7 +277,7 @@
         "builderBaseTrophies": 3269,
         "clanRank": 5,
         "previousClanRank": 5,
-        "donations": 1289,
+        "donations": 1434,
         "donationsReceived": 396,
         "playerHouse": {
           "elements": [
@@ -331,7 +331,7 @@
         "clanRank": 6,
         "previousClanRank": 6,
         "donations": 1145,
-        "donationsReceived": 1583,
+        "donationsReceived": 1671,
         "builderBaseLeague": {
           "id": 44000023,
           "name": "Iron League III"
@@ -629,7 +629,7 @@
         "builderBaseTrophies": 3544,
         "clanRank": 12,
         "previousClanRank": 12,
-        "donations": 869,
+        "donations": 924,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-15T01:28:40.945Z",
+  "fetchedAt": "2026-10-15T05:18:37.758Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
