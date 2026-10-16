@@ -114,12 +114,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/iX8uNhG6jBcQATWFS8a0gtidGy9O1PRYtXZZMTtUK3U.png"
           }
         },
-        "trophies": 440,
+        "trophies": 520,
         "builderBaseTrophies": 4654,
         "clanRank": 2,
         "previousClanRank": 2,
         "donations": 1219,
-        "donationsReceived": 1235,
+        "donationsReceived": 1353,
         "playerHouse": {
           "elements": [
             {
@@ -171,7 +171,7 @@
         "builderBaseTrophies": 3822,
         "clanRank": 3,
         "previousClanRank": 3,
-        "donations": 751,
+        "donations": 950,
         "donationsReceived": 410,
         "playerHouse": {
           "elements": [
@@ -252,39 +252,6 @@
         }
       },
       {
-        "tag": "#20YYG209V",
-        "name": "Tinkerbell",
-        "role": "admin",
-        "townHallLevel": 17,
-        "expLevel": 222,
-        "league": {
-          "id": 29000000,
-          "name": "Unranked",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
-            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
-          }
-        },
-        "leagueTier": {
-          "id": 105000030,
-          "name": "Dragon League 30",
-          "iconUrls": {
-            "small": "https://api-assets.clashofclans.com/leaguetiers/125/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png",
-            "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
-          }
-        },
-        "trophies": 189,
-        "builderBaseTrophies": 2776,
-        "clanRank": 5,
-        "previousClanRank": 5,
-        "donations": 1145,
-        "donationsReceived": 1759,
-        "builderBaseLeague": {
-          "id": 44000023,
-          "name": "Iron League III"
-        }
-      },
-      {
         "tag": "#G8YU2PRGV",
         "name": "King",
         "role": "admin",
@@ -306,12 +273,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 165,
+        "trophies": 252,
         "builderBaseTrophies": 3269,
-        "clanRank": 6,
+        "clanRank": 5,
         "previousClanRank": 6,
-        "donations": 1434,
-        "donationsReceived": 396,
+        "donations": 1448,
+        "donationsReceived": 477,
         "playerHouse": {
           "elements": [
             {
@@ -335,6 +302,39 @@
         "builderBaseLeague": {
           "id": 44000026,
           "name": "Steel League III"
+        }
+      },
+      {
+        "tag": "#20YYG209V",
+        "name": "Tinkerbell",
+        "role": "admin",
+        "townHallLevel": 17,
+        "expLevel": 222,
+        "league": {
+          "id": 29000000,
+          "name": "Unranked",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png"
+          }
+        },
+        "leagueTier": {
+          "id": 105000030,
+          "name": "Dragon League 30",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leaguetiers/125/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png",
+            "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
+          }
+        },
+        "trophies": 189,
+        "builderBaseTrophies": 2776,
+        "clanRank": 6,
+        "previousClanRank": 5,
+        "donations": 1145,
+        "donationsReceived": 1759,
+        "builderBaseLeague": {
+          "id": 44000023,
+          "name": "Iron League III"
         }
       },
       {
@@ -523,7 +523,7 @@
         "clanRank": 10,
         "previousClanRank": 10,
         "donations": 583,
-        "donationsReceived": 519,
+        "donationsReceived": 578,
         "playerHouse": {
           "elements": [
             {
@@ -1267,7 +1267,7 @@
         "builderBaseTrophies": 2534,
         "clanRank": 24,
         "previousClanRank": 25,
-        "donations": 389,
+        "donations": 434,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1844,9 +1844,9 @@
     "memberCount": 33
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-16T18:38:11.666Z",
+  "fetchedAt": "2026-10-16T20:29:39.490Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
