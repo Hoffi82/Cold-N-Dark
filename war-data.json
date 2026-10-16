@@ -66,7 +66,7 @@
         "clanRank": 1,
         "previousClanRank": 1,
         "donations": 877,
-        "donationsReceived": 1764,
+        "donationsReceived": 1819,
         "playerHouse": {
           "elements": [
             {
@@ -412,7 +412,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 657,
+        "trophies": 675,
         "builderBaseTrophies": 4190,
         "clanRank": 8,
         "previousClanRank": 8,
@@ -1638,7 +1638,7 @@
         "builderBaseTrophies": 2314,
         "clanRank": 31,
         "previousClanRank": 31,
-        "donations": 139,
+        "donations": 194,
         "donationsReceived": 1295,
         "builderBaseLeague": {
           "id": 44000021,
@@ -2109,9 +2109,9 @@
     "memberCount": 38
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-16T01:01:12.438Z",
+  "fetchedAt": "2026-10-16T04:33:25.426Z",
   "current": null,
-  "currentError": "ClashKing: HTTP 404",
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
