@@ -20,7 +20,7 @@
     },
     "clanLevel": 26,
     "clanPoints": 86350,
-    "clanBuilderBasePoints": 32899,
+    "clanBuilderBasePoints": 32901,
     "clanCapitalPoints": 2849,
     "capitalLeague": {
       "id": 85000014,
@@ -66,7 +66,7 @@
         "clanRank": 1,
         "previousClanRank": 1,
         "donations": 965,
-        "donationsReceived": 2025,
+        "donationsReceived": 2114,
         "playerHouse": {
           "elements": [
             {
@@ -118,7 +118,7 @@
         "builderBaseTrophies": 4654,
         "clanRank": 2,
         "previousClanRank": 2,
-        "donations": 1221,
+        "donations": 1299,
         "donationsReceived": 1516,
         "playerHouse": {
           "elements": [
@@ -171,8 +171,8 @@
         "builderBaseTrophies": 3822,
         "clanRank": 3,
         "previousClanRank": 3,
-        "donations": 950,
-        "donationsReceived": 410,
+        "donations": 1131,
+        "donationsReceived": 465,
         "playerHouse": {
           "elements": [
             {
@@ -224,7 +224,7 @@
         "builderBaseTrophies": 2998,
         "clanRank": 4,
         "previousClanRank": 4,
-        "donations": 885,
+        "donations": 940,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -273,12 +273,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 430,
+        "trophies": 482,
         "builderBaseTrophies": 3269,
         "clanRank": 5,
         "previousClanRank": 5,
-        "donations": 1597,
-        "donationsReceived": 643,
+        "donations": 1665,
+        "donationsReceived": 756,
         "playerHouse": {
           "elements": [
             {
@@ -364,7 +364,7 @@
         "clanRank": 7,
         "previousClanRank": 7,
         "donations": 384,
-        "donationsReceived": 495,
+        "donationsReceived": 583,
         "playerHouse": {
           "elements": [
             {
@@ -412,7 +412,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 716,
+        "trophies": 736,
         "builderBaseTrophies": 4228,
         "clanRank": 8,
         "previousClanRank": 8,
@@ -518,12 +518,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/DIMeRH3N4lrNObA3zAmk_eUin8nvNeLR89qYznnA--s.png"
           }
         },
-        "trophies": 321,
+        "trophies": 338,
         "builderBaseTrophies": 3906,
         "clanRank": 10,
         "previousClanRank": 10,
         "donations": 803,
-        "donationsReceived": 578,
+        "donationsReceived": 635,
         "playerHouse": {
           "elements": [
             {
@@ -577,7 +577,7 @@
         "clanRank": 11,
         "previousClanRank": 11,
         "donations": 682,
-        "donationsReceived": 2758,
+        "donationsReceived": 2813,
         "playerHouse": {
           "elements": [
             {
@@ -626,7 +626,7 @@
           }
         },
         "trophies": 0,
-        "builderBaseTrophies": 3490,
+        "builderBaseTrophies": 3497,
         "clanRank": 12,
         "previousClanRank": 12,
         "donations": 1325,
@@ -736,7 +736,7 @@
         "builderBaseTrophies": 3781,
         "clanRank": 14,
         "previousClanRank": 14,
-        "donations": 90,
+        "donations": 145,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1055,7 +1055,7 @@
         "builderBaseTrophies": 3645,
         "clanRank": 20,
         "previousClanRank": 20,
-        "donations": 77,
+        "donations": 122,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1161,7 +1161,7 @@
         "trophies": 0,
         "builderBaseTrophies": 3168,
         "clanRank": 22,
-        "previousClanRank": 29,
+        "previousClanRank": 22,
         "donations": 301,
         "donationsReceived": 286,
         "playerHouse": {
@@ -1214,7 +1214,7 @@
         "trophies": 0,
         "builderBaseTrophies": 3847,
         "clanRank": 23,
-        "previousClanRank": 22,
+        "previousClanRank": 23,
         "donations": 175,
         "donationsReceived": 0,
         "playerHouse": {
@@ -1267,7 +1267,7 @@
         "trophies": 148,
         "builderBaseTrophies": 3197,
         "clanRank": 24,
-        "previousClanRank": 23,
+        "previousClanRank": 24,
         "donations": 407,
         "donationsReceived": 528,
         "playerHouse": {
@@ -1320,8 +1320,8 @@
         "trophies": 474,
         "builderBaseTrophies": 2534,
         "clanRank": 25,
-        "previousClanRank": 24,
-        "donations": 434,
+        "previousClanRank": 25,
+        "donations": 493,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1373,8 +1373,8 @@
         "trophies": 0,
         "builderBaseTrophies": 2774,
         "clanRank": 26,
-        "previousClanRank": 25,
-        "donations": 83,
+        "previousClanRank": 26,
+        "donations": 90,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1426,7 +1426,7 @@
         "trophies": 141,
         "builderBaseTrophies": 2522,
         "clanRank": 27,
-        "previousClanRank": 26,
+        "previousClanRank": 27,
         "donations": 319,
         "donationsReceived": 548,
         "playerHouse": {
@@ -1479,7 +1479,7 @@
         "trophies": 460,
         "builderBaseTrophies": 2320,
         "clanRank": 28,
-        "previousClanRank": 27,
+        "previousClanRank": 28,
         "donations": 434,
         "donationsReceived": 78,
         "playerHouse": {
@@ -1532,9 +1532,9 @@
         "trophies": 0,
         "builderBaseTrophies": 2304,
         "clanRank": 29,
-        "previousClanRank": 28,
+        "previousClanRank": 29,
         "donations": 195,
-        "donationsReceived": 1584,
+        "donationsReceived": 1705,
         "builderBaseLeague": {
           "id": 44000021,
           "name": "Brass League II"
@@ -1568,7 +1568,7 @@
         "clanRank": 30,
         "previousClanRank": 30,
         "donations": 452,
-        "donationsReceived": 956,
+        "donationsReceived": 1009,
         "playerHouse": {
           "elements": [
             {
@@ -1729,7 +1729,7 @@
         "builderBaseTrophies": 3416,
         "clanRank": 33,
         "previousClanRank": 33,
-        "donations": 1233,
+        "donations": 1316,
         "donationsReceived": 1361,
         "playerHouse": {
           "elements": [
@@ -1843,148 +1843,10 @@
     },
     "memberCount": 33
   },
-  "source": "CoC-Proxy – Normaler Krieg",
-  "fetchedAt": "2026-10-18T09:06:55.827Z",
-  "current": {
-    "state": "inWar",
-    "type": "war",
-    "attacksPerMember": 2,
-    "opponent": "Калуга",
-    "opponentTag": "#YL80GVC9",
-    "ourStars": 40,
-    "enemyStars": 20,
-    "ourAttacks": 20,
-    "enemyAttacks": 10,
-    "ourDestruction": 71.85,
-    "enemyDestruction": 40.7,
-    "warSize": 20,
-    "preparationStartTime": "20261016T192803.000Z",
-    "startTime": "20261017T182803.000Z",
-    "endTime": "20261018T182803.000Z",
-    "players": [
-      {
-        "name": "Vanille Waffel",
-        "attacks": 2,
-        "stars": 4,
-        "destruction": 100
-      },
-      {
-        "name": "Coc Hoffi",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 81
-      },
-      {
-        "name": "Kallee",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Tinkerbell",
-        "attacks": 2,
-        "stars": 6,
-        "destruction": 100
-      },
-      {
-        "name": "basti336",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 80
-      },
-      {
-        "name": "Origin170",
-        "attacks": 2,
-        "stars": 3,
-        "destruction": 70
-      },
-      {
-        "name": "King",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "Tommy-S04",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 82
-      },
-      {
-        "name": "Hoffi8211",
-        "attacks": 2,
-        "stars": 6,
-        "destruction": 100
-      },
-      {
-        "name": "King Olli",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 63
-      },
-      {
-        "name": "duster",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 69
-      },
-      {
-        "name": "Kampfkeks",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "1Eric43",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "BlackDragon",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "Duster 2.0",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 86
-      },
-      {
-        "name": "Duster 1.0",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 78
-      },
-      {
-        "name": "Kallchen",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "WiQuBr",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 89
-      },
-      {
-        "name": "The Next Level",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 89
-      },
-      {
-        "name": "Kalle",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      }
-    ]
-  },
-  "currentError": "",
+  "source": "ClashKing",
+  "fetchedAt": "2026-10-18T09:39:49.708Z",
+  "current": null,
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
