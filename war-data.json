@@ -1844,19 +1844,19 @@
     "memberCount": 33
   },
   "source": "CoC-Proxy – Normaler Krieg",
-  "fetchedAt": "2026-10-19T14:22:56.712Z",
+  "fetchedAt": "2026-10-19T20:05:05.051Z",
   "current": {
-    "state": "preparation",
+    "state": "inWar",
     "type": "war",
     "attacksPerMember": 2,
     "opponent": "Get Clapped!",
     "opponentTag": "#2GRY89U9U",
-    "ourStars": 0,
-    "enemyStars": 0,
-    "ourAttacks": 0,
-    "enemyAttacks": 0,
-    "ourDestruction": 0,
-    "enemyDestruction": 0,
+    "ourStars": 40,
+    "enemyStars": 31,
+    "ourAttacks": 18,
+    "enemyAttacks": 12,
+    "ourDestruction": 55.04,
+    "enemyDestruction": 43.88,
     "warSize": 25,
     "preparationStartTime": "20261018T190118.000Z",
     "startTime": "20261019T180118.000Z",
@@ -1870,57 +1870,57 @@
       },
       {
         "name": "Route66",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
       },
       {
         "name": "Vanille Waffel",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 2,
+        "stars": 6,
+        "destruction": 100
       },
       {
         "name": "Coc Hoffi",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 79
       },
       {
         "name": "Nano",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
       },
       {
         "name": "Tinkerbell",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 2,
+        "stars": 6,
+        "destruction": 100
       },
       {
         "name": "Origin170",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 75
       },
       {
         "name": "King",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
       },
       {
         "name": "Hoffi8211",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
       },
       {
         "name": "King Olli",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 75
       },
       {
         "name": "Duster 3.0",
@@ -1948,9 +1948,9 @@
       },
       {
         "name": "Kampfkeks",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 2,
+        "stars": 4,
+        "destruction": 100
       },
       {
         "name": "Schlingel258",
@@ -1960,15 +1960,15 @@
       },
       {
         "name": "BlackDragon",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 3,
+        "destruction": 100
       },
       {
         "name": "Rhodos",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 1,
+        "destruction": 90
       },
       {
         "name": "Duster 2.0",
@@ -1978,9 +1978,9 @@
       },
       {
         "name": "SilverStar",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 75
       },
       {
         "name": "Kallchen",
@@ -1996,9 +1996,9 @@
       },
       {
         "name": "The Next Level",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 82
       },
       {
         "name": "Kalle",
@@ -2008,9 +2008,9 @@
       },
       {
         "name": "Moskito",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 69
       }
     ]
   },
