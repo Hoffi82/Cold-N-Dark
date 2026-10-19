@@ -20,11 +20,11 @@
     },
     "clanLevel": 26,
     "clanPoints": 87950,
-    "clanBuilderBasePoints": 32897,
-    "clanCapitalPoints": 2849,
+    "clanBuilderBasePoints": 32896,
+    "clanCapitalPoints": 2595,
     "capitalLeague": {
-      "id": 85000014,
-      "name": "Master League II"
+      "id": 85000012,
+      "name": "Crystal League I"
     },
     "requiredTrophies": 2500,
     "warFrequency": "always",
@@ -66,7 +66,7 @@
         "clanRank": 1,
         "previousClanRank": 1,
         "donations": 1255,
-        "donationsReceived": 2818,
+        "donationsReceived": 2907,
         "playerHouse": {
           "elements": [
             {
@@ -171,8 +171,8 @@
         "builderBaseTrophies": 4654,
         "clanRank": 3,
         "previousClanRank": 2,
-        "donations": 1299,
-        "donationsReceived": 1575,
+        "donations": 1302,
+        "donationsReceived": 1634,
         "playerHouse": {
           "elements": [
             {
@@ -416,7 +416,7 @@
         "builderBaseTrophies": 4228,
         "clanRank": 8,
         "previousClanRank": 8,
-        "donations": 988,
+        "donations": 1081,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -470,7 +470,7 @@
         "clanRank": 9,
         "previousClanRank": 7,
         "donations": 385,
-        "donationsReceived": 671,
+        "donationsReceived": 674,
         "playerHouse": {
           "elements": [
             {
@@ -683,7 +683,7 @@
         "builderBaseTrophies": 2832,
         "clanRank": 13,
         "previousClanRank": 13,
-        "donations": 285,
+        "donations": 340,
         "donationsReceived": 0,
         "playerHouse": {
           "elements": [
@@ -1530,7 +1530,7 @@
           }
         },
         "trophies": 0,
-        "builderBaseTrophies": 2282,
+        "builderBaseTrophies": 2275,
         "clanRank": 29,
         "previousClanRank": 29,
         "donations": 195,
@@ -1844,7 +1844,7 @@
     "memberCount": 33
   },
   "source": "ClashKing",
-  "fetchedAt": "2026-10-19T06:57:49.134Z",
+  "fetchedAt": "2026-10-19T14:21:11.781Z",
   "current": null,
   "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
