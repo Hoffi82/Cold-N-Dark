@@ -1844,19 +1844,19 @@
     "memberCount": 33
   },
   "source": "CoC-Proxy – Normaler Krieg",
-  "fetchedAt": "2026-10-22T00:41:19.445Z",
+  "fetchedAt": "2026-10-22T05:23:18.206Z",
   "current": {
     "state": "inWar",
     "type": "war",
     "attacksPerMember": 2,
     "opponent": "ZIRHLI PEKKA",
     "opponentTag": "#2GG290P0Q",
-    "ourStars": 12,
-    "enemyStars": 35,
-    "ourAttacks": 5,
-    "enemyAttacks": 13,
-    "ourDestruction": 16,
-    "enemyDestruction": 46.52,
+    "ourStars": 14,
+    "enemyStars": 40,
+    "ourAttacks": 6,
+    "enemyAttacks": 15,
+    "ourDestruction": 19.08,
+    "enemyDestruction": 52.84,
     "warSize": 25,
     "preparationStartTime": "20261020T190416.000Z",
     "startTime": "20261021T182922.000Z",
@@ -1960,9 +1960,9 @@
       },
       {
         "name": "Kampfkeks",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
+        "attacks": 1,
+        "stars": 2,
+        "destruction": 77
       },
       {
         "name": "1Eric43",
