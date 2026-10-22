@@ -61,7 +61,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/VFqkaQimExWtSmIf9PC8WEpj4Vd58oLjPWyZqfVb5VE.png"
           }
         },
-        "trophies": 270,
+        "trophies": 282,
         "builderBaseTrophies": 4046,
         "clanRank": 1,
         "previousClanRank": 1,
@@ -114,12 +114,12 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/iX8uNhG6jBcQATWFS8a0gtidGy9O1PRYtXZZMTtUK3U.png"
           }
         },
-        "trophies": 182,
+        "trophies": 193,
         "builderBaseTrophies": 4654,
         "clanRank": 2,
         "previousClanRank": 2,
-        "donations": 1744,
-        "donationsReceived": 1929,
+        "donations": 1830,
+        "donationsReceived": 1988,
         "playerHouse": {
           "elements": [
             {
@@ -167,7 +167,7 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/iX8uNhG6jBcQATWFS8a0gtidGy9O1PRYtXZZMTtUK3U.png"
           }
         },
-        "trophies": 127,
+        "trophies": 166,
         "builderBaseTrophies": 2998,
         "clanRank": 3,
         "previousClanRank": 3,
@@ -359,11 +359,11 @@
             "large": "https://api-assets.clashofclans.com/leaguetiers/326/g7m9aF8YoYj9b0olPsyT4eUIxyYEmkqr53wYxWmzpE4.png"
           }
         },
-        "trophies": 155,
+        "trophies": 174,
         "builderBaseTrophies": 3269,
         "clanRank": 7,
         "previousClanRank": 7,
-        "donations": 2950,
+        "donations": 3009,
         "donationsReceived": 1327,
         "playerHouse": {
           "elements": [
@@ -577,7 +577,7 @@
         "clanRank": 11,
         "previousClanRank": 11,
         "donations": 1028,
-        "donationsReceived": 3428,
+        "donationsReceived": 3517,
         "playerHouse": {
           "elements": [
             {
@@ -1268,7 +1268,7 @@
         "builderBaseTrophies": 2534,
         "clanRank": 24,
         "previousClanRank": 24,
-        "donations": 844,
+        "donations": 877,
         "donationsReceived": 83,
         "playerHouse": {
           "elements": [
@@ -1534,7 +1534,7 @@
         "clanRank": 29,
         "previousClanRank": 29,
         "donations": 253,
-        "donationsReceived": 2340,
+        "donationsReceived": 2370,
         "builderBaseLeague": {
           "id": 44000021,
           "name": "Brass League II"
@@ -1843,178 +1843,10 @@
     },
     "memberCount": 33
   },
-  "source": "CoC-Proxy – Normaler Krieg",
-  "fetchedAt": "2026-10-22T05:23:18.206Z",
-  "current": {
-    "state": "inWar",
-    "type": "war",
-    "attacksPerMember": 2,
-    "opponent": "ZIRHLI PEKKA",
-    "opponentTag": "#2GG290P0Q",
-    "ourStars": 14,
-    "enemyStars": 40,
-    "ourAttacks": 6,
-    "enemyAttacks": 15,
-    "ourDestruction": 19.08,
-    "enemyDestruction": 52.84,
-    "warSize": 25,
-    "preparationStartTime": "20261020T190416.000Z",
-    "startTime": "20261021T182922.000Z",
-    "endTime": "20261022T182922.000Z",
-    "players": [
-      {
-        "name": "Tim",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Route66",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Vanille Waffel",
-        "attacks": 2,
-        "stars": 6,
-        "destruction": 100
-      },
-      {
-        "name": "Coc Hoffi",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kallee",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Nano",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Tinkerbell",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "basti336",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Origin170",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "King",
-        "attacks": 1,
-        "stars": 3,
-        "destruction": 100
-      },
-      {
-        "name": "Hoffi8211",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "King Olli",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 72
-      },
-      {
-        "name": "Duster 3.0",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "duster",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "1Nicky43",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Düster 4.0",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kampfkeks",
-        "attacks": 1,
-        "stars": 2,
-        "destruction": 77
-      },
-      {
-        "name": "1Eric43",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Schlingel258",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Duster 2.0",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Duster 1.0",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kallchen",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "WiQuBr",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Kalle",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      },
-      {
-        "name": "Moskito",
-        "attacks": 0,
-        "stars": 0,
-        "destruction": 0
-      }
-    ]
-  },
-  "currentError": "",
+  "source": "ClashKing",
+  "fetchedAt": "2026-10-22T05:31:44.099Z",
+  "current": null,
+  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
   "previous": [
     {
       "state": "warEnded",
