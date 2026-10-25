@@ -53,6 +53,7 @@ const CND_BOT = (() => {
     document.body.appendChild(wrap);
     const box = wrap.querySelector('#cnd-bot-box'), msg = wrap.querySelector('#cnd-bot-msg'), input = wrap.querySelector('#cnd-bot-input');
     wrap.querySelector('#cnd-bot-toggle').onclick = () => { box.style.display = box.style.display === 'block' ? 'none' : 'block'; if (box.style.display === 'block') input.focus(); };
+    if (window.location.hash === '#cnd-bot-toggle') { box.style.display = 'block'; input.focus(); }
     wrap.querySelector('#cnd-bot-form').onsubmit = async e => { e.preventDefault(); if (!data) await loadData(); msg.textContent = answer(input.value); input.value = ''; };
     loadData();
   }

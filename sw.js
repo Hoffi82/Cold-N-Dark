@@ -1,9 +1,16 @@
-const CACHE_NAME = 'cold-n-dark-v1';
+const CACHE_NAME = 'cold-n-dark-v2';
 const CORE_ASSETS = [
   './',
   './index.html',
+  './app.html',
+  './just-for-fun.html',
+  './krieg-app.html',
+  './cwl-app.html',
+  './mitglieder-app.html',
+  './chat-app.html',
   './manifest.json',
   './Wappen.png',
+  './Clan%20logo.png',
   './members-data.js',
   './krieg.html',
   './mitglieder.html',
@@ -58,6 +65,43 @@ self.addEventListener('fetch', event => {
         return response;
       });
       return cached || network;
+    })
+  );
+});
+
+
+// Web Push: derselbe Service Worker wird für Offlinebetrieb und Push verwendet.
+self.addEventListener('push', event => {
+  let data = {};
+  try {
+    data = event.data ? event.data.json() : {};
+  } catch (_) {
+    data = { body: event.data ? event.data.text() : '' };
+  }
+  const title = data.title || "Cold N' Dark";
+  const options = {
+    body: data.body || 'Neue Nachricht vom Clan.',
+    icon: './Clan%20logo.png',
+    badge: './Clan%20logo.png',
+    tag: data.tag || 'cold-n-dark',
+    renotify: true,
+    data: { url: data.url || './app.html' }
+  };
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  const target = new URL(event.notification.data?.url || './app.html', self.location.href).href;
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(windowClients => {
+      for (const client of windowClients) {
+        if ('focus' in client) {
+          client.navigate(target);
+          return client.focus();
+        }
+      }
+      return clients.openWindow(target);
     })
   );
 });

@@ -1,0 +1,26 @@
+/* Cold N' Dark – shared visual polish and accessibility layer */
+:root { color-scheme: dark; --cnd-gold: #ffc43d; --cnd-gold-soft: #ffd45b; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { min-height: 100vh; line-height: 1.5; -webkit-tap-highlight-color: transparent; }
+img { max-width: 100%; }
+a, button, input, select, textarea { touch-action: manipulation; }
+a, button { transition: color .16s ease, background-color .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { opacity: .65; cursor: wait; }
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--cnd-gold-soft);
+  outline-offset: 3px;
+}
+:where(input, select, textarea) { max-width: 100%; }
+::selection { background: #ffc43d55; color: #fff; }
+@media (hover: hover) {
+  a:hover { text-decoration-thickness: 2px; }
+}
+@media (max-width: 520px) {
+  html { scroll-padding-top: 64px; }
+  body { overflow-wrap: break-word; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
