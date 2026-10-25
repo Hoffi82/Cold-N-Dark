@@ -9,6 +9,7 @@ const CORE_ASSETS = [
   './mitglieder-app.html',
   './chat-app.html',
   './manifest.json',
+  './site-modern.css',
   './Wappen.png',
   './Clan%20logo.png',
   './members-data.js',
