@@ -3,9 +3,9 @@
   "clanTag": "#C89CVRCP",
   "clanInfo": {},
   "source": "ClashKing",
-  "fetchedAt": "2026-10-28T13:25:07.727Z",
+  "fetchedAt": "2026-10-28T14:01:40.539Z",
   "current": null,
-  "currentError": "HTTP 403 bei der offiziellen CoC-API.",
+  "currentError": "CoC-Proxy: HTTP 522",
   "previous": [
     {
       "state": "warEnded",
